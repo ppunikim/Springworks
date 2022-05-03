@@ -20,14 +20,15 @@ public class ExecV2 {
 			intEng[i] = iEng;
 			intMath[i] = iMath;
 			intSum[i] = iSum;
-		}//end for
+		}//end for : 정렬값이 랜덤값으로 저장된다.
+		
 		//정렬하기 전 출력
 		System.out.println("정렬 전 출력");
 		printScore(intKor, intEng, intMath, intSum);
 		
 		//정렬하기
 		for(int i = 0; i < intSum.length; i ++ ) {
-			for(int j = 0; j < intSum.length; j ++ ) {
+			for(int j = i+1; j < intSum.length; j ++ ) {
 				if(intSum[i] > intSum[j]) {
 					intBubble[i] = intSum[i];
 					intSum[i] = intSum[j];
