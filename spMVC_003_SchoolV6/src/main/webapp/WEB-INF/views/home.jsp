@@ -108,7 +108,10 @@ button.btn-pink {
 button.btn-yellow {
 	background-color: yellow;
 }
-
+button.btn-glass {
+	background-color: transparent;
+	border: 1px solid black;
+}
 
 </style>
 <script>
@@ -116,7 +119,7 @@ button.btn-yellow {
 	// JS 변수로 선언
 	const rootPath = "${rootPath}"
 </script>
-<script src="${rootPath}/static/nav.js?ver=2022-05-09-003"></script>
+<script src="${rootPath}/static/js/nav.js?ver=2022-05-10-001"></script>
 
 </head>
 <body>

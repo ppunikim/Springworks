@@ -21,7 +21,7 @@
 	/* 버튼의 위치를 끝쪽으로 바꾸기 위해 사용한 것. */
 
 </style>
-<script src="${rootPath}/static/js/list.js?ver=2022-05-09-001"></script>
+<script src="${rootPath}/static/js/std_list.js?ver=2022-05-10-001"></script>
 <table>
 	<tr>
 		<th>학번</th>
