@@ -35,31 +35,40 @@
 	form div:nth-of-type(7) {
 		justify-content: flex-end;		
 	}
+	form div:first-of-type div {
+		flex:3;
+		margin:0px;
+	}
 	form div:first-of-type input {
 		flex: 2;
-		margin-rigth: 10px;
+		margin : 0px;
 	}
 	form div:first-of-type button {
 		flex: 1;
 		border: 1px solid transparent;
 	}
 	form button {
-		padding: 16px;
+		padding: 15px;
 		border: 1px solid #fff;
 		background-color: #fff;
-	}
+		margin-right: auto;
+	} 
 	
 </style>
 <script>
 	const rootPath = "${rootPath}"
 </script>
-<script src="${rootPath}/static/js/std_input.js?ver=2022-05-10-013"></script>
+<!-- 콜백함수가 들어가는 함수로, 함수 선언부가 위쪽이어야 한다. -->
+<script src="${rootPath}/static/js/std_input_save.js?ver=2022-05-12-001"></script>
+<script src="${rootPath}/static/js/std_input.js?ver=2022-05-12-001"></script>
 <h1>학생 정보 등록</h1>
 <form method="POST">
 	<div>
 		<label>학번</label>
+		<div>
 		<input type = "text" name = "st_num">
 		<button type="button" class ="btn-pink std-num-check">중복 검사</button>
+		</div>
 	</div>
 	<div>
 		<label>이름</label>

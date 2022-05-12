@@ -1,5 +1,9 @@
 package com.callor.school.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,17 +11,29 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.callor.school.model.StudentVO;
+import com.callor.school.service.StudentService;
 
 @Controller
 @RequestMapping(value = "/student")
 public class StudentController {
-
+	
+	/*
+	 * Setter 주입(생성자 주입과 역할은 같은데 방식은 다르다.)
+	 */
+	@Autowired
+	@Qualifier("stServiceV1")
+	private StudentService stService;
+	
+	
 	// localhost:8080/school/student 또는
 	// localhost:8080/school/student/
 	// 이 두가지 경우를 모두 포함하는 것이다.
 	@RequestMapping(value = { "", "/" }, method = RequestMethod.GET)
 	public String list(Model model) {
-		model.addAttribute("LAYOUT", "ST_LIST");
+		List<StudentVO> stList = stService.selectAll();
+		
+		model.addAttribute("ST_LIST",stList);    // "ST_LIST" : 변수이름
+		model.addAttribute("LAYOUT", "ST_LIST"); // "ST_LIST" : 문자열 값
 		return "home";
 	}
 
@@ -36,13 +52,9 @@ public class StudentController {
 		System.out.println(stVO.toString());
 		return "home";
 	}
+
 	// form 에서 전달된 데이터를 개별 변수로 받기.
-	public String input(String st_num, 
-						String st_name, 
-						String st_dept, 
-						int st_grade, 
-						String st_tel, 
-						String st_addr) {
+	public String input(String st_num, String st_name, String st_dept, int st_grade, String st_tel, String st_addr) {
 		System.out.println("학번: " + st_num);
 		System.out.println("이름: " + st_name);
 		System.out.println("학과: " + st_dept);
@@ -52,9 +64,15 @@ public class StudentController {
 		return "home";
 	}
 	
+
 	@ResponseBody
-	@RequestMapping(value="/st_num_check",method=RequestMethod.GET)
+	@RequestMapping(value = "/st_num_check", method = RequestMethod.GET)
 	public String st_num_check(String st_num) {
-		return "Hello ppuni";
+
+		StudentVO stVO = stService.findByNum(st_num);
+		if(stVO == null) return "NOT";
+		return "USE";
+	
 	}
-}
+	
+}//end class
