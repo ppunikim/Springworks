@@ -1,39 +1,39 @@
 package com.callor.school.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- * Handles requests for the application home page.
- */
+import com.callor.school.model.StudentVO;
+import com.callor.school.service.StudentService;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 public class HomeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private final StudentService stService;
+	public HomeController(StudentService stService) {
+		this.stService = stService;
+	}
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
+	
+	/*private static final Logger log = LoggerFactory.getLogger(HomeController.class);
+		클래스에 @Slf4j Annotaion을 부착함으로 다음 코드를 lombok이 대신 만들어준다.
+	*/
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
+
+		List<StudentVO> stList = stService.selectAll();
+		model.addAttribute("ST_LIST",stList);
 		return "home";
+		
 	}
 	
 }

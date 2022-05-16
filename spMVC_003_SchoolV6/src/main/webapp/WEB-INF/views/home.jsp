@@ -112,7 +112,10 @@ button.btn-glass {
 	background-color: transparent;
 	border: 1px solid black;
 }
-
+article.st-list{
+	overflow:auto;
+	max-height: 30vh;
+}
 </style>
 <script>
 	// jsp의 속성(변수) 값을 JS 로 보내기 위해
@@ -149,7 +152,9 @@ button.btn-glass {
 				</article>
 			</c:when>
 			<c:otherwise>
-				<article></article>
+				<article class="st-list">
+				<%@ include file="/WEB-INF/views/student/list.jsp" %>
+				</article>
 				<article></article>
 				<article></article>
 			</c:otherwise>

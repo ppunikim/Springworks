@@ -13,12 +13,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.callor.school.model.StudentVO;
 import com.callor.school.service.StudentService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 @RequestMapping(value = "/student")
 public class StudentController {
 	
 	/*
-	 * Setter 주입(생성자 주입과 역할은 같은데 방식은 다르다.)
+	 * Setter 주입(생성자 주입과 역할은 같은데 방식은 다르다.) => DI(의존성 주입)
+	 * StudentCntroller studentController = new StudentController();
+	 * studentController.setStService(stService);
+	 * IoC(제어의 역전) : () 안에서 가져오는 것을 말한다.
+	 * 
+	 * 보통 @Autowired 를 사용한 Setter 주입방식을 사용하는데
+	 * Setter 주입방식에서는 메모리 릭(leak, 누수)가 발생하기도 한다.
+	 * 최근에는 생성자 주입 방식을 적극 권장하고 있다.
 	 */
 	@Autowired
 	@Qualifier("stServiceV1")
@@ -49,7 +59,8 @@ public class StudentController {
 	@RequestMapping(value = "/input", method = RequestMethod.POST)
 	// form 에서 전달된 데이터를 VO 객체를 사용해 받기.
 	public String input(StudentVO stVO) {
-		System.out.println(stVO.toString());
+		log.debug(stVO.toString());
+		stService.insert(stVO);
 		return "home";
 	}
 

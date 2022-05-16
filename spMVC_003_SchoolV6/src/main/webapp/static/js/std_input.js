@@ -6,15 +6,9 @@ const std_num_check_cb = () => {
     return false;
   }
   //alert("입력한 학번: " + st_num.value);
-  fetch(`${rootPath}/student/st_num_check?st_num=${st_num.value}`)
-    .then((res) => res.text())
-    .then((result) => {
-      if (result === "USE") {
-        alert("이미 사용중인 아이디이니,\n다시 입력하세요");
-      } else {
-        alert("사용 가능한 아이디입니다.");
-      }
-    });
+  if (!st_num_fetch(st_num.value)) {
+    st_num.focus();
+  }
 };
 
 document.addEventListener("DOMContentLoaded", () => {

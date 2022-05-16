@@ -55,12 +55,9 @@
 	} 
 	
 </style>
-<script>
-	const rootPath = "${rootPath}"
-</script>
 <!-- 콜백함수가 들어가는 함수로, 함수 선언부가 위쪽이어야 한다. -->
-<script src="${rootPath}/static/js/std_input_save.js?ver=2022-05-12-001"></script>
-<script src="${rootPath}/static/js/std_input.js?ver=2022-05-12-001"></script>
+<script src="${rootPath}/static/js/std_input_save.js?ver=2022-05-16-004"></script>
+<script src="${rootPath}/static/js/std_input.js?ver=2022-05-16-006"></script>
 <h1>학생 정보 등록</h1>
 <form method="POST">
 	<div>
