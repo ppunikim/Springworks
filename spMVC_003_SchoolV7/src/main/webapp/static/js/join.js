@@ -53,11 +53,11 @@ document.addEventListener("DOMContentLoaded", () => {
           if (result === "OK") {
             username_msg.classList.remove("warn");
             username_msg.classList.add("ok");
-            username_msg.innerText = " * 사용할 수 있는 user name 입니다.";
+            username_msg.innerText = " * 사용할 수 있는 USER NAME 입니다.";
           } else {
             username_msg.classList.remove("ok");
             username_msg.classList.add("warn");
-            username_msg.innerText = " * 이미 가입된 user name 입니다.";
+            username_msg.innerText = " * 이미 가입된 USER NAME 입니다.";
           }
         });
     });

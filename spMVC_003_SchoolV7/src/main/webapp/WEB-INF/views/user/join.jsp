@@ -16,8 +16,7 @@ form.join {
 
 }
 form.join fieldset {
-	border: 5px soild black;
-	
+	background-color: skyblue;	
 }
 form div {
 	display: flex;
@@ -42,7 +41,7 @@ form input {
 	//js 파일에서 rootPath를 사용할 수 있도록 미리 JS변수로 선언
 	const rootPath = "${rootPath}"
 </script>
-<script src="${rootPath}/static/js/join.js?ver=2022-05-26-007" ></script>
+<script src="${rootPath}/static/js/join.js?ver=2022-05-26-008" ></script>
 <body>	
 	<form class="join">
 		<fieldset>
@@ -65,7 +64,8 @@ form input {
 				<input name="email" placeholder="이메일"/>
 			</div>
 			<div>
-				<button class="join">회원가입</button>
+				<button type="button" class="join" >회원가입</button>
+				<button type="reset" >새로 작성</button>
 			</div>
 		</fieldset>		
 	</form>
