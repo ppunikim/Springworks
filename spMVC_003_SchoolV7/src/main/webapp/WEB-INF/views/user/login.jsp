@@ -25,10 +25,11 @@
 		padding : 10px;
 	}
 	form input, form button {
-		width: 80%;
+		width: 79%;
 		padding: 8px;
 		margin:5px;
 	}
+	
 </style>
 </head>
 <body>
@@ -38,6 +39,7 @@
 			<input name="username" placeholder="USERNAME" /> 
 			<input name="password" type="password" placeholder="password" />
 			<button>클(cl)릭(ick)</button>
+			<a href="${rootPath}/user/join">회원가입 바로가기</a>
 		</fieldset>
 	</form>
 	<div class="login_info">
