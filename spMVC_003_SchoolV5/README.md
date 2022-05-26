@@ -13,6 +13,8 @@
 		<version>${org.springframework-version}</version>
 		</dependency>
 ```
+* spring 프로젝트에서 DBMS와 연결하는 첫 번째 파이프
+
 ### mybatis
 * 현재(2022-05-04) 3.5.9 최신 버전
 ```
@@ -23,6 +25,9 @@
     <version>3.5.9</version>
 </dependency>
 ```
+* DB와 연결할 때 SQL을 변환하여 DB로 보내는 데이터를 자동 변환
+* Dao클래스를 자동으로 생성해주는 도구
+
 ### mybatis-spring
 * 현재 2.0.7 최신버젼
 ```
@@ -44,6 +49,8 @@
     <version>2.9.0</version>
 </dependency>
 ```
+* db Connection pool을 만들고, db연결을 원할히 도와주는 도구
+
 
 ### ojdbc 또는 mysql-connector/j
 * 각 DBMS Vender 별로 제공하는 JDBC
@@ -57,6 +64,9 @@
     <version>21.5.0.0</version>
 </dependency>
 ```
+* Oracle과 연결할 때 Project에서 DBMS로 연결하는 도구
+
+
 * mySQL Connection/J
 * mysql은 DBMS 버젼에 따라 다른 Connector를 사용한다.
 * 5.7.x 은 5.x.x. 를 사용하고, 8.x.x 는 현재 8.0.29를 사용한다.

@@ -11,6 +11,6 @@
 </head>
 <body>
 <h4>안녕 햇살아</h4>
-<a href="${rootPath}/user/login">로그인 바로가기</a>
+<a href="${rootPath}/user/login">로그인하러 가자</a>
 </body>
 </html>
