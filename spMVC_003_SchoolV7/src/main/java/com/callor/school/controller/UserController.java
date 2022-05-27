@@ -162,26 +162,3 @@ public class UserController {
 	
 }//end class
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

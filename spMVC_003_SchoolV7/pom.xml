@@ -72,6 +72,13 @@
     <version>18.15.0.0</version>
 </dependency>
 				
+<!-- jackson bind 리파지토리이다. -->
+<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.12.1</version>
+</dependency>
 				
 		<!-- AspectJ -->
 		<dependency>
