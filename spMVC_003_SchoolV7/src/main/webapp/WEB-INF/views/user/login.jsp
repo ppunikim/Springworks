@@ -14,7 +14,7 @@
 		margin: 20px auto;
 	}
 	fieldset{
-		border: 10px solid pink;
+		border: 10px solid skyblue;
 		display: flex;
 		flex-direction: column;
 		justify-centent: center;
@@ -29,7 +29,10 @@
 		padding: 8px;
 		margin:5px;
 	}
-	
+	.joins{
+		text-decoration: none;
+		color: inherit;
+	}
 </style>
 </head>
 <body>
@@ -39,7 +42,7 @@
 			<input name="username" placeholder="USERNAME" /> 
 			<input name="password" type="password" placeholder="password" />
 			<button>클(cl)릭(ick)</button>
-			<a href="${rootPath}/user/join">회원가입 바로가기</a>
+			<a href="${rootPath}/user/join" class="joins" >회원가입 바로가기</a>
 		</fieldset>
 	</form>
 	<div class="login_info">
@@ -48,11 +51,11 @@
 		<div><b>이름 : </b>${USER.name}</div>
 		<div><b>권한 : </b>${USER.role}</div>
 		<div><b>email : </b>${USER.email}</div>
-		<div><a href="${rootPath}/user/logout">로그아웃</a></div>
+		<div><a href="${rootPath}/user/logout" class="joins">로그아웃</a></div>
 	</c:if>
 	<c:if test="${empty USER}">
 		<div>로그인 정보가 없어요.</div>
 	</c:if>
 	</div>
 </body>
-</html>
+</html>+---

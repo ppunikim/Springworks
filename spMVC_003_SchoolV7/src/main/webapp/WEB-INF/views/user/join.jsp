@@ -10,22 +10,28 @@
 <title>JOIN.JSP</title>
 </head>
 <style>
+* {
+	background-color:#8dd3e0;	
+}
 form.join {
-	width: 60%;
+	width: 500px;
 	margin:20px auto;
 
 }
 form.join fieldset {
-	background-color: skyblue;	
+	background-color: black;
 }
 form div {
 	display: flex;
 	margin: 5px auto;
+	background-color: white;
 	
 }
 form input {
 	flex: 1;
 	padding: 8px;
+	background-color: white;
+	font-size: 15px;
 }
 
 .warn {
@@ -36,14 +42,31 @@ form input {
 .ok {
 	color:olive;
 }
+fieldset {
+	border-radius: 10px;
+}
+fieldset button {
+	padding: 15px;
+	font-size: 13px;
+}
+form div:last-of-type {
+	background-color: black;
+}
+form div:last-of-type button{
+	margin : 10px 10px 5px 5px;
+}
+legend {
+	font-size: 17px;
+	border-radius: 5px;
+}
 </style>
 <script>
 	//js 파일에서 rootPath를 사용할 수 있도록 미리 JS변수로 선언
 	const rootPath = "${rootPath}"
 </script>
-<script src="${rootPath}/static/js/join.js?ver=2022-05-26-008" ></script>
+<script src="${rootPath}/static/js/join.js?ver=2022-05-27-004" ></script>
 <body>	
-	<form class="join">
+	<form class="join"  autocomplete="off" method="POST">
 		<fieldset>
 			<legend>회원가입</legend>
 			<div>
