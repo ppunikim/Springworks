@@ -2,6 +2,7 @@ package com.callor.school.service.impl;
 
 import java.util.List;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.callor.school.model.UserVO;
@@ -11,13 +12,15 @@ import com.callor.school.service.UserService;
 /* UserServiceImplV1 클래스를 Component(bean)로 등록하기
  */
 
-@Service
+@Service("userServiceV1")
 public class UserServiceImplV1 implements UserService {
+	
+	protected final PasswordEncoder pass;
+	protected final UserDao userDao;
 
-	private final UserDao userDao;
-
-	public UserServiceImplV1(UserDao userDao) {
+	public UserServiceImplV1(UserDao userDao, PasswordEncoder pass) {
 		this.userDao = userDao;
+		this.pass = pass;
 	}
 
 	@Override
@@ -42,7 +45,14 @@ public class UserServiceImplV1 implements UserService {
 	 */
 	@Override
 	public UserVO join(UserVO userVO) {
-
+		
+		//회원가입한 user의 정보를 저장하기 전에 
+		// 비번 암호화 하자.
+		String encPassword = pass.encode(userVO.getPassword());
+		userVO.setPassword(encPassword);
+		
+		
+		
 		/* 1. user table에 데이터가 있는지 확인하기 위해 
 		 * 전체 데이터를 select 하기
 		 */
