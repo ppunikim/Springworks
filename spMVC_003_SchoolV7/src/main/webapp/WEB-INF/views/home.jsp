@@ -12,44 +12,79 @@
 * {
 	background-color: skyblue;
 }
-
-h4 {
-	margin: 4px auto;
+header {
+	padding: 1rem;
+	text-align: center;
+	color: black;
+}
+header h3 {
 	background-color: white;
-	text-align: center;
-	margin: 20px 100px;
-	padding: 20px;
-	border-radius: 100px;
-}
-
-div a {
-	border: 1px solid transparent;
-	text-decoration: none;
-	padding: 15px;
-	background-color: blue;
-	color: white;
-	margin: 2px auto;
 	border-radius: 10px;
+	padding: 20px;
 }
-.hello {
-	text-align: center;
-	margin: 100px;
-
+nav ul {
+	list-style: none;
+	color: inherit;
+	display: flex;
 }
-div {
-	margin-top: 100px;
+nav li:nth-of-type(4) {
+	margin-left: auto;
+}
+nav li {
+	padding: 12px 1rem;
+}
+nav li:hover {
+	background-color: #eee;
+	cursor: pointer;
 }
 </style>
+<script>
+	const rootPath = "${rootPath}"
+</script>
+<script src="${rootPath}/static/js/home.js?ver2022-05-30-001"></script>
 <link rel="icon" href="${rootPath}/favicon.ico" type="image/x-icon" />
 </head>
 <body>
-	<h4>회원가입 된 home 페이지</h4>
-	<c:if test ="${empty USER}">
-		<a href="${rootPath}/user/login" class="hello" >로그인하러 가자</a>
-	</c:if>
-	<c:if test ="${not empty USER}">
-		<p class="hello">${USER.name} 님 반가워~</p>
-		<a  href="${rootPath}/user/login">로그아웃하기</a>
-	</c:if>
+	<header>
+		<h3>반가워</h3>	
+	</header>
+	<nav class="main_nav">
+		<ul>
+			<li>Home</li>
+			<li>공지사항</li>
+			<li>자유게시판</li>
+			
+			<c:choose>
+				<c:when test="${empty USER}">
+			<li>로그인</li>
+			<li>회원가입</li>
+				</c:when>
+				<c:otherwise>
+			<li>로그아웃</li>
+				</c:otherwise>
+			</c:choose>
+		</ul>
+	</nav>
+	
+	
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
