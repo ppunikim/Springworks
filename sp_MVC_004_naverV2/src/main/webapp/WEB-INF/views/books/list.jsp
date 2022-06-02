@@ -13,5 +13,8 @@
 </head>
 <body>
 	<h1>도서정보 리스트 보여주기</h1>
+	
+	<a href="${rootPath}/books/insert">도서정보추가</a>
+	
 </body>
 </html>

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.callor.naver.config.QualifierConfig;
+import com.callor.naver.model.BookVO;
 import com.callor.naver.persistance.BookDao;
 import com.callor.naver.service.BookService;
 /*
@@ -18,51 +19,51 @@ import com.callor.naver.service.BookService;
  */
 @Service(QualifierConfig.SERVICE.BOOKS_V1)
 public class BookServiceImplV1 implements BookService {
-	
+
 	@Override
-	public List<BookDao> findByTitle(String title) {
+	public List<BookVO> findByTitle(String title) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<BookDao> findByAuthor(String author) {
+	public List<BookVO> findByAuthor(String author) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<BookDao> findByPublisher(String Publisher) {
+	public List<BookVO> findByPublisher(String Publisher) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<BookDao> findByPrice(int price) {
+	public List<BookVO> findByPrice(int price) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<BookDao> selectAll() {
+	public List<BookVO> selectAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public BookDao findById(String id) {
+	public BookVO findById(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int insert(BookDao vo) {
+	public int insert(BookVO vo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int update(BookDao vo) {
+	public int update(BookVO vo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -72,5 +73,6 @@ public class BookServiceImplV1 implements BookService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 	
 }
