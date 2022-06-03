@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.callor.naver.config.QualifierConfig;
-import com.callor.naver.model.BookVO;
+import com.callor.naver.domain.BookVO;
 import com.callor.naver.persistance.BookDao;
 import com.callor.naver.service.BookService;
 /*
@@ -17,9 +17,14 @@ import com.callor.naver.service.BookService;
  * 클래스 중, 필요한 부분을 선택할 수 있도록 하기 위해 
  * 부착하는 것.
  */
-@Service(QualifierConfig.SERVICE.BOOKS_V1)
+@Service
 public class BookServiceImplV1 implements BookService {
 
+	private final BookDao bookDao;
+	public BookServiceImplV1(BookDao bookDao) {
+		this.bookDao = bookDao;
+	}//end 생성자
+	
 	@Override
 	public List<BookVO> findByTitle(String title) {
 		// TODO Auto-generated method stub
@@ -46,8 +51,8 @@ public class BookServiceImplV1 implements BookService {
 
 	@Override
 	public List<BookVO> selectAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<BookVO> bookList = bookDao.selectAll(); 
+		return bookList;
 	}
 
 	@Override
@@ -58,7 +63,7 @@ public class BookServiceImplV1 implements BookService {
 
 	@Override
 	public int insert(BookVO vo) {
-		// TODO Auto-generated method stub
+		bookDao.insert(vo);
 		return 0;
 	}
 

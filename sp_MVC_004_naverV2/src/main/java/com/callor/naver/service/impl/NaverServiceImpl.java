@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.callor.naver.config.NaverConfig;
 import com.callor.naver.config.QualifierConfig;
-import com.callor.naver.model.BookVO;
+import com.callor.naver.domain.BookVO;
 import com.callor.naver.service.NaverService;
 
 import lombok.extern.slf4j.Slf4j;

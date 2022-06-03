@@ -48,13 +48,14 @@
 			<input name="publisher" 	placeholder="출판사" />
 			<input name="pubdate"		placeholder="출판일" />
 			<input name="price"		 	placeholder="가격" type="number" />
+			<input name="discount"		 	placeholder="가격" type="number" />
 		</div>
 		<div>
 			<input name="link" 			placeholder="자세히보기"/>
 			<input name="image" 		placeholder="이미지경로" />
 		</div>
-		<textarea rows="10"></textarea>
-	</form>
+		<input name="description"/>
 		<button type="submit" class="btn-gray">저장</button>
 		<button type="submit" class="btn-tomato">새로작성</button>
-		<button type="submit" class="btn-sky">리스트보기</button>
+		<a href="${rootPath}/books/list" class="btn-sky">리스트보기</a>
+	</form>

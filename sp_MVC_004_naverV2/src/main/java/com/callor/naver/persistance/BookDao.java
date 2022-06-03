@@ -2,7 +2,7 @@ package com.callor.naver.persistance;
 
 import java.util.List;
 
-import com.callor.naver.model.BookVO;
+import com.callor.naver.domain.BookVO;
 
 public interface BookDao extends GenericDao<BookVO, String>{
 

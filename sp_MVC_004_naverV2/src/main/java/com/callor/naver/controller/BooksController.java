@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.callor.naver.config.QualifierConfig;
-import com.callor.naver.model.BookVO;
+import com.callor.naver.domain.BookVO;
 import com.callor.naver.service.BookService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +20,6 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping(value="/books")
 public class BooksController {
 	
-	@Qualifier(QualifierConfig.SERVICE.BOOKS_V1) 
 	private final BookService bookService;
 	public BooksController(BookService bookService) {
 		this.bookService = bookService;
@@ -37,7 +36,8 @@ public class BooksController {
 		 */
 		List<BookVO> bookList = bookService.selectAll();
 		model.addAttribute("BOOKS", bookList);
-		return "books/list";
+		log.debug(bookList.toString());
+		return null;
 	}//end list()
 	
 	@RequestMapping(value="/insert", method=RequestMethod.GET)
@@ -48,9 +48,21 @@ public class BooksController {
 	@RequestMapping(value="/insert", method=RequestMethod.POST)
 	public String insert(BookVO bookVO) {
 		log.debug("도서정보 : " + bookVO.toString());
+		bookService.insert(bookVO);
 		return null;
 	}//end insert()
-	
+
+//	@RequestMapping(value="/books", method=RequestMethod.GET)
+//	public String getBooks(String title,Model model) {
+//		
+//		log.debug("도서정보 : " + title);
+//		
+//		
+//		model.addAttribute("BOOKS",bookList);
+//		return "naver/book_search";
+//		
+//	}
+
 	
 	
 }//end class

@@ -52,7 +52,7 @@ a {
 	padding: 10px;
 	}
 colgroup {
-	width: 80%;
+	width: 120px;
 }
 </style>
 </head>
@@ -77,14 +77,15 @@ colgroup {
 			<th>저자</th>
 			<th>출판일자</th>
 		</tr>
+		<c:forEach items="${BOOKS}" var="BOOK">
 		<tr>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
+			<td>${BOOK.isbn}</td>
+			<td>${BOOK.title}</td>
+			<td>${BOOK.publisher}</td>
+			<td>${BOOK.author}</td>
+			<td>${BOOK.pubdate}</td>
 		</tr>
+		</c:forEach>
 	</table>
 	<div>
 		<a href="${rootPath}/books/insert">도서정보추가</a>

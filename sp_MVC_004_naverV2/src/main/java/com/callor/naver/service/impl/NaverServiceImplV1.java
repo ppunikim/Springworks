@@ -16,7 +16,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.callor.naver.config.NaverConfig;
 import com.callor.naver.config.QualifierConfig;
-import com.callor.naver.model.BookVO;
+import com.callor.naver.domain.BookVO;
 import com.callor.naver.model.MovieVO;
 import com.callor.naver.model.NaverParent;
 import com.callor.naver.model.NewsVO;

@@ -38,19 +38,6 @@ public class NaverController {
 		return "naver/book_search";
 	}
 	
-//	@RequestMapping(value="/books", method=RequestMethod.GET)
-//	public String getBooks(String title,Model model) {
-//		
-//		log.debug("도서정보 : " + title);
-//		String queryString = naverService.queryString("BOOK", title);
-//		
-//		List<BookVO> bookList = naverService.getNaverBook(queryString);
-//		
-//		
-//		model.addAttribute("BOOKS",bookList);
-//		return "naver/book_search";
-//		
-//	}
 	
 	
 	
