@@ -7,30 +7,43 @@
 header {
 	padding: 1.2rem;
 	text-align: center;
-	background-color: rgb(193,226,237);
+	background-color: pink;
 	color: rgb(47,41,41);
 	font-weight: 900;
 }
+#first_head{
+	background-color: #fff4f4;
+	height: 80px;
+	line-height: 89px;
+}
+#second_head{
+	background-color: #fcf7f7;
+	height: 100px;
+} 
+h1 {
+	color: #3e3c3c;
+	font-size: 40px;
+}
 nav {
-	background-color: skyblue;
-	color: white;
+	background-color: #343434; 
+	color: #eee;
 }
 nav ul {
 	list-style: none;
 	display:flex;
 }
 nav li {
-	padding: 3px 16px;
-	margin: 15px;
+	padding: 1px 16px;
+	margin: 15px 5px;
 	border-bottom: transparent;
-	font-weigth: 900;
+	font-weigth: 700;
 	font-size: 20px;
 	
-	transition: border 0.7s ease-out; 
+	transition: border 0.5s ease-out;
 }
 nav li:hover {
 	cursor: pointer;
-	border-bottom: 5px solid rgb(241,241,114);
+	border-bottom: 2px solid yellow;
 }
 
 /*
@@ -55,6 +68,6 @@ color: inherit
 */
 nav a {
 	color: inherit;
+	flex-shrink: 1;
 }
-
 

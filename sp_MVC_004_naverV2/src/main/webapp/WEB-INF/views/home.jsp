@@ -14,16 +14,16 @@
 
 </style>
 <link rel="stylesheet"
-	href="${rootPath}/static/css/main.css?ver=2022-06-02-002">
+	href="${rootPath}/static/css/main.css?ver=2022-06-03-002">
 <link rel="stylesheet"
-	href="${rootPath}/static/css/home.css?ver=2022-06-02-001">
+	href="${rootPath}/static/css/home.css?ver=2022-06-03-007">
 <link rel="stylesheet"
-	href="${rootPath}/static/css/table.css?ver=2022-06-02-001">
+	href="${rootPath}/static/css/table.css?ver=2022-06-03-002">
 	
 <link rel="stylesheet"
-	href="${rootPath}/static/css/modal.css?ver=2022-05-31-002">
+	href="${rootPath}/static/css/modal.css?ver=2022-06-03-003">
 <link rel="stylesheet"
-	href="${rootPath}/static/css/input.css?ver=2022-05-31-002">
+	href="${rootPath}/static/css/input.css?ver=2022-06-03-004">
 
 <script>
 	const rootPath = '${rootPath}'
@@ -32,9 +32,11 @@
 </head>
 <% //rootpath는 이 프로젝트에서  naver를 말한다. %>
 <body>
-	<header>
-		<h1>MY API</h1>
+	<header id="first_head">
 		<p>Naver API를 활용한 도서, 뉴스, 영화 정보 서비스</p>
+	</header>
+	<header id="second_head">
+		<h1>MY API</h1>
 	</header>
 	<nav>
 		<ul>
@@ -46,7 +48,7 @@
  					<%  //a 태그는 컨트롤러에서 쓴다.  %>
 
 			<% //로그인하지 않았을 때 %> 			
- 			<c:if test="${empty MEMBER}" >
+ 			<c:if test="${empty MEMBER}">
  			<li><a href="${rootPath}/member/login">로그인</a></li>
 			<li><a href="${rootPath}/member/join">회원가입</a></li>
 			</c:if>
@@ -60,7 +62,7 @@
 		</ul>
 	</nav>
 	<section class="main">
-	
+		<div></div>
 	</section>
 	<footer>
 		<address>CopyRight &copy;ppunikim</address>

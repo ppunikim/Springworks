@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class NaverBookServiceEx {
-
+	
 	/*
 	 * cat 과 search에 담긴 값을 전달받아서 Naver에 요청할 QueryString을 생성하는 method
 	 */

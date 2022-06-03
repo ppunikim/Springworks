@@ -12,7 +12,8 @@
 <title>Insert title here</title>
 <style>
 	body{
-		background-color: skyblue;
+		background-color: #efefef;;
+		margin: 30px auto;
 	}
 	form {
 		display: flex;
@@ -29,7 +30,9 @@
 	}	
 	button {
 		border-radius: 10px;
+		background-color: #ccc;
 		border: 1px solid transparent;
+		cursor: pointer;
 	}
 	
 </style>
