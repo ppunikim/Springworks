@@ -2,6 +2,42 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set value="${pageContext.request.contextPath}" var="rootPath" />
+<style>
+	form {
+		display: flex;
+		flex-direction: column;
+		width: 80%;
+	}
+	form div {
+		flex: 1;
+	}
+	.btn-gray {
+		background-color: gray;
+		color: white;
+		border-radius: 10px;
+		border: 1px solid transparent;
+		padding: 7px;
+	}
+	.btn-tomato{
+		background-color: tomato;
+		border-radius: 10px;
+		color: black;
+		border: 1px solid transparent;
+		padding: 7px;
+	}
+	.btn-sky {
+		background-color: skyblue;
+		color: black;
+		border-radius: 10px;
+		border: 1px solid transparent;
+		padding: 7px;
+	}
+	textarea {
+    width: 80%;
+    height: 6.25em;
+    resize: none;
+  }
+</style>
 	<form method="POST" >
 		<div>
 			<input name="isbn" 		id="isbn"  placeholder="ISBN" />
@@ -18,5 +54,7 @@
 			<input name="image" 		placeholder="이미지경로" />
 		</div>
 		<textarea rows="10"></textarea>
-		<button type="submit">저장</button>
 	</form>
+		<button type="submit" class="btn-gray">저장</button>
+		<button type="submit" class="btn-tomato">새로작성</button>
+		<button type="submit" class="btn-sky">리스트보기</button>

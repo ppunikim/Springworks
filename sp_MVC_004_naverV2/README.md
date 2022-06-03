@@ -1,33 +1,31 @@
-# NAVER OpenAPI 연동
-* API : Application Programming Interface
-* 누군가가 개방해서 제공하는 서비스에 접속하여 데이터를 가져오거나, 내가 가지고 있는 데이터를 공개적으로 제공하는 것
-* API에는 유료, 무료공개 데이터가 있는데 보통 무료로 공개하는 데이터를 OpenAPI라고 한다.
-* 우리 어플리케이션에서 적절한 도구를 사용하여 다른 컴퓨터의 애플리케이션에 데이터를 요청하고 요청받은 컴퓨터의 애플리케이션에서는 데이터를 XML, ```JSON형태```로 응답하여 사용할 수 있도록 되어있다.
+# One Day Project Naver OpenAPI 프로젝트
 
-* 우리는 오늘 도서검색, 영화검색, 뉴스검색을 만들어 본다.
+## 프로젝트 제목
+* SpMVC_004_NaverV2
 
-## 도서검색
-* 네이버에 도서검색을 요청하고 도서를 선택하여 MySQL DB에 저장(insert)할 것이다.
+## 세부 내용
+* base package : com.callor.naver
+* 필수 클래스가 배치될 package는 다음과 같습니다. 
+```컨트롤러 : com.callor.naver.controller```,
+```서비스 클래스 : com.callor.naver.service.impl```,
+```도메인(VO,DTO) : com.callor.naver.domain```,
+```매퍼(Dao) : com.callor.naver.persistance```
 
-## OpenAPI를 연동하여 애플리케이션 작성
-1. 어떤 방식으로 요청을 하는가 : URL, ID, Security 정보등이 필요하다.
-2. 어떤 방식으로 데이터를 응답하는가 : XML, JSON
-3. 어떤 방식으로 데이터를 응답하는지 확인하여 VO클래스를 제일먼저 작성한다.
-4. Java의 어떤 도구를 사용하여 데이터를 받을 것인가.
+## 사용 아이템
+*  spring-jdbc, common-dbcp2, ojdbc, mybatis, mybatis-spring 등을 사용하여 DB 에 CRUD를 구현
 
-## Naver에 도서검색 데이터 요청 절차
-* naver 도서요청 URL과 요청 문자열을 연결하여 QueryString을 만든다.
-* QueryString을 RestTemplate도구를 사용하여 naver에 요청을 보낸다.
-* 그리고 결과를 NaverBookVO객체를 통해서 받는다.
-* 
-* 
-
-
-
-
-
-
-
+## 개발 환경
+* 운영체제 : 윈도우11
+* 개발도구 : STS(Spring Tool Suite) 3
+* JDK : 11 ~
+* DB : 오라클 11g xe
+* JDBC : 
+테이블 Space : naverDB
+DataFile : naverDB.dbf
+사용자 : bookuser, bookuser, DBA 
+* 기타 : HTML5, CSS, javascript, jquery
+bootstrap, w3css 등 3
+rd party UI Tool를 사용하여도됩니다
 
 
 

@@ -11,6 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>나의 API APP</title>
 <style>
+
 </style>
 <link rel="stylesheet"
 	href="${rootPath}/static/css/main.css?ver=2022-06-02-002">
@@ -41,6 +42,7 @@
 			<li><a href="${rootPath}/books/list">도서정보</a></li>
 			<li><a href="${rootPath}/news">오늘의 뉴스</a></li>
 			<li><a href="${rootPath}/movies">영화정보</a></li>
+			<li><a href="${rootPath}/naver">네이버 검색창</a></li>
  					<%  //a 태그는 컨트롤러에서 쓴다.  %>
 
 			<% //로그인하지 않았을 때 %> 			

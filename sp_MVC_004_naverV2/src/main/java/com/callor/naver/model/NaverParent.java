@@ -25,5 +25,5 @@ public class NaverParent<VO> {
 	 *  이 때, RestTemplate를 사용하여 데이터를 가져오는데
 	 *  RestTemplate는 VO를 감싸는 List 변수가 한 개 필요하다.
 	 */
-	public List<VO> items ;  //items	-	XML 포멧에서는 item 태그로, JSON 포멧에서는 items 속성으로 표현된다. 개별 검색 결과이며 title, link, description을 포함한다.
+	public List<Object> items ;  //items	-	XML 포멧에서는 item 태그로, JSON 포멧에서는 items 속성으로 표현된다. 개별 검색 결과이며 title, link, description을 포함한다.
 }
