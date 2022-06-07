@@ -33,13 +33,13 @@
 		UPDATE tbl_books SET
 				title = #{title}, 
 				author = #{author},
-				publisher = #{publisher}
-				price = #{price}
-				discount = #{discount , jdbcType=VARCHAR}
-				description = #{description , jdbcType=VARCHAR}
-				pubdate = #{pubdate , jdbcType=VARCHAR}
-				link = #{link , jdbcType=VARCHAR}
-				image = #{image , jdbcType=VARCHAR}
+				publisher = #{publisher},
+				price = #{price},
+				discount = #{discount},
+				description = #{description},
+				pubdate = #{pubdate},
+				link = #{link},
+				image = #{image}
 		WHERE isbn = #{isbn} 
 	</update>
 	<delete id="delete">

@@ -70,13 +70,13 @@ a.delete {
 	<div class="btn-box">
 		<a href="${rootPath}/books/list" class="list btn-neo">리스트로 gogo</a>
 		<a href="${rootPath}/books/${BOOK.isbn}/update" class="update btn-neo">수정</a>
-		<a href="#" class="delete btn-neo">삭제</a>
+		<a href="javascript:void(0)" class="delete btn-neo">삭제</a>
 	</div>
 </body>
 <script>
 	document.querySelector("a.delete")?.addEventListener("click",()=>{
 		if(confirm("정말 삭제할거니??")){
-			document.location.replace("${rootPath}/${BOOK.isbn}/delete")
+			document.location.replace("${rootPath}/books/${BOOK.isbn}/delete")
 		}
 		
 	})

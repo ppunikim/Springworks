@@ -14,21 +14,21 @@
 
 </style>
 <link rel="stylesheet"
-	href="${rootPath}/static/css/main.css?ver=2022-06-03-002">
+	href="${rootPath}/static/css/main.css?ver=2022-06-07-001">
 <link rel="stylesheet"
-	href="${rootPath}/static/css/home.css?ver=2022-06-03-007">
+	href="${rootPath}/static/css/home.css?ver=2022-06-07-002">
 <link rel="stylesheet"
-	href="${rootPath}/static/css/table.css?ver=2022-06-03-002">
+	href="${rootPath}/static/css/table.css?ver=2022-06-07-001">
 	
 <link rel="stylesheet"
-	href="${rootPath}/static/css/modal.css?ver=2022-06-03-003">
+	href="${rootPath}/static/css/modal.css?ver=2022-06-07-001">
 <link rel="stylesheet"
-	href="${rootPath}/static/css/input.css?ver=2022-06-03-004">
+	href="${rootPath}/static/css/input.css?ver=2022-06-07-001">
 
 <script>
 	const rootPath = '${rootPath}'
 </script>
-<script src="${rootPath}/static/js/input.js?ver=2022-05-31-001"></script>
+<script src="${rootPath}/static/js/input.js?ver=2022-06-07-002"></script>
 </head>
 <% //rootpath는 이 프로젝트에서  naver를 말한다. %>
 <body>

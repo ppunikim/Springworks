@@ -76,13 +76,13 @@ public class BookServiceImplV1 implements BookService {
 
 	@Override
 	public int update(BookVO vo) {
-		// TODO Auto-generated method stub
+		bookDao.update(vo);
 		return 0;
 	}
 
 	@Override
 	public int delete(String id) {
-		// TODO Auto-generated method stub
+		bookDao.delete(id);
 		return 0;
 	}
 

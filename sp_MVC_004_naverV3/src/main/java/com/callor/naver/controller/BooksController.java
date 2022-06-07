@@ -26,6 +26,13 @@ public class BooksController {
 		this.bookService = bookService;
 	}
 	
+	/* return "문자열"형식은
+	 * 명시적으로 어떤 jsp파일을 rendering할 것인지
+	 * 알려주는 것이다.
+	 * 현재 method를 요청한 URL에 대하여 jsp를 
+	 * 명시적으로 전달한다.
+	 */
+	
 	@RequestMapping(value= {"/",""})
 	public String home() {
 		return "redirect:/books/list";
@@ -33,13 +40,6 @@ public class BooksController {
 	
 	@RequestMapping(value="/list")
 	public String list(Model model) {
-		
-		/* return "문자열"형식은
-		 * 명시적으로 어떤 jsp파일을 rendering할 것인지
-		 * 알려주는 것이다.
-		 * 현재 method를 요청한 URL에 대하여 jsp를 
-		 * 명시적으로 전달한다.
-		 */
 		List<BookVO> bookList = bookService.selectAll();
 		model.addAttribute("BOOKS", bookList);
 		log.debug(bookList.toString());
@@ -57,17 +57,6 @@ public class BooksController {
 		bookService.insert(bookVO);
 		return null;
 	}//end insert()
-
-//	@RequestMapping(value="/books", method=RequestMethod.GET)
-//	public String getBooks(String title,Model model) {
-//		
-//		log.debug("도서정보 : " + title);
-//		
-//		
-//		model.addAttribute("BOOKS",bookList);
-//		return "naver/book_search";
-//		
-//	}
 	
 	@RequestMapping(value="/{isbn}/detail", method=RequestMethod.GET)
 	public String detail(@PathVariable("isbn") String isbn, Model model) {
@@ -77,8 +66,25 @@ public class BooksController {
 		return "books/detail";
 	}
 	
+	@RequestMapping(value="/{isbn}/update", method=RequestMethod.GET)
+	public String update(@PathVariable("isbn") String isbn, Model model) {
+		
+		BookVO bookVO = bookService.findById(isbn);
+		model.addAttribute("BOOK",bookVO); //이러한 이름으로 변수를 만들어라 하는 의미이다.
+		return "books/insert";
+	}
+	
+	@RequestMapping(value="/{isbn}/update", method=RequestMethod.POST)
+	public String update(BookVO bookVO) {
+		int ret = bookService.update(bookVO);
+		String retStr = String.format("redirect:/books/%s/detail",bookVO.getIsbn());
+		return retStr;
+	}
+	
 	@RequestMapping(value="/{isbn}/delete", method=RequestMethod.GET)
 	public String delete(@PathVariable("isbn") String isbn) {
+		// 삭제한 데이터 갯수를 return 한다.
+		int ret = bookService.delete(isbn);
 		return "redirect:/books/list";
 	}
 	

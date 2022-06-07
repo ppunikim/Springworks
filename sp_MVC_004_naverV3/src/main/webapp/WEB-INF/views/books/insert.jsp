@@ -71,9 +71,10 @@
 		padding: 7px;
 	}
 	textarea {
-    width: 80%;
-    height: 6.25em;
+    width: 800px;
+    height: 4em;
     resize: none;
+    maring: 4px 6px;
   }
   button, a {
   	margin: 10px;
@@ -92,21 +93,25 @@
 	<form method="POST" >
 		<div id="first_div">
 			<div>
-				<input name="title" 	id="title" placeholder="도서명 입력 후 Enter" />
-				<input name="isbn" 		id="isbn"  placeholder="ISBN" />
-				<input name="author"		placeholder="저자"/>
-				<input name="link" 			placeholder="자세히보기"/>
+				<input name="title" 	id="title" placeholder="도서명 입력 후 Enter" value="${BOOK.title}"/>
+				<input name="isbn" 		id="isbn"  placeholder="ISBN"  value="${BOOK.isbn}" 
+					<c:if test="${not empty BOOK.isbn}">
+						readonly ="readonly"
+					</c:if>
+				>
+				<input name="author"		placeholder="저자" value="${BOOK.author}"/>
+				<input name="link" 			placeholder="자세히보기" value="${BOOK.link}"/>
 			</div>
 			<div>
-				<input name="publisher" 	placeholder="출판사" />
-				<input name="pubdate"		placeholder="출판일" />
-				<input name="price"		 	placeholder="가격" type="number" />
-				<input name="discount"		 	placeholder="할인 가격" type="number" />
+				<input name="publisher" 	placeholder="출판사"  value="${BOOK.publisher}"/>
+				<input name="pubdate"		placeholder="출판일"  value="${BOOK.pubdate}"/>
+				<input name="price"		 	placeholder="가격" type="number"  value="${BOOK.price}"/>
+				<input name="discount"		 	placeholder="할인 가격" type="number"  value="${BOOK.discount}"/>
 			</div>
 			<div>
-				<input name="image" 		placeholder="이미지경로" />
+				<input name="image" 		placeholder="이미지경로"  value="${BOOK.image}"/>
 			</div>
-			<input name="description" placeholder="설명란"/>
+			<textarea name="description" placeholder="설명란">${BOOK.description}</textarea>
 		</div>
 		<div id="sec_div">
 			<button type="submit" class="btn btn-neo">저장</button>

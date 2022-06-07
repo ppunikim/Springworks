@@ -21,6 +21,14 @@ public class HomeController {
 		return "home";
 	}
 	
+	/*
+	@RequestMapping(value="/", method= RequestMethod.GET)
+	public String diary(String title, Model model) {
+		log.debug("일기 쓰는 공간");
+		return "diary";
+	}
+	*/
+	
 	@ResponseBody
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public String home(String title, Model model) {
