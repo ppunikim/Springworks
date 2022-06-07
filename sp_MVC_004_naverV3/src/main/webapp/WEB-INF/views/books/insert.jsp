@@ -9,19 +9,38 @@
 	}
 	header h2 {
 		text-align: center;  
-		margin-top: 40px;
-		margin-bottom: 80px;
+		margin-top: 90px;
+		margin-bottom: 20px;
 		color: #444;
 	} 
 	#first_div {
-		border: 4px solid  gray;
+		border: none;
+        box-shadow: -6px -6px 14px rgba(255, 255, 255, 0.7),
+          -6px -6px 10px rgba(255, 255, 255, 0.5),
+          6px 6px 8px rgba(255, 255, 255, 0.075),
+          6px 6px 10px rgba(0, 0, 0, 0.15);
 		box-sizing: border-box;
 		width: 950px; 
 		height: 330px; 
 		margin: 30px auto;  
+		padding: 5px 2px;
 		
 	}
-	
+	.btn-neo {
+        padding: 1rem 4rem;
+        border-radius: 0.5rem;
+
+        color: #444;
+        font-size: 1rem;
+        font-weight: 700;
+        outline: none;
+        cursor: pointer;
+        border: none;
+        box-shadow: -6px -6px 14px rgba(255, 255, 255, 0.7),
+          -6px -6px 10px rgba(255, 255, 255, 0.5),
+          6px 6px 8px rgba(255, 255, 255, 0.075),
+          6px 6px 10px rgba(0, 0, 0, 0.15);
+	}
 	form div input, input {
 		width: 450px;
 		height: 40px;
@@ -50,21 +69,6 @@
 		border-radius: 10px;
 		border: 1px solid transparent;
 		padding: 7px;
-	}
-	.btn-neo {
-        padding: 1rem 4rem;
-        border-radius: 0.5rem;
-
-        color: #444;
-        font-size: 1rem;
-        font-weight: 700;
-        outline: none;
-        cursor: pointer;
-        border: none;
-        box-shadow: -6px -6px 14px rgba(255, 255, 255, 0.7),
-          -6px -6px 10px rgba(255, 255, 255, 0.5),
-          6px 6px 8px rgba(255, 255, 255, 0.075),
-          6px 6px 10px rgba(0, 0, 0, 0.15);
 	}
 	textarea {
     width: 80%;

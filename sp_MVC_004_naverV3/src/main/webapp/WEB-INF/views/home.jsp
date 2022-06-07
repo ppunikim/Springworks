@@ -41,6 +41,7 @@
 	<nav>
 		<ul>
 			<li><a href="${rootPath}/">Home</a></li>
+			<li><a href="${rootPath}/diary">오늘의 일기</a></li>
 			<li><a href="${rootPath}/books/list">도서정보</a></li>
 			<li><a href="${rootPath}/news">오늘의 뉴스</a></li>
 			<li><a href="${rootPath}/movies">영화정보</a></li>

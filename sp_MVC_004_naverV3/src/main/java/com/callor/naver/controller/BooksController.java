@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -23,6 +24,11 @@ public class BooksController {
 	private final BookService bookService;
 	public BooksController(BookService bookService) {
 		this.bookService = bookService;
+	}
+	
+	@RequestMapping(value= {"/",""})
+	public String home() {
+		return "redirect:/books/list";
 	}
 	
 	@RequestMapping(value="/list")
@@ -62,8 +68,19 @@ public class BooksController {
 //		return "naver/book_search";
 //		
 //	}
-
 	
+	@RequestMapping(value="/{isbn}/detail", method=RequestMethod.GET)
+	public String detail(@PathVariable("isbn") String isbn, Model model) {
+		
+		BookVO bookVO = bookService.findById(isbn);
+		model.addAttribute("BOOK", bookVO);
+		return "books/detail";
+	}
+	
+	@RequestMapping(value="/{isbn}/delete", method=RequestMethod.GET)
+	public String delete(@PathVariable("isbn") String isbn) {
+		return "redirect:/books/list";
+	}
 	
 }//end class
 

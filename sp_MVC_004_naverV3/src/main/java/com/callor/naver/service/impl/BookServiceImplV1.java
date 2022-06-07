@@ -64,14 +64,14 @@ public class BookServiceImplV1 implements BookService {
 
 	@Override
 	public BookVO findById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		BookVO bookVO = bookDao.findById(id);
+		return bookVO;
 	}
 
 	@Override
 	public int insert(BookVO vo) {
-		bookDao.insert(vo);
-		return 0;
+		int ret = bookDao.insert(vo);
+		return ret;
 	}
 
 	@Override

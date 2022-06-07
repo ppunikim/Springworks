@@ -68,13 +68,17 @@ colgroup {
 }
 </style>
 <link rel="stylesheet" href="./scroll.css" />
-<script src="./scroll.js"></script>
+<script >
+	const rootPath = "${rootPath}"
+</script>
+<script src="${rootPath}/static/js/scroll.js"></script>
+<script src="${rootPath}/static/js/books.js?ver=2022-06-07-006"></script>
 </head>
 <body>
 	<header>
 		<h1>내가 읽은 책들</h1>
 	</header>
-	<table>
+	<table class="books">
 		<colgroup>
 			<col width="10%">
 			<col width="15%">
@@ -95,9 +99,9 @@ colgroup {
 		</thead>
 		<tbody>
 			<c:set var="INDEX" value="1"></c:set>
-			<c:forEach items="${BOOKS}" var="BOOK">
-				<tr> 
-					<td>${INDEX}</td>
+			<c:forEach items="${BOOKS}" var="BOOK" varStatus="INDEX">
+				<tr data-isbn="${BOOK.isbn}"> 
+					<td>${INDEX.count}</td>
 					<td>${BOOK.isbn}</td>
 					<td>${BOOK.title}</td>
 					<td>${BOOK.publisher}</td>
