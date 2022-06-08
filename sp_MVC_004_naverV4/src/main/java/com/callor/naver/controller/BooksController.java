@@ -19,7 +19,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 @RequestMapping(value="/books")
-// controll단 설정
 public class BooksController {
 	
 	private final BookService bookService;
@@ -34,7 +33,7 @@ public class BooksController {
 	 * 명시적으로 전달한다.
 	 */
 	
-	@RequestMapping(value= {"/",""})		//method단 설정
+	@RequestMapping(value= {"/",""})
 	public String home() {
 		return "redirect:/books/list";
 	}
@@ -43,20 +42,21 @@ public class BooksController {
 	public String list(Model model) {
 		List<BookVO> bookList = bookService.selectAll();
 		model.addAttribute("BOOKS", bookList);
-		log.debug(bookList.toString());
-		return null;
+		model.addAttribute("LAYOUT","BOOK-LIST");
+		return "home";
 	}//end list()
 	
 	@RequestMapping(value="/insert", method=RequestMethod.GET)
-	public String insert() {
-		return null;
+	public String insert(Model model) {
+		model.addAttribute("LAYOUT","BOOK-INPUT");	
+		return "home";
 	}//end insert()
 	
 	@RequestMapping(value="/insert", method=RequestMethod.POST)
 	public String insert(BookVO bookVO) {
 		log.debug("도서정보 : " + bookVO.toString());
 		bookService.insert(bookVO);
-		return null;
+		return "redirect:/books/list";
 	}//end insert()
 	
 	@RequestMapping(value="/{isbn}/detail", method=RequestMethod.GET)
@@ -64,7 +64,9 @@ public class BooksController {
 		
 		BookVO bookVO = bookService.findById(isbn);
 		model.addAttribute("BOOK", bookVO);
-		return "books/detail";
+
+		model.addAttribute("LAYOUT","BOOK-DETAIL");	
+		return "home";
 	}
 	
 	@RequestMapping(value="/{isbn}/update", method=RequestMethod.GET)
@@ -72,7 +74,10 @@ public class BooksController {
 		
 		BookVO bookVO = bookService.findById(isbn);
 		model.addAttribute("BOOK",bookVO); //이러한 이름으로 변수를 만들어라 하는 의미이다.
-		return "books/insert";
+		
+		model.addAttribute("LAYOUT","BOOK-INPUT");	
+		return "home";
+
 	}
 	
 	@RequestMapping(value="/{isbn}/update", method=RequestMethod.POST)

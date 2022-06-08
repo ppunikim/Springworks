@@ -1,0 +1,82 @@
+@charset "UTF-8";
+/*
+	home.jsp에 적용할 css
+	header, nav, footer등의 설정
+*/
+html {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+}
+header {
+  text-align: center;
+
+  color: rgb(47, 41, 41);
+  font-weight: 900;
+}
+#first_head {
+  background-color: #fff4f4;
+  height: 80px;
+  line-height: 89px;
+}
+#second_head {
+  background-color: #fcf7f7;
+}
+h1 {
+  color: #3e3c3c;
+  font-size: 40px;
+}
+nav {
+  width: 100%;
+  background-color: #343434;
+  color: #eee;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+}
+nav li {
+  padding: 1px 16px;
+  margin: 10px 5px;
+  border-bottom: transparent;
+  font-weight: 700;
+  font-size: 17px;
+
+  transition: border 0.5s ease-out;
+}
+nav li:hover {
+  cursor: pointer;
+  border-bottom: 2px solid yellow;
+}
+nav li:nth-of-type(7) {
+  margin-left: auto;
+}
+
+/*
+nav등에 a tag를 사용할 때 
+보통 일반적인 tag는 부모 tag에 설정된 style을 상속받아
+자연스럽게 구성된다.
+하지만 a tag는 font, color, text-style등을 부모 tag로부터
+상속받지 않는다.
+항상 스스로의 모습만 고집하는 tag이다.
+a tag에서는 text-decoration과 font의 color등을 
+자체적으로 설정해줘야 한다.
+*/
+nav a {
+  text-decoration: none;
+  white-space: nowrap;
+}
+/* a tag의 color를 자체적으로 설정할 수 있지만
+nav tag와 함께 사용할때는 nav에서 color를 설정하고
+a tag에서는 nav의 color를 강제로 상속받도록 설정한다. 
+color: inherit
+만약 nav의 color를 변경했을 때 a tag도 다시 변경해야 하는 
+불편함을 줄일 수 있다.
+*/
+nav a {
+  color: inherit;
+}
