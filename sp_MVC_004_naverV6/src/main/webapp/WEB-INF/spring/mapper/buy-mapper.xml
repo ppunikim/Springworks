@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.callor.naver.persistance.BuyBooksDao">
+	<select id="selectAll" resultType="BuyBooksVO">
+		SELECT * FROM tbl_buybooks
+	</select>
+	
+	<select id="findById" resultType="BuyBooksVO">
+		SELECT * FROM tbl_buybooks 
+		WHERE isbn= #{isbn}
+	</select>
+	
+	
+	<select id="findByIsbnAndUserName" resultType="BuyBooksVO">
+		SELECT * FROM tbl_buybooks
+		WHERE b_isbn = #{isbn} AND b_username = #{username}	
+	</select>
+
+	<select id="findByIsbn" resultType="BuyBooksVO">
+		SELECT * FROM tbl_buybooks
+		WHERE b_isbn = #{isbn}	
+	</select>
+
+	<select id="findByUserName" resultType="BuyBooksVO">
+		SELECT * FROM tbl_buybooks
+		WHERE b_username = #{username}	
+	</select>
+
+	<insert id="insert" parameterType="BuyBooksVO">
+		INSERT INTO tbl_buybooks
+			(
+				b_isbn,	
+				b_username,
+				b_date
+			) VALUES (
+				#{b_isbn},	
+				#{b_username},
+				#{b_date}
+			)
+	</insert>
+<!-- 
+	<delete id="delete">
+		DELETE FROM tbl_buybooks WHERE isbn = #{isbn}
+	</delete>
+ -->	
+	 <select id="create_buy_table">
+	 	CREATE TABLE tbl_buybooks (
+			b_isbn		VARCHAR2(13)	NOT NULL,
+			b_username 	VARCHAR2(20) 	NOT NULL,
+			b_date 		VARCHAR2(10),
+			PRIMARY KEY(b_isbn, b_username),
+			CONSTRAINT FK_BUY_BOOKS 
+				FOREIGN KEY(b_isbn) 
+				REFERENCES tbl_books(isbn),
+			CONSTRAINT FK_BUY_USER
+				FOREIGN KEY(b_username) 
+				REFERENCES tbl_books(username)
+	 	)
+	 </select>
+	
+	
+</mapper>

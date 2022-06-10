@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callor.naver.persistance.DiaryDao">
+<!-- mapper는 GenericDao를 상속받기 위해 사용하는 것이다. -->
+	<select id="selectAll" resultType="DiaryVO">
+		SELECT * FROM tbl_diarys
+	</select>
+
+	<select id="findById" resultType="DiaryVO">
+		SELECT * FROM tbl_diarys
+		WHERE day = #{day}
+	</select>
+
+	<select id="findByTitle" resultType="DiaryVO">
+		SELECT * FROM tbl_diarys
+		WHERE title = #{title}
+	</select>
+
+	<insert id="insert" parameterType="DiaryVO">
+		INSERT INTO tbl_diarys (
+			title,
+			day_week,
+			weather,
+			content,
+			good1,
+			good2,
+			good3,
+			advice
+	  ) VALUES (
+			#{title},
+			#{day_week},
+			#{weather},
+			#{content},	
+			#{good1},
+			#{good2},
+			#{good3},
+			#{advice}
+	   )		
+	</insert>
+	<update id="update" parameterType="DiaryVO">
+		 UPDATE tbl_diary SET
+			title = 	#{title},
+			day_week = 	#{day_week},	
+			weather = 	#{weather},
+			content =   #{content},
+			good1 =   #{good1},
+			good2 =   #{good2},
+			good3 =   #{good3},
+			advice =   #{advice}
+		 WHERE day = #{day}
+	</update>
+	<delete id="delete">
+		DELETE FROM tbl_diarys WHERE day = #{day}
+	</delete>
+	
+	 <select id="create_diarys_table">
+	 	CREATE TABLE tbl_diarys (
+			day			nVARCHAR2(10)		PRIMARY KEY,
+			day_week	nVARCHAR2(3)		NOT NULL,
+			weather		nVARCHAR2(10)		,
+			title		nVARCHAR2(125)		,	
+			content		nVARCHAR2(2000)		NOT NULL,
+			good1		nVARCHAR2(700)		NOT NULL,
+			good2		nVARCHAR2(700)		,
+			good3		nVARCHAR2(700)		,
+			advice		nVARCHAR2(700)		NOT NULL
+	 	)
+	 </select>
+</mapper>
