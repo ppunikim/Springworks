@@ -7,7 +7,7 @@
             <Pattern>  [%-5level] %C{5} - %msg  %n</Pattern>
         </encoder>
     </appender>
-
+<!-- log를 적게 나오게 하기 위해 쓰는 것 -->
     <logger name="org.springframework" level="INFO" />
     <logger name="com.callor.ems" level="DEBUG"  additivity="false">
         <appender-ref ref="STDOUT"/>
