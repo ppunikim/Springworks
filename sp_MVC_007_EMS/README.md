@@ -1,11 +1,6 @@
 # EMS 프로젝트(Email Management System)
 * >> 보안과 관련된 코드이므로, jasypt-context.xml을 주의깊게 보자!
 
-
-
-
-
-
 ## DBMS 연동
 * mysql-connector-j;
 * mybatis
@@ -90,4 +85,10 @@
 ```
 Spring frameWork 5.x 버전에서는 서버단 유효성 검사를 위해 framework 관련 요소를 추가해 줘야 한다.
 ```
-* 
+-------------------------------------
+## MIME TYPE
+* 인터넷을 통해 다양한 형태의 데이터를 보낼 때 서버와 웹브라우저, 클라이언트 간에 데이터의 형식을 지정하는 방식
+* 일반적으로 html데이터는 text/html형식으로 기본값으로 설정되어있다.
+* 만약 html 데이터를 text/plan 형식으로 보내면 웹브라우저에 html tag가 단순 문자열로 그대로 노출된다.
+* MIME TYPE은 인터넷 환경이 발전할수록 계속 많아지고 더욱 다양해진다.
+* 현재 주로 많이 사용하는 것은 text/html, image/jpg, video/mp4, audio/mp3, apploaction/json 등이 있다.
