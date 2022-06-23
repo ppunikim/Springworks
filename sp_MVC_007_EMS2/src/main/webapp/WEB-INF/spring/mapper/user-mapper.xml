@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.callor.ems.persistance.UserDao">
+ 
+ 	<select id="selectAll"></select>
+ 	
+ 	<select id="findById" resultType="UserVO">
+ 		SELECT * FROM tbl_users
+ 		WHERE username = #{username}
+ 	</select>
+ 	<insert id="insert">
+ 		INSERT INTO tbl_users (
+ 			username, 
+ 			password,
+ 			email,
+ 			name,
+ 			role
+ 		) VALUES (
+ 			#{username}, 
+ 			#{password},
+ 			#{email},
+ 			#{name},
+ 			#{role}
+ 		) ON DUPLICATE KEY UPDATE
+ 			username  =	#{username}, 
+ 			password  = #{password},
+ 			email = 	#{email},
+ 			name  =		#{name},
+ 			role  = 	#{role}
+ 		
+ 	</insert>
+ 	<update id="update"></update>
+ 	<delete id="delete"></delete>
+ 
+ 	<select id="create_user_table">
+		CREATE TABLE IF NOT EXISTS tbl_users (
+	 		username VARCHAR(125) PRIMARY KEY,
+	 		password VARCHAR(125) NOT NULL,
+	 		name VARCHAR(50),
+	 		email VARCHAR(125),
+	 		role VARCHAR(10)
+		)
+ 	</select>
+ 
+ 
+ </mapper> 
