@@ -10,6 +10,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>메모 리스트 보여주기</title>
+<style>
+	table{
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+	table tr td, table tr th {
+		border-collapse: collapse;
+		border: 1px solid black;
+		padding: 4px;
+	}
+</style>
 </head>
 <body>
 	<h3>메모하는 습관을 들이자.</h3>
@@ -23,14 +34,16 @@
 				<th>메모내용</th>
 				<th>이미지파일</th>
 			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
+			<c:forEach items="${MEMOLIST}" var="memo"  varStatus="INDEX">
+				<tr>
+					<td>${INDEX.count}</td>
+					<td>${memo.m_author}</td>
+					<td>${memo.m_date}</td>
+					<td>${memo.m_time}</td>
+					<td>${memo.m_memo}</td>
+					<td>${memo.m_image}</td>
+				</tr>
+			</c:forEach>
 		</table>
 	</section>
 	<section>
