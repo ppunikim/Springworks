@@ -21,6 +21,7 @@
 <section class="main">
 	<form:form modelAttribute="memoVO" enctype="multipart/form-data">
 		<h3>오늘의 할일</h3>
+			<form:input path="m_seq" type="hidden"/>
 			<form:input path="m_author" readonly="readonly"/>
 			<form:input path="m_memo" 
 						cols="5" rows="30" placeholder="메모를 입력하세요." autofocus="autofocus" required="required" />

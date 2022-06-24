@@ -21,11 +21,15 @@
 		padding: 4px;
 	}
 </style>
+<script>
+	const rootPath = "${rootPath}"
+</script>
+<script src="${rootPath}/static/js/detail.js?ver=3"></script>
 </head>
 <body>
 	<h3>메모하는 습관을 들이자.</h3>
 	<section>
-		<table>
+		<table class="memos">
 			<tr>
 				<th>번호</th>
 				<th>작성자</th>
@@ -35,7 +39,7 @@
 				<th>이미지파일</th>
 			</tr>
 			<c:forEach items="${MEMOLIST}" var="memo"  varStatus="INDEX">
-				<tr>
+				<tr data-seq="${memo.m_seq}">
 					<td>${INDEX.count}</td>
 					<td>${memo.m_author}</td>
 					<td>${memo.m_date}</td>

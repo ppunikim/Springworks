@@ -54,9 +54,9 @@ public class MemoServiceImplV1 implements MemoService{
 	}
 
 	@Override
-	public MemoVO findById(String VO) {
-		// TODO Auto-generated method stub
-		return null;
+	public MemoVO findById(Long VO) {
+		MemoVO memoVO = memoDao.findById(VO);
+		return memoVO;
 	}
 
 	@Override
@@ -67,16 +67,13 @@ public class MemoServiceImplV1 implements MemoService{
 
 	@Override
 	public int update(MemoVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		int update = memoDao.update(vo);
+		return update;
 	}
 
 	@Override
-	public int delete(String id) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int delete(Long id) {
+		int delete = memoDao.delete(id);
+		return delete;
 	}
-
-
-
 }
