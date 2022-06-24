@@ -1,4 +1,4 @@
-package com.callor.memo;
+package com.callor.memo.controller;
 
 import java.text.DateFormat;
 import java.util.Date;

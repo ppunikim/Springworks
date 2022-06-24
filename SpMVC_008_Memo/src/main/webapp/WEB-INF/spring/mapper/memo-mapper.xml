@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.callor.memo.persistance.MemoDao">
+
+	<select id="selectAll">
+		SELECT * FROM tbl_memo
+	</select>
+	<select id="findById"></select>
+	<insert id="insert"></insert>
+	<update id="update"></update>
+	<delete id="delete"></delete>
+
+	<select id="create_memo_table">
+		CREATE TABLE IF NOT EXISTS tbl_memo (
+			m_seq 		BIGINT			PRIMARY KEY AUTO_INCREMENT,	
+			m_author	VARCHAR(25)		NOT NULL,
+			m_date		VARCHAR(10)		NOT NULL,
+			m_time		VARCHAR(10)		NOT NULL,
+			m_memo		VARCHAR(400)	NOT NULL,
+			m_image		VARCHAR(125)	
+		)
+	</select>
+</mapper>
