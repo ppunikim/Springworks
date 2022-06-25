@@ -27,16 +27,42 @@ body {
 	display: flex;
 	flex-direction: column;
 }
-
-header {
-	border: 1px solid black;
-	margin: 10px;
+#content {
+	margin: 20px auto;
 }
 
+header {
+	width: 70%; 
+	border : 1px solid black;
+	margin: 10px auto;
+	padding: 10px;
+	font-weight: 800;
+	border: 1px solid black;
+}
+header p {
+	font-size: 18px;
+}
+header div {
+	text-align: center;
+	margin-top: 5px;
+}
+header a {
+	color: black;
+	text-decoration: none;
+}
+header a:nth-of-type(1){
+	margin-right: 10px;
+}
+header a:hover {
+	padding: 4px;
+	background-color: #bbb;
+}
 section {
 	flex: 1;
 }
-
+section div {
+	margin: 0 auto;
+}
 section a {
 	border: 1px solid black;
 	margin: 5px;
@@ -46,7 +72,7 @@ section a {
 }
 
 img {
-	width: 500px;
+	width: 300px;
 	margin: 10px 30px;
 }
 
@@ -56,16 +82,22 @@ footer {
 </style>
 </head>
 <body>
+	<div id="content">
+		<h2>메모장</h2>
+	</div>
 	<header>
 		<p>작성일자 : ${D_MEMO.m_date}</p>
 		<p>메모 : ${D_MEMO.m_memo}</p>
-		<p><img src="${rootPath}/upload/${D_MEMO.m_image}"></p>
+		<div>
+			<img src="${rootPath}/upload/${D_MEMO.m_image}">
+			<br>
+			<a href="${rootPath}/write/${D_MEMO.m_seq}/update">수정</a> 
+			<a href="${rootPath}/write/${D_MEMO.m_seq}/delete">삭제</a>
+		</div>
 	</header>
 	<section>
 		<div>
 			<a href="${rootPath}">리스트로</a> 
-			<a href="${rootPath}/write/${D_MEMO.m_seq}/update">수정</a> 
-			<a href="${rootPath}/write/${D_MEMO.m_seq}/delete">삭제</a>
 		</div>
 	</section>
 	<footer>

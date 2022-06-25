@@ -33,7 +33,6 @@ public class MemoController {
 	@RequestMapping(value="/memo", method=RequestMethod.POST)
 	public String write(@ModelAttribute("memoVO") MemoVO memoVO
 								,@RequestParam("m_file")MultipartFile file, Model model) {
-		log.debug("업로드 파일 이름 : {}",file.getOriginalFilename());
 		try {
 			String fileName = memoService.fileUp(file);
 			memoVO.setM_image(fileName);
@@ -67,24 +66,30 @@ public class MemoController {
 	@RequestMapping(value="/{seq}/update", method = RequestMethod.GET)
 	public String update(
 			@PathVariable("seq") Long seq,
-			@ModelAttribute("memoVO") MemoVO memoVO,
-			Model model) {
+			@ModelAttribute("memoVO") MemoVO memoVO, Model model) {
 		memoVO = memoService.findById(seq);
-		log.debug(memoVO.toString());
-		model.addAttribute("UPDATE", memoVO);
+		model.addAttribute("D_MEMO", memoVO);
 		return "write/memo";
 	}
 	@RequestMapping(value="/{seq}/update", method = RequestMethod.POST)
-	public String update(@ModelAttribute("memoVO") MemoVO memoVO) {
+	public String update(@PathVariable("seq") Long seq, 
+			@ModelAttribute("memoVO") MemoVO memoVO,
+			@RequestParam("m_file")MultipartFile file) {
+		try {
+			String fileName = memoService.fileUp(file);
+			memoVO.setM_image(fileName);
+		} catch (Exception e) {
+			return "FILE UP FAIL";
+		}
+		memoVO.setM_seq(seq);
 		memoService.update(memoVO);
-//		String retStr = String.format("redirect:/wrirte/%s/detail", memoVO.getM_seq());
-//		return retStr;
-		return "redirect:/";
+		String retStr = String.format("redirect:/write/%s/detail",memoVO.getM_seq());
+		return retStr;
 	}
 	
 	@RequestMapping(value="/{seq}/delete", method = RequestMethod.GET)
 	public String delete(@PathVariable("seq") Long seq) {
-		int delete = memoService.delete(seq);
+		memoService.delete(seq);
 		return "redirect:/";
 	}
 	

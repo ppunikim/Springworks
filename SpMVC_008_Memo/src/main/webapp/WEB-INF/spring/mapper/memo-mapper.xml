@@ -33,6 +33,7 @@
 		)
 	</insert>
 	
+ 
 	<update id="update" parameterType="MemoVO">
 		UPDATE tbl_memo SET
 			m_author= #{m_author},

@@ -12,22 +12,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>memo쓰기</title>
 <style>
-	.main {
-		border: 1px solid black;
-	}
+
 </style>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
 <section class="main">
-	<form:form modelAttribute="memoVO" enctype="multipart/form-data">
+	<form:form modelAttribute="memoVO" enctype="multipart/form-data" class="w3-container w3-card-4">
 		<h3>오늘의 할일</h3>
 			<form:input path="m_seq" type="hidden"/>
-			<form:input path="m_author" readonly="readonly"/>
+			<form:input path="m_author" readonly="readonly" type="hidden"/>
 			<form:input path="m_memo" 
-						cols="5" rows="30" placeholder="메모를 입력하세요." autofocus="autofocus" required="required" />
-			<input type="file" name="m_file" accept="images/*" />
-			<input type="reset">
-			<input type="submit" placeholder="전송" value="저장">
+						class="w3-input w3-border" 
+						placeholder="메모를 입력하세요." 
+						autofocus="autofocus" 
+						required="required" />
+			<br>
+			<input type="file" name="m_file" accept="images/*"/>
+			<br>
+			<br>
+			<input type="reset"class="w3-button w3-indigo"> 
+			<input type="submit" placeholder="전송" value="저장" class="w3-button w3-amber">
 	</form:form>
 </section>
 </body>

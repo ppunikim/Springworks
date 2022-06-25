@@ -9,11 +9,23 @@
 <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>메모 리스트 보여주기</title>
+<title>메인 화면</title>
 <style>
+* {
+	background-color: #f2eddc; 
+}
+	div h2{
+		color: #291515;
+		font-weight: 200;
+	}
+	
 	section:nth-of-type(1) {
 		overflow-y: scroll;
 		height: 200px;
+	}
+	h3 {
+		color: #262424;
+		font-weight: 300;
 	}
 	table{
 		border: 1px solid black;
@@ -25,31 +37,47 @@
 		border: 1px solid black;
 		padding: 4px;
 	}
+	table tr td {
+		cursor: pointer;
+	}
 	section a {
 		color: #fff;
-		background-color: black;
+		background-color: #231f1f;
 		padding: 3px;
 		border-radius: 8px;
 		text-decoration: none;
 	}
-</style>
+</style> 
 <script>
 	const rootPath = "${rootPath}"
 </script>
 <script src="${rootPath}/static/js/detail.js?ver=3"></script>
+<script src="${rootPath}/static/js/diary_detail.js?ver=1"></script>
 </head>
 <body>
-	<h3>메모하는 습관을 들이자.</h3>
+<div>
+	<h2>메모하는 습관을 들이자.</h2>
+</div>
+<div id="first">
 	<section>
+	<h3>메모장</h3>
 		<table class="memos">
-			<tr>
-				<th>번호</th>
-				<th>작성자</th>
-				<th>작성일자</th>
-				<th>작성시각</th>
-				<th>메모내용</th>
-				<th>이미지파일</th>
-			</tr>
+			<colgroup>
+				<col width="10px">
+				<col width="30px">
+				<col width="20px">
+				<col width="20px">
+				<col width="500px">
+				<col width="300px">
+			</colgroup>
+				<tr>
+					<th>번호</th>
+					<th>작성자</th>
+					<th>작성일자</th>
+					<th>작성시각</th>
+					<th>메모내용</th>
+					<th>이미지파일</th>
+				</tr>
 			<c:forEach items="${MEMOLIST}" var="memo"  varStatus="INDEX">
 				<tr data-seq="${memo.m_seq}">
 					<td>${INDEX.count}</td>
@@ -65,5 +93,51 @@
 	<section>
 		<a href="${rootPath}/write/memo">추가</a>
 	</section>
+</div>
+<hr>
+<div id="second">
+	<h3>일기장</h3>
+	<section>
+		<table class="diarys">
+			<colgroup>
+				<col width="10px">
+				<col width="30px">
+				<col width="20px">
+				<col width="20px">
+				<col width="500px">
+				<col width="300px">
+			</colgroup>
+			<thead>
+			<tr>
+				<th>번호</th>
+				<th>작성자</th>
+				<th>작성일자</th>
+				<th>작성시각</th>
+				<th>제목</th>
+				<th>이미지파일</th>
+			</tr>
+			</thead>
+			<tbody>
+			<c:forEach items="${DIARYLIST}" var="diary"  varStatus="INDEX">
+				<tr data-seq="${diary.d_seq}">
+					<td>${INDEX.count}</td>
+					<td>${diary.d_author}</td>
+					<td>${diary.d_date}</td>
+					<td>${diary.d_time}</td>
+					<td>${diary.d_memo}</td>
+					<td>${diary.d_image}</td>
+				</tr>
+			</c:forEach>
+			</tbody>
+		</table>
+	</section>
+	<section>
+		<a href="${rootPath}/write/diary">추가</a>
+	</section>
+</div>
+<hr>
+<div id="third">
+
+</div>
 </body>
 </html>
