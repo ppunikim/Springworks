@@ -76,16 +76,16 @@ public class MemoController {
 	}
 	@RequestMapping(value="/{seq}/update", method = RequestMethod.POST)
 	public String update(@ModelAttribute("memoVO") MemoVO memoVO) {
-		log.debug("여기" + memoVO.toString());
 		memoService.update(memoVO);
-//		String retStr = String.format("redirect:/memo/wirte/%s/detail", memoVO.getM_seq());
+//		String retStr = String.format("redirect:/wrirte/%s/detail", memoVO.getM_seq());
 //		return retStr;
 		return "redirect:/";
 	}
 	
 	@RequestMapping(value="/{seq}/delete", method = RequestMethod.GET)
-	public String delete() {
-		return null;
+	public String delete(@PathVariable("seq") Long seq) {
+		int delete = memoService.delete(seq);
+		return "redirect:/";
 	}
 	
 }

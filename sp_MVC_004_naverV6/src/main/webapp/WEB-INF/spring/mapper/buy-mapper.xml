@@ -28,7 +28,19 @@
 		SELECT * FROM tbl_buybooks
 		WHERE b_username = #{username}	
 	</select>
+<!--  날짜로 도서추가  -->
 
+	<select id="findByDate">
+		SELECT 	b_date FROM tbl_buybooks
+		GROUP BY b_date
+	</select>
+
+	<select id="findByUserNameAndDate">
+		SELECT * FROM tbl_books
+		WHERE b_username = #{username} AND b_date = #{buydate}
+	</select>
+
+<!-- 여기까지  --> 
 	<insert id="insert" parameterType="BuyBooksVO">
 		INSERT INTO tbl_buybooks
 			(

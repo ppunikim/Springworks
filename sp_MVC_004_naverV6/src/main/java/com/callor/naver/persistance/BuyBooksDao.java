@@ -17,4 +17,13 @@ public interface BuyBooksDao {
 	public List<BuyBooksVO> findByUserName(String username);
 	
 	public int insert(BuyBooksVO vo);
+	
+	// 날짜로 도서추가
+	public List<String> findByDate();
+	
+	public List<BuyBooksVO> findByUserNameAndDate(
+			@Param("username") String username,
+			@Param("buydate") String buydate
+			);
+	
 }

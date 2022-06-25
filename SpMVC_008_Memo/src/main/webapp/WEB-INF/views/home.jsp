@@ -11,14 +11,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>메모 리스트 보여주기</title>
 <style>
+	section:nth-of-type(1) {
+		overflow-y: scroll;
+		height: 200px;
+	}
 	table{
 		border: 1px solid black;
 		border-collapse: collapse;
+		margin-bottom: 10px;
 	}
 	table tr td, table tr th {
 		border-collapse: collapse;
 		border: 1px solid black;
 		padding: 4px;
+	}
+	section a {
+		color: #fff;
+		background-color: black;
+		padding: 3px;
+		border-radius: 8px;
+		text-decoration: none;
 	}
 </style>
 <script>

@@ -12,9 +12,9 @@
 <title>나의 API APP</title>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
 
-<link rel="stylesheet" href="${rootPath}/static/css/main.css?ver=2022-06-09-001">
-<link rel="stylesheet" href="${rootPath}/static/css/home.css?ver=2022-06-09-001">
-<link rel="stylesheet" href="${rootPath}/static/css/table.css?ver=2022-06-09-001">
+<link rel="stylesheet" href="${rootPath}/static/css/main.css?ver=2022-06-12-001">
+<link rel="stylesheet" href="${rootPath}/static/css/home.css?ver=2022-06-12-001">
+<link rel="stylesheet" href="${rootPath}/static/css/table.css?ver=2022-06-12-001">
 	
 
 <script>

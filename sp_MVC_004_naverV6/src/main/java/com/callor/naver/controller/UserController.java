@@ -34,7 +34,7 @@ public class UserController {
 	@Autowired
 	private BookService bookService;
 	@Autowired
-	private BuyBooksService buybookService;
+	private BuyBooksService buyService;
 	
 	
 	@RequestMapping(value="/join", method=RequestMethod.GET)
@@ -96,15 +96,22 @@ public class UserController {
 	
 	
 	@RequestMapping(value="/mypage", method=RequestMethod.GET)
-	public String mypage(Model model, HttpSession session) {
+	public String mypage(Model model, HttpSession session,String buydate) {
 		UserVO loginUser = (UserVO)session.getAttribute("USER");
 		if(loginUser == null) {
 			model.addAttribute("error","LOGIN_NEED");
 			return "redirect:/user/login";
 		}
 		
-		List<BuyBooksVO> buyBooks 
-				= buybookService.findByUserName(loginUser.getUsername());
+		// 날짜로 도서 추가
+		List<BuyBooksVO> buyBooks = null;  
+		if(buydate == null || buydate.isBlank()) {
+			buyBooks = buyService.findByUserName(loginUser.getUsername());
+		} else {
+			buyBooks = buyService.findByUserNameAndDate(loginUser.getUsername(), buydate);
+		}
+		// 여기까지 
+		
 		for(BuyBooksVO buyVO : buyBooks) {
 			String isbn = buyVO.getB_isbn();
 			BookVO book = bookService.findById(isbn);	
@@ -151,22 +158,4 @@ public class UserController {
 	
 	
 }//end class
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
