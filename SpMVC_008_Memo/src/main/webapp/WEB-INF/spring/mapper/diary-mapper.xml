@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.callor.memo.persistance.DiaryDao">
+
+	<select id="selectAll" resultType="DiaryVO">
+		SELECT * FROM tbl_diary
+	</select>
+	
+	<select id="findById" resultType="DiaryVO">
+		SELECT * FROM tbl_diary
+		WHERE d_seq = #{d_seq}
+	</select>
+	
+	<insert id="insert" parameterType="DiaryVO">
+		INSERT INTO tbl_diary
+		(
+			d_seq,
+			d_author,
+			d_date,
+			d_time,
+			d_weather,
+			d_title,
+			d_content,
+			d_good1,
+			d_good2,
+			d_good3,
+			d_advice,
+			d_image
+		) VALUES (
+			#{d_seq},
+			#{d_author},
+			#{d_date},
+			#{d_time},
+			#{d_weather},
+			#{d_title},
+			#{d_content},
+			#{d_good1},
+			#{d_good2},
+			#{d_good3},
+			#{d_advice},
+			#{d_image}
+		)
+	</insert>
+	
+ 
+	<update id="update" parameterType="DiaryVO">
+		UPDATE tbl_diary SET
+		d_author=	#{d_author},
+		d_date=		#{d_date},
+		d_time=		#{d_time},
+		d_weather=	#{d_weather},
+		d_title=	#{d_title},
+		d_content=	#{d_content},
+		d_good1=	#{d_good1},
+		d_good2=	#{d_good2},
+		d_good3=	#{d_good3},
+		d_advice=	#{d_advice},
+		d_image=	#{d_image}
+		WHERE  d_seq = #{d_seq}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM tbl_diary WHERE d_seq = #{d_seq}
+	</delete>
+
+	<select id="create_diary_table">
+		CREATE TABLE IF NOT EXISTS tbl_diary (
+			d_seq 		BIGINT			PRIMARY KEY AUTO_INCREMENT,	
+			d_author	VARCHAR(25)		NOT NULL,
+			d_date		VARCHAR(10)		NOT NULL,
+			d_time		VARCHAR(10)		NOT NULL,
+			d_weather	VARCHAR(8),
+			d_title		VARCHAR(60)		NOT NULL,
+			d_content	VARCHAR(400)	NOT NULL,
+			d_good1		VARCHAR(60),
+			d_good2		VARCHAR(60),
+			d_good3		VARCHAR(60),
+			d_advice 	VARCHAR(100)	NOT NULL,
+			d_image		VARCHAR(125)
+		)
+	</select>
+</mapper>

@@ -32,7 +32,8 @@ public class MemoController {
 	}
 	@RequestMapping(value="/memo", method=RequestMethod.POST)
 	public String write(@ModelAttribute("memoVO") MemoVO memoVO
-								,@RequestParam("m_file")MultipartFile file, Model model) {
+								,@RequestParam("m_file")MultipartFile file, 
+								Model model) {
 		try {
 			String fileName = memoService.fileUp(file);
 			memoVO.setM_image(fileName);
@@ -51,7 +52,7 @@ public class MemoController {
 
 		MemoVO memoVO = MemoVO.builder().m_date(dayFormat.format(date))
 				.m_time(timeFormat.format(date))
-				.m_author("ppuni@naver.com")
+				.m_author("ppunikim")
 				.build();
 		return memoVO;
 	}

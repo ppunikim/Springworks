@@ -51,7 +51,7 @@
 <script>
 	const rootPath = "${rootPath}"
 </script>
-<script src="${rootPath}/static/js/detail.js?ver=3"></script>
+<script src="${rootPath}/static/js/memo_detail.js?ver=4"></script>
 <script src="${rootPath}/static/js/diary_detail.js?ver=1"></script>
 </head>
 <body>
@@ -124,7 +124,7 @@
 					<td>${diary.d_author}</td>
 					<td>${diary.d_date}</td>
 					<td>${diary.d_time}</td>
-					<td>${diary.d_memo}</td>
+					<td>${diary.d_title}</td>
 					<td>${diary.d_image}</td>
 				</tr>
 			</c:forEach>
@@ -132,7 +132,7 @@
 		</table>
 	</section>
 	<section>
-		<a href="${rootPath}/write/diary">추가</a>
+		<a href="${rootPath}/record/diary">추가</a>
 	</section>
 </div>
 <hr>
