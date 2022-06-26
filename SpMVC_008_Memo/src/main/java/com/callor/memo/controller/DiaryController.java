@@ -67,7 +67,7 @@ public class DiaryController {
 	}
 	
 	@RequestMapping(value="{seq}/update", method = RequestMethod.POST)
-	public String update(@PathVariable("seq") Long seq,
+	public String update2(@PathVariable("seq") Long seq,
 						 @ModelAttribute("diaryVO") DiaryVO diaryVO) {
 		diaryVO.setD_seq(seq);
 		diaryService.update(diaryVO);

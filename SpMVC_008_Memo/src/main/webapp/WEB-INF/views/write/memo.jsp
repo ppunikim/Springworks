@@ -26,9 +26,11 @@
 						class="w3-input w3-border" 
 						placeholder="메모를 입력하세요." 
 						autofocus="autofocus" 
-						required="required" />
+						required="required" 
+						value="${M_MEMO.m_memo}"/>
 			<br>
-			<input type="file" name="m_file" accept="images/*"/>
+			<input type="file" name="m_file" accept="images/*"
+				   value="${rootPath}/upload/${M_MEMO.m_image}"/>
 			<br>
 			<br>
 			<input type="reset"class="w3-button w3-indigo"> 
