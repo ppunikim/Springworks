@@ -52,7 +52,7 @@
 	const rootPath = "${rootPath}"
 </script>
 <script src="${rootPath}/static/js/memo_detail.js?ver=4"></script>
-<script src="${rootPath}/static/js/diary_detail.js?ver=1"></script>
+<script src="${rootPath}/static/js/diary_detail.js?ver=3"></script>
 </head>
 <body>
 <div>
@@ -102,10 +102,9 @@
 			<colgroup>
 				<col width="10px">
 				<col width="30px">
-				<col width="20px">
-				<col width="20px">
-				<col width="500px">
-				<col width="300px">
+				<col width="200px">
+				<col width="200px">
+				<col width="440px">
 			</colgroup>
 			<thead>
 			<tr>
@@ -114,7 +113,6 @@
 				<th>작성일자</th>
 				<th>작성시각</th>
 				<th>제목</th>
-				<th>이미지파일</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -125,7 +123,6 @@
 					<td>${diary.d_date}</td>
 					<td>${diary.d_time}</td>
 					<td>${diary.d_title}</td>
-					<td>${diary.d_image}</td>
 				</tr>
 			</c:forEach>
 			</tbody>

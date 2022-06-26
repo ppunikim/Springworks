@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (td.tagName === "TD") {
       const tr = td.closest("TR");
       const seq = tr.dataset.seq;
-      document.location.href = `${rootPath}/write/${seq}/diary`;
+      document.location.href = `${rootPath}/record/${seq}/detail`;
     }
   });
 });

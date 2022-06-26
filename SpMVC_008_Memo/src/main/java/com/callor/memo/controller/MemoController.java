@@ -60,7 +60,7 @@ public class MemoController {
 	@RequestMapping(value="/{seq}/detail", method =RequestMethod.GET)
 	public String view(@PathVariable("seq") Long seq, Model model) {
 		MemoVO memoVO = memoService.findById(seq);
-		model.addAttribute("D_MEMO",memoVO);
+		model.addAttribute("M_MEMO",memoVO);
 		return "write/detail";
 	}
 	
@@ -69,7 +69,7 @@ public class MemoController {
 			@PathVariable("seq") Long seq,
 			@ModelAttribute("memoVO") MemoVO memoVO, Model model) {
 		memoVO = memoService.findById(seq);
-		model.addAttribute("D_MEMO", memoVO);
+		model.addAttribute("M_MEMO", memoVO);
 		return "write/memo";
 	}
 	@RequestMapping(value="/{seq}/update", method = RequestMethod.POST)

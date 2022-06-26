@@ -26,5 +26,4 @@ public class DiaryVO {
 	private String d_good2; 
 	private String d_good3;
 	private String d_advice; //오늘하루 충고, 정리
-	private String d_image;
 }

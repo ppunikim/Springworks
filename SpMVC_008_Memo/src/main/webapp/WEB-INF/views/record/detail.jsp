@@ -8,7 +8,7 @@
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>메모 리스트_자세히보기</title>
+<title>일기 자세히보기</title>
 <style>
 * {
 	box-sizing: border-box;
@@ -39,24 +39,13 @@ header {
 	font-weight: 800;
 	border: 1px solid black;
 }
-header p {
-	font-size: 18px;
+#hs_head {
+	display: flex;
+	justify-content: space-around; 
 }
-header div {
-	text-align: center;
-	margin-top: 5px;
-}
-header a {
-	color: black;
-	text-decoration: none;
-}
-header a:nth-of-type(1){
-	margin-right: 10px;
-}
-header a:hover {
-	padding: 4px;
-	background-color: #bbb;
-}
+
+
+
 section {
 	flex: 1;
 }
@@ -83,16 +72,29 @@ footer {
 </head>
 <body>
 	<div id="content">
-		<h2>메모장</h2>
+		<h2>다이어리</h2>
 	</div>
 	<header>
-		<p>작성일자 : ${M_MEMO.m_date}</p>
-		<p>메모 : ${M_MEMO.m_memo}</p>
+	<div id="hs_head">
+		<p>작성일자<br> ${D_DIARY.d_date}</p>
+		<p>작성시간 <br> ${D_DIARY.d_time}</p>
+		<p>날씨<br> ${D_DIARY.d_weather}</p>
+	</div>
+	<br>
+		<p>제목 :  ${D_DIARY.d_title}</p>
+		<p>내용 :  ${D_DIARY.d_content}</p>
+	<br>
+		<p>아침에 어떤 일 하고싶고, 어떤 의도로 하고싶은가<br>${D_DIARY.d_good1}</p>
+	<br>
+		<p>낮의 기분 기록 <br> ${D_DIARY.d_good2}</p>
+	<br>
+		<p>저녁의 기분 기록 <br> ${D_DIARY.d_good3}</p>
+	<br>	 
+		<p>하루 돌아보기 <br> ${D_DIARY.d_advice}</p>
+	<br>
 		<div>
-			<img src="${rootPath}/upload/${M_MEMO.m_image}">
-			<br>
-			<a href="${rootPath}/write/${M_MEMO.m_seq}/update">수정</a> 
-			<a href="${rootPath}/write/${M_MEMO.m_seq}/delete">삭제</a>
+			<a href="${rootPath}/record/${D_DIARY.d_seq}/update">수정</a> 
+			<a href="${rootPath}/record/${D_DIARY.d_seq}/delete">삭제</a>
 		</div>
 	</header>
 	<section>

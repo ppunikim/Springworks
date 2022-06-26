@@ -32,20 +32,25 @@ body {
 </head>
 <body>
 <section>
-	<form:form modelAttribute="diaryVO" enctype="multipart/form-data">
+	<form:form modelAttribute="diaryVO" >
 		<h3>오늘의 일기</h3>
 		<form:input path="d_seq" type="hidden"/>
 		<form:input path="d_author" type="hidden"/>
 		<form:input path="d_date" readonly="readonly"/>
 		<form:input path="d_time" type="hidden"/>
 		<form:input path="d_weather" placeholder="오늘의 날씨" autofocus="autofocus" />
+		<label>제목</label>
 		<form:input path="d_title" placeholder="제목을 입력하세요." required="required"/>
+		<label>내용</label>
 		<form:input path="d_content" placeholder="내용을 입력하세요." required="required"/>
-		<form:input path="d_good1" placeholder="오늘 하루중, 좋았던 일 1"/>
-		<form:input path="d_good2" placeholder="오늘 하루중, 좋았던 일 2"/>
-		<form:input path="d_good3" placeholder="오늘 하루중, 좋았던 일 3"/>
-		<form:input path="d_advice" placeholder="오늘 하루 돌아보기." required="required"/>
-		<input type="file" name="d_image" accept="image/*">
+		<label>아침에는 어떤 일을 하고싶고, 어떤 의도를 가지고 싶은가?</label>
+		<form:input path="d_good1" placeholder="아침 기록"/>
+		<label>낮 지금 나의 기분</label>
+		<form:input path="d_good2" placeholder="낮 기분 기록"/>
+		<label>저녁 지금 나의 기분</label>
+		<form:input path="d_good3" placeholder="저녁 기분 기록"/>
+		<label>밤: 뭐가 제일 좋았는지, 나에게 해주고 싶은 말</label>
+		<form:input path="d_advice" placeholder="하루 돌아보기"/>
 		<input type="reset"  value="다시쓰기">
 		<input type="submit" value="저장">
 	</form:form>
