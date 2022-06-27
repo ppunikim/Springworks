@@ -84,7 +84,7 @@ table tr th {
 table tr td {
 	cursor: pointer; 
 	padding:12px;
-	border-bottom: 4px solid #908a8a82;
+	border-bottom: 2.25px solid #908a8a82; 
 	border-left: 1px solid #f2eddc;
 	border-right: 1px solid #f2eddc;
 }

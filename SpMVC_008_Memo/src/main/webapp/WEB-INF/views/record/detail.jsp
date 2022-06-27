@@ -26,18 +26,24 @@ body {
 	height: 100%;
 	display: flex;
 	flex-direction: column;
+	background-image: url(${rootPath}/static/images/gosim.jpeg);
+	background-size: cover;
+	background-position: center;
 }
 #content {
 	margin: 20px auto;
-}
-
-header {
-	width: 70%; 
-	border : 1px solid black;
-	margin: 10px auto;
+	background-color: #ffffffb8;
+	border-radius: 40px;
 	padding: 10px;
+}
+header {
+	margin-top: 30px;
+	width: 70%; 
+	margin: 10px auto;
+	padding: 30px;
 	font-weight: 800;
-	border: 1px solid black;
+	background-color: #f8f9f6;  
+	border-radius: 20px;
 }
 #hs_head {
 	display: flex;
@@ -73,8 +79,8 @@ footer {
 </head>
 <body>
 	<div id="content">
-		<h2>다이어리</h2>
-	</div>
+		<h2>(●'◡'●)ﾉ♥</h2>
+	</div> 
 	<header>
 	<div id="hs_head"> 
 		<p class="hs_f">작성일자</p><p class="hs_b"> ${D_DIARY.d_date}</p>
