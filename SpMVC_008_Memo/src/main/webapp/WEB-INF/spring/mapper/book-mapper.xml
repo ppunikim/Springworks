@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.callor.memo.persistance.BookDao">
+ 
+ 	<select id="findByAuthor" resultType="BookDTO">
+		 SELECT * FROM tbl_book
+		 WHERE b_author = #{b_author}
+ 	</select>
+ 
+ 	<select id="selectAll" resultType="BookDTO">
+ 		SELECT * FROM tbl_book
+ 	</select>
+ 	<select id="findById" resultType="BookDTO">
+ 		SELECT * FROM tbl_book
+ 		WHERE b_seq = #{b_seq}
+ 	</select>
+ 	<insert id="insert" parameterType="BookDTO">
+ 		INSERT INTO tbl_book (
+ 			b_seq,	
+ 			b_author,
+ 			b_date,	
+ 			b_time,	
+ 			b_title,	
+ 			b_content,	
+ 			b_genre,	
+ 			b_eval,	
+ 			b_image,	
+ 			b_up_image
+ 		) VALUES (
+ 			#{b_seq},	
+ 			#{b_author},
+ 			#{b_date},	
+ 			#{b_time},	
+ 			#{b_title},	
+ 			#{b_content},	
+ 			#{b_genre},	
+ 			#{b_eval},	
+ 			#{b_image},	
+ 			#{b_up_image}	
+ 		)
+ 		
+ 	</insert>
+ 	<update id="update" parameterType="BookDTO">
+	 	UPDATE tbl_book SET
+	 		b_author=	#{b_author},
+	 		b_date=		#{b_date},	
+	 		b_time=		#{b_time},	
+	 		b_title=	#{b_title},	
+	 		b_content=	#{b_content},	
+	 		b_genre=	#{b_genre},	
+	 		b_eval=		#{b_eval},	
+	 		b_image=	#{b_image},	
+	 		b_up_image=	#{b_up_image}		
+	 	WHERE b_seq= 	#{b_seq} 	
+ 	</update>
+ 	<delete id="delete" >
+ 		DELETE FROM tbl_book
+ 		WHERE b_seq= #{b_seq}
+ 	</delete>
+ 
+ 	<select id="create_book_table">
+ 		CREATE TABLE IF NOT EXISTS tbl_book ( 
+ 			b_seq		BIGINT PRIMARY KEY AUTO_INCREMENT,
+ 			b_author	VARCHAR(25) NOT NULL,
+ 			b_date	VARCHAR(10) NOT NULL,
+ 			b_time	VARCHAR(10) NOT NULL,
+ 			b_title	VARCHAR(20) NOT NULL,
+ 			b_content	VARCHAR(200) NOT NULL,
+ 			b_genre	VARCHAR(15),
+ 			b_eval	VARCHAR(100) NOT NULL,
+ 			b_image	VARCHAR(125),
+ 			b_up_image	VARCHAR(125)
+ 		)
+ 	</select>
+ 
+ 
+ 
+ 
+ </mapper> 

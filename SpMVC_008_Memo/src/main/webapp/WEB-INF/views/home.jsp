@@ -53,6 +53,7 @@
 </script>
 <script src="${rootPath}/static/js/memo_detail.js?ver=4"></script>
 <script src="${rootPath}/static/js/diary_detail.js?ver=3"></script>
+<script src="${rootPath}/static/js/book_detail.js?ver=2"></script>
 </head>
 <body>
 <div>
@@ -78,6 +79,9 @@
 					<th>메모내용</th>
 					<th>이미지파일</th>
 				</tr>
+			<c:if test ="${empty MEMOLIST}" >
+ 				<tr><td colspan="6">작성한 내용이 없습니다.</td></tr>
+ 			</c:if>
 			<c:forEach items="${MEMOLIST}" var="memo"  varStatus="INDEX">
 				<tr data-seq="${memo.m_seq}">
 					<td>${INDEX.count}</td>
@@ -116,6 +120,9 @@
 			</tr>
 			</thead>
 			<tbody>
+			<c:if test ="${empty DIARYLIST}" >
+ 				<tr><td colspan="6">작성한 내용이 없습니다.</td></tr>
+ 			</c:if>
 			<c:forEach items="${DIARYLIST}" var="diary"  varStatus="INDEX">
 				<tr data-seq="${diary.d_seq}">
 					<td>${INDEX.count}</td>
@@ -134,7 +141,61 @@
 </div>
 <hr>
 <div id="third">
-
+	<h3>독후감</h3>
+	<br>
+	<c:if test="${empty USERNAME}">
+		<h4>로그인 하세요.</h4>
+	</c:if>
+	<c:if test="${not empty USERNAME}">
+		<h4>${USERNAME} 님 반가워요.</h4>
+	</c:if>
+	<section>
+		<table class="books">
+			<colgroup>
+				<col width="10px">
+				<col width="30px">
+				<col width="100px">
+				<col width="100px">
+				<col width="300px">
+				<col width="340px">
+			</colgroup>
+			<thead>
+			<tr>
+				<th>번호</th>
+				<th>작성자</th>
+				<th>작성일자</th>
+				<th>작성시각</th>
+				<th>책 제목</th>
+				<th>한줄평</th>
+			</tr>
+			</thead>
+			<tbody>
+ 			<c:if test ="${empty BOOKLIST}" >
+ 				<tr><td colspan="6">작성한 내용이 없습니다.</td></tr>
+ 			</c:if>
+ 			<!-- data-seq는 book을 눌렀을 때 detail화면으로 넘어가기 위해 적은 것이다. -->
+ 			<c:forEach items="${BOOKLIST}" var="book"  varStatus="INDEX">
+				<tr data-seq="${book.b_seq}">
+					<td>${INDEX.count}</td>
+					<td>${book.b_author}</td>
+					<td>${book.b_date}</td>
+					<td>${book.b_time}</td>
+					<td>${book.b_title}</td>
+					<td>${book.b_eval}</td>
+				</tr>
+			</c:forEach> 
+			</tbody>
+			</table>
+	</section>
+	<section>
+		<c:if test="${empty USERNAME}">
+			<a href="${rootPath}/user/login">로그인하기</a>
+		</c:if>
+		<c:if test="${not empty USERNAME}">
+			<a href="${rootPath}/read/book">추가</a>
+			<a href="${rootPath}/user/logout">로그아웃</a>
+		</c:if>	
+	</section>
 </div>
 </body>
 </html>

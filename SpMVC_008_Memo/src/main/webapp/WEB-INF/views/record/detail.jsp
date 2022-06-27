@@ -43,8 +43,14 @@ header {
 	display: flex;
 	justify-content: space-around; 
 }
-
-
+.hs_f {
+	font-size: 17px;
+	margin: 3px;
+}
+.hs_b {
+	font-weight: 300;	
+	margin: 10px;
+}
 
 section {
 	flex: 1;
@@ -60,11 +66,6 @@ section a {
 	background-color: black;
 }
 
-img {
-	width: 300px;
-	margin: 10px 30px;
-}
-
 footer {
 	margin: 0 auto;
 }
@@ -75,23 +76,18 @@ footer {
 		<h2>다이어리</h2>
 	</div>
 	<header>
-	<div id="hs_head">
-		<p>작성일자<br> ${D_DIARY.d_date}</p>
-		<p>작성시간 <br> ${D_DIARY.d_time}</p>
-		<p>날씨<br> ${D_DIARY.d_weather}</p>
+	<div id="hs_head"> 
+		<p class="hs_f">작성일자</p><p class="hs_b"> ${D_DIARY.d_date}</p>
+		<p class="hs_f">작성시간</p><p class="hs_b"> ${D_DIARY.d_time}</p>
+		<p class="hs_f">날씨</p><p class="hs_b"> ${D_DIARY.d_weather}</p>
 	</div>
 	<br>
-		<p>제목 :  ${D_DIARY.d_title}</p>
-		<p>내용 :  ${D_DIARY.d_content}</p>
-	<br>
-		<p>아침에 어떤 일 하고싶고, 어떤 의도로 하고싶은가<br>${D_DIARY.d_good1}</p>
-	<br>
-		<p>낮의 기분 기록 <br> ${D_DIARY.d_good2}</p>
-	<br>
-		<p>저녁의 기분 기록 <br> ${D_DIARY.d_good3}</p>
-	<br>	 
-		<p>하루 돌아보기 <br> ${D_DIARY.d_advice}</p>
-	<br>
+		<p class="hs_f">제목</p> <p class="hs_b"> ${D_DIARY.d_title}</p>
+		<p class="hs_f">내용</p> <p class="hs_b">${D_DIARY.d_content}</p>
+		<p class="hs_f">아침에 어떤 일 하고싶고, 어떤 의도로 하고싶은가</p> <p class="hs_b">${D_DIARY.d_good1}</p>
+		<p class="hs_f">낮의 기분 기록 </p> <p class="hs_b"> ${D_DIARY.d_good2}</p>
+		<p class="hs_f">저녁의 기분 기록 </p> <p class="hs_b">${D_DIARY.d_good3}</p>
+		<p class="hs_f">하루 돌아보기 </p> <p class="hs_b"> ${D_DIARY.d_advice}</p>
 		<div>
 			<a href="${rootPath}/record/${D_DIARY.d_seq}/update">수정</a> 
 			<a href="${rootPath}/record/${D_DIARY.d_seq}/delete">삭제</a>

@@ -27,13 +27,30 @@ body {
 	display: flex;
 	flex-direction: column;
 }
-
+h3 {
+	margin: 5px auto;
+	
+}
+section {
+	width: 80%; 
+	margin: 5px auto;
+	text-align: center;
+} 
+#hs_flex {
+	display:flex;
+	flex-direction: column;
+}
+form input {
+	height: 30px; 
+	margin: 5px;
+}
 </style>
 </head>
 <body>
 <section>
 	<form:form modelAttribute="diaryVO" >
 		<h3>오늘의 일기</h3>
+		<div id="hs_flex">
 		<form:input path="d_seq" type="hidden" />
 		<form:input path="d_author" type="hidden"/>
 		<form:input path="d_date" readonly="readonly"/>
@@ -56,6 +73,7 @@ body {
 		<form:input path="d_advice" placeholder="하루 돌아보기" value="${D_DIARY.d_advice}"/>
 		<input type="reset"  value="다시쓰기">
 		<input type="submit" value="저장">
+	</div>
 	</form:form>
 </section>
 </body>

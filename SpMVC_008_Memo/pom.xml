@@ -116,7 +116,7 @@
     <artifactId>commons-fileupload</artifactId>
     <version>1.4</version>
 </dependency>
-<!-- data를 jackson type으로 return 하기위한 코드 -->
+<!-- data를 jackson type(API이용할 때 사용)으로 return 하기위한 코드 -->
 <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
 <dependency>
     <groupId>com.fasterxml.jackson.core</groupId>

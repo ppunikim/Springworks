@@ -18,8 +18,9 @@
 	<resources mapping="/css/**" location="/css/" />
 
 	<!-- 업로드 파일 저장할 폴더 -->
-	<resources mapping="/upload/**" location="/static/upload/ , file:///c:/server/upload/" />
-	
+	<!-- jsp 파일에서 바라볼 upload 폴더 -->
+	<resources mapping="/upload/**" location="file:///c:/server/upload/" />
+	<!-- java코드에서 바라볼 upload폴더 -->
 	<beans:bean id="upLoadFolder" class="java.lang.String">
 		<beans:constructor-arg value="c:/server/upload" />
 	</beans:bean>
