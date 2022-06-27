@@ -22,10 +22,11 @@
 	}
 	body {
 		width: 100%;
-		height: 100%;
+		height: 80%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		background-color: #efefef;
 	}
 	form {
 		width: 50%;
@@ -34,6 +35,12 @@
 	input {
 		padding: 1rem;
 		width: 100%;
+		box-shadow: -6px -6px 14px rgba(255, 255, 255, 0.7),
+          -6px -6px 10px rgba(255, 255, 255, 0.5),
+          6px 6px 8px rgba(255, 255, 255, 0.075),
+          6px 6px 10px rgba(0, 0, 0, 0.15);
+        border-radius: 20px;
+       border:none;
 	}
 </style>
 </head>
@@ -41,6 +48,6 @@
 	<form method="POST">
 		<input name="username" placeholder="USERNAME 입력 후 Enter">
 	</form>
-
+	<section></section>
 </body>
 </html>

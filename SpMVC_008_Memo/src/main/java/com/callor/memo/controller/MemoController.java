@@ -61,23 +61,24 @@ public class MemoController {
 	}
 	
 	@RequestMapping(value="/{seq}/detail", method =RequestMethod.GET)
-	public String detail(@PathVariable("seq") Long seq, Model model,
+	public String detail(@PathVariable("seq") String seq, Model model,
 						 @ModelAttribute("memoVO") MemoVO memoVO) {
-		memoVO = memoService.findById(seq);
+		memoVO.getM_seq();
+		Long m_seq = Long.valueOf(seq);
+		memoVO = memoService.findById(m_seq);
 		model.addAttribute("M_MEMO",memoVO);
 		return "write/detail";
 	}
 	
 	@RequestMapping(value="/{seq}/update", method = RequestMethod.GET)
 	public String update(
-			@PathVariable("seq") Long seq,
-			@ModelAttribute("memoVO") MemoVO memoVO, Model model) {
-		memoVO = memoService.findById(seq);
+			@PathVariable("seq") String seq, Model model) {
+		MemoVO memoVO = memoService.findById(Long.valueOf(seq));
 		model.addAttribute("M_MEMO", memoVO);
 		return "write/memo";
 	}
 	@RequestMapping(value="/{seq}/update", method = RequestMethod.POST)
-	public String update(@PathVariable("seq") Long seq, 
+	public String update(@PathVariable("seq") String seq, 
 			@ModelAttribute("memoVO") MemoVO memoVO,
 			MultipartFile file,
 			HttpSession httpSession) {
@@ -86,14 +87,15 @@ public class MemoController {
 			return "redirect:/user/login";
 		}
 		memoVO.setM_author(username);
-		memoVO.setM_seq(seq);
+		Long m_seq = Long.valueOf(seq);
+		memoVO.setM_seq(m_seq);
 		memoService.insertAndUpdate(memoVO,file);
-		return String.format("redirect:/write/%s/detail",memoVO.getM_seq());
+		return String.format("redirect:/write/%s/detail",seq);
 	}
 	
 	@RequestMapping(value="/{seq}/delete", method = RequestMethod.GET)
-	public String delete(@PathVariable("seq") Long seq) {
-		memoService.delete(seq);
+	public String delete(@PathVariable("seq") String seq) {
+		memoService.delete(Long.valueOf(seq));
 		return "redirect:/";
 	}
 	
