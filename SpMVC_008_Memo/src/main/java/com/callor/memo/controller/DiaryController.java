@@ -3,6 +3,8 @@ package com.callor.memo.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,12 +28,22 @@ public class DiaryController {
 	}
 
 	@RequestMapping(value="/diary", method = RequestMethod.GET)
-	public String insert(@ModelAttribute("diaryVO") DiaryVO diaryVO, Model model) {
-		model.addAttribute("diaryVO", diaryVO);
+	public String insert(@ModelAttribute("diaryVO") DiaryVO diaryVO, 
+					 	  Model model,
+					 	  HttpSession httpSession) {
+		String username = (String) httpSession.getAttribute("USERNAME");
+		if(username == null) {
+			return "redirect:/user/login";
+		}
+		diaryVO.setD_author(username);
 		return null;
 	}
+	
 	@RequestMapping(value="/diary", method = RequestMethod.POST)
-	public String insert(@ModelAttribute("diaryVO") DiaryVO diaryVO) {
+	public String insert(@ModelAttribute("diaryVO") DiaryVO diaryVO,
+					 	 HttpSession httpSession) {
+		String username = (String) httpSession.getAttribute("USERNAME");
+		diaryVO.setD_author(username);
 		diaryService.insert(diaryVO);
 		return "redirect:/";
 	}
@@ -40,19 +52,19 @@ public class DiaryController {
 	public DiaryVO makeDiary() {
 		Date date = new Date(System.currentTimeMillis());
 		SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
-		SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+		SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:SS");
 		
 		DiaryVO diaryVO = DiaryVO.builder()
 							.d_date(dayFormat.format(date))
 							.d_time(timeFormat.format(date))
-							.d_author("ppunikim")
 							.build();
 		return diaryVO;
 	}
 	
 	@RequestMapping(value="{seq}/detail", method = RequestMethod.GET)
-	public String view(@PathVariable("seq") Long seq, Model model) {
-		DiaryVO diaryVO = diaryService.findById(seq);
+	public String view(@PathVariable("seq") Long seq, Model model,
+					    @ModelAttribute("diaryVO") DiaryVO diaryVO) {
+		diaryVO = diaryService.findById(seq);
 		model.addAttribute("D_DIARY",diaryVO);
 		return "record/detail";
 	}
@@ -67,12 +79,17 @@ public class DiaryController {
 	}
 	
 	@RequestMapping(value="{seq}/update", method = RequestMethod.POST)
-	public String update2(@PathVariable("seq") Long seq,
-						 @ModelAttribute("diaryVO") DiaryVO diaryVO) {
+	public String update(@PathVariable("seq") Long seq,
+						 @ModelAttribute("diaryVO") DiaryVO diaryVO,
+						 HttpSession httpSession) {
+		String username = (String) httpSession.getAttribute("USERNAME");
+		if(username == null) {
+			return "redirect:/user/login"; 
+		}
+		diaryVO.setD_author(username);
 		diaryVO.setD_seq(seq);
 		diaryService.update(diaryVO);
-		String retStr = String.format("redirect:/record/%s/detail", diaryVO.getD_seq());
-		return retStr;  
+		return  String.format("redirect:/record/%s/detail", diaryVO.getD_seq());
 	}
 	
 	@RequestMapping(value="{seq}/delete", method=RequestMethod.GET)

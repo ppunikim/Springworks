@@ -51,14 +51,22 @@
 <script>
 	const rootPath = "${rootPath}"
 </script>
-<script src="${rootPath}/static/js/memo_detail.js?ver=4"></script>
-<script src="${rootPath}/static/js/diary_detail.js?ver=3"></script>
-<script src="${rootPath}/static/js/book_detail.js?ver=2"></script>
+<script src="${rootPath}/static/js/memo_detail.js?ver=5"></script>
+<script src="${rootPath}/static/js/diary_detail.js?ver=4"></script>
+<script src="${rootPath}/static/js/book_detail.js?ver=3"></script>
 </head>
 <body>
 <div>
 	<h2>메모하는 습관을 들이자.</h2>
 </div>
+<c:if test="${empty USERNAME}">
+	<a href="${rootPath}/user/login">로그인하기</a>
+</c:if>
+<c:if test="${not empty USERNAME}">
+	<h4>${USERNAME} 님 반가워요.</h4>
+	<a href="${rootPath}/user/logout">로그아웃</a>
+</c:if>
+
 <div id="first">
 	<section>
 	<h3>메모장</h3>
@@ -136,19 +144,15 @@
 		</table>
 	</section>
 	<section>
-		<a href="${rootPath}/record/diary">추가</a>
+		<c:if test="${not empty USERNAME}">
+			<a href="${rootPath}/record/diary">추가</a>
+		</c:if>
 	</section>
 </div>
 <hr>
 <div id="third">
 	<h3>독후감</h3>
 	<br>
-	<c:if test="${empty USERNAME}">
-		<h4>로그인 하세요.</h4>
-	</c:if>
-	<c:if test="${not empty USERNAME}">
-		<h4>${USERNAME} 님 반가워요.</h4>
-	</c:if>
 	<section>
 		<table class="books">
 			<colgroup>
@@ -188,12 +192,8 @@
 			</table>
 	</section>
 	<section>
-		<c:if test="${empty USERNAME}">
-			<a href="${rootPath}/user/login">로그인하기</a>
-		</c:if>
 		<c:if test="${not empty USERNAME}">
 			<a href="${rootPath}/read/book">추가</a>
-			<a href="${rootPath}/user/logout">로그아웃</a>
 		</c:if>	
 	</section>
 </div>

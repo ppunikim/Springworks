@@ -36,21 +36,16 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model, Locale locale,
 					 HttpSession httpSession) {
-		
-		String username = (String) httpSession.getAttribute("USERNAME");
-
 		List<MemoVO> memoList = memoService.selectAll();
-		List<DiaryVO> diaryList = diaryService.selectAll();
-		
+		String username = (String) httpSession.getAttribute("USERNAME");		
 		if(username != null) {
 			List<BookDTO> bookList = bookService.findByAuthor(username);
+			List<DiaryVO> diaryList = diaryService.findByAuthor(username);
 			model.addAttribute("BOOKLIST", bookList);	
+			model.addAttribute("MEMOLIST", memoList);
+			model.addAttribute("DIARYLIST",diaryList);
 		}
-		
-		model.addAttribute("MEMOLIST", memoList);
-		model.addAttribute("DIARYLIST",diaryList);
 		log.debug("여기는 Home");
 		return "home";
 	}
-	
-}
+}//end class

@@ -4,17 +4,22 @@ import java.io.File;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.callor.memo.model.MemoVO;
 import com.callor.memo.persistance.MemoDao;
+import com.callor.memo.service.FileUpService;
 import com.callor.memo.service.MemoService;
 
 @Service
 public class MemoServiceImplV1 implements MemoService{
 	
 	private final String upLoadFolder;
+	
+	@Autowired
+	private FileUpService fileUp;
 	
 	private final MemoDao memoDao;
 	public MemoServiceImplV1(MemoDao memoDao, String upLoadFolder) {
@@ -71,7 +76,33 @@ public class MemoServiceImplV1 implements MemoService{
 
 	@Override
 	public int delete(Long id) {
-		int delete = memoDao.delete(id);
-		return delete;
+		MemoVO memo = memoDao.findById(id);
+		fileUp.fileDelete(memo.getM_up_image());
+		memoDao.delete(id);
+		return 0;
+	}
+
+	@Override
+	public List<MemoVO> findByAuthor(String username) {
+		return memoDao.findByAuthor(username);
+	}
+
+	@Override
+	public int insertAndUpdate(MemoVO memoVO, MultipartFile file) {
+		Long m_seq = memoVO.getM_seq();
+		if(m_seq != 0) {
+			MemoVO updateMemo = memoDao.findById(m_seq);
+			String fileName = updateMemo.getM_image();
+			if( !fileName.equals(file.getOriginalFilename())) {
+				fileUp.fileDelete(updateMemo.getM_up_image());
+			}
+			String upLoadFileName = fileUp.fileUp(file);
+			memoVO.setM_image(file.getOriginalFilename());
+			memoVO.setM_up_image(upLoadFileName);
+			return memoDao.update(memoVO);
+		}
+		memoVO.setM_image(file.getOriginalFilename());
+		memoVO.setM_up_image(fileUp.fileUp(file));
+		return memoDao.insert(memoVO);
 	}
 }

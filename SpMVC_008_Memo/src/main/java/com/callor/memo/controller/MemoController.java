@@ -3,6 +3,8 @@ package com.callor.memo.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,21 +28,22 @@ public class MemoController {
 	private MemoService memoService;
 	
 	@RequestMapping(value="/memo", method=RequestMethod.GET)
-	public String write(@ModelAttribute("memoVO") MemoVO memoVO,Model model) {
+	public String insert(@ModelAttribute("memoVO") MemoVO memoVO,Model model,
+						 HttpSession httpSession) {
+		String username = (String) httpSession.getAttribute("USERNAME");
+		if(username == null) {
+			return "redirect:/user/login";
+		}
+		memoVO.setM_author(username);
 		model.addAttribute("memoVO",memoVO);
 		return null;
 	}
 	@RequestMapping(value="/memo", method=RequestMethod.POST)
-	public String write(@ModelAttribute("memoVO") MemoVO memoVO
-								,@RequestParam("m_file")MultipartFile file, 
-								Model model) {
-		try {
-			String fileName = memoService.fileUp(file);
-			memoVO.setM_image(fileName);
-		} catch (Exception e) {
-			return "FILE UP FAIL";
-		}
-		memoService.insert(memoVO);
+	public String insert(@ModelAttribute("memoVO") MemoVO memoVO
+						,MultipartFile file,HttpSession httpSession) {
+		String username = (String) httpSession.getAttribute("USERNAME");
+		memoVO.setM_author(username);
+		memoService.insertAndUpdate(memoVO,file);
 		return "redirect:/";
 	}
 	
@@ -48,18 +51,19 @@ public class MemoController {
 	public MemoVO makeMemo() {
 		Date date = new Date(System.currentTimeMillis());
 		SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
-		SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+		SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:SS");
 
-		MemoVO memoVO = MemoVO.builder().m_date(dayFormat.format(date))
+		MemoVO memoVO = MemoVO.builder()
+				.m_date(dayFormat.format(date))
 				.m_time(timeFormat.format(date))
-				.m_author("ppunikim")
 				.build();
 		return memoVO;
 	}
 	
 	@RequestMapping(value="/{seq}/detail", method =RequestMethod.GET)
-	public String view(@PathVariable("seq") Long seq, Model model) {
-		MemoVO memoVO = memoService.findById(seq);
+	public String detail(@PathVariable("seq") Long seq, Model model,
+						 @ModelAttribute("memoVO") MemoVO memoVO) {
+		memoVO = memoService.findById(seq);
 		model.addAttribute("M_MEMO",memoVO);
 		return "write/detail";
 	}
@@ -75,17 +79,16 @@ public class MemoController {
 	@RequestMapping(value="/{seq}/update", method = RequestMethod.POST)
 	public String update(@PathVariable("seq") Long seq, 
 			@ModelAttribute("memoVO") MemoVO memoVO,
-			@RequestParam("m_file")MultipartFile file) {
-		try {
-			String fileName = memoService.fileUp(file);
-			memoVO.setM_image(fileName);
-		} catch (Exception e) {
-			return "FILE UP FAIL";
+			MultipartFile file,
+			HttpSession httpSession) {
+		String username = (String) httpSession.getAttribute("USERNAME");
+		if(username == null) {
+			return "redirect:/user/login";
 		}
+		memoVO.setM_author(username);
 		memoVO.setM_seq(seq);
-		memoService.update(memoVO);
-		String retStr = String.format("redirect:/write/%s/detail",memoVO.getM_seq());
-		return retStr;
+		memoService.insertAndUpdate(memoVO,file);
+		return String.format("redirect:/write/%s/detail",memoVO.getM_seq());
 	}
 	
 	@RequestMapping(value="/{seq}/delete", method = RequestMethod.GET)

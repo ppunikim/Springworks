@@ -29,7 +29,7 @@
 						required="required" 
 						value="${M_MEMO.m_memo}"/>
 			<br>
-			<input type="file" name="m_file" accept="images/*"
+			<input type="file" name="file" accept="images/*"
 				   value="${rootPath}/upload/${M_MEMO.m_image}"/>
 			<br>
 			<br>

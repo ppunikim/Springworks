@@ -5,6 +5,11 @@
 
 <mapper namespace="com.callor.memo.persistance.DiaryDao">
 
+	<select id="findByAuthor" resultType="DiaryVO">
+		SELECT * FROM tbl_diary
+		WHERE d_author = #{d_author}	
+	</select>
+
 	<select id="selectAll" resultType="DiaryVO">
 		SELECT * FROM tbl_diary
 	</select>

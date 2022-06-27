@@ -66,6 +66,10 @@ public class DiaryServiceImplV1 implements DiaryService{
 		d_file.transferTo(upFile);
 		return fileName;
 	}
+	@Override
+	public List<DiaryVO> findByAuthor(String username) {
+		return diaryDao.findByAuthor(username);
+	}
 	
 	
 	

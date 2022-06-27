@@ -22,5 +22,6 @@ public class MemoVO {
 	private String m_time;
 	private String m_memo;
 	private String m_image;
+	private String m_up_image;
 	
 }
