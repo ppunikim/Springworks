@@ -20,14 +20,14 @@ import com.callor.memo.service.MemoService;
 
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
-@RequestMapping(value="/write")
+@RequestMapping(value="/memo")
 @Controller
 public class MemoController {
 	
 	@Autowired
 	private MemoService memoService;
 	
-	@RequestMapping(value="/memo", method=RequestMethod.GET)
+	@RequestMapping(value="/m-add", method=RequestMethod.GET)
 	public String insert(@ModelAttribute("memoVO") MemoVO memoVO,Model model,
 						 HttpSession httpSession) {
 		String username = (String) httpSession.getAttribute("USERNAME");
@@ -38,7 +38,7 @@ public class MemoController {
 		model.addAttribute("memoVO",memoVO);
 		return null;
 	}
-	@RequestMapping(value="/memo", method=RequestMethod.POST)
+	@RequestMapping(value="/m-add", method=RequestMethod.POST)
 	public String insert(@ModelAttribute("memoVO") MemoVO memoVO
 						,MultipartFile file,HttpSession httpSession) {
 		String username = (String) httpSession.getAttribute("USERNAME");
@@ -60,14 +60,14 @@ public class MemoController {
 		return memoVO;
 	}
 	
-	@RequestMapping(value="/{seq}/detail", method =RequestMethod.GET)
+	@RequestMapping(value="/{seq}/m-detail", method =RequestMethod.GET)
 	public String detail(@PathVariable("seq") String seq, Model model,
 						 @ModelAttribute("memoVO") MemoVO memoVO) {
 		memoVO.getM_seq();
 		long m_seq = Long.valueOf(seq);
 		memoVO = memoService.findById(m_seq);
 		model.addAttribute("M_MEMO",memoVO);
-		return "write/detail";
+		return "memo/m-detail";
 	}
 	
 	@RequestMapping(value="/{seq}/update", method = RequestMethod.GET)
@@ -75,7 +75,7 @@ public class MemoController {
 			@PathVariable("seq") String seq, Model model) {
 		MemoVO memoVO = memoService.findById(Long.valueOf(seq));
 		model.addAttribute("M_MEMO", memoVO);
-		return "write/memo";
+		return "memo/m-add";
 	}
 	@RequestMapping(value="/{seq}/update", method = RequestMethod.POST)
 	public String update(@PathVariable("seq") String seq, 
@@ -90,7 +90,7 @@ public class MemoController {
 		Long m_seq = Long.valueOf(seq);
 		memoVO.setM_seq(m_seq);
 		memoService.insertAndUpdate(memoVO,file);
-		return String.format("redirect:/write/%s/detail",seq);
+		return String.format("redirect:/memo/%s/m-detail",seq);
 	}
 	
 	@RequestMapping(value="/{seq}/delete", method = RequestMethod.GET)

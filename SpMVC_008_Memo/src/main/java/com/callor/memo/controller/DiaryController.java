@@ -18,7 +18,7 @@ import com.callor.memo.service.DiaryService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@RequestMapping(value="/record")
+@RequestMapping(value="/diary")
 @Controller
 public class DiaryController {
 	
@@ -27,7 +27,7 @@ public class DiaryController {
 		this.diaryService = diaryService;
 	}
 
-	@RequestMapping(value="/diary", method = RequestMethod.GET)
+	@RequestMapping(value="/d-add", method = RequestMethod.GET)
 	public String insert(@ModelAttribute("diaryVO") DiaryVO diaryVO, 
 					 	  Model model,
 					 	  HttpSession httpSession) {
@@ -39,7 +39,7 @@ public class DiaryController {
 		return null;
 	}
 	
-	@RequestMapping(value="/diary", method = RequestMethod.POST)
+	@RequestMapping(value="/d-add", method = RequestMethod.POST)
 	public String insert(@ModelAttribute("diaryVO") DiaryVO diaryVO,
 					 	 HttpSession httpSession) {
 		String username = (String) httpSession.getAttribute("USERNAME");
@@ -61,12 +61,12 @@ public class DiaryController {
 		return diaryVO;
 	}
 	
-	@RequestMapping(value="{seq}/detail", method = RequestMethod.GET)
+	@RequestMapping(value="{seq}/d-detail", method = RequestMethod.GET)
 	public String view(@PathVariable("seq") Long seq, Model model,
 					    @ModelAttribute("diaryVO") DiaryVO diaryVO) {
 		diaryVO = diaryService.findById(seq);
 		model.addAttribute("D_DIARY",diaryVO);
-		return "record/detail";
+		return "diary/d-detail";
 	}
 	
 	@RequestMapping(value="{seq}/update", method=RequestMethod.GET)
@@ -75,7 +75,7 @@ public class DiaryController {
 						 Model model) {
 		diaryVO = diaryService.findById(seq);
 		model.addAttribute("D_DIARY",diaryVO);
-		return "record/diary";
+		return "diary/d-add";
 	}
 	
 	@RequestMapping(value="{seq}/update", method = RequestMethod.POST)
@@ -89,7 +89,7 @@ public class DiaryController {
 		diaryVO.setD_author(username);
 		diaryVO.setD_seq(seq);
 		diaryService.update(diaryVO);
-		return  String.format("redirect:/record/%s/detail", diaryVO.getD_seq());
+		return  String.format("redirect:/diary/%s/d-detail", diaryVO.getD_seq());
 	}
 	
 	@RequestMapping(value="{seq}/delete", method=RequestMethod.GET)

@@ -92,8 +92,8 @@ footer {
 			<img src="${rootPath}/upload/${M_MEMO.m_up_image}"
 				 onerror="this.onerror=null; this.style.display='none'">
 			<br>
-			<a href="${rootPath}/write/${M_MEMO.m_seq}/update">수정</a> 
-			<a href="${rootPath}/write/${M_MEMO.m_seq}/delete">삭제</a>
+			<a href="${rootPath}/memo/${M_MEMO.m_seq}/update">수정</a> 
+			<a href="${rootPath}/memo/${M_MEMO.m_seq}/delete">삭제</a>
 		</div>
 	</header>
 	<section>

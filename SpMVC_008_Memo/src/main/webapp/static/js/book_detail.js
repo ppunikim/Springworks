@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
        seq값이 정상적인 범위일 때만 detail로 점프하기.
     */
     if (seq) {
-      document.location.href = `${rootPath}/read/${seq}/detail`;
+      document.location.href = `${rootPath}/book/${seq}/b-detail`;
     }
   });
 });

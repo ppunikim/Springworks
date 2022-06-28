@@ -18,14 +18,14 @@ import com.callor.memo.service.BookService;
 
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
-@RequestMapping(value="/read")
+@RequestMapping(value="/book")
 @Controller
 public class BookController {
 	
 	@Autowired
 	private BookService bookService;
 	
-	@RequestMapping(value="/book", method = RequestMethod.GET)
+	@RequestMapping(value="/b-add", method = RequestMethod.GET)
 	public String insert(@ModelAttribute("book") BookDTO book,
 						 HttpSession httpSession) {
 		String username = (String)httpSession.getAttribute("USERNAME");
@@ -33,7 +33,7 @@ public class BookController {
 			return "redirect:/user/login";
 		}
 		book.setB_author(username);
-		return "read/book";
+		return null;
 	}
 	
 	/*
@@ -41,7 +41,7 @@ public class BookController {
 	 * form의 input box 의 이름은 절대로 VO(DTO) 클래스에
 	 * 선언된 이름을 절대 사용하면 안된다.!!!!!!!
 	 */
-	@RequestMapping(value="/book", method = RequestMethod.POST)
+	@RequestMapping(value="/b-add", method = RequestMethod.POST)
 	public String insert(@ModelAttribute("book") BookDTO book,
 						 MultipartFile file, HttpSession httpSession) {
 		//메모를 저장하기 전, 현재 session에 저장된 username 가져오기
@@ -53,7 +53,7 @@ public class BookController {
 		return "redirect:/";
 	}
 
-	@RequestMapping(value="/{seq}/detail", method=RequestMethod.GET)
+	@RequestMapping(value="/{seq}/b-detail", method=RequestMethod.GET)
 	public String detail(@PathVariable("seq")String seq,
 						 @ModelAttribute("book") BookDTO bookDTO,
 						 Model model) {
@@ -61,14 +61,14 @@ public class BookController {
 		long b_seq = Long.valueOf(seq);
 		bookDTO = bookService.findById(b_seq);
 		model.addAttribute("book",bookDTO);
-		return "read/detail";
+		return "book/b-detail";
 	}
 	
 	@RequestMapping(value="/{seq}/update" , method=RequestMethod.GET)
 	public String update(@PathVariable("seq") String seq,Model model) {
 		BookDTO book = bookService.findById(Long.valueOf(seq));
 		model.addAttribute("BOOK",book);
-		return "read/book";
+		return "book/b-add";
 	}
 	
 	@RequestMapping(value="/{seq}/update" , method=RequestMethod.POST)
@@ -87,7 +87,7 @@ public class BookController {
 		bookDTO.setB_seq(b_seq);
 		
 		bookService.insertAndUpdate(bookDTO,file);
-		return String.format("redirect:/read/%s/detail",seq);
+		return String.format("redirect:/book/%s/b-detail",seq);
 	}
 
 	

@@ -103,9 +103,9 @@ section a {
 <script>
 	const rootPath = "${rootPath}"
 </script>
-<script src="${rootPath}/static/js/memo_detail.js?ver=5"></script>
-<script src="${rootPath}/static/js/diary_detail.js?ver=4"></script>
-<script src="${rootPath}/static/js/book_detail.js?ver=3"></script>
+<script src="${rootPath}/static/js/memo_detail.js?ver=8"></script>
+<script src="${rootPath}/static/js/diary_detail.js?ver=5"></script>
+<script src="${rootPath}/static/js/book_detail.js?ver=4"></script>
 </head>
 <body>
 	<div class="hs_flex">
@@ -129,7 +129,7 @@ section a {
 				<h3>메모장</h3>
 				<c:if test="${not empty USERNAME}">
 					<h5>
-						<a href="${rootPath}/write/memo"> + 추가</a>
+						<a href="${rootPath}/memo/m-add"> + 추가</a>
 					</h5>
 				</c:if>
 			</div>
@@ -177,7 +177,7 @@ section a {
 				<h3>일기장</h3>
 				<c:if test="${not empty USERNAME}">
 					<h5>
-						<a href="${rootPath}/record/diary"> + 추가</a>
+						<a href="${rootPath}/diary/d-add"> + 추가</a>
 					</h5>
 				</c:if>
 			</div>
@@ -224,7 +224,7 @@ section a {
 				<h3>독후감</h3>
 				<c:if test="${not empty USERNAME}">
 					<h5>
-						<a href="${rootPath}/read/book"> + 추가</a>
+						<a href="${rootPath}/book/b-add"> + 추가</a>
 					</h5>
 				</c:if>
 			</div>

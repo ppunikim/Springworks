@@ -75,8 +75,8 @@ img {
 			onchange="setThumbnail(event)" multiple/>
 			<div class="img-box">
 			<c:if test="${not empty M_MEMO.m_up_image}">
-			<img src="${rootPath}/upload/${M_MEMO.m_up_image}" class="img-img"
-		alt="이미지를 등록하세요!"> 
+				<img src="${rootPath}/upload/${M_MEMO.m_up_image}" class="img-img"
+				 	 alt="이미지를 등록하세요."> 
 			</c:if>
 		</div>
 			<br>

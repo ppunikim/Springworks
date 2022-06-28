@@ -22,8 +22,8 @@
 	<div>이미지 : <img src="${rootPath}/upload/${book.b_up_image}" alt="${book.b_image}" width="300px" ></div>
 	
 	<div>
-		<a href="${rootPath}/read/${book.b_seq}/update">수정</a>
-		<a href="${rootPath}/read/${book.b_seq}/delete">삭제</a>
+		<a href="${rootPath}/book/${book.b_seq}/update">수정</a>
+		<a href="${rootPath}/book/${book.b_seq}/delete">삭제</a>
 		<a href="${rootPath}">홈으로</a>
 	</div>
 </body>
