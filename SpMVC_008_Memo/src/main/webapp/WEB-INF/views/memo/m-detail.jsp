@@ -27,7 +27,7 @@ body {
 	display: flex;
 	flex-direction: column;
 }
-#content {
+#content {	
 	margin: 20px auto;
 }
 
@@ -70,7 +70,13 @@ section a {
 	text-decoration: none;
 	background-color: black;
 }
-
+.input_memo {
+	width: 60%;
+	height: 50%; 
+	border: 1px solid #ffff95;
+	padding: 30px;
+	background-color: #ffff95;
+}
 img {
 	width: 300px;
 	margin: 10px 30px;
@@ -83,9 +89,8 @@ footer {
 </head>
 <body>
 	<div id="content">
-		<h2>메모장</h2>
 	</div>
-	<header>
+	<header class="input_memo">
 		<p>작성일자 : ${M_MEMO.m_date}</p>
 		<p>메모 : ${M_MEMO.m_memo}</p>
 		<div>

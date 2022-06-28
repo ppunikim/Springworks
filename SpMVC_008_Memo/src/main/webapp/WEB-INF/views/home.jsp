@@ -99,6 +99,9 @@ section a {
 	padding-bottom: 20px;
 	font-size: 15px;
 }
+img {
+	width: 120px;
+}
 </style>
 <script>
 	const rootPath = "${rootPath}"
@@ -162,9 +165,7 @@ section a {
 						<td>${memo.m_date}</td>
 						<td>${memo.m_time}</td> 
 						<td>${memo.m_memo}</td>
-						<td><img src="${rootPath}/upload/${memo.m_up_image}" 
-						onerror="this.onerror=null;this.src='${rootPath}/static/images/gosim.jpeg'" 
-						width=120px></td>
+						<td><img src="${rootPath}/upload/${memo.m_up_image}" alt="이미지를 등록하세요!"></td>
 					</tr>
 				</c:forEach>
 			</table>

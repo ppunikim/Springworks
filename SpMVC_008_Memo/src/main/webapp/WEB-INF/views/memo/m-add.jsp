@@ -27,6 +27,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-color: #000000e0;
 }
 
 img {
@@ -47,9 +48,10 @@ img {
 #hs_footer {
 	display:flex;
 }
-#hs_footer input:nth-of-type(1){
+#hs_footer input:nth-of-type(2){
 	margin-left: auto;
 }
+
 </style> 
 <script>
 	const rootPath = "${rootPath}"
@@ -81,9 +83,10 @@ img {
 		</div>
 			<br>
 			<br>
-			<div id="hs_footer" class="w3-right w3-text-right">
-				<input type="reset"class="w3-button w3-indigo  hs_reset"> 
-				<input type="submit" placeholder="전송" value="저장" class="w3-button w3-amber">
+			<div id="hs_footer" >
+				<input type="reset"class="w3-button w3-round-xxlarge w3-padding-large"> 
+				<input type="submit" placeholder="전송" value="저장" 
+				class="w3-button w3-round-xxlarge w3-padding-large" >
 			</div>
 	</form:form>
 </section>

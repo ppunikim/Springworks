@@ -79,7 +79,7 @@ footer {
 </head>
 <body>
 	<div id="content">
-		<h2>(●'◡'●)ﾉ♥</h2>
+		<h2></h2>
 	</div> 
 	<header>
 	<div id="hs_head"> 
