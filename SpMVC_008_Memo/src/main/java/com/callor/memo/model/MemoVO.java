@@ -16,7 +16,7 @@ import lombok.ToString;
 @Builder
 public class MemoVO {
 
-	private Long m_seq;
+	private long m_seq;
 	private String m_author;
 	private String m_date;
 	private String m_time;

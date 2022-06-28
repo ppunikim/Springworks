@@ -41,12 +41,13 @@
           6px 6px 10px rgba(0, 0, 0, 0.15);
         border-radius: 20px;
        border:none;
+       
 	}
 </style>
 </head>
 <body>
 	<form method="POST">
-		<input name="username" placeholder="USERNAME 입력 후 Enter">
+		<input name="username" placeholder="USERNAME 입력 후 Enter" autocomplete="off">
 	</form>
 	<section></section>
 </body>

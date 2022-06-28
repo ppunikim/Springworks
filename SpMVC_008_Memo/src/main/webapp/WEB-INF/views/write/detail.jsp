@@ -89,7 +89,7 @@ footer {
 		<p>작성일자 : ${M_MEMO.m_date}</p>
 		<p>메모 : ${M_MEMO.m_memo}</p>
 		<div>
-			<img src="${rootPath}/upload/${M_MEMO.m_image}"
+			<img src="${rootPath}/upload/${M_MEMO.m_up_image}"
 				 onerror="this.onerror=null; this.style.display='none'">
 			<br>
 			<a href="${rootPath}/write/${M_MEMO.m_seq}/update">수정</a> 

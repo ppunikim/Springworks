@@ -24,10 +24,10 @@
 	margin-right: 20px;
 }
 
-#z_log a {
+#z_logout a {
 	text-decoration: none;
 	border-radius: 50px;
-	padding: 7px;
+	padding:  8.5px;
 	color: #858484d9;
 	box-shadow: -6px -6px 14px rgba(255, 255, 255, 0.7), -6px -6px 10px
 		rgba(255, 255, 255, 0.5), 6px 6px 8px rgba(255, 255, 255, 0.075), 6px
@@ -39,12 +39,12 @@
 	margin-right: 20px;
 }
 
-#z_logout a {
+#z_log a {
 	background-color: #838282a1;
-	color: #fff9e5;
 	text-decoration: none;
 	border-radius: 50px;
-	padding: 7px;
+	padding:7px;
+	color: #fff9e5;
 	box-shadow: -6px -6px 14px rgba(255, 255, 255, 0.7), -6px -6px 10px
 		rgba(255, 255, 255, 0.5), 6px 6px 8px rgb(255 229 229/ 14%), 6px 6px
 		10px rgba(0, 0, 0, 0.15);
@@ -160,9 +160,11 @@ section a {
 						<td>${INDEX.count}</td>
 						<td>${memo.m_author}</td>
 						<td>${memo.m_date}</td>
-						<td>${memo.m_time}</td>
+						<td>${memo.m_time}</td> 
 						<td>${memo.m_memo}</td>
-						<td>${memo.m_image}</td>
+						<td><img src="${rootPath}/upload/${memo.m_up_image}" 
+						onerror="this.onerror=null;this.src='${rootPath}/static/images/gosim.jpeg'" 
+						width=120px></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -259,7 +261,7 @@ section a {
 							<td>${book.b_date}</td>
 							<td>${book.b_time}</td>
 							<td>${book.b_title}</td>
-							<td>${book.b_eval}</td>
+							<td >${book.b_eval}</td>
 						</tr>
 					</c:forEach>
 				</tbody>

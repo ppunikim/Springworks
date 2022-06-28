@@ -22,7 +22,6 @@
 	<insert id="insert" parameterType="MemoVO">
 		INSERT INTO tbl_memo
 		(
-			m_seq,
 			m_author,
 			m_date,
 			m_time,
@@ -30,12 +29,11 @@
 			m_image,
 			m_up_image
 		) VALUES (
-			#{m_seq},
 			#{m_author},
 			#{m_date},
 			#{m_time},
 			#{m_memo},
-			#{m_image}
+			#{m_image},
 			#{m_up_image}
 		)
 	</insert>
@@ -47,7 +45,7 @@
 			m_date= #{m_date},
 			m_time= #{m_time},
 			m_memo= #{m_memo},
-			m_image	= #{m_image}
+			m_image	= #{m_image},
 			m_up_image = #{m_up_image}
 		WHERE  m_seq = #{m_seq}
 	</update>

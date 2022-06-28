@@ -39,7 +39,14 @@ input {
 	padding: 1rem;
 	width: 100%;
 }
+img {
+width:  300px;
+}
 </style>
+<script>
+	const rootPath = "${rootPath}"
+</script>
+<script src="${rootPath}/static/js/function.js?ver=6"></script>
 </head>
 <body>
 	<form method="POST" enctype="multipart/form-data" >
@@ -49,7 +56,14 @@ input {
 		<input name="b_content" placeholder="책 내용을 입력하세요." value="${BOOK.b_content}"/> 
 		<input name="b_genre" placeholder="책 장르" value="${BOOK.b_genre}"/> 
 		<input name="b_eval" placeholder="한줄평을 입력하세요." value="${BOOK.b_eval}"/>
-		<input type="file" name="file" accept="images/*" />
+		<input type="file" name="file" accept="images/*" 
+		onchange="setThumbnail(event)" multiple
+			value="${rootPath}/upload/${BOOK.b_up_image}" />
+		<div class="img-box">
+		<img src="${rootPath}/upload/${BOOK.b_up_image}"  class="img-img"
+		alt="이미지를 등록하세요!"
+		onerror="this.onerror=null;this.src='${rootPath}/static/images/gosim2.jpeg'">
+		</div>
 		<button>저장</button>
 	</form>
 </body>

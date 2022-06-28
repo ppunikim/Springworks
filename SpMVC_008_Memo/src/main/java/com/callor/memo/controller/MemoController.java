@@ -64,7 +64,7 @@ public class MemoController {
 	public String detail(@PathVariable("seq") String seq, Model model,
 						 @ModelAttribute("memoVO") MemoVO memoVO) {
 		memoVO.getM_seq();
-		Long m_seq = Long.valueOf(seq);
+		long m_seq = Long.valueOf(seq);
 		memoVO = memoService.findById(m_seq);
 		model.addAttribute("M_MEMO",memoVO);
 		return "write/detail";

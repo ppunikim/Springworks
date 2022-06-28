@@ -45,9 +45,10 @@ public class MemoServiceImplV1 implements MemoService{
 	}
 	
 	
+	@Autowired
 	@Override
 	public void create_memo_table() {
-		// TODO Auto-generated method stub
+		memoDao.create_memo_table();
 	}
 
 	@Override
