@@ -32,8 +32,9 @@ body {
 }
 
 header {
-	width: 70%; 
-	border : 1px solid black;
+	width: 500px;
+	margin: 10px auto;
+	border : 1px solid black; 
 	margin: 10px auto;
 	padding: 10px;
 	font-weight: 800;
@@ -71,11 +72,11 @@ section a {
 	background-color: black;
 }
 .input_memo {
-	width: 60%;
+	width: 500px;
 	height: 50%; 
-	border: 1px solid #ffff95;
-	padding: 30px;
-	background-color: #ffff95;
+	border: 1px solid #ffd2e1;
+	padding: 40px;
+	background-color:#ffd2e1;
 }
 img {
 	width: 300px;

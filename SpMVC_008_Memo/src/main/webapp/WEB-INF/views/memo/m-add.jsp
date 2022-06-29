@@ -64,13 +64,12 @@ img {
 	<form:form modelAttribute="memoVO" enctype="multipart/form-data" class="main_memo">
 		<h3>메모장</h3>
 			<form:input path="m_author" readonly="readonly" type="hidden"/>
-			<form:textarea path="m_memo" 
+			<textarea 	name="m_memo" 
 						class="w3-input w3-border input_memo" 
 						placeholder="메모를 입력하세요." 
 						autofocus="autofocus" 
 						required="required" 
-						value="${M_MEMO.m_memo}"
-						autocomplete="off"/>
+						autocomplete="off">${M_MEMO.m_memo}</textarea>
 			<br>
 			<input type="file" name="file" accept="images/*"
 				   value="${rootPath}/upload/${M_MEMO.m_up_image}"
