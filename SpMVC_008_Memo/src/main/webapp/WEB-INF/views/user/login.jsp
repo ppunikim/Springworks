@@ -47,7 +47,8 @@
 </head>
 <body>
 	<form method="POST">
-		<input name="username" placeholder="USERNAME 입력 후 Enter" autocomplete="off">
+		<input name="username" placeholder="USERNAME 입력 후 Enter" 
+			autofocus="autofocus" autocomplete="off">
 	</form>
 	<section></section>
 </body>

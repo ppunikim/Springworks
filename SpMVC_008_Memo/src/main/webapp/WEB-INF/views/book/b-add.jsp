@@ -31,12 +31,17 @@ body {
 }
 
 form {
-	width: 50%;
+	width: 70%;
 	text-align: center;
 }
 
 input {
-	padding: 1rem;
+	padding: 0.8rem;
+	width: 100%;
+	margin-bottom: 10px;
+}
+textarea {
+	padding: 1.3rem;
 	width: 100%;
 }
 img {
@@ -52,10 +57,14 @@ width:  300px;
 	<form method="POST" enctype="multipart/form-data" >
 		<input name="b_seq" hidden="hidden" value='<c:out value="${BOOK.b_seq}" default="0" />'>
 		<input name="b_author" hidden="hidden"/>
-		<input name="b_title" placeholder="책 제목" value="${BOOK.b_title}"/> 
-		<input name="b_content" placeholder="책 내용을 입력하세요." value="${BOOK.b_content}"/> 
-		<input name="b_genre" placeholder="책 장르" value="${BOOK.b_genre}"/> 
-		<input name="b_eval" placeholder="한줄평을 입력하세요." value="${BOOK.b_eval}"/>
+		<input name="b_title" placeholder="책 제목" 
+			   value="${BOOK.b_title}" autocomplete="off" required="required"/> 
+		<textarea name="b_content" placeholder="책 내용을 입력하세요." 
+			    autocomplete="off"  required="required" >${BOOK.b_content}</textarea> 
+		<input name="b_genre" placeholder="책 장르" value="${BOOK.b_genre}" 
+				autocomplete="off" required="required"/> 
+		<input name="b_eval" placeholder="한줄평을 입력하세요." 
+				value="${BOOK.b_eval}" autocomplete="off"  required="required"/>
 		<input type="file" name="file" accept="images/*" 
 		onchange="setThumbnail(event)" multiple
 			value="${rootPath}/upload/${BOOK.b_up_image}" />

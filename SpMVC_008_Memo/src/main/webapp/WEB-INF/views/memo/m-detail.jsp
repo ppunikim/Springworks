@@ -26,9 +26,11 @@ body {
 	height: 100%;
 	display: flex;
 	flex-direction: column;
+	background-color: #000000e0;
 }
+
 #content {
-	flex:1;	
+	flex: 1;
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -36,83 +38,81 @@ body {
 	align-items: center;
 }
 
-header {
-	width: 500px;
-	margin: 10px auto;
-	border : 1px solid black; 
-	margin: 10px auto;
-	padding: 10px;
-	font-weight: 800;
-	border: 1px solid black;
-}
-header p {
-	font-size: 18px;
-}
-header div {
-	text-align: center;
-	margin-top: 5px;
-}
-header a {
-	color: black;
-	text-decoration: none;
-}
-header a:nth-of-type(1){
-	margin-right: 10px;
-}
-header a:hover {
-	padding: 4px;
-	background-color: #bbb;
-}
-section {
-}
-section div {
-	margin: 0 auto;
-}
-section a {
-	border: 1px solid black;
+#hs_list {
+	border: 1px solid transparents;
 	margin: 5px;
-	color: #fff;
 	text-decoration: none;
-	background-color: black;
+	padding: 3px;
+	margin-top: 160px;
+	font-weight: 500;
+	text-align: center;
+}
+
+#hs_list a {
+	color: #eee;
+}
+.input_memo div p{
+	font-weight: 600;
+	margin-bottom: 30px;	
 }
 .input_memo {
 	width: 400px;
-	height: 600px; 
+	height: 500px; 
 	border: 1px solid #ffd2e1;
-	padding: 40px;
-	background-color:#ffd2e1;
+	padding: 60px;
+	background-color: #ffff95;
+	margin: 10px auto;
+}
+#hs_content {
+	flex: 1;
+}
+section a {
+	color: black;
+	text-decoration: none;
+}
+
+.hs_btn:hover {
+	background-color: #504848;
+	border-radius: 40px;
+	color: #eee;
+	padding: 8px;
+}
+
+section a:nth-of-type(2) {
+	margin-left: 190px;
 }
 img {
 	width: 300px;
+	max-height: 300px;
 	margin: 10px auto;
+	margin-bottom: 10px;
 }
 
-footer {
+footer { 
 	margin: 0 auto;
 }
 </style>
 </head>
 <body>
 	<div id="content">
-			<header class="input_memo">
-				<p>작성일자 : ${M_MEMO.m_date}</p>
-				<p>메모 : ${M_MEMO.m_memo}</p>
+		<section class="input_memo">
+			<div>${M_MEMO.m_date}</div>
+			<div id="hs_content">
+				<p>${M_MEMO.m_memo}</p>
+				<img src="${rootPath}/upload/${M_MEMO.m_up_image}"
+					onerror="this.onerror=null; this.style.display='none'">
 				<div>
-					<img src="${rootPath}/upload/${M_MEMO.m_up_image}"
-						 onerror="this.onerror=null; this.style.display='none'">
-					<br>
-					<a href="${rootPath}/memo/${M_MEMO.m_seq}/update">수정</a> 
-					<a href="${rootPath}/memo/${M_MEMO.m_seq}/delete">삭제</a>
+					<a class="hs_btn" href="${rootPath}/memo/${M_MEMO.m_seq}/update">수정</a>
+					<a class="hs_btn" href="${rootPath}/memo/${M_MEMO.m_seq}/delete">삭제</a>
 				</div>
-			</header>
+			</div>
+			<div id="hs_list">
+				<a href="${rootPath}">리스트로</a>
+			</div>
+		</section>
 	</div>
-			<section>
-				<div>
-					<a href="${rootPath}">리스트로</a> 
-				</div>
-			</section>
-			<footer>
-				<address>CopyWrite &copy;ppuniKim</address>
-			</footer>
+	<footer>
+		<address>CopyWrite &copy;ppuniKim</address>
+	</footer>
 </body>
 </html>

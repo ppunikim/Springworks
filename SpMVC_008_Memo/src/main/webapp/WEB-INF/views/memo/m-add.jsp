@@ -65,6 +65,7 @@ img {
 		<h3>메모장</h3>
 			<form:input path="m_author" readonly="readonly" type="hidden"/>
 			<textarea 	name="m_memo" 
+						id="MEMO"
 						class="w3-input w3-border input_memo" 
 						placeholder="메모를 입력하세요." 
 						autofocus="autofocus" 
