@@ -27,8 +27,13 @@ body {
 	display: flex;
 	flex-direction: column;
 }
-#content {	
-	margin: 20px auto;
+#content {
+	flex:1;	
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 header {
@@ -59,7 +64,6 @@ header a:hover {
 	background-color: #bbb;
 }
 section {
-	flex: 1;
 }
 section div {
 	margin: 0 auto;
@@ -72,15 +76,15 @@ section a {
 	background-color: black;
 }
 .input_memo {
-	width: 500px;
-	height: 50%; 
+	width: 400px;
+	height: 600px; 
 	border: 1px solid #ffd2e1;
 	padding: 40px;
 	background-color:#ffd2e1;
 }
 img {
 	width: 300px;
-	margin: 10px 30px;
+	margin: 10px auto;
 }
 
 footer {
@@ -90,25 +94,25 @@ footer {
 </head>
 <body>
 	<div id="content">
+			<header class="input_memo">
+				<p>작성일자 : ${M_MEMO.m_date}</p>
+				<p>메모 : ${M_MEMO.m_memo}</p>
+				<div>
+					<img src="${rootPath}/upload/${M_MEMO.m_up_image}"
+						 onerror="this.onerror=null; this.style.display='none'">
+					<br>
+					<a href="${rootPath}/memo/${M_MEMO.m_seq}/update">수정</a> 
+					<a href="${rootPath}/memo/${M_MEMO.m_seq}/delete">삭제</a>
+				</div>
+			</header>
 	</div>
-	<header class="input_memo">
-		<p>작성일자 : ${M_MEMO.m_date}</p>
-		<p>메모 : ${M_MEMO.m_memo}</p>
-		<div>
-			<img src="${rootPath}/upload/${M_MEMO.m_up_image}"
-				 onerror="this.onerror=null; this.style.display='none'">
-			<br>
-			<a href="${rootPath}/memo/${M_MEMO.m_seq}/update">수정</a> 
-			<a href="${rootPath}/memo/${M_MEMO.m_seq}/delete">삭제</a>
-		</div>
-	</header>
-	<section>
-		<div>
-			<a href="${rootPath}">리스트로</a> 
-		</div>
-	</section>
-	<footer>
-		<address>CopyWrite &copy;ppuniKim</address>
-	</footer>
+			<section>
+				<div>
+					<a href="${rootPath}">리스트로</a> 
+				</div>
+			</section>
+			<footer>
+				<address>CopyWrite &copy;ppuniKim</address>
+			</footer>
 </body>
 </html>
