@@ -104,7 +104,7 @@ public class BookController {
 	private BookDTO bookDTO() {
 		Date date = new Date(System.currentTimeMillis());
 		SimpleDateFormat toDay = new SimpleDateFormat("yyyy-MM-dd");
-		SimpleDateFormat toTime = new SimpleDateFormat("HH:mm:SS");
+		SimpleDateFormat toTime = new SimpleDateFormat("HH:mm:ss");
 		
 		BookDTO book = BookDTO.builder()
 							  .b_date(toDay.format(date))

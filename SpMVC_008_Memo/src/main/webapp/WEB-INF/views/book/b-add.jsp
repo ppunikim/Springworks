@@ -45,8 +45,10 @@ textarea {
 	width: 100%;
 }
 img {
-width:  300px;
-}
+width:  280px;
+margin-bottom: 30px;
+} 
+
 </style>
 <script>
 	const rootPath = "${rootPath}"
@@ -71,7 +73,7 @@ width:  300px;
 		<div class="img-box">
 		<img src="${rootPath}/upload/${BOOK.b_up_image}"  class="img-img"
 		alt="이미지를 등록하세요!"
-		onerror="this.onerror=null;this.src='${rootPath}/static/images/gosim2.jpeg'">
+		onerror="this.onerror=null;this.src='${rootPath}/static/images/add.png'">
 		</div>
 		<button>저장</button>
 	</form>

@@ -61,8 +61,10 @@ header {
 }
 
 .hs_b {
+	border-bottom: 2px solid #bcbbb4;
 	font-weight: 300;
 	margin: 10px;
+	padding: 4px 0;
 }
 #bs_btns {
 	margin-top: 40px;
@@ -117,7 +119,7 @@ footer {
 		<p class="hs_f">저녁의 기분 기록</p>
 		<p class="hs_b">${D_DIARY.d_good3}</p>
 		<p class="hs_f">하루 돌아보기</p>
-		<p class="hs_b">${D_DIARY.d_advice}</p>
+		<p class="hs_b">${D_DIARY.d_advice}</p> 
 		<div id="bs_btns">
 			<a href="${rootPath}/diary/${D_DIARY.d_seq}/update">수정</a> 
 			<a href="${rootPath}/diary/${D_DIARY.d_seq}/delete">삭제</a>

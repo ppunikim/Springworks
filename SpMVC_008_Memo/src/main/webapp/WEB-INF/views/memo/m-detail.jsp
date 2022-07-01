@@ -46,6 +46,7 @@ body {
 	margin-top: 160px;
 	font-weight: 500;
 	text-align: center;
+	font-size: 20px;
 }
 
 #hs_list a {
@@ -59,12 +60,14 @@ body {
 	width: 400px;
 	height: 500px; 
 	border: 1px solid #ffd2e1;
-	padding: 60px;
+	padding: 15px;
 	background-color: #ffff95;
 	margin: 10px auto;
 }
 #hs_content {
 	flex: 1;
+	margin: 30px 0 10px 0;
+	text-align: center;
 }
 section a {
 	color: black;
@@ -87,7 +90,12 @@ img {
 	margin: 10px auto;
 	margin-bottom: 10px;
 }
-
+#hs_up {
+	text-align: right;
+	font-weight: 800;
+	font-size: 14px;
+	color: gray;
+}
 footer { 
 	margin: 0 auto;
 }
@@ -96,11 +104,11 @@ footer {
 <body>
 	<div id="content">
 		<section class="input_memo">
-			<div>${M_MEMO.m_date}</div>
+			<div id="hs_up">${M_MEMO.m_date}</div>
 			<div id="hs_content">
 				<p>${M_MEMO.m_memo}</p>
 				<img src="${rootPath}/upload/${M_MEMO.m_up_image}"
-					onerror="this.onerror=null; this.style.display='none'">
+					onerror="this.onerror=null;this.src='${rootPath}/static/images/add.png'">
 				<div>
 					<a class="hs_btn" href="${rootPath}/memo/${M_MEMO.m_seq}/update">수정</a>
 					<a class="hs_btn" href="${rootPath}/memo/${M_MEMO.m_seq}/delete">삭제</a>

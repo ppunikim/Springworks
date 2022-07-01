@@ -52,7 +52,7 @@ public class DiaryController {
 	public DiaryVO makeDiary() {
 		Date date = new Date(System.currentTimeMillis());
 		SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
-		SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:SS");
+		SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
 		
 		DiaryVO diaryVO = DiaryVO.builder()
 							.d_date(dayFormat.format(date))

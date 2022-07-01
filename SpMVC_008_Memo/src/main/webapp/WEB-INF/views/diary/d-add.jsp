@@ -41,8 +41,12 @@ section {
 	display:flex;
 	flex-direction: column;
 }
+input {
+	padding-left: 6px;
+}
 textarea{
 	height: 100px;
+	padding: 7px;
 }
 form input {
 	height: 33px; 
@@ -58,7 +62,18 @@ form input {
 	background-color: #d4d3d3;
 	color: black;
 }
+.d_inner {
+	margin-bottom: 10px;
+	color: red;
+	margin-left: 5px; 
+	text-align: left;
+	display: none; 
+} 
 </style>
+<script>
+	const rootPath = "${rootPath}"
+</script>
+<script src="${rootPath}/static/js/diary_detail.js?ver=9"></script>
 </head>
 <body>
 <section>
@@ -72,6 +87,7 @@ form input {
 		<form:input path="d_time" type="hidden"/>
 		<form:input path="d_weather" placeholder="오늘의 날씨" autofocus="autofocus" 
 				  	maxlength="8" value="${D_DIARY.d_weather}"/>
+		<div class="d_inner"> * 8자 이하로 작성하세요. </div>
 		<label>제목</label>
 		<form:input path="d_title" placeholder="제목을 입력하세요." required="required"
 					value="${D_DIARY.d_title}"/>
