@@ -1,8 +1,6 @@
 package com.callor.memo.service.impl;
 
-import java.io.File;
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +14,6 @@ import com.callor.memo.service.MemoService;
 @Service
 public class MemoServiceImplV1 implements MemoService{
 	
-	private final String upLoadFolder;
 	
 	@Autowired
 	private FileUpService fileUp;
@@ -24,25 +21,8 @@ public class MemoServiceImplV1 implements MemoService{
 	private final MemoDao memoDao;
 	public MemoServiceImplV1(MemoDao memoDao, String upLoadFolder) {
 		this.memoDao = memoDao;
-		this.upLoadFolder = upLoadFolder;
 	}
 
-	@Override
-	public String fileUp(MultipartFile file) throws Exception {
-		if(file == null) {
-			return null;
-		}
-		File dir = new File(upLoadFolder);
-		if(!dir.exists()) {
-			dir.mkdirs();
-		}
-		String fileName = file.getOriginalFilename();
-		String strUUID = UUID.randomUUID().toString();
-		fileName = String.format("%s-%s", strUUID,fileName);
-		File upLoFile = new File(upLoadFolder,fileName);
-		file.transferTo(upLoFile);
-		return fileName;
-	}
 	
 	
 	@Autowired
@@ -54,12 +34,20 @@ public class MemoServiceImplV1 implements MemoService{
 	@Override
 	public List<MemoVO> selectAll() {
 		List<MemoVO> memoList = memoDao.selectAll();
+		for(MemoVO memoVO : memoList)  {
+			if(fileUp.fileCheck(memoVO.getM_up_image()) == false) {
+				memoVO.setM_up_image(null);
+			}
+		}
 		return memoList;
 	}
 
 	@Override
 	public MemoVO findById(Long VO) {
 		MemoVO memoVO = memoDao.findById(VO);
+		if(fileUp.fileCheck(memoVO.getM_up_image()) == false) {
+			memoVO.setM_up_image(null);
+		}
 		return memoVO;
 	}
 

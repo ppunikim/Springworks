@@ -12,6 +12,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.callor.memo.service.FileUpService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class FileUpServiceImplV1 implements FileUpService{
 
@@ -66,6 +69,13 @@ public class FileUpServiceImplV1 implements FileUpService{
 		if(deleteFile.exists()) {
 			deleteFile.delete();
 		}
+	}
+
+	@Override
+	public boolean fileCheck(String fileName) {
+		File file = new File(upLoadFolder, fileName);
+		log.debug(file.exists() + "'");
+		return file.exists();
 	}
 
 }//end class

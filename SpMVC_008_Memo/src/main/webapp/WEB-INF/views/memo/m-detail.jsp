@@ -107,8 +107,9 @@ footer {
 			<div id="hs_up">${M_MEMO.m_date}</div>
 			<div id="hs_content">
 				<p>${M_MEMO.m_memo}</p>
-				<img src="${rootPath}/upload/${M_MEMO.m_up_image}"
-					onerror="this.onerror=null;this.src='${rootPath}/static/images/add.png'">
+				<c:if test="${not empty M_MEMO.m_up_image}">
+				<img src="${rootPath}/upload/${M_MEMO.m_up_image}">
+				</c:if>
 				<div>
 					<a class="hs_btn" href="${rootPath}/memo/${M_MEMO.m_seq}/update">수정</a>
 					<a class="hs_btn" href="${rootPath}/memo/${M_MEMO.m_seq}/delete">삭제</a>

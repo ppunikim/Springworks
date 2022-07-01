@@ -171,8 +171,11 @@ h5 a:hover {
 						<td>${memo.m_date}</td>
 						<td>${memo.m_time}</td> 
 						<td>${memo.m_memo}</td>
-						<td id="hs_img"><img src="${rootPath}/upload/${memo.m_up_image}" alt="이미지를 등록하세요!"
-							onerror="this.onerror=null;this.src='${rootPath}/static/images/add.png'"></td>
+						<td id="hs_img">
+						<c:if test="${ not empty memo.m_up_image}">
+						<img src="${rootPath}/upload/${memo.m_up_image}" >
+						</c:if>
+						</td>
 					</tr>
 				</c:forEach>
 			</table>

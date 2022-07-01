@@ -51,7 +51,9 @@ img {
 #hs_footer input:nth-of-type(2){
 	margin-left: auto;
 }
-
+#put {
+	display: none;
+}
 </style> 
 <script>
 	const rootPath = "${rootPath}"
@@ -72,13 +74,13 @@ img {
 						required="required" 
 						autocomplete="off">${M_MEMO.m_memo}</textarea>
 			<br>
+			<label for="put">파일 등록</label>
 			<input type="file" name="file" accept="images/*"
-				   value="${rootPath}/upload/${M_MEMO.m_up_image}"
+				   value="${rootPath}/upload/${M_MEMO.m_up_image}" id="put"
 			onchange="setThumbnail(event)" multiple/>
 			<div class="img-box">
 			<c:if test="${not empty M_MEMO.m_up_image}">
-				<img src="${rootPath}/upload/${M_MEMO.m_up_image}" class="img-img"
-				 	 alt="이미지를 등록하세요."> 
+				<img src="${rootPath}/upload/${M_MEMO.m_up_image}" class="img-img"> 
 			</c:if>
 		</div>
 			<br>

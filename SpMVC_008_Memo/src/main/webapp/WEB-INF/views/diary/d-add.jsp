@@ -27,6 +27,10 @@ body {
 	height: 100%;
 	flex-direction: column;
 }
+#hs_flex_only {
+	display: flex;
+	width: 100px;
+}
 h3 {
 	margin: 8px auto;
 	font-weight: 800;	
@@ -82,11 +86,13 @@ form input {
 		<br>
 		<div id="hs_flex">
 		<form:input path="d_seq" type="hidden" />
-		<form:input path="d_author" type="hidden"/>
-		<form:input path="d_date" type="hidden"/>
-		<form:input path="d_time" type="hidden"/>
-		<form:input path="d_weather" placeholder="오늘의 날씨" autofocus="autofocus" 
-				  	maxlength="8" value="${D_DIARY.d_weather}"/>
+		<div id="hs_flex_only">
+			<form:input path="d_author"  value="${D_DIARY.d_author}" readonly="true"/>
+			<form:input path="d_date" readonly="true"/>
+			<form:input path="d_time" type="hidden"/>
+			<form:input path="d_weather" placeholder="오늘의 날씨" autofocus="autofocus" 
+					  	maxlength="8" value="${D_DIARY.d_weather}"/>
+		</div>
 		<div class="d_inner"> * 8자 이하로 작성하세요. </div>
 		<label>제목</label>
 		<form:input path="d_title" placeholder="제목을 입력하세요." required="required"

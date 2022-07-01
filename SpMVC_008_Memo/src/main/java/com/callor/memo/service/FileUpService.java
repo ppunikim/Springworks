@@ -11,4 +11,6 @@ public interface FileUpService {
 	public List<String> filesUp(MultipartHttpServletRequest files);
 	public void fileDelete(String fileName);
 	
+	public boolean fileCheck(String fileName);
+	
 }
