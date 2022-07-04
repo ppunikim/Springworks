@@ -69,6 +69,8 @@ body {
 	margin: 30px 0 10px 0;
 	text-align: center;
 }
+#hs_content:hover {
+}
 section a {
 	color: black;
 	text-decoration: none;

@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   const memo_table = document.querySelector("table.memos");
-  const memo_memo = document.querySelector("textarea#MEMO");
 
   memo_table?.addEventListener("click", (e) => {
     const td = e.target;
