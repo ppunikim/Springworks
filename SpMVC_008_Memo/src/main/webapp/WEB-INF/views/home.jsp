@@ -161,15 +161,13 @@ h5 a:hover {
 					<table class="memos">
 						<colgroup>
 							<col width="10%">
-							<col width="10%">
-							<col width="15%">
-							<col width="15%">
+							<col width="20%">
+							<col width="20%">
 							<col width="25%">
 							<col width="25%">
 						</colgroup>
 						<tr>
 							<th>번호</th>
-							<th>작성자</th>
 							<th>작성일자</th>
 							<th>작성시각</th>
 							<th>메모내용</th>
@@ -183,7 +181,6 @@ h5 a:hover {
 						<c:forEach items="${MEMOLIST}" var="memo" varStatus="INDEX">
 							<tr data-seq="${memo.m_seq}">
 								<td>${INDEX.count}</td>
-								<td>${memo.m_author}</td>
 								<td>${memo.m_date}</td>
 								<td>${memo.m_time}</td>
 								<td>${memo.m_memo}</td>
