@@ -62,7 +62,7 @@ div h2 {
 
 section:nth-of-type(1) {
 	overflow-y: scroll;
-	height: 200px;
+	height: 200px; 
 }
 
 h3 {
@@ -118,9 +118,9 @@ h5 a:hover {
 	width: 80px;
 }
 .hs_info {
-	border: 1px solid black;
-	background-color: black;
-	width: 40%;
+	border: 1px solid black; 
+	width: 40%; 
+	padding: 10px;
 }
 </style>
 <script>
@@ -129,6 +129,7 @@ h5 a:hover {
 <script src="${rootPath}/static/js/memo_detail.js?ver=8"></script>
 <script src="${rootPath}/static/js/diary_detail.js?ver=5"></script>
 <script src="${rootPath}/static/js/book_detail.js?ver=4"></script>
+<script src="${rootPath}/static/js/aJax.js?ver=1"></script>
 </head>
 <body>
 	<div class="hs_flex">
@@ -153,9 +154,7 @@ h5 a:hover {
 					<div class="hs_flex">
 						<h3>메모장</h3>
 						<c:if test="${not empty USERNAME}">
-							<h5>
-								<a href="${rootPath}/memo/m-add"> + 추가</a>
-							</h5>
+							<div class="add_btn"> + 추가</div>
 						</c:if>
 					</div>
 					<table class="memos">
@@ -295,8 +294,7 @@ h5 a:hover {
 			</div>
 		</div>
 		<div class="hs_info">
-			<div> 
-				<p>정보 창</p>
+			<div class="hs_last"> 
 			</div>
 		</div>
 	</div>

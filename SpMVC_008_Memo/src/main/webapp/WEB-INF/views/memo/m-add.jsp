@@ -12,32 +12,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>memo쓰기</title>
 <style>
-* {
-	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
-}
-html {
-	width: 100vw;
-	height: 100vh;
-}
-body {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: #000000e0;
-}
+
 
 img {
 	width: 120px;
 } 
-.main {
-	border: 1px solid #ffff95;
-	padding: 30px;
-	background-color: #ffff95;
-}
+
 .main h3 {
 	text-align: center;
 }
@@ -45,7 +25,10 @@ img {
 	width: 300px;
 	height: 200px; 
 }
-#hs_footer {
+section {
+	width: 100%;
+}
+/* #hs_footer {
 	display:flex;
 }
 #hs_footer input:nth-of-type(2){
@@ -53,7 +36,7 @@ img {
 }
 #put {
 	display: none;
-}
+} */
 </style> 
 <script>
 	const rootPath = "${rootPath}"
