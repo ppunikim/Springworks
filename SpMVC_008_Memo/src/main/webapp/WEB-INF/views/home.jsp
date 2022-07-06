@@ -60,9 +60,14 @@ div h2 {
 	margin-left: 10px;
 }
 
-section:nth-of-type(1) {
+/* section:nth-of-type(1) {
 	overflow-y: scroll;
 	height: 200px; 
+}
+ */
+.scroll {
+	overflow-y: scroll;
+	height: 200px;
 }
 
 h3 {
@@ -95,7 +100,11 @@ table tr td {
 	border-right: 1px solid #f2eddc;
 }
 
-section a {
+img {
+	width: 120px;
+}
+
+.add_btn {
 	color: #383737bf;
 	font-weight: 300;
 	text-decoration: none;
@@ -106,20 +115,18 @@ section a {
 	font-size: 15px;
 }
 
-img {
-	width: 120px;
-}
-
-h5 a:hover {
+.add_btn:hover {
+	cursor: pointer;
 	font-weight: bolder;
 }
 
 #hs_img img {
 	width: 80px;
 }
+
 .hs_info {
-	border: 1px solid black; 
-	width: 40%; 
+	border: 1px solid black;
+	width: 40%;
 	padding: 10px;
 }
 </style>
@@ -129,7 +136,7 @@ h5 a:hover {
 <script src="${rootPath}/static/js/memo_detail.js?ver=8"></script>
 <script src="${rootPath}/static/js/diary_detail.js?ver=5"></script>
 <script src="${rootPath}/static/js/book_detail.js?ver=4"></script>
-<script src="${rootPath}/static/js/aJax.js?ver=1"></script>
+<script src="${rootPath}/static/js/aJax.js?ver=4"></script>
 </head>
 <body>
 	<div class="hs_flex">
@@ -142,7 +149,7 @@ h5 a:hover {
 					</h4>
 				</c:if>
 				<c:if test="${not empty USERNAME}">
-					<h2>${USERNAME}메모하는습관을 들이자 ٩̋(ˊ•͈ ꇴ •͈ˋ)و</h2>
+					<h2>${USERNAME}메모하는습관을들이자 ٩̋(ˊ•͈ ꇴ •͈ˋ)و</h2>
 					<h4 id="z_logout">
 						<a href="${rootPath}/user/logout">logout</a>
 					</h4>
@@ -150,14 +157,14 @@ h5 a:hover {
 			</div>
 
 			<div id="first">
-				<section>
+				<section class="scroll">
 					<div class="hs_flex">
 						<h3>메모장</h3>
 						<c:if test="${not empty USERNAME}">
-							<div class="add_btn"> + 추가</div>
+							<div class="add_btn">+ 추가</div>
 						</c:if>
 					</div>
-					<table class="memos">
+					<table class="memos scroll">
 						<colgroup>
 							<col width="10%">
 							<col width="20%">
@@ -193,13 +200,11 @@ h5 a:hover {
 			</div>
 			<hr>
 			<div id="second">
-				<section>
+				<section class="scroll">
 					<div class="hs_flex">
 						<h3>일기장</h3>
 						<c:if test="${not empty USERNAME}">
-							<h5>
-								<a href="${rootPath}/diary/d-add"> + 추가</a>
-							</h5>
+							<div class="add_btn">+ 추가</div>
 						</c:if>
 					</div>
 					<table class="diarys">
@@ -240,13 +245,11 @@ h5 a:hover {
 			</div>
 			<hr>
 			<div id="third">
-				<section>
+				<section class="scroll">
 					<div class="hs_flex">
 						<h3>독후감</h3>
 						<c:if test="${not empty USERNAME}">
-							<h5>
-								<a href="${rootPath}/book/b-add"> + 추가</a>
-							</h5>
+							<div class="add_btn">+ 추가</div>
 						</c:if>
 					</div>
 					<table class="books">
@@ -291,8 +294,7 @@ h5 a:hover {
 			</div>
 		</div>
 		<div class="hs_info">
-			<div class="hs_last"> 
-			</div>
+			<div class="hs_last1"></div>
 		</div>
 	</div>
 </body>
