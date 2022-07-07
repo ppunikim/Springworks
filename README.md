@@ -6,5 +6,5 @@
 
 # Spring MVC + DB 프로젝트
 
-## :dog:[https://github.com/ppunikim/Springworks/blob/master/sp_MVC_007_EMS/README.md]
+## :dog:[Spring DB Project](https://github.com/ppunikim/Springworks/blob/master/sp_MVC_007_EMS/README.md)
 * 기본적인 DB연결 도구
