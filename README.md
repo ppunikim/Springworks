@@ -4,5 +4,7 @@
 * Spring 과 Mybatis 를 사용한 DBMS 연동 프로젝트
 * 같이 저장을 해줘야 한다. 따로 하면 문제 생긴다.
 
+# Spring MVC + DB 프로젝트
+
 ## :dog:[https://github.com/ppunikim/Springworks/blob/master/sp_MVC_007_EMS/README.md]
 * 기본적인 DB연결 도구
