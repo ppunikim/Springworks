@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -48,4 +50,11 @@ public class HomeController {
 		log.debug("여기는 Home");
 		return "home";
 	}
+	
+	@RequestMapping(value="/{seq}/m-list", method =RequestMethod.GET)
+	public String list(@PathVariable("seq") String seq, Model model,
+			@ModelAttribute("memoVO") MemoVO memoVO) {
+		return "memo/m-list";
+	}
+
 }//end class

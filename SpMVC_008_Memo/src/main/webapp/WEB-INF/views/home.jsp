@@ -97,6 +97,10 @@ body {
 	transform: translateY(0);
 }
 
+div img {
+	margin-right: 20px;    
+}
+
 section {
 	flex: 1;
 	font-size: larger;
@@ -131,11 +135,12 @@ footer a {
 	<header class="hs_flex hs_sa">
 	<div class="hs_fix">
 			<c:if test="${not empty USERNAME}">
+			<div class="hs_flex">
 				<img src="static/images/logo.jpg" width="50vw">
 				<div class="z_log hs_menu">
 					<div class="z_log hs_top hs_head">about</div>
 					<div class="hs_drop">
-						<a href="${rootPath}/memo/m-add">메모장</a> 
+						<a href="${rootPath}/memo/m-list">메모장</a> 
 						<br>
 						<a href="${rootPath}/diary/d-add">일기장</a> 
 						<br>
@@ -144,6 +149,7 @@ footer a {
 						<a href="${rootPath}/user/logout" class="z_log">logout</a>
 					</div>
 				</div>
+			</div>
 			</c:if>
 	</div>
 	</header>
