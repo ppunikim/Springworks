@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.callor.hello.persistance.AddressDao">
+ 
+ 	<select id="selectAll" resultType="AddressVO">
+ 		SELECT * FROM tbl_addr
+ 	</select>
+ 	
+ 	<select id="findById" resultType="AddressVO">
+ 		SELECT * FROM tbl_addr
+ 		WHERE ad_seq = #{ad_seq}
+ 	</select>
+ 	 	
+ 	<select id="findByName" resultType="AddressVO">
+ 		SELECT * FROM tbl_addr
+ 		WHERE ad_name = #{ad_name}
+ 	</select>
+ 	
+ 	 	
+ 	<select id="findByTel" resultType="AddressVO">
+ 		SELECT * FROM tbl_addr
+ 		WHERE ad_tel = #{ad_tel}
+ 	</select>
+ 	
+ 	 	
+ 	<select id="findByAddr" resultType="AddressVO">
+ 		SELECT * FROM tbl_addr
+ 		WHERE ad_addr = #{ad_addr}
+ 	</select>
+ 	
+ 	<insert id="insert" parameterType="AddressVO">
+ 		INSERT INTO tbl_addr (
+ 			ad_name, ad_tel, ad_addr	
+ 		) VALUES (
+ 			#{ad_name}, #{ad_tel}, #{ad_addr}
+ 		)
+ 	</insert>
+ 	<update id="update" parameterType="AddressVO">
+ 		UPDATE tbl_addr SET
+ 			ad_name = #{ad_name},
+ 			ad_tel = #{ad_tel},
+ 			ad_addr = #{ad_addr},
+ 		WHERE ad_seq = #{ad_seq}
+ 	</update>
+ 	<delete id="delete">
+ 		DELETE FROM tbl_addr 
+ 		WHERE ad_seq = #{ad_seq} 
+ 	</delete>
+ 	<!-- 
+ 	<select id="create-addr-table">
+ 		CREATE TABLE IS NOT EXISTS tbl_addr (
+ 			ad_seq		long		PRIMARY KEY,
+ 			ad_name		VARCHAR(10)	NOT NULL,
+ 			ad_tel		VARCHAR(15),
+ 			ad_addr		VARCHAR(125)	
+ 		)
+ 	</select> -->
+ 
+ 
+ </mapper> 
