@@ -99,12 +99,13 @@
 	<nav>
 		<div>
 			<form  method="POST" >
-				<label>이름</label> 
-				<input name="a_name" id="a_name" placeholder="이름 입력해라" value="${addr.a_name}"/>
+				<input name = "a_seq" type="hidden" value='<c:out value="${address.a_seq}" default="0" />' />
+ 				<label>이름</label> 
+				<input name="a_name" id="a_name" placeholder="이름 입력해라" value="${address.a_name}" autocomplete="off"/>
 				<label>전화번호</label>
-				<input name="a_tel" id="a_tel" placeholder="전화번호 입력해라"  value="${addr.a_tel}" />
+				<input name="a_tel" id="a_tel" placeholder="전화번호 입력해라"  value="${address.a_tel}" autocomplete="off"/>
 				<label>집주소</label>
-				<input name="a_address" id="a_address" placeholder="집주소 입력해라"  value="${addr.a_address}" />
+				<input name="a_address" id="a_address" placeholder="집주소 입력해라"  value="${address.a_address}" autocomplete="off"/>
 				<button>저장</button>
 			</form>
 		</div>

@@ -39,6 +39,15 @@
 		padding: 10px;
 		
 	}
+	section div {
+		text-align:center;
+		margin: 10px;
+	}
+	section div a {
+		text-decoration: none;
+		color: tomato;
+		margin-left: 15px;
+	}
 </style>
 </head>
 <body>
@@ -58,6 +67,7 @@
 	<section>
 		<div>
 			<a href="${rootPath}/update?seq=${address.a_seq}">수정</a>
+			<a href="${rootPath}">홈으로</a>
 			<a href="${rootPath}/delete?seq=${address.a_seq}">삭제</a>
 		</div>
 	</section>

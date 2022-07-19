@@ -34,7 +34,7 @@ public class HomeController {
 	public String home(AddressVO adVO) {
 		log.debug("입력한 값 {}" , adVO);
 		adService.insert(adVO);
-		return "home";
+		return "redirect:/";
 	}	
 	@RequestMapping(value="/detail", method= RequestMethod.GET)
 	public String detail(Model model,
@@ -45,23 +45,25 @@ public class HomeController {
 		return "detail";
 	}
 	
-	@RequestMapping(value="/{a_seq}/update", method = RequestMethod.GET)
+	@RequestMapping(value="/update", method = RequestMethod.GET)
 	public String update(
 					@RequestParam(name="seq", required = false, defaultValue = "0") long a_seq ,
 					Model model) {
 		AddressVO adVO = adService.findById(a_seq);
 		model.addAttribute("address",adVO);
-		return "detail";
+		return "home";
 	}
 	
-//	@RequestMapping(value="/{a_seq}/update" , method=RequestMethod.POST)
-//	public String update() {
-//		
-//	}
+	@RequestMapping(value="/update" , method=RequestMethod.POST)
+	public String update(AddressVO adVO,long a_seq) {
+		adVO.setA_seq(a_seq);
+		adService.update(adVO);
+		return "redirect:/detail?seq=" + a_seq;
+	}
 	
 	
 	@RequestMapping(value="/delete", method = RequestMethod.GET)
-	public String delete(long a_seq) {
+	public String delete( @RequestParam(name="seq", required = false, defaultValue = "0")long a_seq) {
 		adService.delete(a_seq);
 		return "redirect:/";
 	}
