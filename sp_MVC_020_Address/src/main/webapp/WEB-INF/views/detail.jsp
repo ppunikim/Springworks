@@ -25,28 +25,50 @@
 		height:100%;
 		display:flex;
 		flex-direction: column;
+		background-color:#f3cabb;
 	}
 	header div {
 		display: flex;
 		justify-content: center;
 		margin-top: 100px;
 	}
+	.ani {
+		animation-name: move;
+     	animation-duration: 5s;
+     	animation-iteration-count: infinite;
+     	animation-direction: alternate;
+	}
+	
+	.ani:active {
+		animation-play-state: running;
+	}
+	.ani:hover {
+		animation-play-state: paused;
+	}
+	 @keyframes move {
+	   25% {transform: rotate(5deg) scale(1.1);    }   
+	   50% {transform: rotate(0deg) scale(1);    }     
+	   75% {transform: rotate(-5deg) scale(1.1);    }
+    }
 	header div label {
 		padding: 10px;
-		background-color: #eee;
+		background-color: #eee; 
+		border-radius: 10px;
+		box-shadow: 0px 0px 5px #444;
 	}
 	header div p {
 		padding: 10px;
+		border-bottom: 2px solid black;
 		
 	}
 	section div {
 		text-align:center;
-		margin: 10px;
+		margin: 100px auto;
 	}
-	section div a {
+	section div a { 
 		text-decoration: none;
-		color: tomato;
-		margin-left: 15px;
+		color: #493f3f;
+		margin-left: 50px; 
 	}
 </style>
 </head>
@@ -54,8 +76,6 @@
 <% // detail은 한 사람의 데이터이기 때문에 controller의 model값을 그냥 가져오면 된다. %>
 	<header>
 		<div>
-			<label>번호</label>
-			<p>${address.a_seq}</p>
 			<label>이름</label>
 			<p>${address.a_name}</p>
 			<label>전화번호</label>
@@ -65,7 +85,7 @@
 		</div>
 	</header>
 	<section>
-		<div>
+		<div class="ani">
 			<a href="${rootPath}/update?seq=${address.a_seq}">수정</a>
 			<a href="${rootPath}">홈으로</a>
 			<a href="${rootPath}/delete?seq=${address.a_seq}">삭제</a>

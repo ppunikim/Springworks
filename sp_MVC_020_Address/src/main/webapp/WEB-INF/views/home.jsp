@@ -48,6 +48,11 @@
 		justify-content: center;
 		margin: 10px auto;
 	}
+	nav div h4 {
+		font-size: 20px;
+		text-align: center;
+		margin: 10px 0;
+	}
 	nav div form{
 		display: flex;
 		flex-direction: column;
@@ -90,7 +95,7 @@
 		<div>
 			<ul>
 				<li>메뉴1</li>
-				<li>메뉴2</li>
+				<li>메뉴2</li> 
 				<li>메뉴3</li>
 				<li>메뉴4</li>
 			</ul>
@@ -98,6 +103,7 @@
 	</header>
 	<nav>
 		<div>
+			<h4>주소록</h4> 
 			<form  method="POST" >
 				<input name = "a_seq" type="hidden" value='<c:out value="${address.a_seq}" default="0" />' />
  				<label>이름</label> 
@@ -129,7 +135,7 @@
 					<c:set var="INDEX" value="1"></c:set>
 					<c:forEach items="${ADDR}" var="addr" varStatus="INDEX">
 						<tr>
-							<td>${INDEX.count}</td>
+							<td><a href="${rootPath}/detail?seq=${addr.a_seq}">${INDEX.count}</a></td>
 							<td> <a href="${rootPath}/detail?seq=${addr.a_seq}">
 							${addr.a_name}</a></td>
 							<td>${addr.a_tel}</td>
