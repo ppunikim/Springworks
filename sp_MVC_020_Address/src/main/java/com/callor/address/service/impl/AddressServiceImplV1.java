@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.callor.address.config.QualifyConfig;
 import com.callor.address.model.AddressVO;
+import com.callor.address.model.SearchPage;
 import com.callor.address.persistence.AddressDao;
 import com.callor.address.service.AddressService;
 
@@ -53,6 +55,14 @@ public class AddressServiceImplV1 implements AddressService{
 		return addrDao.selectAll();
 	}
 
+
+	@Override
+	public List<AddressVO> searchAndPage(SearchPage searchPage) {
+		return addrDao.searchAndPage(searchPage);
+	}
+
+	
+	
 	@Override
 	public AddressVO findById(long a_seq) {
 		return addrDao.findById(a_seq);
@@ -89,6 +99,54 @@ public class AddressServiceImplV1 implements AddressService{
 	public int delete(long a_seq) {
 		return addrDao.delete(a_seq);
 	}
+	
+	@Override  //조건에 맞는 데이터를 가져와 pagenation을 그리기 위한 것
+	public void searchAndPage(Model model, SearchPage searchPage) {
+		searchPage.setLimit(addrDao.selectAll().size());
+		searchPage.setOffset(0);
+		
+		//검색 조건에 맞는 모든 데이터를가져오기 위한 코드
+		List<AddressVO> adList = addrDao.searchAndPage(searchPage);
+		
+		long totalCount = adList.size();
+		if(totalCount < 1) return;
+		
+		searchPage.setListPerPage(10);			 //보여질 데이터 갯수
+		searchPage.setPageNoCount(10); 			 //하단의 페이지 번호 갯수
+		searchPage.setTotalCount(totalCount);    //조건에 맞는 전체 데이터 갯수
+		
+		long finalPageNo = (totalCount + (searchPage.getListPerPage() -1)) 
+				/ searchPage.getListPerPage();	 
+		//페이지 넘버 수 = 전체 데이터 갯수 + (보여지는 데이터 갯수 - 1) / 보여지는 갯수
+		searchPage.setFinalPageNo(finalPageNo);
+		
+		if(searchPage.getCurrentPageNo() > finalPageNo) {
+			searchPage.setCurrentPageNo(finalPageNo);
+		}
+		
+		if(searchPage.getCurrentPageNo() < 1) {
+			searchPage.setCurrentPageNo(1);
+		}
+		long startPageNo = ( (searchPage.getCurrentPageNo() - 1)
+				/ searchPage.getPageNoCount() ) * searchPage.getPageNoCount() + 1 ;
+		long endPageNo = startPageNo + searchPage.getPageNoCount() - 1;
+		
+		searchPage.setStartPageNo(startPageNo);
+		searchPage.setEndPageNo(endPageNo);
+		searchPage.setLimit(searchPage.getPageNoCount());
+		searchPage.setOffset(searchPage.getCurrentPageNo() * searchPage.getPageNoCount());
+		
+		
+		model.addAttribute("PAGE",searchPage);
+	}
 
 
-}
+
+
+
+
+
+
+
+
+}//end class

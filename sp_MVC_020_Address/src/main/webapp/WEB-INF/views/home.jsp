@@ -25,6 +25,7 @@
 		height:100%;
 		display:flex;
 		flex-direction: column;
+		background-color:#f3cabb;
 	}
 	header {
 		border-bottom:1.4px solid black; 
@@ -61,11 +62,15 @@
 	}
 	nav div form input {
 		padding: 5px;
+		border-radius: 10px;
 	}
 	nav div form button {
 		margin-top: 10px;
 		padding: 4px;
 		cursor: se-resize;
+		background-color: black;
+		color: #fff;
+		border-radius: 20px;
 	}
 	nav div table {
 		text-align: center;
@@ -78,7 +83,7 @@
 		background-color: #f9e4e0; 
 	}
 	nav div table tr td {
-		background-color: #f9eeecc9;
+		background-color: #ffefedc9;
 		padding: 5px;
 	}
 	nav div table tr td a {
@@ -107,7 +112,8 @@
 			<form  method="POST" >
 				<input name = "a_seq" type="hidden" value='<c:out value="${address.a_seq}" default="0" />' />
  				<label>이름</label> 
-				<input name="a_name" id="a_name" placeholder="이름 입력해라" value="${address.a_name}" autocomplete="off"/>
+				<input name="a_name" id="a_name" placeholder="이름 입력해라" value="${address.a_name}" autocomplete="off"
+							required="required" autofocus="autofocus"/> 
 				<label>전화번호</label>
 				<input name="a_tel" id="a_tel" placeholder="전화번호 입력해라"  value="${address.a_tel}" autocomplete="off"/>
 				<label>집주소</label>
@@ -117,12 +123,7 @@
 		</div>
 		<div>
 			<table>
-				<colgroup>
-					<col width="70px">
-					<col width="100px">
-					<col width="100px">
-					<col width="200px">
-				</colgroup>
+				
 				<thead>
 					<tr>
 						<th>번호</th>
@@ -144,6 +145,7 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			<%@ include file = "/WEB-INF/views/pagenation.jsp" %>
 		</div>
 	</nav>
 </body>
