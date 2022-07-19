@@ -115,9 +115,9 @@ public class AddressServiceImplV1 implements AddressService{
 		searchPage.setPageNoCount(10); 			 //하단의 페이지 번호 갯수
 		searchPage.setTotalCount(totalCount);    //조건에 맞는 전체 데이터 갯수
 		
-		long finalPageNo = (totalCount + (searchPage.getListPerPage() -1)) 
+		long finalPageNo = (totalCount -1) 
 				/ searchPage.getListPerPage();	 
-		//페이지 넘버 수 = 전체 데이터 갯수 + (보여지는 데이터 갯수 - 1) / 보여지는 갯수
+		//페이지 넘버 수 = 전체 데이터 갯수 - 1 / 보여지는 갯수
 		searchPage.setFinalPageNo(finalPageNo);
 		
 		if(searchPage.getCurrentPageNo() > finalPageNo) {

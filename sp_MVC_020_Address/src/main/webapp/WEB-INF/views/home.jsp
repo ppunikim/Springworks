@@ -75,6 +75,9 @@
 	nav div table {
 		text-align: center;
 	}
+	nav div table tr th, nav div table tr td {
+		padding: 
+	}
 	nav div table tr th {
 		font-size: 17.5px;
 		padding: 10px 0;
