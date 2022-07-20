@@ -43,10 +43,12 @@ nav div h4 {
 }
 
 nav div form {
+	margin-top: 150px;
+	line-height: 30px;
 	display: flex;
 	flex-direction: column;
 	padding: 10px;
-	margin: 6px;
+	width: 500px;
 }
 
 nav div form input {
@@ -90,24 +92,22 @@ nav div table tr td a {
 	color: inherit;
 }
 </style>
+<script src="${rootPath}/static/js/insert.js?20220720_012"></script>
 </head>
 <body>
 	<nav>
 		<div>
-			<form method="POST">
-				<input name="a_seq" type="hidden"
-					value='<c:out value="${address.a_seq}" default="0" />' /> <label>이름</label>
-				<input name="a_name" id="a_name" placeholder="이름 입력해라"
-					value="${address.a_name}" autocomplete="off" required="required"
-					autofocus="autofocus" /> <label>전화번호</label> <input name="a_tel"
-					id="a_tel" placeholder="전화번호 입력해라" value="${address.a_tel}"
-					autocomplete="off" /> <label>집주소</label> <input name="a_address"
-					id="a_address" placeholder="집주소 입력해라" value="${address.a_address}"
-					autocomplete="off" />
-				<button>저장</button>
+			<form method="POST" class="join">
+				<input name="a_seq" type="hidden"value='<c:out value="${address.a_seq}" default="0" />' /> 
+				<label>이름</label>
+				<input name="a_name" id="a_name" placeholder="이름 입력해라"value="${address.a_name}" autocomplete="off" autofocus="autofocus" /> 
+				<label>전화번호</label> 
+				<input name="a_tel"	id="a_tel" placeholder="전화번호 입력해라" value="${address.a_tel}"	autocomplete="off" /> 
+				<label>집주소</label> 
+				<input name="a_address"	id="a_address" placeholder="집주소 입력해라" value="${address.a_address}"autocomplete="off" />
+				<button id="btn_join">저장</button>
 			</form>
 		</div>
-
 	</nav>
 </body>
 </html>

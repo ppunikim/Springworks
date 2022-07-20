@@ -55,6 +55,9 @@ header div ul li a:hover {
 	color: #fff;
 	cursor: e-resize;
 }
+header div ul  li:nth-of-type(4) {
+	margin-left: auto;
+}
 </style>
 </head>
 <body>
@@ -62,7 +65,7 @@ header div ul li a:hover {
 		<div>
 			<ul>
 				<li><a href="${rootPath}">HOME</a></li>
-				<li><a href="${rootPath}/insert">주소 추가하기</a></li>
+				<li><a href="${rootPath}/insert">Add</a></li>
 				<li><a href="${rootPath}/about">About</a></li>
 				<li>join</li>
 				<li>login</li>

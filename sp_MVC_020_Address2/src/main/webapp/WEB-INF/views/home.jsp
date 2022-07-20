@@ -10,9 +10,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Home.jsp</title>
+<script>
+	const rootPath = '${rootPath}'
+</script>
+<script src="${rootPath}/static/js/detail.js?ver=1"></script>
 </head>
 <body>
 	<tiles:insertAttribute name="header" />
 	<tiles:insertAttribute name="body" /> 
+	<tiles:insertAttribute name="footer" /> 
 </body>
 </html>
