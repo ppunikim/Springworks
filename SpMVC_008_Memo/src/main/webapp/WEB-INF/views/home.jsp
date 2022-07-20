@@ -30,15 +30,18 @@ body {
 	flex-direction: column;
 	margin: auto;
 }
-.hs_block { 
+
+.hs_block {
 	display: none;
 }
+
 .hs_fix {
-    position: fixed;
+	position: fixed;
 }
+
 .hs_flex {
 	display: flex;
-} 
+}
 
 .hs_sa {
 	justify-content: space-between;
@@ -68,7 +71,6 @@ body {
 
 .hs_head {
 	flex: 1;
-	
 }
 
 .hs_drop {
@@ -82,14 +84,16 @@ body {
 	transition: 1.2s;
 	cursor: pointer;
 }
+
 .hs_drop a {
 	color: #eee;
-	border-radius:  25px;
+	border-radius: 25px;
 	background-color: gray;
-	padding: 10px; 
+	padding: 10px;
 	font-weight: 300;
-	text-decoration: none; 
+	text-decoration: none;
 }
+
 .hs_menu:hover .hs_drop {
 	cursor: pointer;
 	visibility: visible;
@@ -98,7 +102,7 @@ body {
 }
 
 div img {
-	margin-right: 20px;    
+	margin-right: 20px;
 }
 
 section {
@@ -122,36 +126,32 @@ footer a {
 	font-size: 30px;
 }
 </style>
-</head> 
+</head>
 <body>
 	<header class="hs_flex hs_sa">
-		<c:if test="${empty USERNAME}">
-			<img src="static/images/logo.jpg" width="50vw">
-			<h4 class="z_log">
-				<a href="${rootPath}/user/login" class="z_log">login</a>
-			</h4>
-		</c:if>
-	</header>
-	<header class="hs_flex hs_sa">
-	<div class="hs_fix">
-			<c:if test="${not empty USERNAME}">
-			<div class="hs_flex">
-				<img src="static/images/logo.jpg" width="50vw">
-				<div class="z_log hs_menu">
-					<div class="z_log hs_top hs_head">about</div>
-					<div class="hs_drop">
-						<a href="${rootPath}/memo/m-list">메모장</a> 
-						<br>
-						<a href="${rootPath}/diary/d-add">일기장</a> 
-						<br>
-						<a href="${rootPath}/book/b-add">독후감</a> 
-						<br>
-						<a href="${rootPath}/user/logout" class="z_log">logout</a>
+		<img src="static/images/logo.jpg" width="50vw">
+		<c:choose>
+			<c:when test="${empty USERNAME}">
+				<h4 class="z_log">
+					<a href="${rootPath}/user/login" class="z_log">login</a>
+				</h4>
+			</c:when>
+			<c:otherwise>
+				<div class="hs_fix">
+					<div class="hs_flex">
+						<div class="z_log hs_menu">
+							<div class="z_log hs_top hs_head">about</div>
+							<div class="hs_drop">
+								<a href="${rootPath}/memo/m-list">메모장</a> <br> <a
+									href="${rootPath}/diary/d-add">일기장</a> <br> <a
+									href="${rootPath}/book/b-add">독후감</a> <br> <a
+									href="${rootPath}/user/logout" class="z_log">logout</a>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-			</c:if>
-	</div>
+			</c:otherwise>
+		</c:choose>
 	</header>
 	<section>
 		<h1>sunny's web page</h1>
@@ -160,54 +160,46 @@ footer a {
 	<footer>
 		<a>▼</a>
 	</footer>
-	<p>
-        Flamingos are famous for their bright pink feathers, stilt-like legs,
-        and S-shaped neck. When a flamingo spots potential dinner—favorite foods
-        include shrimp, snails, and plantlike water organisms called algae—it
-        plunges its head into the water, twists it upside down, and scoops the
-        fish using its upper beak like a shovel. They are able to "run" on
-        water, thanks to their webbed feet, to gain speed before lifting up into
-        the sky. Flamingos build nests that look like mounds of mud along
-        waterways. At the top of the mound, in a shallow hole, the female lays
-        one egg. The parents take turns sitting on the egg to keep it warm.
-        After about 30 days, the egg hatches.
-      </p>
-      <p>
-        Flamingos are famous for their bright pink feathers, stilt-like legs,
-        and S-shaped neck. When a flamingo spots potential dinner—favorite foods
-        include shrimp, snails, and plantlike water organisms called algae—it
-        plunges its head into the water, twists it upside down, and scoops the
-        fish using its upper beak like a shovel. They are able to "run" on
-        water, thanks to their webbed feet, to gain speed before lifting up into
-        the sky. Flamingos build nests that look like mounds of mud along
-        waterways. At the top of the mound, in a shallow hole, the female lays
-        one egg. The parents take turns sitting on the egg to keep it warm.
-        After about 30 days, the egg hatches.
-      </p>
-      <p>
-        Flamingos are famous for their bright pink feathers, stilt-like legs,
-        and S-shaped neck. When a flamingo spots potential dinner—favorite foods
-        include shrimp, snails, and plantlike water organisms called algae—it
-        plunges its head into the water, twists it upside down, and scoops the
-        fish using its upper beak like a shovel. They are able to "run" on
-        water, thanks to their webbed feet, to gain speed before lifting up into
-        the sky. Flamingos build nests that look like mounds of mud along
-        waterways. At the top of the mound, in a shallow hole, the female lays
-        one egg. The parents take turns sitting on the egg to keep it warm.
-        After about 30 days, the egg hatches.
-      </p>
-      <p>
-        Flamingos are famous for their bright pink feathers, stilt-like legs,
-        and S-shaped neck. When a flamingo spots potential dinner—favorite foods
-        include shrimp, snails, and plantlike water organisms called algae—it
-        plunges its head into the water, twists it upside down, and scoops the
-        fish using its upper beak like a shovel. They are able to "run" on
-        water, thanks to their webbed feet, to gain speed before lifting up into
-        the sky. Flamingos build nests that look like mounds of mud along
-        waterways. At the top of the mound, in a shallow hole, the female lays
-        one egg. The parents take turns sitting on the egg to keep it warm.
-        After about 30 days, the egg hatches.
-      </p>
-      
+	<p>Flamingos are famous for their bright pink feathers, stilt-like
+		legs, and S-shaped neck. When a flamingo spots potential
+		dinner—favorite foods include shrimp, snails, and plantlike water
+		organisms called algae—it plunges its head into the water, twists it
+		upside down, and scoops the fish using its upper beak like a shovel.
+		They are able to "run" on water, thanks to their webbed feet, to gain
+		speed before lifting up into the sky. Flamingos build nests that look
+		like mounds of mud along waterways. At the top of the mound, in a
+		shallow hole, the female lays one egg. The parents take turns sitting
+		on the egg to keep it warm. After about 30 days, the egg hatches.</p>
+	<p>Flamingos are famous for their bright pink feathers, stilt-like
+		legs, and S-shaped neck. When a flamingo spots potential
+		dinner—favorite foods include shrimp, snails, and plantlike water
+		organisms called algae—it plunges its head into the water, twists it
+		upside down, and scoops the fish using its upper beak like a shovel.
+		They are able to "run" on water, thanks to their webbed feet, to gain
+		speed before lifting up into the sky. Flamingos build nests that look
+		like mounds of mud along waterways. At the top of the mound, in a
+		shallow hole, the female lays one egg. The parents take turns sitting
+		on the egg to keep it warm. After about 30 days, the egg hatches.</p>
+	<p>Flamingos are famous for their bright pink feathers, stilt-like
+		legs, and S-shaped neck. When a flamingo spots potential
+		dinner—favorite foods include shrimp, snails, and plantlike water
+		organisms called algae—it plunges its head into the water, twists it
+		upside down, and scoops the fish using its upper beak like a shovel.
+		They are able to "run" on water, thanks to their webbed feet, to gain
+		speed before lifting up into the sky. Flamingos build nests that look
+		like mounds of mud along waterways. At the top of the mound, in a
+		shallow hole, the female lays one egg. The parents take turns sitting
+		on the egg to keep it warm. After about 30 days, the egg hatches.</p>
+	<p>Flamingos are famous for their bright pink feathers, stilt-like
+		legs, and S-shaped neck. When a flamingo spots potential
+		dinner—favorite foods include shrimp, snails, and plantlike water
+		organisms called algae—it plunges its head into the water, twists it
+		upside down, and scoops the fish using its upper beak like a shovel.
+		They are able to "run" on water, thanks to their webbed feet, to gain
+		speed before lifting up into the sky. Flamingos build nests that look
+		like mounds of mud along waterways. At the top of the mound, in a
+		shallow hole, the female lays one egg. The parents take turns sitting
+		on the egg to keep it warm. After about 30 days, the egg hatches.</p>
+
 </body>
 </html>

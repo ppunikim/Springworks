@@ -85,12 +85,16 @@ section div a {
 	color: #493f3f;
 	margin-left: 50px;
 }
+.box {
+	flex: 1;
+}
 </style>
 </head>
 <body>
 	<%
 	// detail은 한 사람의 데이터이기 때문에 controller의 model값을 그냥 가져오면 된다.
 	%>
+	
 	<div>
 		<label>이름</label>
 		<p>${address.a_name}</p>

@@ -99,10 +99,6 @@ nav div table tr td a {
 	margin-top: 40px;
 }
 </style>
-<script>
-	const rootPath = '${rootPath}'
-</script>
-<script src="${rootPath}/static/js/detail.js?ver=1"></script>
 </head>
 <body>
 	<nav>
@@ -123,10 +119,9 @@ nav div table tr td a {
 				</thead>
 				<tbody>
 					<c:forEach items="${ADDR}" var="addr" varStatus="INDEX">
-						<tr>
+						<tr data-hsk ="${addr.a_seq}" >
 							<td>${addr.a_seq}</td>
-							<td><a href="${rootPath}/detail?seq=${addr.a_seq}">
-									${addr.a_name}</a></td>
+							<td>${addr.a_name}</td>
 							<td>${addr.a_tel}</td>
 							<td>${addr.a_address}</td>
 						</tr>
