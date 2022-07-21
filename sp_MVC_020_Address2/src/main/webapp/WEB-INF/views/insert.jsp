@@ -91,8 +91,16 @@ nav div table tr td a {
 	text-decoration: none;
 	color: inherit;
 }
+.block {
+	display: none;
+	color: tomato;
+}
+.block, .block2, .block3{
+	display: none;
+	color: tomato;
+}
 </style>
-<script src="${rootPath}/static/js/insert.js?20220720_012"></script>
+<script src="${rootPath}/static/js/insert3.js?20220720_07"></script>
 </head>
 <body>
 	<nav>
@@ -100,12 +108,15 @@ nav div table tr td a {
 			<form method="POST" class="join">
 				<input name="a_seq" type="hidden"value='<c:out value="${address.a_seq}" default="0" />' /> 
 				<label>이름</label>
+				<div class="block"> * 이름을 입력하세요. </div>
 				<input name="a_name" id="a_name" placeholder="이름 입력해라"value="${address.a_name}" autocomplete="off" autofocus="autofocus" /> 
 				<label>전화번호</label> 
+				<div class="block2"> * 전화번호를 입력하세요. </div>
 				<input name="a_tel"	id="a_tel" placeholder="전화번호 입력해라" value="${address.a_tel}"	autocomplete="off" /> 
 				<label>집주소</label> 
+				<div class="block3"> * 집주소를 입력하세요. </div>
 				<input name="a_address"	id="a_address" placeholder="집주소 입력해라" value="${address.a_address}"autocomplete="off" />
-				<button id="btn_join">저장</button>
+				<button id="btn_join" type="button">저장</button>
 			</form>
 		</div>
 	</nav>

@@ -13,7 +13,7 @@
 <script>
 	const rootPath = '${rootPath}'
 </script>
-<script src="${rootPath}/static/js/detail.js?ver=1"></script>
+<script src="${rootPath}/static/js/detail.js?ver=7"></script>
 </head>
 <body>
 	<tiles:insertAttribute name="header" />
