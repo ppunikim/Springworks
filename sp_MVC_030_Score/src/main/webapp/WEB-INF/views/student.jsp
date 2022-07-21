@@ -31,6 +31,8 @@ nav {
 }
 table {
 	border: 1px solid black;
+	height: 500px;
+	overflow-y: scroll;
 }
 </style>
 </head>

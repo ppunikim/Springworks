@@ -3,14 +3,15 @@ package com.callor.score.controller;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.callor.score.model.StudentVO;
 import com.callor.score.service.StudentService;
 
 @Controller
+@RequestMapping(value= "/student")
 public class StudentController {
 	
 	private final StudentService stService;
@@ -19,11 +20,12 @@ public class StudentController {
 	}
 	
 	
-	@RequestMapping(value="/student", method=RequestMethod.GET)
-	public String home(Model model) {
+	// public String 이 아니라 public List<StudentVO>로 해줘야 List type으로 return 된다.
+	@ResponseBody
+	@RequestMapping(value= {"/",""}, method=RequestMethod.GET)
+	public List<StudentVO> home() {
 		List<StudentVO> stList = stService.selectAll();
-		model.addAttribute("LIST",stList);
-		return null;
+		return stList;
 	}
 	
 //	
