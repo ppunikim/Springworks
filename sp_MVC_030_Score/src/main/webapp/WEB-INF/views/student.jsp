@@ -9,7 +9,7 @@
 <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>student</title>
+<title>api/student</title>
 <style>
 * {
 	box-sizing: border-box;
@@ -28,12 +28,13 @@ body {
 }
 nav {
 	flex: 1;
-}
-table {
-	border: 1px solid black;
-	height: 500px;
 	overflow-y: scroll;
 }
+table {
+	height: 500px;
+	border: 1px solid black;
+}
+
 </style>
 </head>
 <body>
@@ -48,6 +49,7 @@ table {
 				<th>학년</th>
 				<th>전번</th>
 				<th>주소</th>
+				<th>삭제여부</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -59,6 +61,7 @@ table {
 				<td>${list.st_grade}</td>
 				<td>${list.st_tel}</td>
 				<td>${list.st_addr}</td>
+				<td><a href="${rootPath}/student/${list.st_num}/delete">삭제</a></td>
 			</tr>
 			</c:forEach>
 		</tbody>

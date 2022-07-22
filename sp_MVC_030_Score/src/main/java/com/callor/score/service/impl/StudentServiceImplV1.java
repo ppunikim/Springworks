@@ -40,8 +40,7 @@ public class StudentServiceImplV1 implements StudentService{
 
 	@Override
 	public int delete(String id) {
-		stDao.delete(id);
-		return 0;
+		return stDao.delete(id);
 	}
 	
 }
