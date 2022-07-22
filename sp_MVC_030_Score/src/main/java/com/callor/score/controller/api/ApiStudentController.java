@@ -72,6 +72,9 @@ public class ApiStudentController {
 			return "FAIL";
 		}
 	}
+//지금까지 되는 것은 삭제되는 것 까지이다.
+
+	
 	
 	@RequestMapping(value="/insert", method=RequestMethod.POST)
 	public String insert(@RequestBody StudentVO stVO) {
@@ -84,7 +87,7 @@ public class ApiStudentController {
 		}
 	}
 	
-	
+//지금 유효성 검사 하는 중인데, 이미 놓쳐서 나중에 따로 해보자.
 	
 	
 }

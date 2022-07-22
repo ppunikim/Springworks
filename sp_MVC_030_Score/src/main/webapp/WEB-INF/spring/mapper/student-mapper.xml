@@ -26,7 +26,19 @@
 		<insert id="insert" parameterType="StudentVO">
 			INSERT INTO tbl_address 
 			(
-			) VALUES (
+				st_num,
+				st_name,
+				st_dept,
+				st_grade,
+				st_tel,
+				st_addr
+				) VALUES (
+				#{st_num},
+				#{st_name},
+				#{st_dept},
+				#{st_grade},
+				#{st_tel},
+				#{st_addr}
 			)
 		</insert>
 		
