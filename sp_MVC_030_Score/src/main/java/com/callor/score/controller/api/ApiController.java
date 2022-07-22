@@ -1,4 +1,4 @@
-package com.callor.score.controller;
+package com.callor.score.controller.api;
 
 import java.util.List;
 
@@ -44,7 +44,7 @@ public class ApiController {
 		return null; //이 의미는 나를 호출한 곳에 데이터가 없다는 뜻이고, 
 	}				 //String은 최소한 null이라도 return 해야한다.
 	
-	@RequestMapping(value="/student" , method=RequestMethod.GET)
+	@RequestMapping(value="/" , method=RequestMethod.GET)
 	public List<StudentVO> student(StudentVO stVO, Model model) {
 		List<StudentVO> stList = stService.selectAll();
 		model.addAttribute("LIST",stList);
@@ -57,13 +57,13 @@ public class ApiController {
 	 *    stService.delete(학번), stDao.delete(학번) student-mapper.xml.delete 작성
 	*/
 	
-	@RequestMapping(value="/student/{st_num}/delete", method=RequestMethod.GET)
+	@RequestMapping(value="/{st_num}/delete", method=RequestMethod.GET)
 	public String delete(@PathVariable("st_num")String id) {
 		int ret = stService.delete(id);
 		if(ret > 0 ) {
 			return "OK";
 		} else {
-			return "FALE";
+			return "FAIL";
 		}
 	}
 	
