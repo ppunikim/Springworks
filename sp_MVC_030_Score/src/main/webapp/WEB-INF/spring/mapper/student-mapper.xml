@@ -21,7 +21,7 @@
 		</select>
 	
 		<insert id="insert" parameterType="StudentVO">
-			INSERT INTO tbl_address 
+			INSERT INTO tbl_student 
 			(
 				st_num,
 				st_name,
@@ -49,8 +49,8 @@
 			WHERE st_num = #{st_num}
 		</delete>
 	
-	<select id="create_addrss_table">
- 		CREATE TABLE IS NOT EXISTS tbl_address (
+	<select id="create_student_table">
+ 		CREATE TABLE IS NOT EXISTS tbl_student (
  			st_num	VARCHAR2(5)		PRIMARY KEY,
 			st_name	NVARCHAR2(20)	NOT NULL,	
 			st_dept	NVARCHAR2(5),		

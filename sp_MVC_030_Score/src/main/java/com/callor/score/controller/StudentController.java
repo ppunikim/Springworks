@@ -7,28 +7,32 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.callor.score.model.ScoreVO;
 import com.callor.score.model.StudentVO;
+import com.callor.score.service.ScoreService;
 import com.callor.score.service.StudentService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 @RequestMapping(value= "/student")
 public class StudentController {
 	
 	private final StudentService stService;
-	public StudentController(StudentService stService) {
+	private final ScoreService scService;
+	public StudentController(StudentService stService, ScoreService scService) {
 		this.stService = stService;
-	}
-	
-	
+		this.scService = scService;
+	}	
 	// public String 이 아니라 public List<StudentVO>로 해줘야 List type으로 return 된다.
-	@RequestMapping(value= {"/",""}, method=RequestMethod.GET)
-	public List<StudentVO> student(StudentVO stVO, Model model) {
-		List<StudentVO> stList = stService.selectAll();
-		model.addAttribute("LIST",stList);
-		return stList;
-	}
+//	@RequestMapping(value= "/json", method=RequestMethod.GET)
+//	public List<StudentVO> student(StudentVO stVO, Model model) {
+//		List<StudentVO> stList = stService.selectAll();
+//		model.addAttribute("LIST",stList);
+//		return stList;
+//	}
 	
 	@RequestMapping(value="/{st_num}/delete", method=RequestMethod.GET)
 	public String delete(@PathVariable("st_num")String id) {
@@ -37,10 +41,22 @@ public class StudentController {
 	}
 	
 
-//	
-//	@RequestMapping(value="/student" ,method=RequestMethod.POST)
-//	public String home(StudentVO stVO) {
-//		stService.insert(stVO);
-//		return null;
-//	}
+	
+	@RequestMapping(value={"/",""} ,method=RequestMethod.GET)
+	public String home(StudentVO stVO, Model model , String a) {
+		List<StudentVO> stList = stService.selectAll();
+		model.addAttribute("STUDENTS", stList);
+		return "student/list";
+	}
+	
+	@RequestMapping(value="/detail", method=RequestMethod.GET)
+	public String detail(String st_num, Model model) {
+		StudentVO stVO = stService.findById(st_num);
+		model.addAttribute("STUDENT",stVO);
+		List<ScoreVO> scList = scService.findByStNum(st_num);
+		log.debug(scList.toString() + "여기");
+		model.addAttribute("SCORE",scList);
+		return "student/detail";
+	}
+	
 }

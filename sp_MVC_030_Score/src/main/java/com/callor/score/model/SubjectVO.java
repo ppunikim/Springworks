@@ -16,5 +16,5 @@ import lombok.ToString;
 public class SubjectVO {
 	
 	private String sb_code;
-	private String ab_name;
+	private String sb_name;
 }

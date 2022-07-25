@@ -15,13 +15,13 @@ import lombok.ToString;
 @Builder
 public class ScoreVO {
 	
-	private long 	sc_seq;
-	private long 	sc_score;
+	private long sc_seq;
+	private String sc_score;
 	private String 	sc_stnum;
 	private	String	sc_sbcode;
 
 	private String sb_code;
-	private String ab_name;
+	private String sb_name;
 
 	
 }
