@@ -7,11 +7,31 @@
 		<select id="selectAll" resultType="StudentVO">
 			select * from tbl_student
 		</select>
+	
+	<!-- 
+		id: PK 칼럼
+		property : vo 클래스의 변수 이름
+		column : table의 칼럼 이름ㄴ
+	 -->
+	<resultMap type="StudentVO" id="findByIdAndScore">
+		<id property="st_num" column="st_num"/>
+		<collection property="scoreList" column="st_num" ofType="ScoreVO" select="findByIdScore">
+		</collection>
+	</resultMap>
+	
 		
-		<select id="findById" resultType="StudentVO">
+		<select id="findById" resultMap="findByIdAndScore">
 			SELECT * from tbl_student
 			WHERE st_num = #{st_num}
 		</select>
+	
+	<select id="findByIdScore" resultType="ScoreVO">
+		SELECT * FROM tbl_score
+			LEFT JOIN tbl_subject
+				ON sc_sbcode = sb_code
+		WHERE sc_stnum = #{sc_stnum}
+	</select>
+	
 	
 		<select id="searchAndPage" resultType="StudentVO">
 			SELECT * FROM 
@@ -40,7 +60,12 @@
 		</insert>
 		
 		<update id="update">
-			UPDATE tbl_student SET
+			UPDATE tbl_student SET 
+				st_name = #{st_name},
+				st_dept = #{st_dept},
+				st_grade = #{st_grade},
+				st_tel = #{st_tel},
+				st_addr = #{st_addr}
 			WHERE st_num = #{st_num}		
 		</update>
 		
@@ -48,6 +73,8 @@
 			DELETE FROM tbl_student
 			WHERE st_num = #{st_num}
 		</delete>
+	
+	
 	
 	<select id="create_student_table">
  		CREATE TABLE IS NOT EXISTS tbl_student (

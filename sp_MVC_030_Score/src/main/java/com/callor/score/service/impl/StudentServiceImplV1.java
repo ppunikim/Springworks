@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.callor.score.model.ScoreVO;
 import com.callor.score.model.StudentVO;
+import com.callor.score.persistance.ScoreDao;
 import com.callor.score.persistance.StudentDao;
 import com.callor.score.service.StudentService;
 
@@ -41,6 +43,11 @@ public class StudentServiceImplV1 implements StudentService{
 	@Override
 	public int delete(String id) {
 		return stDao.delete(id);
+	}
+
+	@Override
+	public List<ScoreVO> findByIdScore(String st_id) {
+		return null;
 	}
 	
 }

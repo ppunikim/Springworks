@@ -14,7 +14,6 @@
 </style>
 </head>
 <body>
-	<h1>여기는 student폴더의 list</h1>
 	<div class="student body">
 		<ul class="student list">
 			<li class="student stnum">학번</li>

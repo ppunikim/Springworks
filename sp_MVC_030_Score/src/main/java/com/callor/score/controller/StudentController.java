@@ -21,10 +21,8 @@ import lombok.extern.slf4j.Slf4j;
 public class StudentController {
 	
 	private final StudentService stService;
-	private final ScoreService scService;
-	public StudentController(StudentService stService, ScoreService scService) {
+	public StudentController(StudentService stService) {
 		this.stService = stService;
-		this.scService = scService;
 	}	
 	// public String 이 아니라 public List<StudentVO>로 해줘야 List type으로 return 된다.
 //	@RequestMapping(value= "/json", method=RequestMethod.GET)
@@ -53,10 +51,17 @@ public class StudentController {
 	public String detail(String st_num, Model model) {
 		StudentVO stVO = stService.findById(st_num);
 		model.addAttribute("STUDENT",stVO);
-		List<ScoreVO> scList = scService.findByStNum(st_num);
-		log.debug(scList.toString() + "여기");
-		model.addAttribute("SCORE",scList);
+//		List<ScoreVO> scList = scService.findByStNum(st_num);
+//		log.debug(scList.toString() + "여기");
+//		model.addAttribute("SCORE",scList);
 		return "student/detail";
 	}
+	
+	@RequestMapping(value="/detail" , method = RequestMethod.POST)
+	public String reWrite(String st_num, StudentVO stVO) {
+		stService.update(stVO);
+		return "redirect:/student/";
+	}
+	
 	
 }
