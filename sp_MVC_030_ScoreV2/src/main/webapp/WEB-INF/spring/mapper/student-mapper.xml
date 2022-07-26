@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callor.score.persistance.StudentDao">
+	
+		<select id="selectAll" resultType="StudentVO">
+			select * from tbl_student
+		</select>
+	
+	<!-- 
+		id: PK 칼럼
+		property : vo 클래스의 변수 이름
+		column : table의 칼럼 이름ㄴ
+	 -->
+	<resultMap type="StudentVO" id="findByIdAndScore">
+		<id property="st_num" column="st_num"/>
+		<collection property="scoreList" column="st_num" ofType="ScoreVO" select="findByIdScore">
+		</collection>
+	</resultMap>
+	
+		
+		<select id="findById" resultMap="findByIdAndScore">
+			SELECT * from tbl_student
+			WHERE st_num = #{st_num}
+		</select>
+	
+	<select id="findByIdScore" resultType="ScoreVO">
+		SELECT * FROM tbl_score
+			LEFT JOIN tbl_subject
+				ON sc_sbcode = sb_code
+		WHERE sc_stnum = #{sc_stnum}
+	</select>
+	
+	
+		<select id="searchAndPage" resultType="StudentVO">
+			SELECT * FROM 
+			(
+			)
+			AS SUB
+		</select>
+	
+		<insert id="insert" parameterType="StudentVO">
+			INSERT INTO tbl_student 
+			(
+				st_num,
+				st_name,
+				st_dept,
+				st_grade,
+				st_tel,
+				st_addr
+				) VALUES (
+				#{st_num},
+				#{st_name},
+				#{st_dept},
+				#{st_grade},
+				#{st_tel},
+				#{st_addr}
+			)
+		</insert>
+		
+		<update id="update">
+			UPDATE tbl_student SET 
+				st_name = #{st_name},
+				st_dept = #{st_dept},
+				st_grade = #{st_grade},
+				st_tel = #{st_tel},
+				st_addr = #{st_addr}
+			WHERE st_num = #{st_num}		
+		</update>
+		
+		<delete id="delete">
+			DELETE FROM tbl_student
+			WHERE st_num = #{st_num}
+		</delete>
+	
+	
+	
+	<select id="create_student_table">
+ 		CREATE TABLE IS NOT EXISTS tbl_student (
+ 			st_num	VARCHAR2(5)		PRIMARY KEY,
+			st_name	NVARCHAR2(20)	NOT NULL,	
+			st_dept	NVARCHAR2(5),		
+			st_grade	NUMBER(1),		
+			st_tel	VARCHAR2(5)	NOT NULL	UNIQUE,
+			st_addr	NVARCHAR2(125)		
+ 		)
+ 	</select> 	
+	
+	
+	
+</mapper>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<th:block layout:fragment = "content">
+<div>
+	<form method="POST" th:object="${STUDENT}" class="">
+		
+		<table class="student detail">
+			<thead>
+				<tr>
+					<th>학번</th>
+					<th>기본정보</th>
+					<th>주소</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td th:text="*{st_num}">${STUDENT.st_num}</td>
+					<td class="merge"><h5>이름</h5> <input type="text"
+						name="st_name" th:field="*{st_name}"></td>
+					<td class="merge"><h5>학과</h5> <input type="text"
+						name="st_dept" th:field="*{st_dept}"></td>
+					<td class="merge"><h5>학년</h5> <input type="text"
+						name="st_grade" th:field="*{st_grade}"></td>
+					<td class="merge"><h5>전번</h5> <input type="text" name="st_tel"
+						th:field="*{st_tel}"></td>
+					<td><textarea name="st_addr" readonly="readonly"
+							th:text="*{st_addr}">${STUDENT.st_addr}</textarea></td>
+				</tr>
+			</tbody>
+		</table>
+		<div th:each="sc : ${STUDENT.scoreList}" th:object="${sc}" class="score input">
+			<div th:text="|${sc.sb_name}(${sc.sc_sbcode})|"></div>
+				<input th:value="${sc.sb_code}" name="sb_code" hidden="hidden">
+				<input th:value="${sc.sc_score}" name="sc_score">
+		</div>
+		<div class="lists">
+			<button >수정</button>
+			<a th:href="@{/student}">리스트로</a>
+		</div>
+	</form>
+</div>
+</th:block> 

@@ -1,0 +1,28 @@
+@charset "UTF-8";
+ul.student {
+  list-style: none;
+  display: flex;
+}
+ul.student:nth-of-type(even) {
+  background-color: #eee;
+  border-top: 1px solid #555;
+  border-bottom: 1px solid #aaa;
+}
+li.student {
+  padding: 12px 17px;
+  flex: 1;
+}
+li.student.stnum {
+  flex: 1;
+}
+li.student.staddr {
+  flex: 3;
+}
+div.student.body {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+.list {
+  cursor: pointer;
+}

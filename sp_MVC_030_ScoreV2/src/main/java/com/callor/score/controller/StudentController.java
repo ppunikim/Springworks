@@ -1,6 +1,8 @@
 package com.callor.score.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,8 +23,10 @@ import lombok.extern.slf4j.Slf4j;
 public class StudentController {
 	
 	private final StudentService stService;
-	public StudentController(StudentService stService) {
+	private final ScoreService scService;
+	public StudentController(StudentService stService,ScoreService scService) {
 		this.stService = stService;
+		this.scService = scService;
 	}	
 	// public String 이 아니라 public List<StudentVO>로 해줘야 List type으로 return 된다.
 //	@RequestMapping(value= "/json", method=RequestMethod.GET)
@@ -63,11 +67,24 @@ public class StudentController {
 	}
 	
 	@RequestMapping(value="/detail" , method = RequestMethod.POST)
-	public String detail(String st_num, StudentVO stVO) {
-		stService.update(stVO);
+	public String detail(String st_num, StudentVO stVO, ScoreVO scVO, Model model,
+			String[] sb_code, String[] sc_score) {
+		stService.update(stVO); //학생 정보 바꾸기
 		//return문을 문자열로 만들기: ~~/detail?st_num=%s + stVO.getSt_num()
+		log.debug(sb_code.toString() + " 요기");
+//		stVO = stService.findById(st_num); //학생 성적 바꾸기
+//		model.addAttribute("STUDENT",stVO);
+		for(int i = 0; i < sb_code.length; i ++) {
+			log.debug("받은 {} {} {}", st_num, sb_code[i], sc_score[i]);
+		}
+//		Map<String , List<String>> scoreList = new HashMap<>();
+		
+	scService.updateScore(st_num, sb_code, sc_score);
 		return "redirect:/student/";
 	}
+	
+	
+	
 	
 	
 }

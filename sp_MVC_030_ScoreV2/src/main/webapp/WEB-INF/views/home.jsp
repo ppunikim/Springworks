@@ -6,13 +6,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>home화면</title>
 </head>
 <body>
-	<h1>Dash Board</h1>
-	
+<div class="body">
+</div>
+	<footer>
+		<address>CopyWrite &copy; ppunikim</address>
+	</footer>
 </body>
 </html>
