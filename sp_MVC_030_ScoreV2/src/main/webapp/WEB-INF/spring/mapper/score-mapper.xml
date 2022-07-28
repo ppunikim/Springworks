@@ -4,14 +4,23 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.callor.score.persistance.ScoreDao">
 	
-	<update id="updateScore" parameterType="ScoreVO">
+	<update id="updateScoreArray" parameterType="ScoreVO">
 		UPDATE tbl_score
 		SET sc_score = #{sc_score}
 		WHERE sc_stnum = #{st_num}
 		AND sc_sbcode = #{sb_code}
 	</update>
 	
-	
+	<!-- List, 배열 등을 사용해 Query를 반복코딩하기 
+		 foreach구문을 사용해 반복 Query만들기
+	 -->
+	<update id="updateScore" parameterType="ScoreUpdateVO">
+		<foreach collection="sb_code" item="code" index="index">
+			UPDATE tbl_score
+			SET sc_score = #{sc_score[${index}]}
+			WHERE sc_stnum = #{st_num} AND sc_sbcode = #{code};
+		</foreach>
+	</update>
 	
 	
 	<select id="selectAll" resultType="ScoreVO">

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.callor.score.model.ScoreUpdateVO;
 import com.callor.score.model.ScoreVO;
 import com.callor.score.model.StudentVO;
 import com.callor.score.service.ScoreService;
@@ -66,23 +67,30 @@ public class StudentController {
 		return "student/detail";
 	}
 	
-	@RequestMapping(value="/detail" , method = RequestMethod.POST)
-	public String detail(String st_num, StudentVO stVO, ScoreVO scVO, Model model,
-			String[] sb_code, String[] sc_score) {
-		stService.update(stVO); //학생 정보 바꾸기
-		//return문을 문자열로 만들기: ~~/detail?st_num=%s + stVO.getSt_num()
-		log.debug(sb_code.toString() + " 요기");
-//		stVO = stService.findById(st_num); //학생 성적 바꾸기
-//		model.addAttribute("STUDENT",stVO);
-		for(int i = 0; i < sb_code.length; i ++) {
-			log.debug("받은 {} {} {}", st_num, sb_code[i], sc_score[i]);
-		}
-//		Map<String , List<String>> scoreList = new HashMap<>();
-		
-	scService.updateScore(st_num, sb_code, sc_score);
-		return "redirect:/student/";
-	}
+//	@RequestMapping(value="/detail" , method = RequestMethod.POST)
+//	public String detail(String st_num, StudentVO stVO, ScoreVO scVO, Model model,
+//			String[] sb_code, String[] sc_score) {
+//		stService.update(stVO); //학생 정보 바꾸기
+//		//return문을 문자열로 만들기: ~~/detail?st_num=%s + stVO.getSt_num()
+//		log.debug(sb_code.toString() + " 요기");
+////		stVO = stService.findById(st_num); //학생 성적 바꾸기
+////		model.addAttribute("STUDENT",stVO);
+//		for(int i = 0; i < sb_code.length; i ++) {
+//			log.debug("받은 {} {} {}", st_num, sb_code[i], sc_score[i]);
+//		}
+////		Map<String , List<String>> scoreList = new HashMap<>();
+//		
+//	scService.updateScore(st_num, sb_code, sc_score);
+//		return "redirect:/student/detail?st_num="+ score.getSt_num()";
+//	}
 	
+	@RequestMapping(value="/detail", method=RequestMethod.POST)
+	public String update(ScoreUpdateVO score) {
+		log.debug("score{}",score.toString());
+		
+		scService.updateScore(score);
+		return "redirect:/student";
+	}
 	
 	
 	

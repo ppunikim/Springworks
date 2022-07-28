@@ -9,13 +9,45 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<sec:http>
-		<sec:intercept-url pattern="/login" access="permitAll"/>
-		<sec:intercept-url pattern="/**" access="isAuthenticated()"/>
-		<sec:form-login />
-		<sec:logout />
-	</sec:http>
+	<!-- UserDetailsServiceImpl을 scan하기 위해 만든 코드이다. -->
+	<context:component-scan base-package="com.callor.sec.service.auth" />
 	
+	<!-- form-login 속성중 login-processing-url.. 이 속성은 반드시 /user/login으로 설정하기
+		 실제 form action은 ${rootPath}/user/login 형식으로 지정되지만
+		 임의로 form tag에 action을 지정한 것과 다르게 작동한다.
+		 login-procession-url에 설정된 /user/login 주소는
+		 spring security가 중간에 가로채 security login절차가 수행된다.
+	 -->
+	<sec:http auto-config="true" use-expressions="true" >
+		
+		<sec:csrf disabled="false" />
+
+		<sec:intercept-url pattern="/static/**" access="permitAll"/>
+		
+		<sec:intercept-url pattern="/user/login" access="permitAll"/>
+		<sec:intercept-url pattern="/user/join" access="permitAll"/>
+		<sec:intercept-url pattern="/guest" access="permitAll"/>
+		<sec:intercept-url pattern="/" access="permitAll"/>
+		<sec:intercept-url pattern="/**" access="isAuthenticated()"/>
+		
+
+		<sec:form-login login-page="/user/login?error=LOGIN_NEED" 
+						login-processing-url="/user/login"
+						username-parameter="username"
+						password-parameter="password"
+		/>
+		
+		<sec:logout invalidate-session="true"
+					logout-success-url="/"
+					delete-cookies="JSESSIONID"
+		/>
+	</sec:http>
+
+	<sec:authentication-manager>
+		<sec:authentication-provider ref="authenticationProvider"/>
+	</sec:authentication-manager>
+
+	<!-- 	
 	<sec:authentication-manager>
 		<sec:authentication-provider>
 			<sec:user-service>
@@ -25,5 +57,5 @@
 			</sec:user-service>
 		</sec:authentication-provider>
 	</sec:authentication-manager>
-
+ 	-->
 </beans>
