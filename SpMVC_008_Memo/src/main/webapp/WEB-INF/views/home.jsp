@@ -35,9 +35,7 @@ body {
 	display: none;
 }
 
-.hs_fix {
-	position: fixed;
-}
+
 
 .hs_flex {
 	display: flex;
@@ -49,7 +47,7 @@ body {
 }
 
 .z_log {
-	line-height: 50px;
+	line-height: 52px;
 	margin-left: auto;
 	color: #3f4338;
 	text-decoration: none;
@@ -103,6 +101,7 @@ body {
 
 div img {
 	margin-right: 20px;
+	z-index: 0;
 }
 
 section {
@@ -153,10 +152,20 @@ footer a {
 			</c:otherwise>
 		</c:choose>
 	</header>
-	<section>
-		<h1>sunny's web page</h1>
-		<h3>diary, memo, books.. etc</h3>
-	</section>
+	<c:choose>
+		<c:when test="${empty USERNAME}">
+			<section>
+				<h1>Keep_cherish the day</h1>
+				<h3>login please :></h3>
+			</section>
+		</c:when>
+		<c:otherwise>
+			<section>
+				<h1>"${USERNAME}"_cherish the day</h1>
+				<h3>diary, memo, books.. etc</h3>
+			</section>
+		</c:otherwise>
+	</c:choose>
 	<footer>
 		<a>▼</a>
 	</footer>
