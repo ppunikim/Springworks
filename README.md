@@ -11,3 +11,6 @@
 
 ## :bear:[spring 복습 시작](https://github.com/ppunikim/Springworks/blob/master/sp_MVC_009_Hello/README.md)
 * spring복습
+
+## :pig:[mybatis-context](https://github.com/ppunikim/Springworks/blob/master/Sp_MVC_050_todoList/README.md)
+* mybatis-context.xml 참고용
