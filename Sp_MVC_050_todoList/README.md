@@ -15,7 +15,7 @@ mybatis-context.xml 복붙용
 	<bean id="ds" class="org.apache.commons.dbcp2.BasicDataSource">	
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/mydb"/>
-		<property name="username" value="sunshine"/>
+		<property name="username" value="root"/>
 		<property name="password" value="!Korea8080"/>
 	</bean>
 
@@ -35,11 +35,12 @@ mybatis-context.xml 복붙용
 		<constructor-arg ref="session" />	
 	</bean>
 	
-	<mybatis-spring:scan base-package="com.callor.todo.persistance"/>
 	
-	<tx:annotation-driven/>
+	<tx:jta-transaction-manager/>
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="ds" />
 	</bean>
-
+	
+	<mybatis-spring:scan base-package="com.callor.todo.persistance"/>
+	
 </beans>

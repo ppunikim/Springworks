@@ -9,15 +9,20 @@
  		SELECT * FROM tbl_users
  	</select>
  
- 	<select id="findById" resultMap="UserVO">
+ 	<select id="findById" resultType="UserVO">
  		SELECT * FROM tbl_users
  		WHERE username = #{username}
  	</select>
 
+ 	<select id="select_auths" resultType="AuthorVO">
+ 		SELECT * FROM tbl_authorities
+ 		WHERE username = #{username}
+ 	</select>
+ 
  	<select id="create_user_table">
  	create table IF NOT EXISTS tbl_users (
 		username 				VARCHAR(20) 	PRIMARY KEY,
-		password 				VARCHAR(20) 	NOT NULL,
+		password 				VARCHAR(255) 	NOT NULL,
 		enabled 				BOOLEAN 	DEFAULT FALSE,
 		accountNonExpired 		BOOLEAN 	DEFAULT TRUE,
 		accountNonLocked 		BOOLEAN 	DEFAULT TRUE,
@@ -30,18 +35,31 @@
 	)
  	</select>
  	
- 	<select id="create_author_table">
+ 	<select id="create_auth_table">
  	create table IF NOT EXISTS tbl_authorities (
 		seq 		BIGINT AUTO_INCREMENT PRIMARY KEY,
 	    username	VARCHAR(20),
 	    authority 	VARCHAR(20)
 	)
  	</select> 	
+ 
  		
  	<insert id="insert" parameterType="UserVO">
- 		INSERT INTO tbl_users (username, password, enabled)
- 		VALUES (#{username}, #{password},#{enabled})
+ 		INSERT INTO tbl_users (
+ 			username, password, enabled, email, realname, nickname, tel
+ 		)
+ 		VALUES (#{username}, #{password},#{enabled},
+		 		#{email}, #{realname},#{nickname},#{tel})
  	</insert>
+ 	
+ 	<insert id="role_insert" parameterType="UserVO">
+ 		INSERT INTO tbl_authorities(username, authority)
+ 		VALUES
+ 			<foreach collection="list" item="vo" separator=",">
+ 				(#{vo.username}, #{vo.authority})
+ 			</foreach>
+ 	</insert>
+ 	
  	
  	<update id="update" parameterType="UserVO"></update>
  	<delete id="delete"></delete>

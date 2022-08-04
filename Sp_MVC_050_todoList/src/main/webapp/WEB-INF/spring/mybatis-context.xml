@@ -13,7 +13,7 @@
 	<bean id="ds" class="org.apache.commons.dbcp2.BasicDataSource">	
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/mydb"/>
-		<property name="username" value="sunshine"/>
+		<property name="username" value="root"/>
 		<property name="password" value="!Korea8080"/>
 	</bean>
 
@@ -33,11 +33,19 @@
 		<constructor-arg ref="session" />	
 	</bean>
 	
-	<mybatis-spring:scan base-package="com.callor.todo.persistance"/>
-	
-	<tx:annotation-driven/>
+	<!-- 
+	spring jdbc에서 자동으로 관리하는 TransactionManager 로,
+	동시에 진행하는데,
+	한개의 method에서 다수의 table에 데이터를 CRUD수행할 때 
+	일부 테이블에서 오류가 발생하면 데이터들간 무결성이 무너지게 된다.
+	이 때, transational설정을 해두면 자동으로 일부에서 오류가 발생했을 때
+	All roleBack해서 무결성을 유지해준다. 
+	-->
+	<tx:jta-transaction-manager/>
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="ds" />
 	</bean>
-
+	
+	<mybatis-spring:scan base-package="com.callor.todo.persistance"/>
+	
 </beans>
