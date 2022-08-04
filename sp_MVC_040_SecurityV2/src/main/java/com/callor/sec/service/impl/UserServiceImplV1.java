@@ -88,6 +88,12 @@ public class UserServiceImplV1 implements UserService{
 		return 0;
 	}
 
+	@Override
+	public List<AuthorityVO> roleSelect(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 }

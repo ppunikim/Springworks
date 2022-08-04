@@ -59,7 +59,9 @@
 			</sec:authorize>
 			<sec:authorize access="isAuthenticated()">
 			<li class="logout">logout</li>
-			<li><a href="${rootPath}/user/mypage">myPage</a></li>
+			<sec:authorize access="hasRole('ROLE_USER')">
+				<li><a href="${rootPath}/user/mypage">myPage</a></li>
+			</sec:authorize>
 			</sec:authorize>
 			<sec:authorize access="hasRole('ROLE_ADMIN')" >
 				<li><a href="${rootPath}/admain">관리자</a></li>

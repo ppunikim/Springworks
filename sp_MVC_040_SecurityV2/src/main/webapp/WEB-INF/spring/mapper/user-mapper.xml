@@ -16,7 +16,7 @@
  		</collection>
  	</resultMap>
  
- 	<select id="findById" resultMap="userAndAuthorities">
+ 	<select id="findById" resultType="UserVO">
  		SELECT * FROM tbl_users
  		WHERE username = #{username}
  	</select>

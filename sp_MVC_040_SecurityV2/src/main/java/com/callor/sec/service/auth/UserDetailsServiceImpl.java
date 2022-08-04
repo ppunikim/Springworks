@@ -37,13 +37,13 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 			// Spring security에게 강제로 exception을 발생시켜 메세지 전달하기
 			throw new UsernameNotFoundException(username + " : 회원가입을 먼저해라.");
 		}
-		userVO.setEnabled(true);
 		
-		List<GrantedAuthority> authoList = new ArrayList<>();
-		for(GrantedAuthority author : userVO.getAuthorities()) {
-			authoList.add(new SimpleGrantedAuthority(author.toString()));
+		List<AuthorityVO> authoList = userDao.roleSelect(username);
+		List<GrantedAuthority> grantList = new ArrayList<>();
+		for(AuthorityVO author : authoList) {
+			grantList.add(new SimpleGrantedAuthority(author.getAuthority()));
 		}
-		userVO.setAuthorities(authoList);
+		userVO.setAuthorities(grantList);
 		return userVO;
 	}//end UserDetails
 	
