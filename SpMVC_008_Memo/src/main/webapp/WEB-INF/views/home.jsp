@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <c:set value="${pageContext.request.contextPath}" var="rootPath" />
 
 <!DOCTYPE html>
@@ -35,8 +38,6 @@ body {
 	display: none;
 }
 
-
-
 .hs_flex {
 	display: flex;
 }
@@ -69,14 +70,16 @@ body {
 .hs_head {
 	flex: 1;
 }
+
 .hs_fix {
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
-	padding: 2rem; 
+	padding: 2rem;
 	border-bottom: 1.2px solid #252121a8;
 }
+
 .hs_drop {
 	min-height: 0;
 	visibility: hidden;
@@ -90,7 +93,7 @@ body {
 	background-color: transparent;
 }
 
-.hs_drop a {
+.hs_drop a, .hs_drop button {
 	color: #eee;
 	border-radius: 25px;
 	background-color: #686767;
@@ -100,7 +103,7 @@ body {
 	font-size: 18px;
 }
 
-.hs_menu:hover .hs_drop {
+.hs_menu:hover .hs_drop, .hs_drop:hover button {
 	cursor: pointer;
 	visibility: visible;
 	opacity: 1;
@@ -132,55 +135,64 @@ footer div {
 	line-height: 100px;
 	font-size: 30px;
 }
+
 footer div a {
 	padding: 15px 30px;
 	cursor: pointer;
 }
-
 </style>
 </head>
 <body>
 	<header class="hs_flex hs_sa hs_fix">
 		<img src="static/images/logo.jpg" width="50vw">
-		<c:choose>
-			<c:when test="${empty USERNAME}">
-				<h4 class="z_log">
-					<a href="${rootPath}/user/login" class="z_log">login</a>
-				</h4>
-			</c:when>
-			<c:otherwise>
-				<div class="hs_fix">
-					<div class="hs_flex">
-						<div class="z_log hs_menu">
-							<div class="z_log hs_top hs_head">about</div>
-							<div class="hs_drop">
-								<a href="${rootPath}/memo/m-list">메모장</a> <br> <a
-									href="${rootPath}/diary/d-add">일기장</a> <br> <a
-									href="${rootPath}/book/b-add">독후감</a> <br> <a
-									href="${rootPath}/user/logout" class="z_log">logout</a>
-							</div>
+
+		<sec:authorize access="isAnonymous()">
+			<h4 class="z_log">
+				<a href="${rootPath}/user/login" class="z_log">login</a>
+			</h4>
+		</sec:authorize>
+		<sec:authorize access="isAuthenticated() AND hasRole('ROLE_USER')">
+			<div class="hs_fix">
+				<div class="hs_flex">
+					<div class="z_log hs_menu">
+						<div class="z_log hs_top hs_head">about</div>
+						<div class="hs_drop">
+							<sec:authorize
+								access="isAuthenticated() AND hasRole('ROLE_ADMIN')">
+								<a href="${rootPath}/admin/home">admin</a>
+							</sec:authorize>
+							<a href="${rootPath}/memo/m-list">메모장</a> <br> <a
+								href="${rootPath}/diary/d-add">일기장</a> <br> <a
+								href="${rootPath}/book/b-add">독후감</a> <br>
+							<form:form action="${rootPath}/logout">
+								<button>logout</button>
+							</form:form>
 						</div>
 					</div>
 				</div>
-			</c:otherwise>
-		</c:choose>
+			</div>
+		</sec:authorize>
 	</header>
-	<c:choose>
-		<c:when test="${empty USERNAME}">
-			<section>
-				<h1>Keep_cherish the day</h1>
-				<h3>please sign in :></h3>
-			</section>
-		</c:when>
-		<c:otherwise>
-			<section>
-				<h1>"${USERNAME}"_cherish the day</h1>
-				<h3>diary, memo, books.. etc</h3>
-			</section>
-		</c:otherwise>
-	</c:choose>
+	<sec:authorize access="isAnonymous()">
+		<section>
+			<h1>Keep_cherish the day</h1>
+			<h3>please sign in :></h3>
+		</section>
+	</sec:authorize>
+	<sec:authorize access="isAuthenticated()">
+		<section>
+			<h1>
+				"
+				<sec:authentication property="principal.username" />
+				"_cherish the day
+			</h1>
+			<h3>diary, memo, books.. etc</h3>
+		</section>
+	</sec:authorize>
 	<footer>
-		<div><a class="bottom">▼</a></div>
+		<div>
+			<a class="bottom">▼</a>
+		</div>
 	</footer>
 	<p>Flamingos are famous for their bright pink feathers, stilt-like
 		legs, and S-shaped neck. When a flamingo spots potential

@@ -51,15 +51,17 @@
 		border: 1px solid transparent;
 		background-color: #aeadad7d;
 		padding: 3px;
-		
 	}
 </style>
 </head>
 <body>
 	<form:form>
-			<input name="username" placeholder="아이디를 입력하세요."	autofocus="autofocus" autocomplete="off">
+			<input name="username" placeholder="가입할 아이디를 입력하세요."	autofocus="autofocus" autocomplete="off">
 			<input type="password" name="password" placeholder="비밀번호를 입력하세요." autocomplete="off">
-			<button>회원가입</button>
+			<input name="email" placeholder="이메일을 입력하세요.">
+			<input name="realname" placeholder="이름을 입력하세요.">
+			<input name="nickname" placeholder="닉네임을 입력하세요.">
+	   		<button>회원가입</button>
 	</form:form>
 	<section></section>
 </body>

@@ -24,6 +24,7 @@
 		<sec:intercept-url pattern="/admin/**" access="isAuthenticated() AND hasRole('ROLE_ADMIN')" />
 		<sec:intercept-url pattern="/memo/**" access="permitAll" />
 		<sec:intercept-url pattern="/diary/d_add" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/user/mypage" access="isAuthenticated()" />
 
 
 		<sec:intercept-url pattern="/403" access="permitAll" />
@@ -47,7 +48,7 @@
 	<sec:authentication-manager>
 		<sec:authentication-provider>
 			<sec:user-service>
-				<sec:user name="ppuni" authorities="ROLE_ADMIN" password="{noop}1234"/>
+				<sec:user name="ppuni" authorities="ROLE_USER" password="{noop}1234"/>
 			</sec:user-service>
 		</sec:authentication-provider>
 		<sec:authentication-provider ref="authenticationProvider" />

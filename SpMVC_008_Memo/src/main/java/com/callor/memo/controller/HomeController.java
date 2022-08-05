@@ -51,6 +51,12 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value={"/",""}, method=RequestMethod.POST)
+	public String home() {
+		return "redirect:/";
+	}
+	
+	
 	@RequestMapping(value="/{seq}/m-list", method =RequestMethod.GET)
 	public String list(@PathVariable("seq") String seq, Model model,
 			@ModelAttribute("memoVO") MemoVO memoVO) {
