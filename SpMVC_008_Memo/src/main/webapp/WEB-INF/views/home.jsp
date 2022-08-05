@@ -43,7 +43,6 @@ body {
 
 .hs_sa {
 	justify-content: space-between;
-	margin-top: 10px;
 }
 
 .z_log {
@@ -52,7 +51,7 @@ body {
 	color: #3f4338;
 	text-decoration: none;
 	font-weight: 500;
-	font-size: 20px;
+	font-size: 23px;
 }
 
 .hs_menu {
@@ -70,7 +69,14 @@ body {
 .hs_head {
 	flex: 1;
 }
-
+.hs_fix {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding: 2rem; 
+	border-bottom: 1.2px solid #252121a8;
+}
 .hs_drop {
 	min-height: 0;
 	visibility: hidden;
@@ -81,15 +87,17 @@ body {
 	min-width: 100px;
 	transition: 1.2s;
 	cursor: pointer;
+	background-color: transparent;
 }
 
 .hs_drop a {
 	color: #eee;
 	border-radius: 25px;
-	background-color: gray;
+	background-color: #686767;
 	padding: 10px;
 	font-weight: 300;
 	text-decoration: none;
+	font-size: 18px;
 }
 
 .hs_menu:hover .hs_drop {
@@ -99,9 +107,9 @@ body {
 	transform: translateY(0);
 }
 
-div img {
+img {
 	margin-right: 20px;
-	z-index: 0;
+	z-index: 900;
 }
 
 section {
@@ -120,14 +128,19 @@ footer {
 	text-align: center;
 }
 
-footer a {
+footer div {
 	line-height: 100px;
 	font-size: 30px;
 }
+footer div a {
+	padding: 15px 30px;
+	cursor: pointer;
+}
+
 </style>
 </head>
 <body>
-	<header class="hs_flex hs_sa">
+	<header class="hs_flex hs_sa hs_fix">
 		<img src="static/images/logo.jpg" width="50vw">
 		<c:choose>
 			<c:when test="${empty USERNAME}">
@@ -156,7 +169,7 @@ footer a {
 		<c:when test="${empty USERNAME}">
 			<section>
 				<h1>Keep_cherish the day</h1>
-				<h3>login please :></h3>
+				<h3>please sign in :></h3>
 			</section>
 		</c:when>
 		<c:otherwise>
@@ -167,7 +180,7 @@ footer a {
 		</c:otherwise>
 	</c:choose>
 	<footer>
-		<a>▼</a>
+		<div><a class="bottom">▼</a></div>
 	</footer>
 	<p>Flamingos are famous for their bright pink feathers, stilt-like
 		legs, and S-shaped neck. When a flamingo spots potential
@@ -211,4 +224,12 @@ footer a {
 		on the egg to keep it warm. After about 30 days, the egg hatches.</p>
 
 </body>
+<script>
+	const scroll = document.querySelector(".bottom");
+	var s_bottom = scroll.offsetBottom;
+	
+	scroll.onclick = () => {
+	    window.scroll({bottom: s_bottom,behavior:'smooth'})
+	}
+</script>
 </html>
