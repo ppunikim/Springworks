@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,10 +21,11 @@ public class DiaryServiceImplV1 implements DiaryService{
 		this.upLoadFolder = upLoadFolder;
 		this.diaryDao = diaryDao;
 	}
+	
+	@Autowired
 	@Override
 	public void create_diary_table() {
-		// TODO Auto-generated method stub
-		
+		diaryDao.create_diary_table();
 	}
 	@Override
 	public List<DiaryVO> selectAll() {

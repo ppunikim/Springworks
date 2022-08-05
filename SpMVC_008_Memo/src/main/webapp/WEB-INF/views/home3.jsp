@@ -143,8 +143,7 @@ footer div a {
 	<header class="hs_flex hs_sa hs_fix">
 		<img src="static/images/logo.jpg" width="50vw">
 		<c:choose>
-			<c:when test="${error == 'LOGIN_NEED'}">
-				<c:set var="message" value="* 로그인이 필요한 서비스입니다." />
+			<c:when test="${empty USERNAME}">
 				<h4 class="z_log">
 					<a href="${rootPath}/user/login" class="z_log">login</a>
 				</h4>
@@ -167,7 +166,7 @@ footer div a {
 		</c:choose>
 	</header>
 	<c:choose>
-		<c:when test="${error == 'LOGIN_NEED'}">
+		<c:when test="${empty USERNAME}">
 			<section>
 				<h1>Keep_cherish the day</h1>
 				<h3>please sign in :></h3>
