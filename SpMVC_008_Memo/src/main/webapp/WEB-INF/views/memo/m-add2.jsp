@@ -46,9 +46,9 @@ section {
 </head>
 <body>
 <section class="main">
-	<form:form modelAttribute="MEMOLIST" class="main_memo">
+	<form:form modelAttribute="memoVO" enctype="multipart/form-data" class="main_memo">
 		<h3>메모장</h3>
-			<form:input path="m_date" readonly="readonly" type="hidden"/>
+			<form:input path="m_author" readonly="readonly" type="hidden"/>
 			<textarea 	name="m_memo" 
 						id="MEMO"
 						class="w3-input w3-border input_memo" 
@@ -56,7 +56,18 @@ section {
 						autofocus="autofocus" 
 						required="required" 
 						autocomplete="off">${M_MEMO.m_memo}</textarea>
-
+			<br>
+			<label for="put">파일 등록</label>
+			<input type="file" name="file" accept="images/*"
+				   value="${rootPath}/upload/${M_MEMO.m_up_image}" id="put"
+			onchange="setThumbnail(event)" multiple/>
+			<div class="img-box">
+			<c:if test="${not empty M_MEMO.m_up_image}">
+				<img src="${rootPath}/upload/${M_MEMO.m_up_image}" class="img-img"> 
+			</c:if>
+		</div>
+			<br>
+			<br>
 			<div id="hs_footer" >
 				<input type="reset"class="w3-button w3-round-xxlarge w3-padding-large"> 
 				<input type="submit" placeholder="전송" value="저장" 

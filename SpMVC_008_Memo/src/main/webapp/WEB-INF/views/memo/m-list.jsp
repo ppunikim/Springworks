@@ -27,7 +27,6 @@ body {
 	display: flex;
 	flex-direction: column;
 	text-align: center;
-	background-color: #716d6d;
 }
 
 .hs_flex {
@@ -39,7 +38,7 @@ img {
 }
 
 .add_btn {
-	color: #383737bf;
+	color: #e0e0e0e8;
 	font-weight: 500;
 	text-decoration: none;
 	margin-left: 5px;
@@ -53,11 +52,21 @@ img {
 	cursor: pointer;
 	font-weight: bolder;
 }
-header div{
-	background-color: white;
+header div {
+	background-color: gray;
 }
 header div h3 {
-	padding-left: 15px;;
+	padding-left: 15px;
+	color: #eeee;
+}
+
+.hs_memo {
+	border: 1px solid transparent;
+	z-index: 100;
+	background-color: yellow;
+	width: 300px;
+	height: 400px;
+	margin: 10px;
 }
 </style>
 <link rel="stylesheet" href="${rootPath}/static/css/w3css.css">
@@ -74,16 +83,21 @@ header div h3 {
 		</div>
 	</header>
 	<section>
-		<div class="w3-card-2 w3-yellow">
+		<div>
+			<c:if test="${empty MEMOLIST}">
+				<tr>
+					<td colspan="6">작성한 내용이 없습니다.</td>
+				</tr>
+			</c:if>
+
 			<c:forEach items="${MEMOLIST}" var="memo" varStatus="INDEX">
-				<p>${INDEX.count}</p>
-				<p>${memo.m_date}</p>
-				<p>${memo.m_memo}</p>
-				<p id="hs_img">
-					<c:if test="${not empty memo.m_up_image}">
-						<img src="${rootPath}/upload/${memo.m_up_image}">
-					</c:if>
-				</p>
+				<div class="w3-col m4 w3-container w3-margin w3-card-4 w3-yellow ">
+					<h3>${INDEX.count}</h3>
+					<br>
+					<h4>${memo.m_date}</h4>
+					<br>
+					<h4>${memo.m_memo}</h4>
+				</div>
 			</c:forEach>
 		</div>
 	</section>

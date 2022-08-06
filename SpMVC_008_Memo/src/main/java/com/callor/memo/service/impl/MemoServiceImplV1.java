@@ -34,14 +34,21 @@ public class MemoServiceImplV1 implements MemoService{
 	@Override
 	public List<MemoVO> selectAll() {
 		List<MemoVO> memoList = memoDao.selectAll();
-		for(MemoVO memoVO : memoList)  {
-			if(fileUp.fileCheck(memoVO.getM_up_image()) == false) {
-				memoVO.setM_up_image(null);
-			}
-		}
 		return memoList;
 	}
 
+	//	@Override
+//	public List<MemoVO> selectAll() {
+//		List<MemoVO> memoList = memoDao.selectAll();
+//		for(MemoVO memoVO : memoList)  {
+//			if(fileUp.fileCheck(memoVO.getM_up_image()) == false) {
+//				memoVO.setM_up_image(null);
+//			}
+//		}
+//		return memoList;
+//	}
+
+	
 	@Override
 	public MemoVO findById(Long VO) {
 		MemoVO memoVO = memoDao.findById(VO);

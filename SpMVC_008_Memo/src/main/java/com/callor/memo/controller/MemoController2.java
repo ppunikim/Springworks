@@ -2,7 +2,6 @@ package com.callor.memo.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,39 +12,31 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.callor.memo.model.MemoVO;
 import com.callor.memo.service.MemoService;
 
 import lombok.extern.slf4j.Slf4j;
-@Slf4j
-@RequestMapping(value="/memo")
-@Controller
-public class MemoController {
+
+
+public class MemoController2 {
 	
 	@Autowired
 	private MemoService memoService;
 	
-	@RequestMapping(value="/m-list", method=RequestMethod.GET)
-	public String list(Model model) {
-		List<MemoVO> mList = memoService.selectAll();
-		model.addAttribute("MEMOLIST", mList);
-		return "memo/m-list";
-	}
-	
-	
 	@RequestMapping(value="/m-add", method=RequestMethod.GET)
-	public String insert(@ModelAttribute("memoVO") MemoVO memoVO,Model model) {
-		model.addAttribute("MEMOLIST",memoVO);
+	public String insert(@ModelAttribute("memoVO") MemoVO memoVO,Model model,
+						 HttpSession httpSession) {
+		model.addAttribute("memoVO",memoVO);
 		return null;
 	}
 	@RequestMapping(value="/m-add", method=RequestMethod.POST)
 	public String insert(@ModelAttribute("memoVO") MemoVO memoVO
-						,MultipartFile file) {
-		log.debug("여기 insert {} ",memoVO);
-		memoService.insert(memoVO);
-		return "redirect:/memo/m-list";
+						,MultipartFile file,HttpSession httpSession) {
+		memoService.insertAndUpdate(memoVO,file);
+		return "memo/m-list";
 	}
 	
 	@ModelAttribute("memoVO")
