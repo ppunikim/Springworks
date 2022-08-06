@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <c:set value="${pageContext.request.contextPath}" var="rootPath" />
 <!DOCTYPE html>
 <html>
@@ -27,6 +28,28 @@ body {
 	display: flex;
 	flex-direction: column;
 	text-align: center;
+	background-color: #ffe9a5;
+}
+.main_div {
+	border-radius:15px;
+	background-color: #ffe083;
+	width: 100%;
+	padding:30px 20px 10px 20px;
+	position: fixed;
+	z-index: 999;
+	border: 4px solid #f5db8d;
+}
+
+.main h3 {
+	text-align: center;
+}
+
+.input_memo {
+	height: 100px;
+}
+
+#hs_save {
+	margin: 10px auto;
 }
 
 .hs_flex {
@@ -37,69 +60,89 @@ img {
 	width: 120px;
 }
 
+.btn_box {
+	margin: 10px;
+}
+
 .add_btn {
-	color: #e0e0e0e8;
+	color: #ddffdd;
 	font-weight: 500;
 	text-decoration: none;
-	margin-left: 5px;
-	padding-right: 20px;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	font-size: 17px;
+	font-size: 25px;
+	padding: 20px 100px;
 }
 
 .add_btn:hover {
 	cursor: pointer;
-	font-weight: bolder;
-}
-header div {
-	background-color: gray;
-}
-header div h3 {
-	padding-left: 15px;
-	color: #eeee;
+	font-weight: bold;
 }
 
+header div h3 {
+	padding-left: 15px;
+}
+.hs_memos:first-of-type {
+	margin-top:230px;
+}
+
+.hs_memos {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-content: space-around;
+}
 .hs_memo {
-	border: 1px solid transparent;
-	z-index: 100;
-	background-color: yellow;
-	width: 300px;
-	height: 400px;
+	width: 90%;
+	height: 150px;
+	padding: 15px;
 	margin: 10px;
+	border-radius: 18px;
+	border-left: 3px solid #878787;
+	box-shadow: 2px 2px 10px #c8c8c8ba;
+	background-color:#fff;
 }
 </style>
 <link rel="stylesheet" href="${rootPath}/static/css/w3css.css">
 <script>
 	const rootPath = "${rootPath}"
 </script>
-<script src="${rootPath}/static/js/memo_detail.js?ver=8"></script>
+<script src="${rootPath}/static/js/memo_detail.js?ver=10"></script>
 </head>
 <body>
-	<header>
-		<div class="hs_flex">
-			<h3>메모장</h3>
-			<a class="add_btn" href="${rootPath}/memo/m-add">+ 추가</a>
+	<header class="main">
+		<div class="main_div">
+			<form:form modelAttribute="MEMOLIST" class="main_memo">
+				<textarea name="m_memo" id="MEMO"
+					class="w3-input w3-border input_memo" placeholder="메모를 입력하세요."
+					autofocus="autofocus" required="required" autocomplete="off">${M_MEMO.m_memo}</textarea>
+
+				<div id="hs_save">
+					<a href="${rootPath}" class="w3-button w3-round-xxlarge w3-padding-large">처음화면</a>
+					<input type="reset"
+						class="w3-button w3-round-xxlarge w3-padding-large"> <input
+						type="submit" placeholder="전송" value="저장"
+						class="w3-button w3-round-xxlarge w3-padding-large">
+				</div>
+			</form:form>
 		</div>
 	</header>
-	<section>
-		<div>
+	<nav>
+		<div class="hs_memos">
 			<c:if test="${empty MEMOLIST}">
 				<tr>
 					<td colspan="6">작성한 내용이 없습니다.</td>
 				</tr>
 			</c:if>
-
 			<c:forEach items="${MEMOLIST}" var="memo" varStatus="INDEX">
-				<div class="w3-col m4 w3-container w3-margin w3-card-4 w3-yellow ">
-					<h3>${INDEX.count}</h3>
-					<br>
-					<h4>${memo.m_date}</h4>
-					<br>
-					<h4>${memo.m_memo}</h4>
+				<div class="hs_memo">
+					<div class="hs_flex">
+						<h6>${memo.m_date}_</h6> 
+						<h6>${memo.m_time}</h6>
+					</div>
+						<h4>${memo.m_memo}</h4>
 				</div>
 			</c:forEach>
 		</div>
-	</section>
+	</nav>
 </body>
 </html>

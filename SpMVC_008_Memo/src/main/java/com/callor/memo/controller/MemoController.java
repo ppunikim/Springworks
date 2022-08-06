@@ -33,14 +33,8 @@ public class MemoController {
 		model.addAttribute("MEMOLIST", mList);
 		return "memo/m-list";
 	}
-	
-	
-	@RequestMapping(value="/m-add", method=RequestMethod.GET)
-	public String insert(@ModelAttribute("memoVO") MemoVO memoVO,Model model) {
-		model.addAttribute("MEMOLIST",memoVO);
-		return null;
-	}
-	@RequestMapping(value="/m-add", method=RequestMethod.POST)
+
+	@RequestMapping(value="/m-list", method=RequestMethod.POST)
 	public String insert(@ModelAttribute("memoVO") MemoVO memoVO
 						,MultipartFile file) {
 		log.debug("여기 insert {} ",memoVO);

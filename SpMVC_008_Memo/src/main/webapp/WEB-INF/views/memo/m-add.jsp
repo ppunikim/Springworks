@@ -12,21 +12,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>memo쓰기</title>
 <style>
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0; 
+}
 
+html {
+	width: 100vw;
+	height: 100vh;
+}
 
+body {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	background-color:#ddffdd;
+}
 img {
 	width: 120px;
 } 
-
+.main_div {
+	width: 70%;
+	margin: 30px auto;
+}
 .main h3 {
 	text-align: center;
 }
 .input_memo {
-	width: 300px;
-	height: 200px; 
+	height: 250px;
 }
 section {
 	width: 100%;
+}
+#hs_footer {
+	margin: 20px auto;
 }
 /* #hs_footer {
 	display:flex;
@@ -46,6 +68,7 @@ section {
 </head>
 <body>
 <section class="main">
+<div class="main_div">
 	<form:form modelAttribute="MEMOLIST" class="main_memo">
 		<h3>메모장</h3>
 			<form:input path="m_date" readonly="readonly" type="hidden"/>
@@ -58,11 +81,13 @@ section {
 						autocomplete="off">${M_MEMO.m_memo}</textarea>
 
 			<div id="hs_footer" >
+				<a href="${rootPath}/memo/m-list" class="w3-button w3-round-xxlarge w3-padding-large" >돌아가기</a>
 				<input type="reset"class="w3-button w3-round-xxlarge w3-padding-large"> 
 				<input type="submit" placeholder="전송" value="저장" 
 				class="w3-button w3-round-xxlarge w3-padding-large" >
 			</div>
 	</form:form>
+</div>
 </section>
 </body>
 </html>
