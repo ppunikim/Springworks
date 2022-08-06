@@ -123,37 +123,32 @@ img {
 <body>
 	<section>
 		<div class="hs_flex">
-			<h3>메모장</h3>
-				<a class="add_btn" href="${rootPath}/memo/m-add">+ 추가</a>
+			<h3>일기장</h3>
+				<a class="add_btn" href="${rootPath}/memo/d-add">+ 추가</a>
 		</div>
 		<table class="memos scroll">
 			<colgroup>
-				<col width="10%">
 				<col width="20%">
 				<col width="20%">
-				<col width="25%">
 				<col width="25%">
 			</colgroup>
 			<tr>
-				<th>번호</th>
 				<th>작성일자</th>
-				<th>작성시각</th>
-				<th>메모내용</th>
-				<th>이미지파일</th>
+				<th>아침기록</th>
+				<th>오늘하루</th>
 			</tr>
 			<c:if test="${empty MEMOLIST}">
 				<tr>
 					<td colspan="6">작성한 내용이 없습니다.</td>
 				</tr>
 			</c:if>
-			<c:forEach items="${MEMOLIST}" var="memo" varStatus="INDEX">
-				<tr data-seq="${memo.m_seq}">
-					<td>${INDEX.count}</td>
-					<td>${memo.m_date}</td>
-					<td>${memo.m_time}</td>
-					<td>${memo.m_memo}</td>
-					<td id="hs_img"><c:if test="${ not empty memo.m_up_image}">
-							<img src="${rootPath}/upload/${memo.m_up_image}">
+			<c:forEach items="${DAIRYLIST}" var="memo" varStatus="INDEX">
+				<tr>
+					<td>${diary.d_date}</td>
+					<td>${diary.d_awrite}</td>
+					<td>${diary.d_today}</td>
+					<td id="hs_img"><c:if test="${ not empty diary.d_up_image}">
+							<img src="${rootPath}/upload/${diary.d_up_image}">
 						</c:if></td>
 				</tr>
 			</c:forEach>

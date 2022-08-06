@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.callor.memo.model.UserVO;
+import com.callor.memo.service.UserService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,6 +16,8 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping(value="/user")
 @Controller
 public class UserController {
+	
+	private UserService userService;
 	
 	@RequestMapping(value="/join", method =RequestMethod.GET)
 	public String join() {

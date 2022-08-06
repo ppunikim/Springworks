@@ -51,11 +51,9 @@ public class MemoController {
 	public MemoVO makeMemo() {
 		Date date = new Date(System.currentTimeMillis());
 		SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
-		SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
 
 		MemoVO memoVO = MemoVO.builder()
 				.m_date(dayFormat.format(date))
-				.m_time(timeFormat.format(date))
 				.build();
 		return memoVO;
 	}

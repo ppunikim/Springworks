@@ -145,25 +145,33 @@ footer div a {
 <body>
 	<header class="hs_flex hs_sa hs_fix">
 		<img src="static/images/logo.jpg" width="50vw">
-		<div class="hs_fix">
-			<div class="hs_flex">
-				<div class="z_log hs_menu">
-					<div class="z_log hs_top hs_head">about</div>
-					<div class="hs_drop">
-						<sec:authorize
+
+		<sec:authorize access="isAnonymous()">
+			<h4 class="z_log">
+				<a href="${rootPath}/user/login" class="z_log">login</a>
+			</h4>
+		</sec:authorize>
+		<sec:authorize access="isAuthenticated() AND hasRole('ROLE_USER')">
+			<div class="hs_fix">
+				<div class="hs_flex">
+					<div class="z_log hs_menu">
+						<div class="z_log hs_top hs_head">about</div>
+						<div class="hs_drop">
+							<sec:authorize
 								access="isAuthenticated() AND hasRole('ROLE_ADMIN')">
 								<a href="${rootPath}/admin/home">admin</a>
 							</sec:authorize>
-							 <a	href="${rootPath}/memo/m-list">메모장</a> <br> <a
-							href="${rootPath}/diary/d-list">일기장</a> <br> <a
-							href="${rootPath}/book/b-add">독후감</a> <br>
-						<form:form action="${rootPath}/logout">
-							<button>logout</button>
-						</form:form>
+							<a href="${rootPath}/memo/m-list">메모장</a> <br> <a
+								href="${rootPath}/diary/d-add">일기장</a> <br> <a
+								href="${rootPath}/book/b-add">독후감</a> <br>
+							<form:form action="${rootPath}/logout">
+								<button>logout</button>
+							</form:form>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</sec:authorize>
 	</header>
 	<sec:authorize access="isAnonymous()">
 		<section>
@@ -171,14 +179,14 @@ footer div a {
 			<h3>please sign in :></h3>
 		</section>
 	</sec:authorize>
-	<section>
-		<h1>
-			"
-			<sec:authentication property="principal.username" />
-			"_cherish the day
-		</h1>
-		<h3>diary, memo, books.. etc</h3>
-	</section>
+	<sec:authorize access="isAuthenticated()">
+		<section>
+			<h1>
+				"<sec:authentication property="principal.username" />"_cherish the day
+			</h1>
+			<h3>diary, memo, books.. etc</h3>
+		</section>
+	</sec:authorize>
 	<footer>
 		<div>
 			<a class="bottom">▼</a>

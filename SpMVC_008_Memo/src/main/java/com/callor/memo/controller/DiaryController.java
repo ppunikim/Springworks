@@ -26,6 +26,11 @@ public class DiaryController {
 	public DiaryController(DiaryService diaryService) {
 		this.diaryService = diaryService;
 	}
+	
+	@RequestMapping(value="/d-list" , method=RequestMethod.GET)
+	public String d_home() {
+		return "/diary/d-list";
+	}
 
 	@RequestMapping(value="/d-add", method = RequestMethod.GET)
 	public String insert(@ModelAttribute("diaryVO") DiaryVO diaryVO, 
@@ -52,11 +57,9 @@ public class DiaryController {
 	public DiaryVO makeDiary() {
 		Date date = new Date(System.currentTimeMillis());
 		SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
-		SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
 		
 		DiaryVO diaryVO = DiaryVO.builder()
 							.d_date(dayFormat.format(date))
-							.d_time(timeFormat.format(date))
 							.build();
 		return diaryVO;
 	}
