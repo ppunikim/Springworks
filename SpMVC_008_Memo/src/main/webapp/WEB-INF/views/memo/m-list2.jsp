@@ -27,7 +27,6 @@ body {
 	display: flex;
 	flex-direction: column;
 	text-align: center;
-	background-color: #716d6d;
 }
 
 .hs_flex {
@@ -40,52 +39,64 @@ img {
 
 .add_btn {
 	color: #383737bf;
-	font-weight: 500;
+	font-weight: 300;
 	text-decoration: none;
 	margin-left: 5px;
 	padding-right: 20px;
 	padding-top: 20px;
 	padding-bottom: 20px;
-	font-size: 17px;
+	font-size: 15px;
 }
 
 .add_btn:hover {
 	cursor: pointer;
 	font-weight: bolder;
-}
-header div{
-	background-color: white;
-}
-header div h3 {
-	padding-left: 15px;;
-}
+
 </style>
-<link rel="stylesheet" href="${rootPath}/static/css/w3css.css">
 <script>
 	const rootPath = "${rootPath}"
 </script>
 <script src="${rootPath}/static/js/memo_detail.js?ver=8"></script>
 </head>
 <body>
-	<header>
+	<section>
 		<div class="hs_flex">
 			<h3>메모장</h3>
-			<a class="add_btn" href="${rootPath}/memo/m-add">+ 추가</a>
+				<a class="add_btn" href="${rootPath}/memo/m-add">+ 추가</a>
 		</div>
-	</header>
-	<section>
-		<div class="w3-card-2 w3-yellow">
+		<table class="memos scroll">
+			<colgroup>
+				<col width="10%">
+				<col width="20%">
+				<col width="20%">
+				<col width="25%">
+				<col width="25%">
+			</colgroup>
+			<tr>
+				<th>번호</th>
+				<th>작성일자</th>
+				<th>작성시각</th>
+				<th>메모내용</th>
+				<th>이미지파일</th>
+			</tr>
+			<c:if test="${empty MEMOLIST}">
+				<tr>
+					<td colspan="6">작성한 내용이 없습니다.</td>
+				</tr>
+			</c:if>
 			<c:forEach items="${MEMOLIST}" var="memo" varStatus="INDEX">
-				<p>${INDEX.count}</p>
-				<p>${memo.m_date}</p>
-				<p>${memo.m_memo}</p>
-				<p id="hs_img">
-					<c:if test="${not empty memo.m_up_image}">
-						<img src="${rootPath}/upload/${memo.m_up_image}">
-					</c:if>
-				</p>
+				<tr data-seq="${memo.m_seq}">
+					<td>${INDEX.count}</td>
+					<td>${memo.m_date}</td>
+					<td>${memo.m_time}</td>
+					<td>${memo.m_memo}</td>
+					<td id="hs_img"><c:if test="${ not empty memo.m_up_image}">
+							<img src="${rootPath}/upload/${memo.m_up_image}">
+						</c:if></td>
+				</tr>
 			</c:forEach>
-		</div>
+		</table>
 	</section>
+
 </body>
 </html>

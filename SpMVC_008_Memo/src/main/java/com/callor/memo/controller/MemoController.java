@@ -30,30 +30,25 @@ public class MemoController {
 	@RequestMapping(value="/m-add", method=RequestMethod.GET)
 	public String insert(@ModelAttribute("memoVO") MemoVO memoVO,Model model,
 						 HttpSession httpSession) {
-		String username = (String) httpSession.getAttribute("USERNAME");
-		if(username == null) {
-			return "redirect:/user/login";
-		}
-		memoVO.setM_author(username);
 		model.addAttribute("memoVO",memoVO);
 		return null;
 	}
 	@RequestMapping(value="/m-add", method=RequestMethod.POST)
 	public String insert(@ModelAttribute("memoVO") MemoVO memoVO
 						,MultipartFile file,HttpSession httpSession) {
-		String username = (String) httpSession.getAttribute("USERNAME");
-		memoVO.setM_author(username);
 		memoService.insertAndUpdate(memoVO,file);
-		return "redirect:/";
+		return "/memo/m-list";
 	}
 	
 	@ModelAttribute("memoVO")
 	public MemoVO makeMemo() {
 		Date date = new Date(System.currentTimeMillis());
 		SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
 
 		MemoVO memoVO = MemoVO.builder()
 				.m_date(dayFormat.format(date))
+				.m_time(timeFormat.format(date))
 				.build();
 		return memoVO;
 	}
@@ -80,11 +75,6 @@ public class MemoController {
 			@ModelAttribute("memoVO") MemoVO memoVO,
 			MultipartFile file,
 			HttpSession httpSession) {
-		String username = (String) httpSession.getAttribute("USERNAME");
-		if(username == null) {
-			return "redirect:/user/login";
-		}
-		memoVO.setM_author(username);
 		Long m_seq = Long.valueOf(seq);
 		memoVO.setM_seq(m_seq);
 		memoService.insertAndUpdate(memoVO,file);
