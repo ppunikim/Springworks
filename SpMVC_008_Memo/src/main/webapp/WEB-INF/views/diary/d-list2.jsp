@@ -144,9 +144,12 @@ img {
 			</c:if>
 			<c:forEach items="${DAIRYLIST}" var="memo" varStatus="INDEX">
 				<tr>
-					<td>${diary.d_date}</td>
+					<td>${diary.d_day}</td>
 					<td>${diary.d_awrite}</td>
 					<td>${diary.d_today}</td>
+					<td id="hs_img"><c:if test="${ not empty diary.d_up_image}">
+							<img src="${rootPath}/upload/${diary.d_up_image}">
+						</c:if></td>
 				</tr>
 			</c:forEach>
 		</table>

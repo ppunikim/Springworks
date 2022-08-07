@@ -34,21 +34,12 @@ public class DiaryController {
 
 	@RequestMapping(value="/d-add", method = RequestMethod.GET)
 	public String insert(@ModelAttribute("diaryVO") DiaryVO diaryVO, 
-					 	  Model model,
-					 	  HttpSession httpSession) {
-		String username = (String) httpSession.getAttribute("USERNAME");
-		if(username == null) {
-			return "redirect:/user/login";
-		}
-		diaryVO.setD_author(username);
+					 	  Model model) {
 		return null;
 	}
 	
 	@RequestMapping(value="/d-add", method = RequestMethod.POST)
-	public String insert(@ModelAttribute("diaryVO") DiaryVO diaryVO,
-					 	 HttpSession httpSession) {
-		String username = (String) httpSession.getAttribute("USERNAME");
-		diaryVO.setD_author(username);
+	public String insert(@ModelAttribute("diaryVO") DiaryVO diaryVO) {
 		diaryService.insert(diaryVO);
 		return "redirect:/";
 	}
@@ -85,14 +76,8 @@ public class DiaryController {
 	public String update(@PathVariable("seq") Long seq,
 						 @ModelAttribute("diaryVO") DiaryVO diaryVO,
 						 HttpSession httpSession) {
-		String username = (String) httpSession.getAttribute("USERNAME");
-		if(username == null) {
-			return "redirect:/user/login"; 
-		}
-		diaryVO.setD_author(username);
-		diaryVO.setD_seq(seq);
 		diaryService.update(diaryVO);
-		return  String.format("redirect:/diary/%s/d-detail", diaryVO.getD_seq());
+		return  String.format("redirect:/diary/%s/d-detail", diaryVO.getD_date());
 	}
 	
 	@RequestMapping(value="{seq}/delete", method=RequestMethod.GET)

@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const memo_div = document.querySelector("div.hs_memo");
+  const memo_table = document.querySelector("div.memo");
 
-  memo_div?.addEventListener("click", (e) => {
-    const clk = e.target;
-    if (clk.tagName === "DIV") {
-      const div = clk.closest("DIV");
-      const seq = div.dataset.seq;
+  memo_table?.addEventListener("click", (e) => {
+    const td = e.target;
+    if (td.tagName === "TD") {
+      const tr = td.closest("TR");
+      const seq = tr.dataset.seq;
       if (seq) {
         document.location.href = `${rootPath}/memo/${seq}/m-detail`;
       }
     }
-  }); //end memo_div
+  }); //end memo_table
 });

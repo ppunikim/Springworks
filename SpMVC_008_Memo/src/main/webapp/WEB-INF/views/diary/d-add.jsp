@@ -84,29 +84,52 @@ form input {
 	<form:form modelAttribute="diaryVO" >
 		<h3>오늘의 일기</h3>
 		<br>
-		<div id="hs_flex">
-		<form:input path="d_seq" type="hidden" />
-		<div id="hs_flex_only">
-			<form:input path="d_author"  value="${D_DIARY.d_author}" readonly="true"/>
-			<form:input path="d_date" readonly="true"/>
-			<form:input path="d_time" type="hidden"/>
-			<form:input path="d_weather" placeholder="오늘의 날씨" autofocus="autofocus" 
-					  	maxlength="8" value="${D_DIARY.d_weather}"/>
-		</div>
-		<div class="d_inner"> * 8자 이하로 작성하세요. </div>
-		<label>제목</label>
-		<form:input path="d_title" placeholder="제목을 입력하세요." required="required"
-					value="${D_DIARY.d_title}"/>
-		<label>내용</label>
-		<textarea name="d_content" placeholder="내용을 입력하세요." required="required">${D_DIARY.d_content}</textarea>
-		<label>아침에는 어떤 일을 하고싶고, 어떤 의도를 가지고 싶은가?</label>
-		<form:input path="d_good1" placeholder="아침 기록" value="${D_DIARY.d_good1}"/>
-		<label>낮의 기분</label>
-		<form:input path="d_good2" placeholder="낮 기분 기록" value="${D_DIARY.d_good2}"/>
-		<label>저녁 기분</label>
-		<form:input path="d_good3" placeholder="저녁 기분 기록" value="${D_DIARY.d_good3}"/>
-		<label>밤: 뭐가 제일 좋았는지, 나에게 해주고 싶은 말</label>
-		<form:input path="d_advice" placeholder="하루 돌아보기" value="${D_DIARY.d_advice}"/>
+		<form:input path="d_date" readonly="true" type="hidden"/>
+	<div>
+		<label>1. 아침 기록</label>
+		<form:select path="d_mor">
+	 		<form:option value="bad" label="꿀꿀" />
+	 		<form:option value="soso" label="그냥저냥" />
+	 		<form:option value="good" label="넘나좋아" />
+	 	</form:select>
+	 	<form:input path="d_mwrite" placeholder="기분을 글로 표현해보세요."/>
+	</div>	
+	<div>
+		<label>2. 점심 기록</label>
+		<form:select path="d_aft">
+	 		<form:option value="bad" label="꿀꿀" />
+	 		<form:option value="soso" label="그냥저냥" />
+	 		<form:option value="good" label="넘나좋아" />
+	 	</form:select>
+	 	<form:input path="d_awrite" placeholder="기분을 글로 표현해보세요." />
+	</div>
+	<div>
+		<label>3. 저녁 기록</label>
+		<form:select path="d_din" lang="지금의 기분">
+	 		<form:option value="bad" label="꿀꿀" />
+	 		<form:option value="soso" label="그냥저냥" />
+	 		<form:option value="good" label="넘나좋아" />
+	 	</form:select>
+	 	<form:input path="d_dwrite" placeholder="기분을 글로 표현해보세요." />
+	</div>
+	<div>
+		<label>4. 밤: 내일 할일 정리하기</label>
+		<form:input path="d_tom" placeholder="내일 할 일을 정리해보세요."/>
+	</div>
+	<div>
+		<label>5. 오늘 하루 가장 좋았던 것 3가지</label>
+		<form:input path="d_happy" placeholder="오늘 하루 있었던 일 중, 가장 좋았던 일 3가지를 기록해보세요." value="${D_DIARY.d_happy}"/>
+	</div>
+	<div>
+		<label>하루평가</label>
+		<form:select path="d_today">
+	 		<form:option value="bad" label="하" />
+	 		<form:option value="soso" label="중" />
+	 		<form:option value="good" label="상" />
+	 	</form:select>
+	</div>
+	<div>
+		<a>리스트로</a>
 		<input class="btn btn-light" type="reset"  value="다시쓰기">
 		<input class="btn" type="submit" value="저장">
 	</div>
@@ -114,4 +137,3 @@ form input {
 </section>
 </body>
 </html>
-

@@ -37,7 +37,7 @@ body {
 	padding:30px 20px 10px 20px;
 	position: fixed;
 	z-index: 999;
-	border: 4px solid #f5db8d;
+	border-bottom: 4px solid #c5b586;
 }
 
 .main h3 {
@@ -93,11 +93,10 @@ header div h3 {
 }
 .hs_memo {
 	width: 90%;
-	height: 150px;
+	height: 120px;
 	padding: 15px;
 	margin: 10px;
 	border-radius: 18px;
-	border-left: 3px solid #878787;
 	box-shadow: 2px 2px 10px #c8c8c8ba;
 	background-color:#fff;
 }
@@ -106,7 +105,7 @@ header div h3 {
 <script>
 	const rootPath = "${rootPath}"
 </script>
-<script src="${rootPath}/static/js/memo_detail.js?ver=10"></script>
+<script src="${rootPath}/static/js/memo_detail.js?ver=11"></script>
 </head>
 <body>
 	<header class="main">
@@ -139,7 +138,11 @@ header div h3 {
 						<h6>${memo.m_date}_</h6> 
 						<h6>${memo.m_time}</h6>
 					</div>
-						<h4>${memo.m_memo}</h4>
+					<table>
+						<tr>
+							<td>${memo.m_memo}</td>
+						</tr>
+					</table>
 				</div>
 			</c:forEach>
 		</div>
