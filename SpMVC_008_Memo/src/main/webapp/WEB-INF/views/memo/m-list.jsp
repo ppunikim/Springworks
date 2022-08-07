@@ -28,18 +28,23 @@ body {
 	display: flex;
 	flex-direction: column;
 	text-align: center;
-	background-color: #ffe9a5;
-}
+	background-image:url(${rootPath}/static/images/paper.png);
+	}
 .main_div {
 	border-radius:15px;
-	background-color: #ffe083;
 	width: 100%;
 	padding:30px 20px 10px 20px;
 	position: fixed;
 	z-index: 999;
-	border-bottom: 4px solid #c5b586;
+	border-bottom: 4px solid #00000061;
+	margin: 0 auto; 
+		background-image:url(${rootPath}/static/images/paper2.PNG);
 }
 
+.auto {
+	max-width: 900px;
+	margin: 0 auto;
+}
 .main h3 {
 	text-align: center;
 }
@@ -95,11 +100,13 @@ header div h3 {
 	width: 90%;
 	height: 120px;
 	padding: 15px;
-	margin: 10px;
 	border-radius: 18px;
-	box-shadow: 2px 2px 10px #c8c8c8ba;
-	background-color:#fff;
+	box-shadow: 2px 2px 10px #a5a5a5ba;
+	background-image:url(${rootPath}/static/images/texture.PNG);
+	max-width: 900px;
+	margin: 10px auto;
 }
+
 </style>
 <link rel="stylesheet" href="${rootPath}/static/css/w3css.css">
 <script>
@@ -111,12 +118,14 @@ header div h3 {
 	<header class="main">
 		<div class="main_div">
 			<form:form modelAttribute="MEMOLIST" class="main_memo">
+				<div class="auto">
 				<textarea name="m_memo" id="MEMO"
 					class="w3-input w3-border input_memo" placeholder="메모를 입력하세요."
 					autofocus="autofocus" required="required" autocomplete="off">${M_MEMO.m_memo}</textarea>
+				</div>
 
 				<div id="hs_save">
-					<a href="${rootPath}" class="w3-button w3-round-xxlarge w3-padding-large">처음화면</a>
+					<a href="${rootPath}" class="w3-button w3-round-xxlarge w3-padding-large">홈으로</a>
 					<input type="reset"
 						class="w3-button w3-round-xxlarge w3-padding-large"> <input
 						type="submit" placeholder="전송" value="저장"

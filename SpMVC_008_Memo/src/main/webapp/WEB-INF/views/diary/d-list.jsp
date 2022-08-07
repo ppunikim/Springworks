@@ -27,6 +27,22 @@ body {
 	display: flex;
 	flex-direction: column;
 	text-align: center;
+	background-color: #efd0d6; 
+}
+
+section>div {
+	width: 80%;
+	margin: 15px auto;
+	border: 2px solid #4e4b4b;
+	padding: 15px 0 15px 0;
+	border-radius: 15px;
+	max-width: 800px; 
+	background-image:url(${rootPath}/static/images/texture.PNG);
+}
+
+section .hs_content {
+	border-bottom: 1px solid black;
+	padding: 10px 0 10px 20px;
 }
 
 .hs_flex {
@@ -71,7 +87,6 @@ div h2 {
 }
 
 table {
-	border: 1px solid black;
 	border-collapse: collapse;
 	margin-bottom: 10px;
 }
@@ -81,39 +96,44 @@ table tr td, table tr th {
 	padding: 4px;
 }
 
-table tr th {
-	background-color: #8d8d8d;
-	border: 1px solid #f2eddc;
-	border-radius: 4px;
-}
-
 table tr td {
-	cursor: pointer;
-	padding: 12px;
+	
+	padding: 12px 20px;
 	border-bottom: 2.25px solid #908a8a82;
-	border-left: 1px solid #f2eddc;
-	border-right: 1px solid #f2eddc;
+	cursor: pointer;
 }
 
 img {
-	width: 120px;
+	width: 100px;
+	transform: rotate(10deg);
+}
+#hs_img {
+	margin-right: 25px;
+}
+.hs_left {
+	margin-left: auto
 }
 
 .add_btn {
-	color: #383737bf;
-	font-weight: 300;
+	color: #262525f2;
 	text-decoration: none;
-	margin-left: 5px;
-	padding-right: 20px;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	font-size: 15px;
+	margin-left: 10px;
+	font-size: 17px;
+	line-height: 25px;
+	font-weight: 530;
 }
-
 .add_btn:hover {
 	cursor: pointer;
-	font-weight: bolder;
-
+	font-weight: 650;
+}
+.home {
+	margin-left: auto;
+	margin-right: 10px;
+	color: #9a9a9a;
+	text-decoration: none;
+	
+	
+}
 </style>
 <script>
 	const rootPath = "${rootPath}"
@@ -122,34 +142,38 @@ img {
 </head>
 <body>
 	<section>
-		<div class="hs_flex">
-			<h3>일기장</h3>
-				<a class="add_btn" href="${rootPath}/diary/d-add">+ 추가</a>
+		<div>
+			<div class="hs_flex hs_content">
+				<h3>제목</h3>
+				<a class="add_btn" href="${rootPath}/diary/d-add">오늘은 일기쓰는 날</a>
+				<a href="${rootPath}" class="home">홈으로</a>
+			</div>
+			<table class="memos scroll">
+				<colgroup>
+					<col width="25%">
+					<col width="25%">
+					<col width="25%">
+					<col width="25%">
+				</colgroup>
+				<c:if test="${empty MEMOLIST}">
+					<tr>
+						<td colspan="6" class="hs_blank">작성한 내용이 없습니다.</td>
+					</tr>
+				</c:if>
+				<c:forEach items="${DAIRYLIST}" var="memo" varStatus="INDEX">
+					<tr>
+						<td>${diary.d_date}</td>
+						<td>${diary.d_mor}</td>
+						<td>${diary.d_aft}</td>
+						<td>${diary.d_din}</td>
+					</tr>
+				</c:forEach>
+			</table>
+			<div id="hs_img" class="hs_flex">
+				<div class="hs_left"></div>
+				<img src="${rootPath}/static/images/good.png">
+			</div>
 		</div>
-		<table class="memos scroll">
-			<colgroup>
-				<col width="20%">
-				<col width="20%">
-				<col width="25%">
-			</colgroup>
-			<tr>
-				<th>작성일자</th>
-				<th>아침기록</th>
-				<th>오늘하루</th>
-			</tr>
-			<c:if test="${empty MEMOLIST}">
-				<tr>
-					<td colspan="6">작성한 내용이 없습니다.</td>
-				</tr>
-			</c:if>
-			<c:forEach items="${DAIRYLIST}" var="memo" varStatus="INDEX">
-				<tr>
-					<td>${diary.d_date}</td>
-					<td>${diary.d_awrite}</td>
-					<td>${diary.d_today}</td>
-				</tr>
-			</c:forEach>
-		</table>
 	</section>
 
 </body>
