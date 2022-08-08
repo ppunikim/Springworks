@@ -150,10 +150,6 @@ footer div a {
 				<div class="z_log hs_menu">
 					<div class="z_log hs_top hs_head">about</div>
 					<div class="hs_drop">
-						<sec:authorize access="isAnnonymous()">
-							 <a	href="${rootPath}/user/login">로그인</a> 
-							 <a	href="${rootPath}/user/join">회원가입</a> 
-						</sec:authorize>
 						<sec:authorize
 								access="isAuthenticated() AND hasRole('ROLE_ADMIN')">
 								<a href="${rootPath}/admin/home">admin</a>

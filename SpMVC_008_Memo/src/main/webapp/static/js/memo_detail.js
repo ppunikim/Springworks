@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const memo_table = document.querySelector("div.memo");
+  const memo_table = document.querySelector("table.hs_container");
 
   memo_table?.addEventListener("click", (e) => {
     const td = e.target;
