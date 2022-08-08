@@ -34,7 +34,7 @@ public class AuthoProviderImpl implements AuthenticationProvider{
 		if(userVO == null) {
 			throw new UsernameNotFoundException(username + "은 없습니다. 회원가입을 먼저 해주세요.");
 		}
-		if(userVO.getPassword().equals(password)) {
+		if(!(userVO.getPassword().equals(password))) {
 			throw new BadCredentialsException("비밀번호 오류입니다. 다시 입력해주세요.");
 		}
 		

@@ -37,11 +37,11 @@ public class UserController {
 		return null;
 	}
 	
-	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String login(UserVO userVO, HttpSession httpSession) {
-		httpSession.setAttribute("USER", userVO);
-		return "redirect:/";
-	}
+//	@RequestMapping(value="/login", method=RequestMethod.POST)
+//	public String login(UserVO userVO, HttpSession httpSession) {
+//		httpSession.setAttribute("USER", userVO);
+//		return "redirect:/";
+//	}
 	
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
 	public String logout(HttpSession httpSession) {
