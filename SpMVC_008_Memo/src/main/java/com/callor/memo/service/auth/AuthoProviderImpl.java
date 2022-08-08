@@ -3,6 +3,7 @@ package com.callor.memo.service.auth;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -13,32 +14,37 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.callor.memo.model.AuthorityVO;
 import com.callor.memo.model.UserVO;
+import com.callor.memo.persistance.UserDao;
 
 @Service("authenticationProvider")
 public class AuthoProviderImpl implements AuthenticationProvider{
 
+	@Autowired
+	private UserDao userDao;
+	
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 						 //null 값 오류를 방지하기 위해 String으로 형변환해주기
 		String username = (String)authentication.getPrincipal();	
 		String password = (String)authentication.getCredentials();
 		
-		if(username.equals("ppunikim") == false) {
-			throw new UsernameNotFoundException("아이디가 잘못되었습니다.");
+		UserVO userVO = userDao.findById(username);
+		if(userVO == null) {
+			throw new UsernameNotFoundException(username + "은 없습니다. 회원가입을 먼저 해주세요.");
 		}
-		if(password.equals("1234") == false) {
-			throw new BadCredentialsException("비밀번호가 잘못되었습니다.");
+		if(userVO.getPassword().equals(password)) {
+			throw new BadCredentialsException("비밀번호 오류입니다. 다시 입력해주세요.");
 		}
 		
-		UserVO userVO = UserVO.builder().username(username).password(password)
-				.email("email").realname("뿐순").nickname("뿌뿌").build();
-		
+		List<AuthorityVO> authList = userDao.select_role(username);
 		List<GrantedAuthority> grantList = new ArrayList<>();
-
-		grantList.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-		grantList.add(new SimpleGrantedAuthority("ROLE_USER"));
-
+		for(AuthorityVO vo : authList) {
+			grantList.add(new SimpleGrantedAuthority(vo.getAuthority()));
+		}
+		userVO.setAuthorities(grantList);
+		
 		//사용자 이름과 비번, 권한리스트로 token 발생
 		UsernamePasswordAuthenticationToken token = 
 				new UsernamePasswordAuthenticationToken(userVO, null, grantList);

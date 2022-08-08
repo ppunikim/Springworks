@@ -30,9 +30,11 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	// localhost:8080/context/user/login
 	@RequestMapping(value="/login", method =RequestMethod.GET)
-	public String login() {
-		return "/user/login";
+	public String login(String error, Model model) {
+		model.addAttribute("error",error);
+		return null;
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)

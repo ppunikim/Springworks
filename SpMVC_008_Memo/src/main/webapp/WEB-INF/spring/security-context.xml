@@ -32,8 +32,16 @@
 
 		<sec:access-denied-handler error-page="/403" />
 
-		<sec:form-login />
-		<sec:logout />
+		<sec:form-login login-page="/user/login?error=LOGIN_NEED"
+						login-processing-url="/user/login"
+						username-parameter="username"
+						password-parameter="password" />
+		<sec:logout logout-url="/logout"
+					invalidate-session="true"
+					delete-cookies="JSESSIONID"
+					logout-success-url="/user/login"
+					/>
+					
 	</sec:http>
 	
 	<!-- 
