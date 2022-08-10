@@ -81,4 +81,13 @@
 	 	)
 	 </select>
 	 
+	  	<select id="create_auth_table">
+ 	create table IF NOT EXISTS tbl_authorities (
+		seq 		BIGINT AUTO_INCREMENT PRIMARY KEY,
+	    username	VARCHAR(20),
+	    authority 	VARCHAR(20)
+	)
+ 	</select>
+	 
+	 
 </mapper>

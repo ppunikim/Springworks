@@ -28,7 +28,6 @@
 		<c:if test="${not empty message}">
 			<div class="w3-text-red w3-padding-16">${message}</div>
 		</c:if>
-		
 		<label class="w3-text-blue"><strong>USER NAME</strong></label>
 		<input name="username" class="w3-input w3-border" />
 		
