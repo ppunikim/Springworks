@@ -52,9 +52,6 @@ public class MemoServiceImplV1 implements MemoService{
 	@Override
 	public MemoVO findById(Long VO) {
 		MemoVO memoVO = memoDao.findById(VO);
-		if(fileUp.fileCheck(memoVO.getM_up_image()) == false) {
-			memoVO.setM_up_image(null);
-		}
 		return memoVO;
 	}
 
@@ -72,10 +69,7 @@ public class MemoServiceImplV1 implements MemoService{
 
 	@Override
 	public int delete(Long id) {
-		MemoVO memo = memoDao.findById(id);
-		fileUp.fileDelete(memo.getM_up_image());
-		memoDao.delete(id);
-		return 0;
+		return memoDao.delete(id); 
 	}
 
 	@Override

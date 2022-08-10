@@ -1,5 +1,7 @@
 package com.callor.memo.controller;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -50,8 +52,7 @@ public class UserController {
 //	}
 	
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
-	public String logout(HttpSession httpSession) {
-		httpSession.removeAttribute("USERNAME"); //세션 정보 제거
+	public String logout() {
 		return "redirect:/";
 	}
 	

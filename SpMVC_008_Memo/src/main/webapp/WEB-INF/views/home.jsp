@@ -38,7 +38,7 @@
 							<br>
 							<a href="${rootPath}/book/b-add">또가자</a>
 							<br>
-							<form:form action="${rootPath}/logout">
+							<form:form action="${rootPath}/user/login">
 								<button>logout</button>
 							</form:form>
 						</sec:authorize>

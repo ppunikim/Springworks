@@ -28,6 +28,20 @@ public class MemoController {
 	@Autowired
 	private MemoService memoService;
 	
+	@ModelAttribute("memoVO")
+	public MemoVO makeMemo() {
+		Date date = new Date(System.currentTimeMillis());
+		SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+
+		MemoVO memoVO = MemoVO.builder()
+				.m_date(dayFormat.format(date))
+				.m_time(timeFormat.format(date))
+				.build();
+		return memoVO;
+	}
+
+	
 	@RequestMapping(value="/m-list", method=RequestMethod.GET)
 	public String list(Model model, Principal principal) {
 		List<MemoVO> mList = memoService.findByUsername(principal.getName());
@@ -44,51 +58,40 @@ public class MemoController {
 		return "redirect:/memo/m-list";
 	}
 	
-	@ModelAttribute("memoVO")
-	public MemoVO makeMemo() {
-		Date date = new Date(System.currentTimeMillis());
-		SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
-		SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
-
-		MemoVO memoVO = MemoVO.builder()
-				.m_date(dayFormat.format(date))
-				.m_time(timeFormat.format(date))
-				.build();
-		return memoVO;
-	}
-	
 	@RequestMapping(value="/{seq}/m-detail", method =RequestMethod.GET)
-	public String detail(@PathVariable("seq") String seq, Model model,
-						 @ModelAttribute("memoVO") MemoVO memoVO) {
-		memoVO.getM_seq();
-		long m_seq = Long.valueOf(seq);
+	public String detail(@PathVariable("seq") Long m_seq, Model model,
+						 @ModelAttribute("memoVO") MemoVO memoVO,
+						 Principal principal) {
+		memoVO.setM_username(principal.getName());	
 		memoVO = memoService.findById(m_seq);
 		model.addAttribute("M_MEMO",memoVO);
-		return "memo/m-detail";
+		return "memo/m-list";
 	}
+//	@RequestMapping(value="/{seq}/update", method = RequestMethod.GET)
+//	public String update(
+//			@PathVariable("seq") String seq, Model model) {
+//		MemoVO memoVO = memoService.findById(Long.valueOf(seq));
+//		model.addAttribute("M_MEMO", memoVO);
+//		return "memo/m-add";
+//	}
 	
-	@RequestMapping(value="/{seq}/update", method = RequestMethod.GET)
-	public String update(
-			@PathVariable("seq") String seq, Model model) {
-		MemoVO memoVO = memoService.findById(Long.valueOf(seq));
-		model.addAttribute("M_MEMO", memoVO);
-		return "memo/m-add";
-	}
-	@RequestMapping(value="/{seq}/update", method = RequestMethod.POST)
-	public String update(@PathVariable("seq") String seq, 
-			@ModelAttribute("memoVO") MemoVO memoVO,
-			MultipartFile file,
-			HttpSession httpSession) {
-		Long m_seq = Long.valueOf(seq);
+	@RequestMapping(value="/{seq}/m-detail", method = RequestMethod.POST)
+	public String update(@PathVariable("seq") Long m_seq, 
+			@ModelAttribute("memoVO") MemoVO memoVO,Principal principal) {
+		memoVO.setM_username(principal.getName());	
 		memoVO.setM_seq(m_seq);
-		memoService.insertAndUpdate(memoVO,file);
-		return String.format("redirect:/memo/%s/m-detail",seq);
+		log.debug("업뎃 {}", memoVO);
+		memoService.update(memoVO);
+		//return String.format("redirect:/memo/%s/m-detail",m_seq);
+		return "redirect:/memo/m-list";
 	}
 	
 	@RequestMapping(value="/{seq}/delete", method = RequestMethod.GET)
-	public String delete(@PathVariable("seq") String seq) {
-		memoService.delete(Long.valueOf(seq));
-		return "redirect:/";
+	public String delete(@PathVariable("seq") Long m_seq,
+			@ModelAttribute("memoVO") MemoVO memoVO,Principal principal) {
+		memoVO.setM_username(principal.getName());	
+		memoService.delete(m_seq);
+		return "redirect:/memo/m-list";
 	}
 	
 }

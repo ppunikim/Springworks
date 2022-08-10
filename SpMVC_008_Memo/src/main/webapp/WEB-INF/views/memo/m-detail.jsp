@@ -50,7 +50,7 @@ body {
 }
 
 #hs_list a {
-	color: #eee;
+	color: #393939;
 }
 .input_memo div p{
 	font-weight: 600;
