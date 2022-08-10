@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
 <c:set value="${pageContext.request.contextPath}" var="rootPath" />
 <!DOCTYPE html>
 <html>
@@ -144,7 +146,7 @@ header div h3 {
 					<td colspan="6">작성한 내용이 없습니다.</td>
 				</tr>
 			</c:if>
-					<table class="hs_memo hs_container" >
+			<table class="hs_memo hs_container">
 				<c:forEach items="${MEMOLIST}" var="memo" varStatus="INDEX">
 					<tr data-seq="${memo.m_seq}">
 						<td>${memo.m_date}_</td>
@@ -153,6 +155,7 @@ header div h3 {
 					</tr>
 				</c:forEach>
 			</table>
+		
 		</div>
 	</nav>
 </body>

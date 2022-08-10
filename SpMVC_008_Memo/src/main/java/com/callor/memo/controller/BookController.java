@@ -18,8 +18,6 @@ import com.callor.memo.service.BookService;
 
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
-@RequestMapping(value="/book")
-@Controller
 public class BookController {
 	
 	@Autowired

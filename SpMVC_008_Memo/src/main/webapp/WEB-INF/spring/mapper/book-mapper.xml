@@ -62,7 +62,7 @@
  	</delete>
  
  	<select id="create_book_table">
- 		CREATE TABLE IF NOT EXISTS tbl_book ( 
+ 		CREATE TABLE IF NOT EXISTS tbl_outside ( 
  			b_seq		BIGINT PRIMARY KEY AUTO_INCREMENT,
  			b_author	VARCHAR(25) NOT NULL,
  			b_date	VARCHAR(10) NOT NULL,

@@ -1,56 +1,53 @@
 package com.callor.memo.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.callor.memo.model.AuthorityVO;
 import com.callor.memo.model.UserVO;
+import com.callor.memo.persistance.UserDao;
 import com.callor.memo.service.UserService;
 
 @Service
 public class UserServiceImplV1 implements UserService{
 
+	@Autowired
+	private UserDao userDao;
+	
 	@Override
 	public List<UserVO> selectAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.selectAll();
 	}
 
 	@Override
 	public UserVO findById(String VO) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.findById(VO);
 	}
 
 	@Override
 	public int insert(UserVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return userDao.insert(vo);
+
 	}
 
 	@Override
 	public int update(UserVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		return userDao.update(vo);
 	}
 
 	@Override
 	public int delete(String id) {
-		// TODO Auto-generated method stub
-		return 0;
+		return userDao.delete(id);
 	}
 
-	@Override
-	public UserVO login(UserVO userVO) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public List<AuthorityVO> select_role(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.select_role(username);
 	}
-	
+ 
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.callor.naver.persistance.UserDao">
+<mapper namespace="com.callor.memo.persistance.UserDao">
 <!-- mapper는 GenericDao를 상속받기 위해 사용하는 것이다. -->
 	<select id="selectAll" resultType="UserVO">
 		SELECT * FROM tbl_users
@@ -57,6 +57,18 @@
 	<delete id="delete">
 		DELETE FROM tbl_users WHERE username = #{username}
 	</delete>
+	 	<select id="select_role" resultType="AuthorityVO">
+ 		SELECT * FROM tbl_authorities
+ 		WHERE username = #{username}
+ 	</select>
+ 	
+ 	<insert id="role_insert" parameterType="AuthorityVO">
+ 		INSERT INTO tbl_authorities (username, authority)
+ 		VALUES
+ 		<foreach collection="list" item="vo" separator=",">
+ 			(#{vo.username},#{vo.authority})
+ 		</foreach>
+ 	</insert>
 	
 	 <select id="create_user_table">
 	 	CREATE TABLE IF NOT EXISTS tbl_users (
@@ -68,4 +80,5 @@
 			role		VARCHAR(5)		
 	 	)
 	 </select>
+	 
 </mapper>

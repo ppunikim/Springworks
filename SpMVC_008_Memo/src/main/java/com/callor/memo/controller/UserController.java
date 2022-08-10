@@ -17,7 +17,12 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class UserController {
 	
+	
 	private UserService userService;
+	public UserController(UserService userService) {
+		this.userService = userService;
+	}
+
 	
 	@RequestMapping(value="/join", method =RequestMethod.GET)
 	public String join() {
@@ -25,8 +30,9 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/join", method =RequestMethod.POST)
-	public String join(String username, String password) {
-		log.debug("로그인 정보 {}", username);
+	public String join(UserVO userVO) {
+		userService.insert(userVO);
+		log.debug("회원가입 정보 {}", userVO);
 		return "redirect:/";
 	}
 	

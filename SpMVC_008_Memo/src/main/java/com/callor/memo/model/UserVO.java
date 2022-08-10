@@ -41,5 +41,6 @@ public class UserVO implements UserDetails{
 	private String tel;
 	private String realname;
 	private String nickname;
+	private String role;
 	
 }

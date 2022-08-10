@@ -79,8 +79,8 @@ public class MemoServiceImplV1 implements MemoService{
 	}
 
 	@Override
-	public List<MemoVO> findByAuthor(String username) {
-		return memoDao.findByAuthor(username);
+	public List<MemoVO> findByUsername(String username) {
+		return memoDao.findByUsername(username);
 	}
 
 	@Override
@@ -101,4 +101,6 @@ public class MemoServiceImplV1 implements MemoService{
 		memoVO.setM_up_image(fileUp.fileUp(file));
 		return memoDao.insert(memoVO);
 	}
+
+
 }

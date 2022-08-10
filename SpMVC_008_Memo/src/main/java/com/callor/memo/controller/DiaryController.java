@@ -55,34 +55,32 @@ public class DiaryController {
 		return diaryVO;
 	}
 	
-	@RequestMapping(value="{seq}/d-detail", method = RequestMethod.GET)
-	public String view(@PathVariable("seq") Long seq, Model model,
-					    @ModelAttribute("diaryVO") DiaryVO diaryVO) {
-		diaryVO = diaryService.findById(seq);
+	@RequestMapping(value="{d_day}/d-detail", method = RequestMethod.GET)
+	public String view(Model model,@ModelAttribute("diaryVO") DiaryVO diaryVO, @PathVariable("d_day") String day) {
+		diaryVO = diaryService.findById(day);
 		model.addAttribute("D_DIARY",diaryVO);
 		return "diary/d-detail";
 	}
 	
-	@RequestMapping(value="{seq}/update", method=RequestMethod.GET)
-	public String update(@PathVariable("seq") Long seq,
+	@RequestMapping(value="{d_day}/update", method=RequestMethod.GET)
+	public String update(@PathVariable("d_day") String day,
 						 @ModelAttribute("diaryVO") DiaryVO diaryVO,
 						 Model model) {
-		diaryVO = diaryService.findById(seq);
+		diaryVO = diaryService.findById(day);
 		model.addAttribute("D_DIARY",diaryVO);
 		return "diary/d-add";
 	}
 	
-	@RequestMapping(value="{seq}/update", method = RequestMethod.POST)
-	public String update(@PathVariable("seq") Long seq,
-						 @ModelAttribute("diaryVO") DiaryVO diaryVO,
+	@RequestMapping(value="{d_day}/update", method = RequestMethod.POST)
+	public String update(@ModelAttribute("diaryVO") DiaryVO diaryVO,
 						 HttpSession httpSession) {
 		diaryService.update(diaryVO);
 		return  String.format("redirect:/diary/%s/d-detail", diaryVO.getD_date());
 	}
 	
-	@RequestMapping(value="{seq}/delete", method=RequestMethod.GET)
-	public String delete(@PathVariable("seq") Long seq) {
-		diaryService.delete(seq);
+	@RequestMapping(value="{d_day}/delete", method=RequestMethod.GET)
+	public String delete(@PathVariable("d_day") String day) {
+		diaryService.delete(day);
 		return "redirect:/";
 	}
 	

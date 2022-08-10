@@ -33,7 +33,7 @@ public class DiaryServiceImplV1 implements DiaryService{
 		return diaryList;
 	}
 	@Override
-	public DiaryVO findById(Long VO) {
+	public DiaryVO findById(String VO) {
 		DiaryVO diaryVO = diaryDao.findById(VO);
 		return diaryVO;
 	}
@@ -48,7 +48,7 @@ public class DiaryServiceImplV1 implements DiaryService{
 		return update;
 	}
 	@Override
-	public int delete(Long id) {
+	public int delete(String id) {
 		int delete = diaryDao.delete(id);
 		return delete;
 	}
@@ -72,7 +72,8 @@ public class DiaryServiceImplV1 implements DiaryService{
 	public List<DiaryVO> findByAuthor(String username) {
 		return diaryDao.findByAuthor(username);
 	}
-	
+
+
 	
 	
 }

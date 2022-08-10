@@ -1,5 +1,6 @@
 package com.callor.memo.controller;
 
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -28,15 +29,16 @@ public class MemoController {
 	private MemoService memoService;
 	
 	@RequestMapping(value="/m-list", method=RequestMethod.GET)
-	public String list(Model model) {
-		List<MemoVO> mList = memoService.selectAll();
+	public String list(Model model, Principal principal) {
+		List<MemoVO> mList = memoService.findByUsername(principal.getName());
 		model.addAttribute("MEMOLIST", mList);
 		return "memo/m-list";
 	}
 
 	@RequestMapping(value="/m-list", method=RequestMethod.POST)
 	public String insert(@ModelAttribute("memoVO") MemoVO memoVO
-						,MultipartFile file) {
+						,MultipartFile file, Principal principal) {
+		memoVO.setM_username(principal.getName());
 		log.debug("여기 insert {} ",memoVO);
 		memoService.insert(memoVO);
 		return "redirect:/memo/m-list";

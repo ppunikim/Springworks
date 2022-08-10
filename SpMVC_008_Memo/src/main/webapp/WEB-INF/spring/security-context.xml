@@ -28,7 +28,6 @@
 
 
 		<sec:intercept-url pattern="/403" access="permitAll" />
-		<sec:intercept-url pattern="/" access="isAuthenticated()" />
 
 		<sec:access-denied-handler error-page="/403" />
 
