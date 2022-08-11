@@ -13,35 +13,38 @@
 	const rootPath = "${rootPath}"
 </script>
 <script src="${rootPath}/static/js/memo_detail.js?ver=8"></script>
-<link rel="stylesheet" href="${rootPath}/static/css/diary_list.css?ver=2" />
+<link rel="stylesheet"
+	href="${rootPath}/static/css/diary_list.css?ver=3" />
 </head>
 <body>
 	<section>
 		<div>
 			<div class="hs_flex hs_content">
 				<h3>제목</h3>
-				<a class="add_btn" href="${rootPath}/diary/d-add">오늘은 일기쓰는 날</a>
-				<a href="${rootPath}" class="home">홈으로</a>
+				<a class="add_btn" href="${rootPath}/diary/d-add">오늘은 일기쓰는 날</a> <a
+					href="${rootPath}" class="home">홈으로</a>
 			</div>
-			<table class="memos scroll">
+			<c:if test="${empty DIARYLIST}">
+				<tr>
+					<td colspan="6" class="hs_blank">작성한 내용이 없습니다.</td>
+				</tr>
+			</c:if>
+			<table class="memos scroll diarys">
 				<colgroup>
-					<col width="25%">
-					<col width="25%">
-					<col width="25%">
-					<col width="25%">
+					<col width="24%">
+					<col width="19%">
+					<col width="19%">
+					<col width="19%">
+					<col width="19%">
 				</colgroup>
-				<c:if test="${empty MEMOLIST}">
-					<tr>
-						<td colspan="6" class="hs_blank">작성한 내용이 없습니다.</td>
-					</tr>
-				</c:if>
-				<c:forEach items="${DAIRYLIST}" var="memo" varStatus="INDEX">
-					<tr>
-						<td>${diary.d_date}</td>
-						<td>${diary.d_mor}</td>
-						<td>${diary.d_aft}</td>
-						<td>${diary.d_din}</td>
-					</tr>
+				<c:forEach items="${DIARYLIST}" var="diary" >
+						<tr>
+							<td><a href="${rootPath}/diary/${diary.d_day}/d-detail">${diary.d_day}</a></td>
+							<td>${diary.d_mor}</td>
+							<td>${diary.d_aft}</td>
+							<td>${diary.d_din}</td>
+							<td>${diary.d_today}</td>
+						</tr>
 				</c:forEach>
 			</table>
 			<div id="hs_img" class="hs_flex">

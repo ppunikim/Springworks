@@ -2,6 +2,7 @@ package com.callor.memo.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -26,62 +27,62 @@ public class DiaryController {
 	public DiaryController(DiaryService diaryService) {
 		this.diaryService = diaryService;
 	}
-	
-	@RequestMapping(value="/d-list" , method=RequestMethod.GET)
-	public String d_home() {
-		return "/diary/d-list";
-	}
 
-	@RequestMapping(value="/d-add", method = RequestMethod.GET)
-	public String insert(@ModelAttribute("diaryVO") DiaryVO diaryVO, 
-					 	  Model model) {
-		return null;
-	}
-	
-	@RequestMapping(value="/d-add", method = RequestMethod.POST)
-	public String insert(@ModelAttribute("diaryVO") DiaryVO diaryVO) {
-		diaryService.insert(diaryVO);
-		return "redirect:/";
-	}
-	
 	@ModelAttribute("diaryVO")
 	public DiaryVO makeDiary() {
 		Date date = new Date(System.currentTimeMillis());
 		SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
 		
 		DiaryVO diaryVO = DiaryVO.builder()
-							.d_date(dayFormat.format(date))
+							.d_day(dayFormat.format(date))
 							.build();
 		return diaryVO;
 	}
+
 	
-	@RequestMapping(value="{d_day}/d-detail", method = RequestMethod.GET)
-	public String view(Model model,@ModelAttribute("diaryVO") DiaryVO diaryVO, @PathVariable("d_day") String day) {
-		diaryVO = diaryService.findById(day);
-		model.addAttribute("D_DIARY",diaryVO);
-		return "diary/d-detail";
+	@RequestMapping(value="/d-list" , method=RequestMethod.GET)
+	public String d_home(Model model) {
+		List<DiaryVO> dList = diaryService.selectAll();
+		model.addAttribute("DIARYLIST",dList);
+		log.debug(" 리스트확인" + dList.toString());
+		return "diary/d-list";
+	}
+
+	@RequestMapping(value="/d-add", method = RequestMethod.GET)
+	public String insert(@ModelAttribute("diaryVO") DiaryVO diaryVO, 
+					 	  Model model) {
+		
+		return null;
 	}
 	
-	@RequestMapping(value="{d_day}/update", method=RequestMethod.GET)
-	public String update(@PathVariable("d_day") String day,
-						 @ModelAttribute("diaryVO") DiaryVO diaryVO,
-						 Model model) {
-		diaryVO = diaryService.findById(day);
+	@RequestMapping(value="/d-add", method = RequestMethod.POST)
+	public String insert(@ModelAttribute("diaryVO") DiaryVO diaryVO) {
+		diaryService.insert(diaryVO);
+		return "redirect:/diary/d-list";
+	}
+	
+	
+	@RequestMapping(value="/{d_day}/d-detail", method = RequestMethod.GET)
+	public String view(Model model, @PathVariable("d_day") String d_day) {
+		DiaryVO diaryVO = diaryService.findById(d_day);
+		log.debug(" VO확인" + diaryVO.toString());
 		model.addAttribute("D_DIARY",diaryVO);
 		return "diary/d-add";
 	}
 	
-	@RequestMapping(value="{d_day}/update", method = RequestMethod.POST)
-	public String update(@ModelAttribute("diaryVO") DiaryVO diaryVO,
-						 HttpSession httpSession) {
+	
+	@RequestMapping(value="/{d_day}/d-detail", method = RequestMethod.POST)
+	public String update(@ModelAttribute("diaryVO") DiaryVO diaryVO
+						 ) {
 		diaryService.update(diaryVO);
-		return  String.format("redirect:/diary/%s/d-detail", diaryVO.getD_date());
+		return "redirect:/diary/d-list";
 	}
 	
-	@RequestMapping(value="{d_day}/delete", method=RequestMethod.GET)
-	public String delete(@PathVariable("d_day") String day) {
-		diaryService.delete(day);
-		return "redirect:/";
+	
+	@RequestMapping(value="/{d_day}/delete", method=RequestMethod.GET)
+	public String delete(@PathVariable("d_day") String d_day) {
+		diaryService.delete(d_day);
+		return "redirect:/diary/d-list";
 	}
 	
 }

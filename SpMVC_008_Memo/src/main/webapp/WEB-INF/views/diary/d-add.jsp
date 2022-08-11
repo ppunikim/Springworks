@@ -94,6 +94,14 @@ form input {
 	text-decoration: none;
 	border: 1px solid black;
 }
+
+.hs_mor {
+	justify-content: center;
+	display: flex;
+	align-items: center;
+}
+input {
+}
 </style>
 <script>
 	const rootPath = "${rootPath}"
@@ -104,15 +112,17 @@ form input {
 	<section>
 		<form:form modelAttribute="diaryVO">
 			<h3>행동은 늘 행동하지 않은것보다 낫다.</h3>
-			<form:input path="d_date" readonly="true" type="hidden" />
+			<form:input path="d_day" readonly="true" type="hidden" />
 
 			<div class="hs_flex">
 				<label>1. 아침 기록</label>
-				<div>
-					<label>지금의 기분</label>
-					<form:radiobutton path="d_mor" label="꿀꿀" />
-					<form:radiobutton path="d_mor" label="그냥저냥" />
-					<form:radiobutton path="d_mor" label="넘나좋아" />
+				<div class="hs_mor">
+					<label>bad</label><input type="radio" name="d_mor" value="m_bad"
+						<c:if test="${D_DIARY.d_mor == 'm_bad'}">checked</c:if> /> <label>soso</label><input
+						type="radio" name="d_mor" value="m_soso"
+						<c:if test="${D_DIARY.d_mor == 'm_soso'}">checked</c:if> /> <label>good</label><input
+						type="radio" name="d_mor" value="m_good"
+						<c:if test="${D_DIARY.d_mor == 'm_good'}">checked</c:if> />
 				</div>
 				<div>
 					<form:input path="d_mwrite" placeholder="기분을 글로 표현해보세요." />
@@ -120,11 +130,13 @@ form input {
 			</div>
 			<div class="hs_flex">
 				<label>2. 점심 기록</label>
-				<div>
-					<label>지금의 기분</label>
-				<form:radiobutton path="d_mor" label="꿀꿀" />
-				<form:radiobutton path="d_mor" label="그냥저냥" />
-				<form:radiobutton path="d_mor" label="넘나좋아" />
+				<div class="hs_mor">
+					<label>bad</label> <input type="radio" name="d_aft" value="a_bad"
+						<c:if test="${D_DIARY.d_aft== 'a_bad'}">checked</c:if> /> <label>soso</label>
+					<input type="radio" name="d_aft" value="a_soso"
+						<c:if test="${D_DIARY.d_aft== 'a_soso'}">checked</c:if> /> <label>good</label>
+					<input type="radio" name="d_aft" value="a_good"
+						<c:if test="${D_DIARY.d_aft== 'a_good'}">checked</c:if> />
 				</div>
 				<div>
 					<form:input path="d_awrite" placeholder="기분을 글로 표현해보세요." />
@@ -132,11 +144,14 @@ form input {
 			</div>
 			<div class="hs_flex">
 				<label>3. 저녁 기록</label>
-				<div>
-					<label>지금의 기분</label>
-				<form:radiobutton path="d_mor" label="꿀꿀" />
-				<form:radiobutton path="d_mor" label="그냥저냥" />
-				<form:radiobutton path="d_mor" label="넘나좋아" />
+				<div class="hs_mor">
+					<label>bad</label> <input type="radio" name="d_din" value="d_bad"
+						<c:if test="${D_DIARY.d_din== 'd_bad'}">checked</c:if> /> <label>soso</label>
+					<input type="radio" name="d_din" value="d_soso"
+						<c:if test="${D_DIARY.d_din== 'd_soso'}">checked</c:if> /> <label>good</label>
+					<input type="radio" name="d_din" value="d_good"
+						<c:if test="${D_DIARY.d_din== 'd_good'}">checked</c:if> />
+
 				</div>
 				<div>
 					<form:input path="d_dwrite" placeholder="기분을 글로 표현해보세요." />
@@ -162,9 +177,12 @@ form input {
 			</div>
 			<div>
 				<label>하루평가</label>
-				<form:radiobutton path="d_today" label="하" />
-				<form:radiobutton path="d_today" label="중" />
-				<form:radiobutton path="d_today" label="상" />
+				<div class="hs_mor">
+					<label>bad</label> <input type="radio" name="d_today" value="t_bad" />
+					<label>soso</label> <input type="radio" name="d_today"
+						value="t_soso" /> <label>good</label> <input type="radio"
+						name="d_today" value="t_good" />
+				</div>
 			</div>
 			<div class="btns">
 				<a href="${rootPath}/diary/d-list" class="btn a_btn">리스트로</a> <input
@@ -174,4 +192,7 @@ form input {
 		</form:form>
 	</section>
 </body>
+<script>
+	function
+</script>
 </html>

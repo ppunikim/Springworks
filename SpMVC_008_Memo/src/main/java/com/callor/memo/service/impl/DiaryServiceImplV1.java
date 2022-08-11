@@ -33,14 +33,13 @@ public class DiaryServiceImplV1 implements DiaryService{
 		return diaryList;
 	}
 	@Override
-	public DiaryVO findById(String VO) {
-		DiaryVO diaryVO = diaryDao.findById(VO);
+	public DiaryVO findById(String d_day) {
+		DiaryVO diaryVO = diaryDao.findById(d_day);
 		return diaryVO;
 	}
 	@Override
 	public int insert(DiaryVO vo) {
-		int insert =diaryDao.insert(vo);
-		return insert;
+		return diaryDao.insert(vo);
 	}
 	@Override
 	public int update(DiaryVO vo) {

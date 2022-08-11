@@ -15,7 +15,7 @@ import lombok.ToString;
 @Builder
 public class DiaryVO {
 
-	private String d_date;
+	private String d_day;
 	private String d_mor;
 	private String d_aft;
 	private String d_din;

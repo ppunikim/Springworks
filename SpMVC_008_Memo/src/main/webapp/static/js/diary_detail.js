@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   const diary_table = document.querySelector("table.diarys");
-  const weather = document.querySelector("input#d_weather");
-  const w_alert = document.querySelector("div.d_inner");
 
   diary_table?.addEventListener("click", (e) => {
     const td = e.target;

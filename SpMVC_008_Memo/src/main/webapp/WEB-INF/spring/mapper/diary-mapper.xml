@@ -63,16 +63,16 @@
 
 	<select id="create_diary_table">
 		CREATE TABLE IF NOT EXISTS tbl_diary (
-			d_day		VARCHAR(15)		Primary key,
-			d_mor		VARCHAR(3)	not null,	
-			d_aft		VARCHAR(3),		
-			d_din		VARCHAR(3),		
+			d_day		VARCHAR(25)	Primary key,
+			d_mor		VARCHAR(10),	
+			d_aft		VARCHAR(10),		
+			d_din		VARCHAR(10),		
 			d_mwrite	VARCHAR(500),		
 			d_awrite	VARCHAR(500),		
 			d_dwrite	VARCHAR(500),		
 			d_tom		VARCHAR(500),		
 			d_happy		VARCHAR(500),		
-			d_today		VARCHAR(3)		
+			d_today		VARCHAR(10)		
 )
 	</select>
 </mapper>
