@@ -145,6 +145,7 @@ typings/
 # ETC
 .bak
 NaverConfig.*
+ApiConfig.*
 
 
 

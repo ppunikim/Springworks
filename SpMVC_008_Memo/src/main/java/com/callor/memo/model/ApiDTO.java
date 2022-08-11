@@ -13,19 +13,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Builder
-public class BookDTO {
+public class ApiDTO {
 	/* DTO : Data Transfer Object
 	 * 역할은 VO와 같다.
 	 */
-	private long b_seq;
-	private String b_author;
-	private String b_date;
-	private String b_time;
-	private String b_title;	//책제목
-	private String b_content;//책내용
-	private String b_genre; //책 장르
-	private String b_eval;	//한줄평
-	private String b_image;
-	
-	private String b_up_image;
+
+	private String api; 
+
 }

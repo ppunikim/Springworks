@@ -6,17 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.callor.memo.model.BookDTO;
-import com.callor.memo.persistance.BookDao;
-import com.callor.memo.service.BookService;
+import com.callor.memo.model.ApiDTO;
+import com.callor.memo.persistance.ApiDao;
+import com.callor.memo.service.ApiService;
 import com.callor.memo.service.FileUpService;
 
 @Service
-public class BookServiceImplV1 implements BookService{
+public class ApiServiceImplV1 implements ApiService{
 	
 	protected final FileUpService fileUp;
-	protected final BookDao bookDao;
-	public BookServiceImplV1(FileUpService fileUp, BookDao bookDao) {
+	protected final ApiDao bookDao;
+	public ApiServiceImplV1(FileUpService fileUp, ApiDao bookDao) {
 		this.fileUp = fileUp;
 		this.bookDao = bookDao;
 	}
@@ -28,13 +28,13 @@ public class BookServiceImplV1 implements BookService{
 	
 	
 	@Override
-	public List<BookDTO> selectAll() {
+	public List<ApiDTO> selectAll() {
 		
 		return null;
 	}
 
 	@Override
-	public int insertAndUpdate(BookDTO book, MultipartFile file) {
+	public int insertAndUpdate(ApiDTO book, MultipartFile file) {
 		/*
 		 * insert 되는 경우, b_seq가 0일 것이고
 		 * update 되는 경우, b_seq가 0이 아닐 것이다
@@ -43,7 +43,7 @@ public class BookServiceImplV1 implements BookService{
 		//book 수정일 경우(update, 데이터가 있는 경우) 처리
 		if(b_seq != 0) {
 			//먼저 seq값으로 table에서 데이터를 가져오고
-			BookDTO updateBook = bookDao.findById(b_seq);
+			ApiDTO updateBook = bookDao.findById(b_seq);
 			//저장된 fileName을 가져오기
 			String fileName = updateBook.getB_image();
 			//저장된 파일이름과 새롭게 업로드된 파일 이름이 다르면
@@ -72,7 +72,7 @@ public class BookServiceImplV1 implements BookService{
 	@Override
 	public int delete(long seq) {
 		//seq에 해당하는 data를 select해 book에 담고,
-		BookDTO book = bookDao.findById(seq);
+		ApiDTO book = bookDao.findById(seq);
 		//파일 이름을 fileDelete()에게 보내서 파일 삭제
 		fileUp.fileDelete(book.getB_up_image());
 		//그 이후에 데이터 삭제한다. 순서조심
@@ -81,12 +81,12 @@ public class BookServiceImplV1 implements BookService{
 	}
 
 	@Override
-	public BookDTO findById(long seq) {
+	public ApiDTO findById(long seq) {
 		return bookDao.findById(seq);
 	}
 
 	@Override
-	public List<BookDTO> findByAuthor(String username) {
+	public List<ApiDTO> findByAuthor(String username) {
 		return bookDao.findByAuthor(username);
 	}
 

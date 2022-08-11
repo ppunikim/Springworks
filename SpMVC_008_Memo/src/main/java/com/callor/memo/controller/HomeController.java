@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.callor.memo.model.BookDTO;
+import com.callor.memo.model.ApiDTO;
 import com.callor.memo.model.DiaryVO;
 import com.callor.memo.model.MemoVO;
-import com.callor.memo.service.BookService;
+import com.callor.memo.service.ApiService;
 import com.callor.memo.service.DiaryService;
 import com.callor.memo.service.MemoService;
 
@@ -26,10 +26,10 @@ public class HomeController {
 
 	private final MemoService memoService;
 	private final DiaryService diaryService;
-	private final BookService bookService;
+	private final ApiService bookService;
 	public HomeController(MemoService memoService,
 						  DiaryService diaryService,
-						  BookService bookService) {
+						  ApiService bookService) {
 		this.memoService = memoService;
 		this.diaryService = diaryService;
 		this.bookService = bookService;
@@ -41,7 +41,7 @@ public class HomeController {
 		List<MemoVO> memoList = memoService.selectAll();
 		String username = (String) httpSession.getAttribute("USERNAME");		
 		if(username != null) {
-			List<BookDTO> bookList = bookService.findByAuthor(username);
+			List<ApiDTO> bookList = bookService.findByAuthor(username);
 			List<DiaryVO> diaryList = diaryService.findByAuthor(username);
 			model.addAttribute("BOOKLIST", bookList);	
 			model.addAttribute("MEMOLIST", memoList);

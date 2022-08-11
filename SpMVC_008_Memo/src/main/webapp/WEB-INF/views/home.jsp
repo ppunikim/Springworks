@@ -36,7 +36,7 @@
 							<br>
 							<a href="${rootPath}/diary/d-list">일기장</a>
 							<br>
-							<a href="${rootPath}/book/b-add">또가자</a>
+							<a href="${rootPath}/api/api-add">또가자</a>
 							<br>
 							<form:form action="${rootPath}/user/login">
 								<button>logout</button>
