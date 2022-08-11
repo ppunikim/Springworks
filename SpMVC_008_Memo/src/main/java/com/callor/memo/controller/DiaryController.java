@@ -70,8 +70,7 @@ public class DiaryController {
 	
 	
 	@RequestMapping(value="/{d_day}/d-detail", method = RequestMethod.POST)
-	public String update(@ModelAttribute("diaryVO") DiaryVO diaryVO
-						 ) {
+	public String update(@ModelAttribute("diaryVO") DiaryVO diaryVO) {
 		diaryService.update(diaryVO);
 		return "redirect:/diary/d-list";
 	}
