@@ -65,11 +65,14 @@ form input {
 	height: 33px;
 	margin: 5px;
 }
-
+input {
+	width : 20px;
+}
 .btn {
 	background-color: #706c6c;
 	color: #fff;
 	border-radius: 10px;
+	width: 70px;
 }
 
 .btns {
@@ -100,8 +103,10 @@ form input {
 	display: flex;
 	align-items: center;
 }
-input {
+.write {
+	width: 450px;
 }
+
 </style>
 <script>
 	const rootPath = "${rootPath}"
@@ -125,7 +130,7 @@ input {
 						<c:if test="${D_DIARY.d_mor == 'm_good'}">checked</c:if> />
 				</div>
 				<div>
-					<form:input path="d_mwrite" placeholder="기분을 글로 표현해보세요." />
+					<form:input path="d_mwrite" class="write" placeholder="기분을 글로 표현해보세요." />
 				</div>
 			</div>
 			<div class="hs_flex">
@@ -139,7 +144,7 @@ input {
 						<c:if test="${D_DIARY.d_aft== 'a_good'}">checked</c:if> />
 				</div>
 				<div>
-					<form:input path="d_awrite" placeholder="기분을 글로 표현해보세요." />
+					<form:input path="d_awrite" class="write"  placeholder="기분을 글로 표현해보세요." />
 				</div>
 			</div>
 			<div class="hs_flex">
@@ -154,7 +159,7 @@ input {
 
 				</div>
 				<div>
-					<form:input path="d_dwrite" placeholder="기분을 글로 표현해보세요." />
+					<form:input path="d_dwrite" class="write" placeholder="기분을 글로 표현해보세요." />
 				</div>
 			</div>
 			<div class="hs_flex">
@@ -162,7 +167,7 @@ input {
 					<label>4. 밤: 내일 할일 정리하기</label>
 				</div>
 				<div>
-					<form:input path="d_tom" placeholder="내일 할 일을 정리해보세요." />
+					<form:input path="d_tom" class="write"  placeholder="내일 할 일을 정리해보세요." />
 				</div>
 			</div>
 			<div class="hs_flex">
@@ -170,7 +175,7 @@ input {
 					<label>5. 오늘 하루 가장 좋았던 것 3가지</label>
 				</div>
 				<div>
-					<form:input path="d_happy"
+					<form:input path="d_happy" class="write" 
 						placeholder="오늘 하루 있었던 일 중, 가장 좋았던 일 3가지를 기록해보세요."
 						value="${D_DIARY.d_happy}" />
 				</div>
@@ -185,8 +190,10 @@ input {
 				</div>
 			</div>
 			<div class="btns">
-				<a href="${rootPath}/diary/d-list" class="btn a_btn">리스트로</a> <input
-					class="btn btn-light" type="reset" value="다시쓰기"> <input
+				<a href="${rootPath}/diary/d-list" class="btn a_btn">리스트로</a> 
+				<input
+					class="btn btn-light" type="reset" value="다시쓰기"> 
+					<input
 					class="btn" type="submit" value="저장">
 			</div>
 		</form:form>
