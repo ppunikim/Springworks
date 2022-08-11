@@ -14,6 +14,7 @@ import lombok.ToString;
 @ToString
 @Builder
 public class ApiDTO {
+	// 부산광역시 맛집정보 api를 이용하려한다.
 	/* DTO : Data Transfer Object
 	 * 역할은 VO와 같다.
 	 */

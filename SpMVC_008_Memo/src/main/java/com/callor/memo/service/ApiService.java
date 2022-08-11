@@ -10,6 +10,7 @@ public interface ApiService{
 
 	public List<ApiDTO> selectAll();
 	public int insertAndUpdate(ApiDTO book, MultipartFile file);
+	public int insert(ApiDTO api);
 	public int delete(long seq);
 	public ApiDTO findById(long seq);
 	public List<ApiDTO> findByAuthor(String username);

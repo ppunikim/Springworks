@@ -43,8 +43,9 @@ h3 {
 
 section {
 	width: 70%;
-	margin: 55px auto;
+	margin: 30px auto;
 	text-align: center;
+	max-width: 900px;
 }
 
 #hs_flex {
@@ -103,8 +104,28 @@ input {
 	display: flex;
 	align-items: center;
 }
+.hs_box{
+	padding: 10px;
+	border: 1.5px solid transparent;
+	height: 130px;
+	border-radius: 10px;
+	min-width: 470px;
+}
+.hs_box:hover {
+	padding: 10px;
+	border: 1.5px solid black;
+	transition: all 2s;
+	border-radius: 20px;
+}
+textarea {
+	width: 802px;
+    height: 47px
+}
 .write {
 	width: 450px;
+}
+.hs_lineheight {
+	line-height: 55px;
 }
 
 </style>
@@ -116,37 +137,43 @@ input {
 <body>
 	<section>
 		<form:form modelAttribute="diaryVO">
-			<h3>행동은 늘 행동하지 않은것보다 낫다.</h3>
+			<h3>열심히 살지말고 즐기면서 살자</h3>
 			<form:input path="d_day" readonly="true" type="hidden" />
-
+		<div class="hs_box">
 			<div class="hs_flex">
 				<label>1. 아침 기록</label>
 				<div class="hs_mor">
-					<label>bad</label><input type="radio" name="d_mor" value="m_bad"
-						<c:if test="${D_DIARY.d_mor == 'm_bad'}">checked</c:if> /> <label>soso</label><input
-						type="radio" name="d_mor" value="m_soso"
-						<c:if test="${D_DIARY.d_mor == 'm_soso'}">checked</c:if> /> <label>good</label><input
-						type="radio" name="d_mor" value="m_good"
+					<label>bad</label>
+					<input type="radio" name="d_mor" value="m_bad"
+						<c:if test="${D_DIARY.d_mor == 'm_bad'}">checked</c:if> /> 
+						<label>soso</label>
+					<input type="radio" name="d_mor" value="m_soso"
+						<c:if test="${D_DIARY.d_mor == 'm_soso'}">checked</c:if> /> 
+						<label>good</label>
+					<input type="radio" name="d_mor" value="m_good"
 						<c:if test="${D_DIARY.d_mor == 'm_good'}">checked</c:if> />
 				</div>
 				<div>
-					<form:input path="d_mwrite" class="write" placeholder="기분을 글로 표현해보세요." />
+					<textarea name="d_mwrite"  class="write" placeholder="기분을 글로 표현해보세요." >${D_DIARY.d_mwrite}</textarea>
 				</div>
+		</div>
 			</div>
+		<div class="hs_box">
 			<div class="hs_flex">
 				<label>2. 점심 기록</label>
 				<div class="hs_mor">
-					<label>bad</label> <input type="radio" name="d_aft" value="a_bad"
-						<c:if test="${D_DIARY.d_aft== 'a_bad'}">checked</c:if> /> <label>soso</label>
-					<input type="radio" name="d_aft" value="a_soso"
-						<c:if test="${D_DIARY.d_aft== 'a_soso'}">checked</c:if> /> <label>good</label>
-					<input type="radio" name="d_aft" value="a_good"
-						<c:if test="${D_DIARY.d_aft== 'a_good'}">checked</c:if> />
+					<label>bad</label> <input type="radio" name="d_aft" value="a_bad"/> 
+					<label>soso</label>
+					<input type="radio" name="d_aft" value="a_soso"/> 
+					<label>good</label>
+					<input type="radio" name="d_aft" value="a_good"/>
 				</div>
 				<div>
-					<form:input path="d_awrite" class="write"  placeholder="기분을 글로 표현해보세요." />
+					<form:input path="d_awrite" value="${D_DIARY.d_awrite}" class="write"  placeholder="기분을 글로 표현해보세요." />
 				</div>
 			</div>
+		</div>
+		<div class="hs_box">
 			<div class="hs_flex">
 				<label>3. 저녁 기록</label>
 				<div class="hs_mor">
@@ -156,20 +183,23 @@ input {
 						<c:if test="${D_DIARY.d_din== 'd_soso'}">checked</c:if> /> <label>good</label>
 					<input type="radio" name="d_din" value="d_good"
 						<c:if test="${D_DIARY.d_din== 'd_good'}">checked</c:if> />
-
 				</div>
 				<div>
-					<form:input path="d_dwrite" class="write" placeholder="기분을 글로 표현해보세요." />
+					<form:input path="d_dwrite" value="${D_DIARY.d_dwrite}" class="write" placeholder="기분을 글로 표현해보세요." />
 				</div>
 			</div>
+		</div>
+		<div class="hs_box hs_lineheight">
 			<div class="hs_flex">
 				<div>
 					<label>4. 밤: 내일 할일 정리하기</label>
 				</div>
 				<div>
-					<form:input path="d_tom" class="write"  placeholder="내일 할 일을 정리해보세요." />
+					<form:input path="d_tom" value="${D_DIARY.d_tom}" class="write"  placeholder="내일 할 일을 정리해보세요." />
 				</div>
 			</div>
+		</div>
+		<div class="hs_box hs_lineheight">
 			<div class="hs_flex">
 				<div>
 					<label>5. 오늘 하루 가장 좋았던 것 3가지</label>
@@ -180,15 +210,16 @@ input {
 						value="${D_DIARY.d_happy}" />
 				</div>
 			</div>
-			<div>
+		</div>
+			<div class="hs_lineheight">
 				<label>하루평가</label>
-				<div class="hs_mor">
+				<div class="hs_mor ">
 					<label>bad</label> <input type="radio" name="d_today" value="t_bad" />
 					<label>soso</label> <input type="radio" name="d_today"
 						value="t_soso" /> <label>good</label> <input type="radio"
 						name="d_today" value="t_good" />
-				</div>
 			</div>
+		</div>
 			<div class="btns">
 				<a href="${rootPath}/diary/d-list" class="btn a_btn">리스트로</a> 
 				<input
@@ -199,7 +230,4 @@ input {
 		</form:form>
 	</section>
 </body>
-<script>
-	function
-</script>
 </html>

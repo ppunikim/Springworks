@@ -15,6 +15,5 @@ public interface ApiDao {
 	public List<ApiDTO> findByBook(String book);
 	public List<ApiDTO> findByAuthor(String author);
 	
-	public void create_book_table();
 	
 }

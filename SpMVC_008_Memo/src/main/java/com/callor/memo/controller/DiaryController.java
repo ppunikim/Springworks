@@ -49,9 +49,7 @@ public class DiaryController {
 	}
 
 	@RequestMapping(value="/d-add", method = RequestMethod.GET)
-	public String insert(@ModelAttribute("diaryVO") DiaryVO diaryVO, 
-					 	  Model model) {
-		
+	public String insert() {
 		return null;
 	}
 	

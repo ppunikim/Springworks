@@ -1,4 +1,5 @@
 package com.callor.memo.controller;
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -25,12 +26,7 @@ public class ApiController {
 	
 	@RequestMapping(value="/b-add", method = RequestMethod.GET)
 	public String insert(@ModelAttribute("book") ApiDTO book,
-						 HttpSession httpSession) {
-		String username = (String)httpSession.getAttribute("USERNAME");
-		if(username == null) {
-			return "redirect:/user/login";
-		}
-		book.setB_author(username);
+						Principal princpal) {
 		return null;
 	}
 	
@@ -40,13 +36,8 @@ public class ApiController {
 	 * 선언된 이름을 절대 사용하면 안된다.!!!!!!!
 	 */
 	@RequestMapping(value="/b-add", method = RequestMethod.POST)
-	public String insert(@ModelAttribute("book") ApiDTO book,
-						 MultipartFile file, HttpSession httpSession) {
-		//메모를 저장하기 전, 현재 session에 저장된 username 가져오기
-		String username = (String)httpSession.getAttribute("USERNAME");
-		//저장 할 메모 정보에 username 세팅
-		book.setB_author(username);
-		bookService.insertAndUpdate(book, file);
+	public String insert(@ModelAttribute("book") ApiDTO book, Principal princpal, String seq) {
+		bookService.insert(book);
 		
 		return "redirect:/";
 	}
@@ -55,7 +46,7 @@ public class ApiController {
 	public String detail(@PathVariable("seq")String seq,
 						 @ModelAttribute("book") ApiDTO bookDTO,
 						 Model model) {
-		bookDTO.getB_seq();
+//		bookDTO.getB_seq();
 		long b_seq = Long.valueOf(seq);
 		bookDTO = bookService.findById(b_seq);
 		model.addAttribute("book",bookDTO);
@@ -79,10 +70,7 @@ public class ApiController {
 		if(username == null) {
 			return "redirect:/user/login";
 		}
-		bookDTO.setB_author(username);
-		
-		long b_seq = Long.valueOf(seq);
-		bookDTO.setB_seq(b_seq);
+//		bookDTO.setB_seq(b_seq);
 		
 		bookService.insertAndUpdate(bookDTO,file);
 		return String.format("redirect:/book/%s/b-detail",seq);
@@ -103,11 +91,7 @@ public class ApiController {
 		Date date = new Date(System.currentTimeMillis());
 		SimpleDateFormat toDay = new SimpleDateFormat("yyyy-MM-dd");
 		SimpleDateFormat toTime = new SimpleDateFormat("HH:mm:ss");
-		
-		ApiDTO book = ApiDTO.builder()
-							  .b_date(toDay.format(date))
-							  .b_time(toTime.format(date))
-							  .build();
-		return book;
+
+		return null;
 	}
 }
