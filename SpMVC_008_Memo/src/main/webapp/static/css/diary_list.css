@@ -91,6 +91,10 @@ table tr td {
   border-bottom: 2.25px solid #908a8a82;
   cursor: pointer;
 }
+table tr td a {
+  text-decoration: none;
+  color: inherit;
+}
 
 img {
   width: 100px;

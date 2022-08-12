@@ -14,7 +14,7 @@
 </script>
 <script src="${rootPath}/static/js/memo_detail.js?ver=8"></script>
 <link rel="stylesheet"
-	href="${rootPath}/static/css/diary_list.css?ver=3" />
+	href="${rootPath}/static/css/diary_list.css?ver=6" />
 </head>
 <body>
 	<section>

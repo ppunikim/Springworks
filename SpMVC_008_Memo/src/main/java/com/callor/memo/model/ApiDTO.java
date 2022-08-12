@@ -23,6 +23,7 @@ public class ApiDTO {
 	private String resultMsg;		//결과 메세지
 	private String pageNo;			//페이지수
 	private String totalCount; 		//데이터 총 갯수
+	private String UC_SEQ;			//콘텐츠ID
 	private String MAIN_TITLE; 
 	private String GUGUN_NM; 		//구군
 	private String PLACE; 

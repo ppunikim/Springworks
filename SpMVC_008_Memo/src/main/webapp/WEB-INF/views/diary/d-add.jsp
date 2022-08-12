@@ -162,11 +162,14 @@ textarea {
 			<div class="hs_flex">
 				<label>2. 점심 기록</label>
 				<div class="hs_mor">
-					<label>bad</label> <input type="radio" name="d_aft" value="a_bad"/> 
+					<label>bad</label> <input type="radio" name="d_aft" value="a_bad"
+					<c:if test="${D_DIARY.d_mor == 'm_good'}">checked</c:if> /> 
 					<label>soso</label>
-					<input type="radio" name="d_aft" value="a_soso"/> 
+					<input type="radio" name="d_aft" value="a_soso"
+					<c:if test="${D_DIARY.d_mor == 'm_good'}">checked</c:if> /> 
 					<label>good</label>
-					<input type="radio" name="d_aft" value="a_good"/>
+					<input type="radio" name="d_aft" value="a_good"
+					<c:if test="${D_DIARY.d_mor == 'm_good'}">checked</c:if> />
 				</div>
 				<div>
 					<form:input path="d_awrite" value="${D_DIARY.d_awrite}" class="write"  placeholder="기분을 글로 표현해보세요." />
