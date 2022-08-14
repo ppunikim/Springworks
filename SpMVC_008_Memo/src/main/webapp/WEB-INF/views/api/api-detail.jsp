@@ -84,23 +84,14 @@ img {
 	<div class="hs_div btn-neo">
 		<div class="hs_head">
 			<div class="hs_f">작성자</div>
-			<div class="hs_b">${book.b_author}</div>
 			<div class="hs_f">작성일자</div>
-			<div class="hs_b">${book.b_date}</div>
 			<div class="hs_f">작성시간</div>
-			<div class="hs_b">${book.b_time}</div>
 		</div>
 			<div class="hs_f">장르</div>
-			<div class="hs_b">${book.b_genre}</div>
 			<div class="hs_f">책 제목</div>
-			<div class="hs_b">${book.b_title}</div>
 			<div class="hs_f">책 내용</div>
-			<div class="hs_b">${book.b_content}</div>
 			<div class="hs_f">한줄평</div>
-			<div class="hs_b">${book.b_eval}</div>
 		<div>
-			<img src="${rootPath}/upload/${book.b_up_image}"
-				alt="${book.b_image}" width="300px">
 		</div>
 		<div class="hs_head">
 			<a href="${rootPath}/book/${book.b_seq}/update">수정</a> 
