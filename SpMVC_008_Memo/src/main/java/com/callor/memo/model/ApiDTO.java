@@ -18,11 +18,11 @@ public class ApiDTO {
 	/* DTO : Data Transfer Object
 	 * 역할은 VO와 같다.
 	 */
-	private String numOfRows;		//한 페이지 결과수
-	private String resultCode;		//결과코드
-	private String resultMsg;		//결과 메세지
-	private String pageNo;			//페이지수
-	private String totalCount; 		//데이터 총 갯수
+//	private String numOfRows;		//한 페이지 결과수
+//	private String resultCode;		//결과코드
+//	private String resultMsg;		//결과 메세지
+//	private String pageNo;			//페이지수
+//	private String totalCount; 		//데이터 총 갯수
 	private String UC_SEQ;			//콘텐츠ID
 	private String MAIN_TITLE; 
 	private String GUGUN_NM; 		//구군

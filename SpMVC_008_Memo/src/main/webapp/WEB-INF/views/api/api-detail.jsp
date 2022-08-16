@@ -81,23 +81,9 @@ img {
 </style>
 </head>
 <body>
-	<div class="hs_div btn-neo">
-		<div class="hs_head">
-			<div class="hs_f">작성자</div>
-			<div class="hs_f">작성일자</div>
-			<div class="hs_f">작성시간</div>
-		</div>
-			<div class="hs_f">장르</div>
-			<div class="hs_f">책 제목</div>
-			<div class="hs_f">책 내용</div>
-			<div class="hs_f">한줄평</div>
-		<div>
-		</div>
-		<div class="hs_head">
-			<a href="${rootPath}/book/${book.b_seq}/update">수정</a> 
-			<a href="${rootPath}/book/${book.b_seq}/delete">삭제</a> 
-		</div>
-	</div>
+	<c:forEach items="${api}" var="aapi">
+	${aapi.MAIN_TITLE}
+	</c:forEach>
 
 	<div class="hs_div">
 			<a href="${rootPath}" class="hs_home">홈으로</a>
