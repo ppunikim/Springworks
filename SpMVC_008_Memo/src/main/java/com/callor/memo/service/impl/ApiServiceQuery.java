@@ -61,8 +61,12 @@ public class ApiServiceQuery implements ApiService {
 		RestTemplate resTemp = new RestTemplate();
 
 		fooddata = resTemp.exchange(uri, HttpMethod.GET, entity, ApiFood.class);
+		
+		log.debug("{}",fooddata);
+		
 
-		return fooddata.getBody().getFoodKr.item;
+//		return fooddata.getBody().getFoodKr.item;
+		return null;
 	}
 
 	@Override

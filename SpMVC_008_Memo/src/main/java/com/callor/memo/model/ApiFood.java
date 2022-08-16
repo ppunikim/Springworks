@@ -8,5 +8,5 @@ import lombok.ToString;
 @ToString
 public class ApiFood {
 
-	public ApiFoodParent getFoodKr;
+	public ApiDTO item;
 }
