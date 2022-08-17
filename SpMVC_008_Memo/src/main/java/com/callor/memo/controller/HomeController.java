@@ -1,12 +1,12 @@
 package com.callor.memo.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.callor.memo.model.ApiDTO;
 import com.callor.memo.service.ApiService;
@@ -20,8 +20,6 @@ public class HomeController {
 
 
 	private final ApiService apiServiceQuery;
-
-	
 	public HomeController(ApiServiceQuery apiServiceQuery) {
 		this.apiServiceQuery = apiServiceQuery;
 	}
@@ -35,17 +33,24 @@ public class HomeController {
 	
 	@RequestMapping(value="api/api-detail", method=RequestMethod.GET)
 	public String api(String hs, Model model) {
-		log.debug("api 확인={}",hs);
 		
-//		ApiServiceQuery apiQuery = new ApiServiceQuery();
-//		apiQuery.queryService("API", hs);
+		String queryString = apiServiceQuery.queryString(hs);
+		apiServiceQuery.getFoodItems(queryString);
 		
-		List<ApiDTO> apiList = new ArrayList<>();
-		apiList = apiServiceQuery.apiList();
-		
-		model.addAttribute("api",apiList);
+//		List<ApiDTO> apiList = new ArrayList<>();
+//		apiList = apiServiceQuery.apiList();
+//		
+//		model.addAttribute("api",apiList);
 		
 		return "api/api-detail";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="api/json", method=RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	public List<ApiDTO> json() {
+		String queryString = apiServiceQuery.queryString(null);
+		List<ApiDTO> foods = apiServiceQuery.getFoodItems(queryString);
+		return foods;
 	}
 
 

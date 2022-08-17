@@ -9,5 +9,9 @@ public interface ApiService extends ApiDao{
 
 	public String queryService(String hs, String search);
 	public List<ApiDTO> apiList();
+	
+	public String queryString(String search);
+	public List<ApiDTO> getFoodItems(String queryString);
+	
 
 }
