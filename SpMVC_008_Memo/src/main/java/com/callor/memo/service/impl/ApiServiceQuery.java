@@ -5,6 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,11 +23,10 @@ import org.springframework.web.client.RestTemplate;
 
 import com.callor.memo.config.ApiConfig;
 import com.callor.memo.model.ApiDTO;
-import com.callor.memo.model.GetFoodKr;
 import com.callor.memo.model.FoodRoot;
+import com.callor.memo.model.GetFoodKr;
 import com.callor.memo.service.ApiService;
 import com.callor.memo.utils.HttpRequestIntercepterV1;
-import com.google.protobuf.Api;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -156,10 +156,6 @@ public class ApiServiceQuery implements ApiService {
 		ResponseEntity<String> resString = null;
 		resString = restTemp.exchange(foodRestURI, HttpMethod.GET, headerEntity, String.class);
 		
-		log.debug("=".repeat(100));
-		log.debug("{}",resString.getBody());
-		log.debug("=".repeat(100));
-		
 		//수신된 데이터를 VO 변환하기
 		ResponseEntity<FoodRoot> resFoodObject = null;
 		
@@ -197,6 +193,19 @@ public class ApiServiceQuery implements ApiService {
 		resFoodObject = restTemp.exchange(foodRestURI, HttpMethod.GET, headerEntity, FoodRoot.class);
 		log.debug("수신된 데이터 {} ", resFoodObject.getBody().getFoodKr.item);
 		return resFoodObject.getBody().getFoodKr.item;
+	}
+
+	@Override
+	public List<ApiDTO> findByLocation(String queryString,String search) {
+		
+		List<ApiDTO> apiList = getFoodItems(queryString(search));	//전체데이터
+		List<ApiDTO> resultList = new ArrayList<ApiDTO>();	//빈 데이터
+		for(ApiDTO vo : apiList) {							//한개씩 데이터를 따져보면
+			if(vo.getGUGUN_NM().equals(search)) {			//구군 값이 입력값과 같으면
+				resultList.add(vo);							//값을 빈 데이터에 추가
+			}
+		}
+		return resultList;
 	}
 
 	

@@ -81,3 +81,8 @@
 			return response;	
 		});
 ```
+
+
+### Lambda
+* 인터페이스에 method가 1개만 있을 때 Lamda를 사용하여 객체를 만들 수 있다.
+* interface를 class에서 implement하지 않고 사용하는 것을 말한다.

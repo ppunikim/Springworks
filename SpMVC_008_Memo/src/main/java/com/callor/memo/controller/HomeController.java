@@ -30,23 +30,29 @@ public class HomeController {
 		return "home";
 	}
 
-	
-	@RequestMapping(value="api/api-detail", method=RequestMethod.GET)
-	public String api(String hs, Model model) {
+	@RequestMapping(value="/api/api-detail", method=RequestMethod.GET)
+	public String api(Model model) {
 		
-		String queryString = apiServiceQuery.queryString(hs);
-		apiServiceQuery.getFoodItems(queryString);
-		
-//		List<ApiDTO> apiList = new ArrayList<>();
-//		apiList = apiServiceQuery.apiList();
-//		
-//		model.addAttribute("api",apiList);
+		String queryString = apiServiceQuery.queryString(null);
+		List<ApiDTO> foods = apiServiceQuery.getFoodItems(queryString);
+		model.addAttribute("api",foods);
 		
 		return "api/api-detail";
 	}
+
+	@RequestMapping(value="/api/api-detail", method=RequestMethod.POST,produces = "application/json;charset=UTF-8")
+	public String api(Model model, String queryString,String search) {
+		
+		List<ApiDTO> apiList = apiServiceQuery.findByLocation(queryString,search);
+		model.addAttribute("api",apiList);
+		
+		return "api/api-detail";
+	}
+
+	
 	
 	@ResponseBody
-	@RequestMapping(value="api/json", method=RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	@RequestMapping(value="/api/json", method=RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public List<ApiDTO> json() {
 		String queryString = apiServiceQuery.queryString(null);
 		List<ApiDTO> foods = apiServiceQuery.getFoodItems(queryString);
