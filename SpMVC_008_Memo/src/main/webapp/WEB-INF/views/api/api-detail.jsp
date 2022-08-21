@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <c:set value="${pageContext.request.contextPath}" var="rootPath" />
 
 <!DOCTYPE html>
@@ -33,7 +33,7 @@ body {
 }
 
 .hs_div {
-	margin-top: 50px;
+	margin: 30px auto;
 	justify-content: center;
 	line-height: 30px;
 	width: 650px;
@@ -84,50 +84,95 @@ img {
 .hs_home {
 	text-align: center;
 }
-table tr td, table tr th{
+
+table tr td, table tr th {
 	padding: 5px;
+}
+table tr td {
+	margin: 0 auto;
+}
+
+header {
+	position: fixed;
+	background-image:url(../static/images/paper2.PNG);
+	width: 100%;
+	top: 0;
+	left: 0;
+	right:0;
+	display: flex;
+	justify-content: center;
+}
+
+header input {
+	margin: 30px 10px 20px 10px;
+	width: 300px;
+	padding: 10px;
+}
+
+header button {
+	width: 50px;
+	height: 40px;
+}
+
+nav {
+	margin-top: 100px;
+	border-bottom: 1px solid black;
 }
 </style>
 </head>
 <body>
-	<form:form>
-		<input name="search" placeholder="검색어를 입력하세요." />
-		<button>검색</button>
-	</form:form>
-	<table>
-		<colgroup>
-			<col width="15%">
-			<col width="10%">
-			<col width="15%">
-			<col width="20%">
-			<col width="15%">
-			<col width="20%">
-			<col width="10%">
-		</colgroup>
-		<thead>
-			<tr>
-				<th>음식점이름</th>
-				<th>구 위치</th>
-				<th>음식점위치</th>
-				<th>전화번호</th>
-				<th>운영시간</th>
-				<th>설명</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${api}" var="aapi">
+	<header>
+		<form:form>
+				<input name="search" placeholder="검색어를 입력하세요." />
+				<button>검색</button>
+		</form:form>
+	</header>
+	<nav>
+		<table>
+			<colgroup>
+				<col width="15%">
+				<col width="10%">
+				<col width="15%">
+				<col width="20%">
+				<col width="15%">
+				<col width="20%">
+				<col width="10%">
+			</colgroup>
+			<thead>
 				<tr>
-					<td>${aapi.MAIN_TITLE}</td>
-					<td>${aapi.GUGUN_NM}</td>
-					<td>${aapi.ADDR1}</td>
-					<td>${aapi.CNTCT_TEL}</td>
-					<td>${aapi.USAGE_DAY_WEEK_AND_TIME}</td>
-					<td>${aapi.ITEMCNTNTS}</td>
+					<th>음식점이름</th>
+					<th>구 위치</th>
+					<th>음식점위치</th>
+					<th>전화번호</th>
+					<th>운영시간</th>
+					<th>설명</th>
 				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+			<c:if test="${empty api}">
 
+				<tr>
+					<td></td>
+					<td>검색</td>
+					<td>결과가</td>
+					<td>없습니다</td>
+					<td></td>
+					<td></td>
+				</tr>
+			</c:if>
+				<c:forEach items="${api}" var="aapi">
+					<tr>
+						<td>${aapi.MAIN_TITLE}</td>
+						<td>${aapi.GUGUN_NM}</td>
+						<td>${aapi.ADDR1}</td>
+						<td>${aapi.CNTCT_TEL}</td>
+						<td>${aapi.USAGE_DAY_WEEK_AND_TIME}</td>
+						<td>${aapi.ITEMCNTNTS}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</nav>
 	<div class="hs_div">
 		<a href="${rootPath}" class="hs_home">홈으로</a>
 	</div>
