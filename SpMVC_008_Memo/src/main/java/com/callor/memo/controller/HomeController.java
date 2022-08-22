@@ -41,9 +41,10 @@ public class HomeController {
 	}
 
 	@RequestMapping(value="/api/api-detail", method=RequestMethod.POST,produces = "application/json;charset=UTF-8")
-	public String api(Model model, String queryString,String search) {
+	public String api(Model model, String queryString,String search, String cat) {
 		
-		List<ApiDTO> apiList = apiServiceQuery.findByLocation(queryString,search);
+		log.debug("카테고리 {}",cat);
+		List<ApiDTO> apiList = apiServiceQuery.findByCat(queryString,search,cat);
 		model.addAttribute("api",apiList);
 		
 		return "api/api-detail";

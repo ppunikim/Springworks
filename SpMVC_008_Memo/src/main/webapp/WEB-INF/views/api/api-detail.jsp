@@ -88,17 +88,18 @@ img {
 table tr td, table tr th {
 	padding: 5px;
 }
+
 table tr td {
-	margin: 0 auto;
+	text-align: center;
 }
 
 header {
 	position: fixed;
-	background-image:url(../static/images/paper2.PNG);
+	background-image: url(../static/images/paper2.PNG);
 	width: 100%;
 	top: 0;
 	left: 0;
-	right:0;
+	right: 0;
 	display: flex;
 	justify-content: center;
 }
@@ -106,6 +107,12 @@ header {
 header input {
 	margin: 30px 10px 20px 10px;
 	width: 300px;
+	padding: 10px;
+}
+
+header select {
+	margin: 30px 10px 20px 10px;
+	width: 100px;
 	padding: 10px;
 }
 
@@ -117,14 +124,24 @@ header button {
 nav {
 	margin-top: 100px;
 	border-bottom: 1px solid black;
+	width: 85%;
 }
+
 </style>
 </head>
 <body>
+<!-- 구현하고자 하는 것 
+ 	1. 한줄 클릭하면 modal box 로 그 라인만 크게 보이게 하는 것, (detail)설명란 추가
+ 	2. pageNation 구현하기
+ -->
 	<header>
 		<form:form>
-				<input name="search" placeholder="검색어를 입력하세요." />
-				<button>검색</button>
+			<select name="cat">
+				<option value="Place">장소검색</option>
+				<option value="Food">음식검색</option>
+			</select>
+			<input name="search" placeholder="검색어를 입력하세요." />
+			<button>검색</button>
 		</form:form>
 	</header>
 	<nav>
@@ -133,10 +150,9 @@ nav {
 				<col width="15%">
 				<col width="10%">
 				<col width="15%">
-				<col width="20%">
 				<col width="15%">
 				<col width="20%">
-				<col width="10%">
+				<col width="30%">
 			</colgroup>
 			<thead>
 				<tr>
@@ -145,21 +161,21 @@ nav {
 					<th>음식점위치</th>
 					<th>전화번호</th>
 					<th>운영시간</th>
-					<th>설명</th>
+					<th>이미지</th>
 				</tr>
 			</thead>
 			<tbody>
-			<c:if test="${empty api}">
+				<c:if test="${empty api}">
 
-				<tr>
-					<td></td>
-					<td>검색</td>
-					<td>결과가</td>
-					<td>없습니다</td>
-					<td></td>
-					<td></td>
-				</tr>
-			</c:if>
+					<tr>
+						<td></td>
+						<td>검색</td>
+						<td>결과가</td>
+						<td>없습니다</td>
+						<td></td>
+						<td></td>
+					</tr>
+				</c:if>
 				<c:forEach items="${api}" var="aapi">
 					<tr>
 						<td>${aapi.MAIN_TITLE}</td>
@@ -167,7 +183,7 @@ nav {
 						<td>${aapi.ADDR1}</td>
 						<td>${aapi.CNTCT_TEL}</td>
 						<td>${aapi.USAGE_DAY_WEEK_AND_TIME}</td>
-						<td>${aapi.ITEMCNTNTS}</td>
+						<td><img src="${aapi.MAIN_IMG_THUMB}" /></td>
 					</tr>
 				</c:forEach>
 			</tbody>
