@@ -104,6 +104,8 @@ public class ApiServiceQuery implements ApiService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	
 	
 	@Override
 	public String queryString(String search) {
@@ -133,6 +135,9 @@ public class ApiServiceQuery implements ApiService {
 		return queryString;
 	}
 
+
+	
+	
 	@Override
 	public List<ApiDTO> getFoodItems(String queryString) {
 		URI foodRestURI = null;
@@ -228,6 +233,38 @@ public class ApiServiceQuery implements ApiService {
 		}
 		
 		return resultList;
+	}
+	
+	@Override
+	public String queryStringOne(String search) {
+/*
+		String queryString = ApiConfig.API_URL;
+		String encodeParams = null;
+
+		try {
+			encodeParams = "?" + URLEncoder.encode("serviceKey", "UTF-8");
+			encodeParams += "=" + ApiConfig.API_CLIENT_ID;
+
+			encodeParams += "&" + URLEncoder.encode("pageNo", "UTF-8");
+			encodeParams += "=1";
+
+			encodeParams += "&" + URLEncoder.encode("numOfRows", "UTF-8");
+			encodeParams += "=10";
+
+			encodeParams += "&" + URLEncoder.encode("resultType", "UTF-8");
+			encodeParams += "=json";
+			
+			encodeParams += "&" + URLEncoder.encode("URLEncoder", "UTF-8");
+			encodeParams += "=UC_SEQ";
+			
+			
+		} catch (UnsupportedEncodingException e) {
+			log.debug("encode 오류");
+		}
+		queryString += encodeParams;
+		return queryString;
+ */
+		return null;
 	}
 
 }// end class

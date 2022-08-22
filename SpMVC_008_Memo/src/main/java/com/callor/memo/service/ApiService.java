@@ -14,5 +14,6 @@ public interface ApiService extends ApiDao{
 	public List<ApiDTO> getFoodItems(String queryString);
 	public List<ApiDTO> findByLocation(String queryString, String search);
 	public List<ApiDTO> findByCat(String queryString, String search, String cat);
+	String queryStringOne(String search);
 
 }

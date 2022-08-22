@@ -53,12 +53,12 @@ public class HomeController {
 
 	@RequestMapping(value = "/api/{UC_SEQ}/api-look", method=RequestMethod.GET,produces = "application/json;charset=UTF-8")
 	public String api_look(Model model,@PathVariable("UC_SEQ") String seq) {
-		
-		ApiDTO apiDTO = apiServiceQuery.findById(seq);
+		String query = apiServiceQuery.queryStringOne(null);
+		List<ApiDTO> apiDTO = apiServiceQuery.getFoodItems(query);
 		model.addAttribute("VO",apiDTO);
 		return "api/api-look";
 	}
-	
+
 	
 	@ResponseBody
 	@RequestMapping(value="/api/json", method=RequestMethod.GET, produces = "application/json;charset=UTF-8")
