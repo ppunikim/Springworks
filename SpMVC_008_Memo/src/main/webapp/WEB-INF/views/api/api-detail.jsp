@@ -19,7 +19,7 @@
 <script>
 	const rootPath= '${rootPath}'
 </script>
-<script src="${rootPath}/static/js/api.js?ver=001"></script>
+<script src="${rootPath}/static/js/api.js?ver=004"></script>
 </head>
 <body>
 <!-- 구현하고자 하는 것 
@@ -69,8 +69,8 @@
 					</tr>
 				</c:if>
 				<c:forEach items="${api}" var="aapi">
-					<input type="hidden" data-seq="${aapi.UC_SEQ}"/>
-					<tr>
+					<input type="hidden" />
+					<tr data-seq="${aapi.UC_SEQ}">
 						<td>${aapi.MAIN_TITLE}</td>
 						<td>${aapi.GUGUN_NM}</td>
 						<td>${aapi.ADDR1}</td>

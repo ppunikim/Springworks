@@ -84,7 +84,6 @@ public class ApiServiceQuery implements ApiService {
 
 	@Override
 	public ApiDTO findById(String VO) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -105,7 +104,7 @@ public class ApiServiceQuery implements ApiService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	
 	@Override
 	public String queryString(String search) {
 

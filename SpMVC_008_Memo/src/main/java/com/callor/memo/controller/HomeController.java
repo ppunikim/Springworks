@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -50,6 +51,13 @@ public class HomeController {
 		return "api/api-detail";
 	}
 
+	@RequestMapping(value = "/api/{UC_SEQ}/api-look", method=RequestMethod.GET,produces = "application/json;charset=UTF-8")
+	public String api_look(Model model,@PathVariable("UC_SEQ") String seq) {
+		
+		ApiDTO apiDTO = apiServiceQuery.findById(seq);
+		model.addAttribute("VO",apiDTO);
+		return "api/api-look";
+	}
 	
 	
 	@ResponseBody
@@ -59,6 +67,7 @@ public class HomeController {
 		List<ApiDTO> foods = apiServiceQuery.getFoodItems(queryString);
 		return foods;
 	}
+	
 
 
 }// end class
