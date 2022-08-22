@@ -15,7 +15,11 @@
 
 </style>
 <link rel="stylesheet" href="${rootPath}/static/css/api.css?ver=002" />
-<link rel="stylesheet" href="${rootPath}/static/css/modal.css?ver=001" />
+<link rel="stylesheet" href="${rootPath}/static/css/modal.css?ver=002" />
+<script>
+	const rootPath= '${rootPath}'
+</script>
+<script src="${rootPath}/static/js/api.js?ver=001"></script>
 </head>
 <body>
 <!-- 구현하고자 하는 것 
@@ -33,7 +37,7 @@
 		</form:form>
 	</header>
 	<nav>
-		<table>
+		<table class="hs_detail">
 			<colgroup>
 				<col width="15%">
 				<col width="10%">
@@ -65,6 +69,7 @@
 					</tr>
 				</c:if>
 				<c:forEach items="${api}" var="aapi">
+					<input type="hidden" data-seq="${aapi.UC_SEQ}"/>
 					<tr>
 						<td>${aapi.MAIN_TITLE}</td>
 						<td>${aapi.GUGUN_NM}</td>
