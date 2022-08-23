@@ -15,25 +15,47 @@
 table tr td {
 	cursor: pointer;
 }
-.hs_scroll{
+
+.hs_scroll {
 	overflow-y: scroll;
 	height: 500px;
 }
+
 label {
+	display: none;
 }
+
+.hs_width {
+	min-width: 800px;
+	width: 70%;
+	margin: 10px auto;
+	border: 5px solid #767676;
+	padding-bottom: 30px;
+	width: 70%;
+}
+
 .hs_how {
 	display: flex;
+	justify-content: space-around;
+}
+
+nav h4 {
+	text-align: center;
+	padding: 10px;
+	font-size: 20px;
+	margin: 10px 0;
+	line-height: 50px;
 }
 </style>
 <link rel="stylesheet" href="${rootPath}/static/css/api.css?ver=002" />
 <link rel="stylesheet" href="${rootPath}/static/css/modal.css?ver=002" />
 <script>
-	const rootPath= '${rootPath}'
+	const rootPath = '${rootPath}'
 </script>
 <script src="${rootPath}/static/js/api.js?ver=006"></script>
 </head>
 <body>
-<!-- 구현하고자 하는 것 
+	<!-- 구현하고자 하는 것 
  	1. 한줄 클릭하면 modal box 로 그 라인만 크게 보이게 하는 것, (detail)설명란 추가
  	2. pageNation 구현하기
  -->
@@ -47,34 +69,37 @@ label {
 			<button>검색</button>
 		</form:form>
 	</header>
-	<nav >
-		<div class="hs_how">
-			<c:forEach items="${RANDOM}" var="random">
-				<label for="this"><a href="${rootPath}/api/${UC_SEQ}/api-look" ></a></label>
-				<div><img src="${random.MAIN_IMG_THUMB}" id="this"/></div>
-			</c:forEach>
+	<nav>
+		<div class="hs_width">
+			<h4>오늘의 추천 메뉴!</h4>
+			<div class="hs_how">
+				<c:forEach items="${RANDOM}" var="random">
+					<label for="this"><a
+						href="${rootPath}/api/${UC_SEQ}/api-look"></a></label>
+					<div>
+						<img src="${random.MAIN_IMG_THUMB}" id="this" />
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+		<div >
+			<div >음식점이름</div>
+			<div>구 위치</div>
+			<div>음식점위치</div>
+			<div>전화번호</div>
+			<div>운영시간</div>
+			<div>이미지</div>
 		</div>
 		<div class="hs_scroll">
-		<table class="hs_detail">
-			<colgroup>
-				<col width="15%">
-				<col width="10%">
-				<col width="15%">
-				<col width="15%">
-				<col width="20%">
-				<col width="30%">
-			</colgroup>
-			<thead>
-				<tr>
-					<th>음식점이름</th>
-					<th>구 위치</th>
-					<th>음식점위치</th>
-					<th>전화번호</th>
-					<th>운영시간</th>
-					<th>이미지</th>
-				</tr>
-			</thead>
-			<tbody class="hs_scroll">
+			<table class="hs_detail">
+				<colgroup>
+					<col width="15%">
+					<col width="10%">
+					<col width="15%">
+					<col width="15%">
+					<col width="20%">
+					<col width="30%">
+				</colgroup>
 				<c:if test="${empty api}">
 					<tr>
 						<td></td>
@@ -96,15 +121,12 @@ label {
 						<td><img src="${aapi.MAIN_IMG_THUMB}" /></td>
 					</tr>
 				</c:forEach>
-			</tbody>
-		</table>
+			</table>
 		</div>
 	</nav>
 	<div class="hs_div">
 		<a href="${rootPath}" class="hs_home">홈으로</a>
 	</div>
-	<section class="modal" id="modal_box">
-	
-	</section>
+	<section class="modal" id="modal_box"></section>
 </body>
 </html>
