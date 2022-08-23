@@ -10,4 +10,11 @@ document.addEventListener("DOMContentLoaded", () => {
       document.location.href = `${rootPath}/api/${seq}/api-look`;
     }
   });
+
+  const ranDetail = document.querySelector("img.this");
+
+  // 랜덤 이미지 값 눌렀을 때 detail 보기 구현 안됨.
+  ranDetail?.addEventListener("click", () => {
+    document.location.href = `${rootPath}/api/${UC_SEQ}/api-look`;
+  });
 });

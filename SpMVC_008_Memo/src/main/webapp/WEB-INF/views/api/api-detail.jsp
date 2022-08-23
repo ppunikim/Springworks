@@ -12,14 +12,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>독후감 자세히보기</title>
 <style>
-
+table tr td {
+	cursor: pointer;
+}
+.hs_scroll{
+	overflow-y: scroll;
+	height: 500px;
+}
+label {
+}
+.hs_how {
+	display: flex;
+}
 </style>
 <link rel="stylesheet" href="${rootPath}/static/css/api.css?ver=002" />
 <link rel="stylesheet" href="${rootPath}/static/css/modal.css?ver=002" />
 <script>
 	const rootPath= '${rootPath}'
 </script>
-<script src="${rootPath}/static/js/api.js?ver=004"></script>
+<script src="${rootPath}/static/js/api.js?ver=006"></script>
 </head>
 <body>
 <!-- 구현하고자 하는 것 
@@ -36,7 +47,14 @@
 			<button>검색</button>
 		</form:form>
 	</header>
-	<nav>
+	<nav >
+		<div class="hs_how">
+			<c:forEach items="${RANDOM}" var="random">
+				<label for="this"><a href="${rootPath}/api/${UC_SEQ}/api-look" ></a></label>
+				<div><img src="${random.MAIN_IMG_THUMB}" id="this"/></div>
+			</c:forEach>
+		</div>
+		<div class="hs_scroll">
 		<table class="hs_detail">
 			<colgroup>
 				<col width="15%">
@@ -56,9 +74,8 @@
 					<th>이미지</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody class="hs_scroll">
 				<c:if test="${empty api}">
-
 					<tr>
 						<td></td>
 						<td>검색</td>
@@ -81,6 +98,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		</div>
 	</nav>
 	<div class="hs_div">
 		<a href="${rootPath}" class="hs_home">홈으로</a>

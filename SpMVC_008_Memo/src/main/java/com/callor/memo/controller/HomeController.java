@@ -1,6 +1,10 @@
 package com.callor.memo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,16 +36,24 @@ public class HomeController {
 	}
 
 	@RequestMapping(value="/api/api-detail", method=RequestMethod.GET)
-	public String api(Model model) {
+	public String api(Model model, HttpSession session) {
 		
 		String queryString = apiServiceQuery.queryString(null);
 		List<ApiDTO> foods = apiServiceQuery.getFoodItems(queryString);
+		session.setAttribute("fullApi", foods);
 		model.addAttribute("api",foods);
-		
+
+		int intRan1 = (int)(Math.random() * foods.size());
+		int intRan2 = (int)(Math.random() * foods.size());
+		List<ApiDTO> ranList = new ArrayList<>();
+		ranList.add(foods.get(intRan1));
+		ranList.add(foods.get(intRan2));
+		model.addAttribute("RANDOM",ranList);
+		log.debug("ran랜덤{}",ranList);
 		return "api/api-detail";
 	}
 
-	@RequestMapping(value="/api/api-detail", method=RequestMethod.POST,produces = "application/json;charset=UTF-8")
+	@RequestMapping(value="/api/api-detail", method=RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	public String api(Model model, String queryString,String search, String cat) {
 		
 		log.debug("카테고리 {}",cat);
@@ -51,11 +63,22 @@ public class HomeController {
 		return "api/api-detail";
 	}
 
-	@RequestMapping(value = "/api/{UC_SEQ}/api-look", method=RequestMethod.GET,produces = "application/json;charset=UTF-8")
-	public String api_look(Model model,@PathVariable("UC_SEQ") String seq) {
-		String query = apiServiceQuery.queryStringOne(null);
-		List<ApiDTO> apiDTO = apiServiceQuery.getFoodItems(query);
-		model.addAttribute("VO",apiDTO);
+	@RequestMapping(value = "/api/{UC_SEQ}/api-look", method=RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	public String api_look(Model model,@PathVariable("UC_SEQ") String seq, HttpSession session) {
+
+		//userVO 에 getAttribute 하고, 빈 List 에 for 문으로 담는다.
+//		List<ApiDTO> fullList = new ArrayList<>();
+//			APiDTO apiDTO = (ApiDTO) session.getAttribute("fullApi");
+//			for(fullList : apiDTO) {
+//				
+//			}
+		ArrayList<ApiDTO> allList = (ArrayList<ApiDTO>) session.getAttribute("fullApi");
+		log.debug("allList {}", allList.toString());
+		for(ApiDTO apiDTO : allList) {
+			if(apiDTO.getUC_SEQ().equals(seq)) {
+				model.addAttribute("VO",apiDTO);
+			}
+		}
 		return "api/api-look";
 	}
 

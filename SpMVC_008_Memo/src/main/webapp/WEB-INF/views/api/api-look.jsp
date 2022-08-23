@@ -30,14 +30,12 @@ body {
 </style>
 </head>
 <body>
-<c:forEach items="VO" var="vo">
-	<div>음식점이름 : ${vo.MAIN_TITLE}</div>
-	<div>구 위치 : ${vo.GUGUN_NM}</div>
-	<div>음식점위치 : ${vo.ADDR1}</div>
-	<div>전화번호 : ${vo.CNTCT_TEL}</div>
-	<div>운영시간 : ${vo.USAGE_DAY_WEEK_AND_TIME}</div>
-	<div>설명 : ${vo.ITEMCNTNTS}</div>
-	<div><img src ="${vo.MAIN_IMG_THUMB}"></div>
-</c:forEach>
+	<div>음식점이름 : ${VO.MAIN_TITLE}</div>
+	<div>구 위치 : ${VO.GUGUN_NM}</div>
+	<div>음식점위치 : ${VO.ADDR1}</div>
+	<div>전화번호 : ${VO.CNTCT_TEL}</div>
+	<div>운영시간 : ${VO.USAGE_DAY_WEEK_AND_TIME}</div>
+	<div>설명 : ${VO.ITEMCNTNTS}</div>
+	<div><img src ="${VO.MAIN_IMG_THUMB}"></div>
 </body>
 </html>
