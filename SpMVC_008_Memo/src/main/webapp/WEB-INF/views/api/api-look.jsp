@@ -29,6 +29,8 @@ body {
 a {
 	text-decoration: none;
 	margin-top: 20px;
+	width: 250px;
+	height: 40px;
 }
 </style>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -36,21 +38,21 @@ a {
 <body>
 <div style="display:flex">
 	<div class="w3-ul w3-card-4 w3-margin w3-padding-large hs_div">
-		<label class="">음식점이름</label>
-		<div class="w3-large">${VO.MAIN_TITLE}</div>
-		<label>구 위치</label>
-		<div class="w3-large">${VO.GUGUN_NM}</div>
-		<label>음식점위치</label>
-		<div class="w3-large">${VO.ADDR1}</div>
-		<label>전화번호</label>
-		<div class="w3-large">${VO.CNTCT_TEL}</div>
-		<label>운영시간</label>
-		<div class="w3-large">${VO.USAGE_DAY_WEEK_AND_TIME}</div>
-		<label>설명</label>
-		<div class="w3-large">${VO.ITEMCNTNTS}</div>
-		<div><img src ="${VO.MAIN_IMG_THUMB}" ></div>
+		<label class="w3-text-pink w3-margin">음식점이름</label>
+		<div class="w3-large w3-border-bottom w3-padding">${VO.MAIN_TITLE}</div>
+		<label class="w3-text-pink w3-margin">구 위치</label>
+		<div class="w3-large w3-border-bottom w3-padding">${VO.GUGUN_NM}</div>
+		<label class="w3-text-pink w3-margin">음식점위치</label>
+		<div class="w3-large w3-border-bottom w3-padding">${VO.ADDR1}</div>
+		<label class="w3-text-pink w3-margin">전화번호</label>
+		<div class="w3-large w3-border-bottom w3-padding">${VO.CNTCT_TEL}</div>
+		<label class="w3-text-pink w3-margin">운영시간</label>
+		<div class="w3-large w3-border-bottom w3-padding">${VO.USAGE_DAY_WEEK_AND_TIME}</div>
+		<label class="w3-text-pink w3-margin">설명</label>
+		<div class="w3-large w3-border-bottom w3-padding">${VO.ITEMCNTNTS}</div>
+		<div><img src ="${VO.MAIN_IMG_THUMB}" class="w3-padding"></div> 
 	</div>
-	<a href="${rootPath}/api/api-detail">이전</a>
+	<a href="${rootPath}/api/api-detail" class="w3-button w3-indigo">이전</a>
 </div>
 </body>
 </html>
