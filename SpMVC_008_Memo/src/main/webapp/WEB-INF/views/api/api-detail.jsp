@@ -12,42 +12,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>독후감 자세히보기</title>
 <style>
-table tr td {
-	cursor: pointer;
-}
-
-.hs_scroll {
-	overflow-y: scroll;
-	height: 500px;
-}
-
-label {
-	display: none;
-}
-
 .hs_width {
-	min-width: 800px;
-	width: 70%;
-	margin: 10px auto;
-	border: 5px solid #767676;
-	padding-bottom: 30px;
-	width: 70%;
-}
-
-.hs_how {
-	display: flex;
-	justify-content: space-around;
-}
-
-nav h4 {
-	text-align: center;
-	padding: 10px;
-	font-size: 20px;
-	margin: 10px 0;
-	line-height: 50px;
+	background-color:#f5f5f5;
 }
 </style>
-<link rel="stylesheet" href="${rootPath}/static/css/api.css?ver=002" />
+<link rel="stylesheet" href="${rootPath}/static/css/api.css?ver=003" />
 <link rel="stylesheet" href="${rootPath}/static/css/modal.css?ver=002" />
 <script>
 	const rootPath = '${rootPath}'
@@ -71,7 +40,7 @@ nav h4 {
 	</header>
 	<nav>
 		<div class="hs_width">
-			<h4>오늘의 추천 메뉴!</h4>
+			<h4>오늘의 추천 메뉴 (◕ᴗ◕✿)</h4>
 			<div class="hs_how">
 				<c:forEach items="${RANDOM}" var="random">
 					<label for="this"><a
@@ -82,13 +51,13 @@ nav h4 {
 				</c:forEach>
 			</div>
 		</div>
-		<div >
-			<div >음식점이름</div>
-			<div>구 위치</div>
-			<div>음식점위치</div>
-			<div>전화번호</div>
-			<div>운영시간</div>
-			<div>이미지</div>
+		<div class="hs_hs">
+			<div style="width:15%">음식점이름</div>
+			<div style="width:10%">구 위치</div>
+			<div style="width:15%">음식점위치</div>
+			<div style="width:15%">전화번호</div>
+			<div style="width:20%">운영시간</div>
+			<div style="width:30%">이미지</div>
 		</div>
 		<div class="hs_scroll">
 			<table class="hs_detail">

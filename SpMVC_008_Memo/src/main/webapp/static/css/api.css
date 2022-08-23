@@ -113,3 +113,46 @@ nav {
   border-bottom: 1px solid black;
   width: 85%;
 }
+table tr td {
+	cursor: pointer;
+}
+
+.hs_scroll {
+	overflow-y: scroll;
+	height: 500px;
+}
+
+label {
+	display: none;
+}
+
+.hs_width {
+	min-width: 800px;
+	width: 70%;
+	margin: 10px auto;
+	border: 5px solid #767676;
+	padding-bottom: 30px;
+	width: 70%;
+	border-radius: 20px;
+	back
+}
+
+.hs_how {
+	display: flex;
+	justify-content: space-around;
+}
+
+nav h4 {
+	text-align: center;
+	padding: 10px;
+	font-size: 20px;
+	margin: 10px 0;
+	line-height: 50px;
+}
+.hs_hs {
+	display: flex;
+	text-align: center;
+	margin: 15px 0;
+	font-weight: bolder;
+}
+
