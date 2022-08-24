@@ -10,7 +10,7 @@
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>독후감 자세히보기</title>
+<title>부산광역시 맛집리스트</title>
 <style>
 .hs_width {
 	background-color:#f5f5f5;
@@ -21,12 +21,13 @@
 <script>
 	const rootPath = '${rootPath}'
 </script>
-<script src="${rootPath}/static/js/api.js?ver=006"></script>
+<script src="${rootPath}/static/js/api.js?ver=010"></script>
 </head>
 <body>
-	<!-- 구현하고자 하는 것 
+	<!-- 최종 구현하고자 하는 것 
  	1. 한줄 클릭하면 modal box 로 그 라인만 크게 보이게 하는 것, (detail)설명란 추가
  	2. pageNation 구현하기
+ 	3. 랜덤 이미지 클릭했을 때 음식 상세 페이지로 이동하기
  -->
 	<header>
 		<form:form>
@@ -43,10 +44,10 @@
 			<h4>오늘의 추천 메뉴 (◕ᴗ◕✿)</h4>
 			<div class="hs_how">
 				<c:forEach items="${RANDOM}" var="random">
-					<label for="this"><a
-						href="${rootPath}/api/${UC_SEQ}/api-look"></a></label>
-					<div>
-						<img src="${random.MAIN_IMG_THUMB}" id="this" />
+					<label for="this"></label>
+					<div data-seq="${random.UC_SEQ}"><a
+						href="${rootPath}/api/${random.UC_SEQ}/api-look">
+						<img src="${random.MAIN_IMG_THUMB}" id="this" class="img" /></a>
 					</div>
 				</c:forEach>
 			</div>

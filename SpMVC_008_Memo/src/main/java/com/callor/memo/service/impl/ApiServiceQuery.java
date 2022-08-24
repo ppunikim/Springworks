@@ -35,8 +35,6 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class ApiServiceQuery implements ApiService {
 
-	@Autowired
-	private ApiService apiService;
 
 	public String queryService(String hs, String search) {
 
@@ -77,38 +75,9 @@ public class ApiServiceQuery implements ApiService {
 		return null;
 	}
 
-	@Override
-	public List<ApiDTO> selectAll() {
-		return null;
-	}
-
-	@Override
-	public ApiDTO findById(String VO) {
-		return null;
-	}
-
-	@Override
-	public int insert(ApiDTO vo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int update(ApiDTO vo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int delete(String id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	
 	
 	@Override
-	public String queryString(String search) {
+	public String queryString() {
 
 		String queryString = ApiConfig.API_URL;
 		String encodeParams = null;
@@ -199,23 +168,23 @@ public class ApiServiceQuery implements ApiService {
 		return resFoodObject.getBody().getFoodKr.item;
 	}
 
-	@Override
-	public List<ApiDTO> findByLocation(String queryString, String search) {
-
-		List<ApiDTO> apiList = getFoodItems(queryString(search)); // 전체데이터
-		List<ApiDTO> resultList = new ArrayList<ApiDTO>(); // 빈 데이터
-		for (ApiDTO vo : apiList) { // 한개씩 데이터를 따져보면
-			if (vo.getGUGUN_NM().contains(search)) { // 구군 값이 입력값과 같으면
-				resultList.add(vo); // 값을 빈 데이터에 추가
-			} 
-		}
-		return resultList;
-	}
+//	@Override
+//	public List<ApiDTO> findByLocation(String queryString, String search) {
+//
+//		List<ApiDTO> apiList = getFoodItems(queryString()); // 전체데이터
+//		List<ApiDTO> resultList = new ArrayList<ApiDTO>(); // 빈 데이터
+//		for (ApiDTO vo : apiList) { // 한개씩 데이터를 따져보면
+//			if (vo.getGUGUN_NM().contains(search)) { // 구군 값이 입력값과 같으면
+//				resultList.add(vo); // 값을 빈 데이터에 추가
+//			} 
+//		}
+//		return resultList;
+//	}
 
 	public List<ApiDTO> findByCat(String queryString, String search, String cat) {
 
-		List<ApiDTO> apiList = getFoodItems(queryString(search));
-		List<ApiDTO> resultList = new ArrayList<ApiDTO>();
+		List<ApiDTO> apiList = getFoodItems(queryString());
+		List<ApiDTO> resultList = new ArrayList<>();
 		if(cat.equals("Place")) {
 			for (ApiDTO vo : apiList) {
 				if (vo.getGUGUN_NM().contains(search)) {
@@ -235,36 +204,16 @@ public class ApiServiceQuery implements ApiService {
 		return resultList;
 	}
 	
-	@Override
-	public String queryStringOne(String search) {
-/*
-		String queryString = ApiConfig.API_URL;
-		String encodeParams = null;
-
-		try {
-			encodeParams = "?" + URLEncoder.encode("serviceKey", "UTF-8");
-			encodeParams += "=" + ApiConfig.API_CLIENT_ID;
-
-			encodeParams += "&" + URLEncoder.encode("pageNo", "UTF-8");
-			encodeParams += "=1";
-
-			encodeParams += "&" + URLEncoder.encode("numOfRows", "UTF-8");
-			encodeParams += "=10";
-
-			encodeParams += "&" + URLEncoder.encode("resultType", "UTF-8");
-			encodeParams += "=json";
-			
-			encodeParams += "&" + URLEncoder.encode("URLEncoder", "UTF-8");
-			encodeParams += "=UC_SEQ";
-			
-			
-		} catch (UnsupportedEncodingException e) {
-			log.debug("encode 오류");
-		}
-		queryString += encodeParams;
-		return queryString;
- */
-		return null;
+	// 검색한 값이 없다면 예외처리를 해줘야 한다.
+	public List<ApiDTO> random(List<ApiDTO> foods) {
+		List<ApiDTO> ranList = new ArrayList<>();
+		int intRan1 = (int)(Math.random() * foods.size());
+		int intRan2 = (int)(Math.random() * foods.size());
+		ranList.add(foods.get(intRan1));
+		ranList.add(foods.get(intRan2));
+		return ranList;
 	}
+	
+	
 
 }// end class
