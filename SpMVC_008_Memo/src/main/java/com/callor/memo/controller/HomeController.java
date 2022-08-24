@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.callor.memo.model.ApiDTO;
+import com.callor.memo.model.ApiPlaceDTO;
+import com.callor.memo.service.ApiPlaceService;
 import com.callor.memo.service.ApiService;
 import com.callor.memo.service.impl.ApiServiceQuery;
 
@@ -26,10 +28,11 @@ public class HomeController {
 
 
 	private final ApiService apiServiceQuery;
-	public HomeController(ApiServiceQuery apiServiceQuery) {
+	private final ApiPlaceService apiPlaceService;
+	public HomeController(ApiService apiServiceQuery, ApiPlaceService apiPlaceService) {
 		this.apiServiceQuery = apiServiceQuery;
+		this.apiPlaceService = apiPlaceService;
 	}
-
 
 	@RequestMapping(value = "/")
 	public String home() {
@@ -85,5 +88,72 @@ public class HomeController {
 //	}
 	
 
+	
+	/*
+	 * 부산 명소 controller
+	 */
+	
+	@RequestMapping(value="/api/place", method=RequestMethod.GET)
+	public String place(HttpSession session, Model model, Principal principal) {
+		
+		//로그인 되지 않았다면 로그인 페이지로 돌아가라.
+		if( principal == null ) {
+			return "redirect:/";
+		}
+		
+		//json type 의 데이터를 쓰기 편하게 List 에 담기
+		List<ApiPlaceDTO> placeList = apiPlaceService.getPlaceItems();
+		
+		//계속 재시작 되는 것을 방지하기 위해 세션에 담기
+		session.setAttribute("AllPlace", placeList);
+		
+		//jsp 에 담기 위해 model 에 담기
+		model.addAttribute("PLACE", placeList);
+		
+		return "api/api-place";
+		
+	}
+	
+	
+	@RequestMapping(value="/api/{UC_SEQ}/place-detail", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	public String placeDetail(@PathVariable("UC_SEQ") String seq,HttpSession session, Model model, Principal principal) {
+
+		//로그인 정보 풀리면 데이터가 null값 들어와서 해주는 것
+		if(principal == null) {
+			return "redirect:/";
+		}
+		
+		//세션에 담은 전체 리스트를 get 하기(불러오기)
+		ArrayList<ApiPlaceDTO> placeList = (ArrayList<ApiPlaceDTO>)session.getAttribute("AllPlace");
+		
+		log.debug("세션데이터{}",placeList);
+		
+		//빈 List 만들기
+		List<ApiPlaceDTO> apiPlaceList = new ArrayList<>();
+		
+		//전체 리스트를 하나하나씩 뜯어보기
+		for(ApiPlaceDTO placeDTO : placeList) {
+			
+			//만약 한개씩 뜯어본 데이터의 seq 값이 같다면
+			if(placeDTO.getUC_SEQ().equals(seq)) {
+				
+				/* 비어있는 리스트에 추가
+				 * apiPlaceList.add(placeDTO);
+				 * 
+				 *  이렇게 써버리면 jsp 에서 하나의 데이터만 받아도 될 것을
+				 *  forEach문을 사용해야 한다.
+				 */
+				//그러므로,
+				//추가된 데이터를 jsp 로 보여주기 위해 바로 model 에 담기
+				model.addAttribute("DETAIL", apiPlaceList);
+			}
+		}
+		log.debug("새로 추가된 데이터{}",apiPlaceList);
+		
+		
+		return "api/api-place-detail";
+	}
+	
+	
 
 }// end class

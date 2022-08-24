@@ -15,6 +15,20 @@
 .hs_width {
 	background-color:#f5f5f5;
 }
+.hs_place {
+	text-decoration: none;
+	border: 1px solid transparent;
+	border-radius: 50px;
+	height: 40px;
+    width: 45px;
+    text-align: center;
+    margin: 30px 0 0 20px;
+    background-color:#3f3e3e9e;
+    color: white;
+    line-height: 32px;
+    font-size: small;
+    
+}
 </style>
 <link rel="stylesheet" href="${rootPath}/static/css/api.css?ver=003" />
 <link rel="stylesheet" href="${rootPath}/static/css/modal.css?ver=002" />
@@ -38,6 +52,7 @@
 			<input name="search" placeholder="검색어를 입력하세요." />
 			<button>검색</button>
 		</form:form>
+		<a href="${rootPath}/api/place" class="hs_place">명소</a>
 	</header>
 	<nav>
 		<div class="hs_width">
