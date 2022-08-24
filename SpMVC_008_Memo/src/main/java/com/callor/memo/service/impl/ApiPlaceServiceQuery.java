@@ -55,7 +55,10 @@ public class ApiPlaceServiceQuery implements ApiPlaceService{
 		resPlaceObject = restTemp.exchange(placeURI, HttpMethod.GET, headerEntity, PlaceRoot.class);
 		log.debug("수신된 데이터 {} ", resPlaceObject.getBody().getAttractionKr.item);
 		return resPlaceObject.getBody().getAttractionKr.item;
-
+		
+		//리스트로 보여줄 때, 랜덤으로 들어올 수 있도록 처리해주기
+		
+		
 	}//end GetPlaceItems
 
 

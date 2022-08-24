@@ -116,7 +116,8 @@ public class HomeController {
 	
 	
 	@RequestMapping(value="/api/{UC_SEQ}/place-detail", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-	public String placeDetail(@PathVariable("UC_SEQ") String seq,HttpSession session, Model model, Principal principal) {
+	public String placeDetail(@PathVariable("UC_SEQ") String seq,HttpSession session, 
+								Model model, Principal principal) {
 
 		//로그인 정보 풀리면 데이터가 null값 들어와서 해주는 것
 		if(principal == null) {
@@ -125,34 +126,35 @@ public class HomeController {
 		
 		//세션에 담은 전체 리스트를 get 하기(불러오기)
 		ArrayList<ApiPlaceDTO> placeList = (ArrayList<ApiPlaceDTO>)session.getAttribute("AllPlace");
-		
 		log.debug("세션데이터{}",placeList);
-		
-		//빈 List 만들기
+
+/*: 다음부터는 굳이 2중 빈 공간 만들지 말자.
+  		//빈 List 만들기
 		List<ApiPlaceDTO> apiPlaceList = new ArrayList<>();
-		
 		//전체 리스트를 하나하나씩 뜯어보기
 		for(ApiPlaceDTO placeDTO : placeList) {
-			
 			//만약 한개씩 뜯어본 데이터의 seq 값이 같다면
 			if(placeDTO.getUC_SEQ().equals(seq)) {
-				
-				/* 비어있는 리스트에 추가
-				 * apiPlaceList.add(placeDTO);
-				 * 
-				 *  이렇게 써버리면 jsp 에서 하나의 데이터만 받아도 될 것을
-				 *  forEach문을 사용해야 한다.
-				 */
-				//그러므로,
-				//추가된 데이터를 jsp 로 보여주기 위해 바로 model 에 담기
-				model.addAttribute("DETAIL", apiPlaceList);
+				//빈 List에 주가
+				 apiPlaceList.add(placeDTO);
 			}
 		}
 		log.debug("새로 추가된 데이터{}",apiPlaceList);
-		
+		//추가된 데이터를 jsp 로 보여주기 위해 model 에 담기
+		model.addAttribute("DETAIL", apiPlaceList);
+		//이러면 jsp 에서 forEach 해야만 오류나지않고 가져올 수 있음
+: 이 코드는 굳이 새로운 리스트와 새로운 VO 를 만들어서 리스트에 넣은 것을 VO에 또 넣는 방식이다.
+*/
+		for(ApiPlaceDTO apiPlace : placeList) {
+			if(apiPlace.getUC_SEQ().equals(seq)) {
+				model.addAttribute("DETAIL",apiPlace);
+			}
+		}
+		// 이렇게 코드 짜는 이유는, 짜피 UC_SEQ 값은 1개일 것이기 때문에 굳이 List를 안만들어도 된다.
+
 		
 		return "api/api-place-detail";
-	}
+	}//end placeDetail
 	
 	
 
