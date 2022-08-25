@@ -39,7 +39,19 @@ public class HomeController {
 		return "home";
 	}
 
-	@RequestMapping(value="/api/api-detail", method=RequestMethod.GET)
+	
+	//지도 API
+	@RequestMapping(value="/api/home", method=RequestMethod.GET)
+	public String api_home() {
+		return "api/api-home";
+	}
+	
+	
+	
+	
+	
+	// 맛집 페이지
+	@RequestMapping(value="/api/food", method=RequestMethod.GET)
 	public String api(Model model, HttpSession session, Principal principal ) {
 		if(principal == null) {
 			return "redirect:/";
@@ -51,11 +63,11 @@ public class HomeController {
 		model.addAttribute("api",foods);
 		
 		model.addAttribute("RANDOM",apiServiceQuery.random(foods));
-		return "api/api-detail";
+		return "api/api-food";
 	}
 	
 
-	@RequestMapping(value="/api/api-detail", method=RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@RequestMapping(value="/api/api-food", method=RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	public String api(Model model, String queryString,String search, String cat, HttpSession session) {
 		
 		List<ApiDTO> apiList = apiServiceQuery.findByCat(queryString,search,cat);

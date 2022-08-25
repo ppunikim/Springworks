@@ -40,6 +40,9 @@ tr{
 	overflow: hidden;
 	transition-duration: 300ms;
 }
+header {
+	background-color: #eee;
+}
 </style>
 <link rel="stylesheet" href="${rootPath}/static/css/api.css?ver=003" />
 <link rel="stylesheet" href="${rootPath}/static/css/modal.css?ver=002" />
@@ -63,7 +66,6 @@ tr{
 			<input name="search" placeholder="검색어를 입력하세요." />
 			<button>검색</button>
 		</form:form>
-		<a href="${rootPath}/api/place" class="hs_place">명소</a>
 	</header>
 	<nav>
 		<div class="hs_width">
