@@ -206,9 +206,15 @@ public class ApiServiceQuery implements ApiService {
 	
 	// 검색한 값이 없다면 예외처리를 해줘야 한다.
 	public List<ApiDTO> random(List<ApiDTO> foods) {
+		
+		//랜덤값을 담을 빈 공간의 리스트 만들기
 		List<ApiDTO> ranList = new ArrayList<>();
+		
+		//2개의 랜덤값 번호를 intRan 에 담기
 		int intRan1 = (int)(Math.random() * foods.size());
 		int intRan2 = (int)(Math.random() * foods.size());
+		
+		//빈 공간에 추가하는데, 기존 데이터에서 랜덤값을 가져온다.
 		ranList.add(foods.get(intRan1));
 		ranList.add(foods.get(intRan2));
 		return ranList;

@@ -29,6 +29,17 @@
     font-size: small;
     
 }
+img {
+	border: 1px solid #aaa;
+}
+tr:hover{
+	transform: scale(1.01,1.01);
+	
+}
+tr{
+	overflow: hidden;
+	transition-duration: 300ms;
+}
 </style>
 <link rel="stylesheet" href="${rootPath}/static/css/api.css?ver=003" />
 <link rel="stylesheet" href="${rootPath}/static/css/modal.css?ver=002" />

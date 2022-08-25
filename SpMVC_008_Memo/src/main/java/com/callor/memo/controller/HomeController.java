@@ -103,12 +103,35 @@ public class HomeController {
 		
 		//json type 의 데이터를 쓰기 편하게 List 에 담기
 		List<ApiPlaceDTO> placeList = apiPlaceService.getPlaceItems();
+		log.debug("전체리스트 크기 진짜  " + placeList.size());
 		
+		//랜덤값을 담을 리스트 만들기
+		List<ApiPlaceDTO> ranList = new ArrayList<>();
+
 		//계속 재시작 되는 것을 방지하기 위해 세션에 담기
 		session.setAttribute("AllPlace", placeList);
 		
-		//jsp 에 담기 위해 model 에 담기
-		model.addAttribute("PLACE", placeList);
+
+		for(int i = 0; i < 5; i ++) {
+
+			//데이터 전체 숫자를 랜덤값으로 만들어서 intRan 에 담기
+			int intRan = (int)(Math.random()*placeList.size());
+
+			//랜덤값이 된 숫자의 전체 VO를 List에 담기
+			ranList.add(placeList.get(intRan));
+		}
+//		log.debug("랜덤값 {}", ranList);
+		log.debug("랜덤리스트 크기" + ranList.size());
+		log.debug("전체리스트 크기 듀ㅜ번쨰 " + ((List<ApiPlaceDTO>) session.getAttribute("AllPlace")).size());
+		//가져온 데이터를 랜덤으로 가져오기
+/*		for(ApiPlaceDTO placeDTO : placeList) {
+			
+		}
+*/		
+		
+		
+		//jsp 에 담기 위해 model 에 담기(랜덤값 리스트로 담기)
+		model.addAttribute("PLACE", ranList);
 		
 		return "api/api-place";
 		
