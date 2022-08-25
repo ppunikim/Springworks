@@ -34,6 +34,10 @@ a {
 	width: 500px;
 	height: 40px;
 }
+.hs_color {
+	text-decoration: underline;
+	color: blue;
+}
 </style>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
@@ -46,7 +50,7 @@ a {
 			<div class="w3-large w3-border-bottom w3-padding">${DETAIL.ADDR1}</div>
 			<c:if test="${not empty DETAIL.HOMEPAGE_URL}">
 				<label class="w3-text-pink w3-margin">홈페이지 링크</label>
-				<div class="w3-large w3-border-bottom w3-padding">${DETAIL.HOMEPAGE_URL}</div>
+				<div class="w3-large w3-border-bottom w3-padding"><a href="${DETAIL.HOMEPAGE_URL}" class="hs_color">${DETAIL.HOMEPAGE_URL}</a></div>
 			</c:if>
 			<label class="w3-text-pink w3-margin">교통정보</label>
 			<div class="w3-large w3-border-bottom w3-padding">${DETAIL.TRFC_INFO}</div>
