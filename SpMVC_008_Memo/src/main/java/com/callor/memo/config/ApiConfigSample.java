@@ -10,4 +10,5 @@ public class ApiConfigSample {
 	public static final String PLACE_CLIENT_API = "";
 	public static final String PLACE_URL_API = "http://apis.data.go.kr/6260000/AttractionService/getAttractionKr";
 	public static final String PLACE_ALL_URL = "";
+
 }

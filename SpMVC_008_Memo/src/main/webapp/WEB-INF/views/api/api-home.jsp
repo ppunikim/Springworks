@@ -13,32 +13,39 @@
 <title>부산광역시 맛집리스트</title>
 <style>
 .hs_width {
-	background-color:#f5f5f5;
+	background-color: #f5f5f5;
 }
+
 .hs_place {
 	text-decoration: none;
 	border: 1px solid transparent;
 	border-radius: 50px;
 	height: 40px;
-    width: 45px;
-    text-align: center;
-    margin: 30px 0 0 20px;
-    background-color:#3f3e3e9e;
-    color: white;
-    line-height: 32px;
-    font-size: small;
-    
+	width: 45px;
+	text-align: center;
+	margin: 30px 0 0 20px;
+	background-color: #3f3e3e9e;
+	color: white;
+	line-height: 32px;
+	font-size: small;
 }
+
 img {
 	border: 1px solid #aaa;
 }
-tr:hover{
-	transform: scale(1.01,1.01);
-	
+
+tr:hover {
+	transform: scale(1.01, 1.01);
 }
-tr{
+
+tr {
 	overflow: hidden;
 	transition-duration: 300ms;
+}
+#map {
+	margin-top: 200px;
+	width: 90%;
+	height: 75%;
 }
 </style>
 <link rel="stylesheet" href="${rootPath}/static/css/api.css?ver=003" />
@@ -59,8 +66,23 @@ tr{
 			<input name="search" placeholder="검색어를 입력하세요." />
 			<button>검색</button>
 		</form:form>
-		<a href="${rootPath}/api/place" class="hs_place">명소</a>
-		<a href="${rootPath}/api/food" class="hs_place">맛집</a>
+		<a href="${rootPath}/api/place" class="hs_place">명소</a> <a
+			href="${rootPath}/api/food" class="hs_place">맛집</a>
 	</header>
+	<div id="map"></div>
+
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6c973ccb369a6eba6a4c014a814dc007"></script>
+	<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		mapOption = {
+			center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+			level : 3
+		// 지도의 확대 레벨
+		};
+
+		// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+		var map = new kakao.maps.Map(mapContainer, mapOption);
+	</script>
 </body>
 </html>
