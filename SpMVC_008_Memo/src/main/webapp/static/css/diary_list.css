@@ -85,11 +85,17 @@ table tr th {
   border-collapse: collapse;
   padding: 4px;
 }
-
+table tr th {
+  cursor: pointer;
+  border-bottom: 2.25px solid #908a8a82;
+}
+table tr th a {
+  text-decoration: none;
+  color: inherit;
+}
 table tr td {
   padding: 12px 20px;
   border-bottom: 2.25px solid #908a8a82;
-  cursor: pointer;
 }
 table tr td a {
   text-decoration: none;

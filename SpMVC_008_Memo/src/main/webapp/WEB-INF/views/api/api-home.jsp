@@ -44,8 +44,8 @@ tr {
 }
 #map {
 	margin-top: 200px;
-	width: 90%;
-	height: 75%;
+	width: 80%;
+	height: 50%;
 }
 </style>
 <link rel="stylesheet" href="${rootPath}/static/css/api.css?ver=003" />

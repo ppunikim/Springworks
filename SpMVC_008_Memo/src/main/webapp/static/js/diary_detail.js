@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const seq = tr.dataset.seq;
 
       if (seq) {
-        document.location.href = `${rootPath}/diary/${seq}/d-detail`;
+        document.location.href = `${rootPath}/write/${seq}/d-detail`;
       }
     }
   });

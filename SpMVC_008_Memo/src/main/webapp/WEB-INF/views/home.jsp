@@ -32,11 +32,11 @@
 							<a href="${rootPath}/admin/home">admin</a>
 						</sec:authorize>
 						<sec:authorize access="isAuthenticated()">
-							<a href="${rootPath}/memo/m-list">메모장</a>
-							<br>
-							<a href="${rootPath}/diary/d-list">일기장</a>
+							<a href="${rootPath}/write/home">글쓰기</a>
 							<br>
 							<a href="${rootPath}/api/home">또가자</a>
+							<br>
+							<a href="${rootPath}/study/home">스터디</a>
 							<br>
 							<form:form action="${rootPath}/user/login">
 								<button>logout</button>

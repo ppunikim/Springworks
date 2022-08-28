@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const tr = td.closest("TR");
       const seq = tr.dataset.seq;
       if (seq) {
-        document.location.href = `${rootPath}/memo/${seq}/m-detail`;
+        document.location.href = `${rootPath}/write/${seq}/m-detail`;
       }
     }
   }); //end memo_table

@@ -17,7 +17,7 @@
 </script>
 <link rel="stylesheet" href="${rootPath}/static/css/w3css.css">
 <link rel="stylesheet" href="${rootPath}/static/css/memo_list.css?ver=1">
-<script src="${rootPath}/static/js/memo_detail.js?ver=13"></script>
+<script src="${rootPath}/static/js/memo_detail.js?ver=14"></script>
 </head>
 <body>
 	<header class="main">
